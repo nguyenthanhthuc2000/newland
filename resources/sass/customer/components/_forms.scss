@@ -1,0 +1,13 @@
+.is-invalid {
+    .form-control {
+        border-color: $default-errors;
+    }
+    span {
+        color: $default-errors;
+    }
+}
+
+.form__post {
+    padding: 20px;
+    box-shadow: rgb(182 182 182 / 18%) 1px 1px 20px 3px;
+}
