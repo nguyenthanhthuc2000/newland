@@ -1,0 +1,73 @@
+/**======================*
+    Import vendors
+*========================*/
+
+@import './vendors/bootstrap';
+
+/**======================*
+    Import abstracts
+*========================*/
+
+@import './abstracts/variables';
+@import './abstracts/functions';
+@import './abstracts/mixins';
+
+/**======================*
+    Import theme
+*========================*/
+
+
+/**======================*
+    Import base
+*========================*/
+
+@import './base/font';
+@import './base/reset';
+@import './base/typography';
+
+/**======================*
+    Import layout
+*========================*/
+
+@import './layout/header';
+@import './layout/main';
+@import './layout/grid';
+@import './layout/footer';
+
+
+/**======================*
+    Import components
+*========================*/
+
+@import './components/button';
+@import './components/forms';
+@import './components/line';
+
+/**======================*
+    Import pages
+*========================*/
+
+
+
+main {
+    margin-top: 130px;
+}
+
+
+/* Extra small devices (phones, 992px and down) */
+
+@media only screen and (max-width: 992px) {
+    .navbar {
+        ul {
+            li {
+                padding-top: 20px;
+            }
+        }
+        .navbar-collapse {
+            padding-bottom: 30px;
+        }
+        .box__auth {
+            margin-left: 20px
+        }
+    }
+}

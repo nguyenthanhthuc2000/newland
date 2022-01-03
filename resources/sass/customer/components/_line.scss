@@ -1,0 +1,20 @@
+
+
+.line__hover {
+    &:before {
+        position: absolute;
+        content: '';
+        left: 0;
+        bottom: 0;
+        height: 2px;
+        width: 100%;
+        background: #2980b9;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform .3s ease-in-out;
+    }
+    &:hover:before {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+}

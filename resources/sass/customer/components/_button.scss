@@ -1,0 +1,22 @@
+
+.btn {
+    border-radius: 7px;
+}
+
+.btn__re__line:hover {
+    color: #2980b9;
+    border-color: #2980b9;
+}
+
+.btn__outline__blue {
+    color: #2980b9!important;
+    border-color: #2980b9;
+    &:hover {
+        background-color: #2980b9;
+        color: #fff!important;
+    }
+}
+
+.btn__auth {
+    color: #3498db !important;
+}
