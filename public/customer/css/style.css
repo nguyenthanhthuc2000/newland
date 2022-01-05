@@ -11390,6 +11390,41 @@ header .navbar .navbar-toggler {
   color: #3498DB;
 }
 
+.modal-content {
+  border-radius: 30px;
+}
+.modal-content .btn {
+  border-radius: 25px;
+}
+.modal-content .form-control {
+  border-radius: 10px !important;
+  position: relative !important;
+  padding: 0.55rem 0.75rem !important;
+}
+.modal-content .form-control::before {
+  content: "\e9c2";
+  top: 12px;
+  position: absolute;
+  z-index: 1;
+  text-align: center;
+  line-height: 24px;
+  width: 24px;
+  height: 24px;
+}
+
+.modal-header {
+  padding: 1rem 2rem 0 !important;
+  border-bottom: none !important;
+}
+
+.modal-body {
+  padding: 1rem 2rem 2rem !important;
+}
+
+.box__login__helper {
+  justify-content: space-between;
+}
+
 /**======================*
     Import components
 *========================*/

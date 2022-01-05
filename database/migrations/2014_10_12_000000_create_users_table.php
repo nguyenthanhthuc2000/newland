@@ -19,6 +19,9 @@ class CreateUsersTable extends Migration
             $table->string('phone', 12)->nullable();
             $table->string('email', 65);
             $table->string('password', 65);
+            $table->integer('district')->nullable(); // mã quận huyen
+            $table->integer('province_id')->nullable(); // mã tỉnh/tp
+            $table->integer('ward_id')->nullable(); // mã xã phường xã thi tran
             $table->double('surplus')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

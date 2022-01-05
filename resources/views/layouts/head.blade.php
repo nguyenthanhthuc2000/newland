@@ -9,4 +9,6 @@
     <link rel="stylesheet" href="css/all.min.css"><!--font -->
     <link rel="stylesheet" href="css/sweetalert2.min.css"><!--alert --> --}}
     <link rel="stylesheet" href="{{ asset('customer/css/style.css') }}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+
 </head>

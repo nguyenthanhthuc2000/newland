@@ -45,17 +45,28 @@
                         </li>
                     </ul>
                     <div class="box__auth">
-                        <button type="button" class="btn btn__re__line btn__auth" type="submit">Đăng nhập</button>
+                        <button type="button" class="btn btn__re__line btn__auth" type="submit"
+                                data-bs-toggle="modal" data-bs-target="#mLogin"
+                        >
+                            Đăng nhập
+                        </button>
                         <span class="re__line">|</span>
-                        <button type="button" class="btn btn__re__line btn__auth" type="submit">Đăng kí</button>
+                        <button type="button" class="btn btn__re__line btn__auth" type="submit"
+                                data-bs-toggle="modal" data-bs-target="#mRegister"
+                        >
+                            Đăng kí
+                        </button>
                         <a href="dang_tin.html" class="btn btn__outline__blue btn__auth" type="submit">Đăng tin</a>
                     </div>
                 </div>
-                
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </nav>
         </div>
     </div>
+
+
+
 </header>
