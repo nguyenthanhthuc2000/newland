@@ -23,6 +23,7 @@
 
     <!-- script -->
     @include('layouts.script')
+    @include('layouts.modal')
     <!-- end script -->
 </body>
 
