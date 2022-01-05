@@ -13,12 +13,12 @@ class CreateQuanhuyen extends Migration
      */
     public function up()
     {
-        Schema::create('quanhuyen', function (Blueprint $table) {
-            $table->string('maqh', 5);
-            $table->string('name', 100);
-            $table->string('type', 30);
-            $table->string('matp', 5);
-        });
+//        Schema::create('quanhuyen', function (Blueprint $table) {
+//            $table->string('maqh', 5);
+//            $table->string('name', 100);
+//            $table->string('type', 30);
+//            $table->string('matp', 5);
+//        });
     }
 
     /**

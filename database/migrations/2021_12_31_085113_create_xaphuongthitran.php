@@ -13,12 +13,12 @@ class CreateXaphuongthitran extends Migration
      */
     public function up()
     {
-        Schema::create('xaphuongthitran', function (Blueprint $table) {
-            $table->string('xaid', 5);
-            $table->string('name', 100);
-            $table->string('type', 30);
-            $table->string('matp', 5);
-        });
+//        Schema::create('xaphuongthitran', function (Blueprint $table) {
+//            $table->string('xaid', 5);
+//            $table->string('name', 100);
+//            $table->string('type', 30);
+//            $table->string('matp', 5);
+//        });
     }
 
     /**
