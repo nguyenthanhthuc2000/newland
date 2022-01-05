@@ -34,7 +34,6 @@
 @import './layout/grid';
 @import './layout/footer';
 
-
 /**======================*
     Import components
 *========================*/
@@ -47,12 +46,7 @@
     Import pages
 *========================*/
 
-
-
-main {
-    margin-top: 130px;
-}
-
+@import './pages/post';
 
 /* Extra small devices (phones, 992px and down) */
 

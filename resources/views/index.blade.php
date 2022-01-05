@@ -9,7 +9,9 @@
 
     <!-- main -->
     <main>
-
+        <div class="container">
+            @yield('main')
+        </div>
     </main>
     <!-- end main -->
 

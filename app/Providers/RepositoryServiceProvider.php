@@ -29,6 +29,10 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repository\Direction\DirectionRepositoryInterface::class,
             \App\Repository\Direction\DirectionRepository::class
         );
+        $this->app->singleton(
+            \App\Repository\Province\ProvinceRepositoryInterface::class,
+            \App\Repository\Province\ProvinceRepository::class
+        );
     }
 
     /**

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Customer\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [PostController::class, 'index'])->name('post.index');
+// Route::get('post', "Customer/PostController@index")->name('post.index');

@@ -48,7 +48,7 @@
                         <button type="button" class="btn btn__re__line btn__auth" type="submit">Đăng nhập</button>
                         <span class="re__line">|</span>
                         <button type="button" class="btn btn__re__line btn__auth" type="submit">Đăng kí</button>
-                        <a href="dang_tin.html" class="btn btn__outline__blue btn__auth" type="submit">Đăng tin</a>
+                        <a href="{{ route('post.index') }}" class="btn btn__outline__blue btn__auth" type="submit">Đăng tin</a>
                     </div>
                 </div>
                 

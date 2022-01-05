@@ -11317,8 +11317,14 @@ textarea.form-control-lg {
   font-style: normal;
   font-display: block;
 }
+@font-face {
+  font-family: "Nunito";
+  src: url(/fonts/Nunito-VariableFont_wght.ttf);
+  font-style: normal;
+  font-display: block;
+}
 body {
-  font-family: "rbt-l";
+  font-family: "Nunito";
   font-size: 16px;
 }
 
@@ -11354,6 +11360,12 @@ a {
 @font-face {
   font-family: "rbt-m";
   src: url(/fonts/Roboto-Medium.ttf);
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url(/fonts/Nunito-VariableFont_wght.ttf);
   font-style: normal;
   font-display: block;
 }
@@ -11394,7 +11406,7 @@ header .navbar .navbar-toggler {
     Import components
 *========================*/
 .btn {
-  border-radius: 7px;
+  border-radius: 20px;
 }
 
 .btn__re__line:hover {
@@ -11427,6 +11439,26 @@ header .navbar .navbar-toggler {
   box-shadow: rgba(182, 182, 182, 0.18) 1px 1px 20px 3px;
 }
 
+.text-required {
+  color: #f00;
+}
+
+.form-datalist {
+  position: absolute;
+  background-color: white;
+  border: 1px solid blue;
+  border-radius: 0 0 5px 5px;
+  border-top: none;
+  font-family: sans-serif;
+  width: 350px;
+  padding: 5px;
+  max-height: 10rem;
+  overflow-y: auto;
+}
+.form-datalist option {
+  background: red;
+}
+
 .line__hover:before {
   position: absolute;
   content: "";
@@ -11447,8 +11479,12 @@ header .navbar .navbar-toggler {
 /**======================*
     Import pages
 *========================*/
-main {
-  margin-top: 130px;
+form.form-post .tab-info {
+  background-color: #fff;
+}
+form.form-post .tab-info .title {
+  font-size: 20px;
+  font-weight: bold;
 }
 
 /* Extra small devices (phones, 992px and down) */
