@@ -15,3 +15,10 @@ use App\Http\Controllers\Customer\PostController;
 
 Route::get('/', [PostController::class, 'index'])->name('post.index');
 // Route::get('post', "Customer/PostController@index")->name('post.index');
+
+
+
+// GET LOCAL AJAX
+Route::post('fetchDistrictList',  [PostController::class, 'getDistrict'])->name('get.districts');
+Route::post('fetchWards',  [PostController::class, 'getDistrict'])->name('get.wards');
+Route::post('fetchStreet',  [PostController::class, 'getDistrict'])->name('get.streets');

@@ -26,12 +26,34 @@ class PostController extends Controller
      */
     public function index()
     {
-        // $province = $this->provinceRepo->find('1')->districts()->get();
         $province = $this->provinceRepo->getOrderBy('ASC');
         $data = [
             'province' => $province,
         ];
         return view('post.post', $data);
+    }
+
+    /**
+     * get districts by province
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getDistrict(Request $request){
+        // dd();
+        $province_id = $request->_province_id;
+        return $this->provinceRepo->find($province_id)->districts()->get();
+    }
+
+    public function getWards(Request $request){
+        // dd();
+        $district_id = $request->_district_id;
+        return $this->provinceRepo->find($province_id)->find($district_id)->districts()->wards()->get();
+    }
+
+    public function getStreet(Request $request){
+        // dd();
+        $province_id = $request->_province_id;
+        return $this->provinceRepo->find($province_id)->districts()->get();
     }
 
     /**

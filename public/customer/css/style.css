@@ -11476,7 +11476,7 @@ main {
 .input-datalist ~ .dropdown-menu {
   margin-top: 3px !important;
   width: 100%;
-  height: 200px;
+  max-height: 200px;
   overflow: auto;
 }
 .input-datalist ~ .dropdown-menu::-webkit-scrollbar {
