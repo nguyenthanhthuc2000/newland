@@ -16,24 +16,28 @@ var getDistrict = function(province) {
     });
 }
 // lấy danh sách phường xã
-var getWard = function(ward) {
+var getWard = function(district) {
+    var _province_id = $('.input-datalist').data('id');
     $.ajax({
         url: window.route('get.wards'),
         method: 'post',
         data: {
-            '_province_id': province
+            '_district_id': district,
+            '_province_id': _province_id
         }
     }).done(function(data) {
         appendLocal('wards', data);
     });
 }
 // lấy danh sách đường
-var getStreet = function(street) {
+var getStreet = function(ward) {
+    var _province_id = $('.input-datalist').data('id');
     $.ajax({
         url: window.route('get.streets'),
         method: 'post',
         data: {
-            '_province_id': street
+            '_district_id': ward,
+            '_province_id': _province_id
         }
     }).done(function(data) {
         appendLocal('streets', data);
@@ -49,13 +53,11 @@ var appendLocal = function(type, data) {
 }
 
 $('.dropdown-menu').on('click', 'li', function(e) {
-    let type = $(this).parents().data('type');
+    var parents = $(this).parents();
+    let type = parents.data('type');
+    // $(this).parents()
     var id = $(this).val();
-    console.log(id);
     switch (type) {
-        // case 'streets':
-        //         getDistrict(id)
-        //     break;
         case 'wards':
             getStreet(id)
             break;

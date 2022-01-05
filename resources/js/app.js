@@ -2,7 +2,7 @@ require('./bootstrap');
 /** =================
     Require ajax
  ===================*/
-require('./ajax/_get-local');
+require('./ajax/get-local');
 
 /** =================
     Require component

@@ -20,5 +20,5 @@ Route::get('/', [PostController::class, 'index'])->name('post.index');
 
 // GET LOCAL AJAX
 Route::post('fetchDistrictList',  [PostController::class, 'getDistrict'])->name('get.districts');
-Route::post('fetchWards',  [PostController::class, 'getDistrict'])->name('get.wards');
-Route::post('fetchStreet',  [PostController::class, 'getDistrict'])->name('get.streets');
+Route::post('fetchWards',  [PostController::class, 'getWards'])->name('get.wards');
+Route::post('fetchStreet',  [PostController::class, 'getStreet'])->name('get.streets');
