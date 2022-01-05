@@ -31,12 +31,12 @@ class CreateArticle extends Migration
             $table->text('video')->nullable(); // video
             $table->text('image')->nullable();  // hình ảnh
             $table->text('image_360')->nullable(); // Hình ảnh 360
-            $table->integer('category_id'); // danh mục
-            $table->integer('district'); // mã quận huyen
-            $table->integer('province_id'); // mã tỉnh/tp
-            $table->integer('ward_id'); // mã xã phường xã thi tran
-            $table->integer('street_id'); // đường đi
-            $table->integer('project_id'); // mã dự án
+            $table->integer('category_id')->nullable(); // danh mục
+            $table->integer('district')->nullable(); // mã quận huyen
+            $table->integer('province_id')->nullable(); // mã tỉnh/tp
+            $table->integer('ward_id')->nullable(); // mã xã phường xã thi tran
+            $table->integer('street_id')->nullable(); // đường đi
+            $table->integer('project_id')->nullable(); // mã dự án
             $table->string('name_contact', 35); // tên người liên hệ
             $table->string('phone_contact', 12); // sdt người liên hệ
             $table->string('address_contact')->nullable(); // địa chỉ người liên hệ
