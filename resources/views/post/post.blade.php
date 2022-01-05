@@ -2,6 +2,7 @@
 @section('main')
 <div class="post-form-action col-8 mx-auto pt-3">
     <form method="post" action="" class="form-post">
+        @csrf
         <div class="tab-info basic-information">
             <div class="title">Thông tin cơ bản</div>
             <div class="mb-3">
@@ -19,8 +20,9 @@
                     <div class="col-6">
                         <label for="provinces" class="form-label">Tỉnh / Thành phố <span class="text-required">*</span></label>
                         <div class="dropdown">
-                            <input class="form-control dropdown-toggle input-datalist" type="text" id="dropdownProvinces" data-bs-toggle="dropdown" aria-expanded="false" value="">
-                            <ul class="dropdown-menu" aria-labelledby="dropdownProvinces" datalist="dropdownProvinces">
+                            <input placeholder="Tỉnh / Thành phố" class="form-control dropdown-toggle input-datalist" type="text" id="dropdownProvinces"
+                                    data-bs-toggle="dropdown" aria-expanded="false" value="" autocomplete="off">
+                            <ul class="dropdown-menu" aria-labelledby="dropdownProvinces" datalist="dropdownProvinces" data-type="province">
                                 @foreach ($province as $prov)
                                         <li value="{{ $prov->id }}">{{ $prov->_name }}</li>
                                 @endforeach
@@ -30,21 +32,32 @@
                     <div class="col-6">
                         <label for="districts" class="form-label">Quận/ Huyện <span class="text-required">*</span></label>
                         <div class="dropdown">
-                        <input class="form-control dropdown-toggle input-datalist" type="text" id="dropdownDistricts" data-bs-toggle="dropdown" aria-expanded="false" value="">
-                            <ul class="dropdown-menu" aria-labelledby="dropdownDistricts" datalist="dropdownDistricts">
-                                @foreach ($province as $prov)
-                                        <li value="{{ $prov->id }}">{{ $prov->_name }}</li>
-                                @endforeach
+                        <input placeholder="Quận/ Huyện" class="form-control dropdown-toggle input-datalist" type="text" id="dropdownDistricts"
+                                data-bs-toggle="dropdown" aria-expanded="false" value="" autocomplete="off">
+                            <ul class="dropdown-menu" aria-labelledby="dropdownDistricts" datalist="dropdownDistricts" data-type="districts">
+
                             </ul>
                         </div>
                     </div>
                     <div class="col-6">
-                        <label for="districts" class="form-label">Xã / Thị trấn <span class="text-required">*</span></label>
-                        <input type="text" class="form-control districts" list="">
+                        <label for="districts" class="form-label">Phường / Xã <span class="text-required">*</span></label>
+                        <div class="dropdown">
+                        <input placeholder="Phường / Xã" class="form-control dropdown-toggle input-datalist" type="text" id="dropdownWards"
+                                data-bs-toggle="dropdown" aria-expanded="false" value="" autocomplete="off">
+                            <ul class="dropdown-menu" aria-labelledby="dropdownWards" datalist="dropdownWards" data-type="ward">
+
+                            </ul>
+                        </div>
                     </div>
                     <div class="col-6">
                         <label for="districts" class="form-label">Đường <span class="text-required">*</span></label>
-                        <input type="text" class="form-control districts" list="">
+                        <div class="dropdown">
+                            <input placeholder="Đường" class="form-control dropdown-toggle input-datalist" type="text" id="dropdownStreet"
+                                    data-bs-toggle="dropdown" aria-expanded="false" value="" autocomplete="off">
+                                <ul class="dropdown-menu" aria-labelledby="dropdownStreet" datalist="dropdownStreet" data-type="street">
+
+                                </ul>
+                            </div>
                     </div>
                 </div>
             </div>

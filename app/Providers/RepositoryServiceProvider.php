@@ -33,6 +33,19 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repository\Province\ProvinceRepositoryInterface::class,
             \App\Repository\Province\ProvinceRepository::class
         );
+        $this->app->singleton(
+            \App\Repository\District\DistrictRepositoryInterface::class,
+            \App\Repository\District\DistrictRepository::class
+        );
+        $this->app->singleton(
+            \App\Repository\Ward\WardRepositoryInterface::class,
+            \App\Repository\Ward\WardRepository::class
+        );
+        $this->app->singleton(
+            \App\Repository\Street\StreetRepositoryInterface::class,
+            \App\Repository\Street\StreetRepository::class
+        );
+        
     }
 
     /**
