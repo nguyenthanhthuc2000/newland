@@ -32,10 +32,11 @@ class CreateArticle extends Migration
             $table->text('image')->nullable();  // hình ảnh
             $table->text('image_360')->nullable(); // Hình ảnh 360
             $table->integer('category_id'); // danh mục
-            $table->string('maqh', 5); // mã quận huyen
-            $table->string('matp', 5); // mã tỉnh/tp
-            $table->string('xaid', 5); // mã xã phường
-            $table->string('address'); // thông tin địa chỉ nhà/đất
+            $table->integer('district'); // mã quận huyen
+            $table->integer('province_id'); // mã tỉnh/tp
+            $table->integer('ward_id'); // mã xã phường xã thi tran
+            $table->integer('street_id'); // đường đi
+            $table->integer('project_id'); // mã dự án
             $table->string('name_contact', 35); // tên người liên hệ
             $table->string('phone_contact', 12); // sdt người liên hệ
             $table->string('address_contact')->nullable(); // địa chỉ người liên hệ
