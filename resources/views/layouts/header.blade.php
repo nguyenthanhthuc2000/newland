@@ -51,12 +51,17 @@
                             Đăng nhập
                         </button>
                         <span class="re__line">|</span>
+<<<<<<< HEAD
                         <button type="button" class="btn btn__re__line btn__auth" type="submit"
                                 data-bs-toggle="modal" data-bs-target="#mRegister"
                         >
                             Đăng kí
                         </button>
                         <a href="dang_tin.html" class="btn btn__outline__blue btn__auth" type="submit">Đăng tin</a>
+=======
+                        <button type="button" class="btn btn__re__line btn__auth" type="submit">Đăng kí</button>
+                        <a href="{{ route('post.index') }}" class="btn btn__outline__blue btn__auth" type="submit">Đăng tin</a>
+>>>>>>> 818a89274555f1d692fc116db0c294363b9ae655
                     </div>
                 </div>
 

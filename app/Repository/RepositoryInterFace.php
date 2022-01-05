@@ -5,10 +5,12 @@ namespace App\Repository;
 interface RepositoryInterFace
 {
     /**
-     * Get all
+     * Get all with order by default column id, desc
+     * @param string $orderBy
+     * @param string $column
      * @return mixed
      */
-    public function getAll();
+    public function getOrderBy($orderBy = 'DESC', $column = 'id');
 
     /**
      * Get one
@@ -60,9 +62,12 @@ interface RepositoryInterFace
     public function getByAttributesAll($attributes);
 
     /**
+     * * Get all order by default column id, desc
+     * @param string $orderBy
+     * @param string $column
      * @return mixed
      */
-    public function getAllItem();
+    public function getByPaginate($orderBy = 'DESC', $column = 'id');
 
     /**
      * @param array $attributes

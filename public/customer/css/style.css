@@ -11317,8 +11317,14 @@ textarea.form-control-lg {
   font-style: normal;
   font-display: block;
 }
+@font-face {
+  font-family: "Nunito";
+  src: url(/fonts/Nunito-VariableFont_wght.ttf);
+  font-style: normal;
+  font-display: block;
+}
 body {
-  font-family: "rbt-l";
+  font-family: "Nunito";
   font-size: 16px;
 }
 
@@ -11357,11 +11363,26 @@ a {
   font-style: normal;
   font-display: block;
 }
+@font-face {
+  font-family: "Nunito";
+  src: url(/fonts/Nunito-VariableFont_wght.ttf);
+  font-style: normal;
+  font-display: block;
+}
 /**======================*
     Import layout
 *========================*/
 header {
   box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.08);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  background: #fff;
+}
+header .navbar {
+  z-index: 9999;
 }
 header .navbar .logo {
   width: 80px;
@@ -11390,6 +11411,7 @@ header .navbar .navbar-toggler {
   color: #3498DB;
 }
 
+<<<<<<< HEAD
 .modal-content {
   border-radius: 30px;
 }
@@ -11423,13 +11445,17 @@ header .navbar .navbar-toggler {
 
 .box__login__helper {
   justify-content: space-between;
+=======
+main {
+  margin-top: 96px;
+>>>>>>> 818a89274555f1d692fc116db0c294363b9ae655
 }
 
 /**======================*
     Import components
 *========================*/
 .btn {
-  border-radius: 7px;
+  border-radius: 20px;
 }
 
 .btn__re__line:hover {
@@ -11462,6 +11488,10 @@ header .navbar .navbar-toggler {
   box-shadow: rgba(182, 182, 182, 0.18) 1px 1px 20px 3px;
 }
 
+.text-required {
+  color: #f00;
+}
+
 .line__hover:before {
   position: absolute;
   content: "";
@@ -11479,11 +11509,55 @@ header .navbar .navbar-toggler {
   transform-origin: left;
 }
 
+.input-datalist ~ .dropdown-menu {
+  margin-top: 3px !important;
+  width: 100%;
+  height: 200px;
+  overflow: auto;
+}
+.input-datalist ~ .dropdown-menu::-webkit-scrollbar {
+  width: 5px;
+}
+.input-datalist ~ .dropdown-menu::-webkit-scrollbar:hover {
+  width: 8px;
+}
+.input-datalist ~ .dropdown-menu::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.input-datalist ~ .dropdown-menu::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 6px;
+  /* Handle on hover */
+}
+.input-datalist ~ .dropdown-menu::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.input-datalist ~ .dropdown-menu li {
+  padding: 5px 8px;
+  cursor: pointer;
+}
+.input-datalist ~ .dropdown-menu li:hover {
+  background-color: #3498DB;
+  color: #fff;
+}
+
 /**======================*
     Import pages
 *========================*/
-main {
-  margin-top: 130px;
+form.form-post .tab-info {
+  background-color: #fff;
+  padding: 10px 30px;
+  box-shadow: 1px 10px 32px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  border-radius: 3px;
+}
+form.form-post .tab-info .title {
+  font-size: 20px;
+  font-weight: bold;
+}
+form.form-post .tab-info label:not(.floating) {
+  font-weight: bold;
+  font-size: 14px;
 }
 
 /* Extra small devices (phones, 992px and down) */

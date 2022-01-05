@@ -35,7 +35,6 @@
 @import './layout/footer';
 @import './layout/modal';
 
-
 /**======================*
     Import components
 *========================*/
@@ -43,17 +42,13 @@
 @import './components/button';
 @import './components/forms';
 @import './components/line';
+@import './components/data-list';
 
 /**======================*
     Import pages
 *========================*/
 
-
-
-main {
-    margin-top: 130px;
-}
-
+@import './pages/post';
 
 /* Extra small devices (phones, 992px and down) */
 
