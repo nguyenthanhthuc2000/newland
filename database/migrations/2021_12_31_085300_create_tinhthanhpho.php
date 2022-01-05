@@ -13,11 +13,11 @@ class CreateTinhthanhpho extends Migration
      */
     public function up()
     {
-        Schema::create('tinhthanhpho', function (Blueprint $table) {
-            $table->string('matp', 5);
-            $table->string('name', 100);
-            $table->string('type', 30);
-        });
+//        Schema::create('tinhthanhpho', function (Blueprint $table) {
+//            $table->string('matp', 5);
+//            $table->string('name', 100);
+//            $table->string('type', 30);
+//        });
     }
 
     /**
