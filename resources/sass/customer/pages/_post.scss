@@ -1,9 +1,17 @@
 form.form-post {
     .tab-info {
         background-color: $white;
+        padding: 10px 30px;
+        box-shadow: 1px 10px 32px rgb(0 0 0 / 10%);
+        margin-bottom: 20px;
+        border-radius: 3px;
         .title {
             font-size: 20px;
             font-weight: bold;
+        }
+        label:not(.floating) {
+            font-weight: bold;
+            font-size: 14px;
         }
     }
 }

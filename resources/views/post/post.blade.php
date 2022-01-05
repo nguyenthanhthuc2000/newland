@@ -1,8 +1,8 @@
 @extends('index')
 @section('main')
-<div class="post-form-action col-8 mx-auto mt-3">
+<div class="post-form-action col-8 mx-auto pt-3">
     <form method="post" action="" class="form-post">
-        <div class="tab-info basic-information p-3">
+        <div class="tab-info basic-information">
             <div class="title">Thông tin cơ bản</div>
             <div class="mb-3">
                 <label for="typeOfRealEstate" class="form-label">Loại bất động sản <span class="text-required">*</span></label>
@@ -11,89 +11,92 @@
                     <option value="2">Two</option>
                     <option value="3">Three</option>
                 </select>
-                <div id="typeOfRealEstateHelp" class="form-text">We'll never share your email with anyone else.</div>
+                <div id="typeOfRealEstateHelp" class="form-text text-danger">Trường không được bỏ trống</div>
             </div>
             <div class="mb-3">
-                <label for="specific-address" class="form-label">Địa chỉ</label>
+                <label for="address" class="form-label">Địa chỉ</label>
                 <div class="specific-address row">
                     <div class="col-6">
-                        <label for="districts" class="form-label">Tỉnh / Thành phố <span class="text-required">*</span></label>
-                        <input type="text" class="form-control districts" list="">
-                        {{-- <datalist id="districts" class="form-datalist">
-                            @foreach ($province as $prov)
-                                <option value="{{ $prov->id }}">
-                            @endforeach
-                        </datalist> --}}
+                        <label for="provinces" class="form-label">Tỉnh / Thành phố <span class="text-required">*</span></label>
+                        <div class="dropdown">
+                            <input class="form-control dropdown-toggle input-datalist" type="text" id="dropdownProvinces" data-bs-toggle="dropdown" aria-expanded="false" value="">
+                            <ul class="dropdown-menu" aria-labelledby="dropdownProvinces" datalist="dropdownProvinces">
+                                @foreach ($province as $prov)
+                                        <li value="{{ $prov->id }}">{{ $prov->_name }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
                     <div class="col-6">
                         <label for="districts" class="form-label">Quận/ Huyện <span class="text-required">*</span></label>
-                        <input type="text" class="form-control districts" list="">
-                        {{-- <datalist id="districts" class="form-datalist">
-                            @foreach ($province as $prov)
-                                <option value="{{ $prov->id }}">
-                            @endforeach
-                        </datalist> --}}
+                        <div class="dropdown">
+                        <input class="form-control dropdown-toggle input-datalist" type="text" id="dropdownDistricts" data-bs-toggle="dropdown" aria-expanded="false" value="">
+                            <ul class="dropdown-menu" aria-labelledby="dropdownDistricts" datalist="dropdownDistricts">
+                                @foreach ($province as $prov)
+                                        <li value="{{ $prov->id }}">{{ $prov->_name }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
                     <div class="col-6">
                         <label for="districts" class="form-label">Xã / Thị trấn <span class="text-required">*</span></label>
                         <input type="text" class="form-control districts" list="">
-                        {{-- <datalist id="districts" class="form-datalist">
-                            @foreach ($province as $prov)
-                                <option value="{{ $prov->id }}">
-                            @endforeach
-                        </datalist> --}}
                     </div>
                     <div class="col-6">
                         <label for="districts" class="form-label">Đường <span class="text-required">*</span></label>
                         <input type="text" class="form-control districts" list="">
-                        {{-- <datalist id="districts" class="form-datalist">
-                            @foreach ($province as $prov)
-                                <option value="{{ $prov->id }}">
-                            @endforeach
-                        </datalist> --}}
                     </div>
                 </div>
             </div>
             <div class="mb-3">
-                <label for="typeOfRealEstate" class="form-label">Loại bất động sản <span class="text-required">*</span></label>
+                <label for="typeOfRealEstate" class="form-label">Dự án</label>
                 <select class="form-select" aria-label="Default select example" id="typeOfRealEstate" aria-describedby="typeOfRealEstateHelp" placeholder="VD: Nhà riếng">
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
                 </select>
-                <div id="typeOfRealEstateHelp" class="form-text">We'll never share your email with anyone else.</div>
+                <div id="typeOfRealEstateHelp" class="form-text text-danger">Trường không được bỏ trống</div>
             </div>
             <div class="mb-3">
-                <label for="typeOfRealEstate" class="form-label">Loại bất động sản <span class="text-required">*</span></label>
+                <label for="typeOfRealEstate" class="form-label">Địa chỉ hiển thị trên tin đăng <span class="text-required">*</span></label>
                 <select class="form-select" aria-label="Default select example" id="typeOfRealEstate" aria-describedby="typeOfRealEstateHelp" placeholder="VD: Nhà riếng">
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
                 </select>
-                <div id="typeOfRealEstateHelp" class="form-text">We'll never share your email with anyone else.</div>
+                <div id="typeOfRealEstateHelp" class="form-text text-danger">Trường không được bỏ trống</div>
             </div>
             <div class="mb-3">
-                <label for="typeOfRealEstate" class="form-label">Loại bất động sản <span class="text-required">*</span></label>
+                <label for="typeOfRealEstate" class="form-label">Vị trí trên bản đồ</label>
                 <div class="map"></div>
             </div>
         </div>
         <div class="tab-info post-information">
             <div class="title">Thông tin bài viét</div>
             <div class="mb-3">
-                <label for="typeOfRealEstate" class="form-label">Loại bất động sản <span class="text-required">*</span></label>
+                <label for="typeOfRealEstate" class="form-label">Tiêu đề <span class="text-required">*</span></label>
                 <div class="form-floating">
-                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                    <label for="floatingTextarea2">Comments</label>
+                    <textarea class="form-control" placeholder="Leave a comment here" name="title" rows="2"></textarea>
+                    <label for="title" class="floating">Tiêu đề</label>
                 </div>
-                <div id="typeOfRealEstateHelp" class="form-text">We'll never share your email with anyone else.</div>
+                <div id="typeOfRealEstateHelp" class="form-text text-danger">Trường không được bỏ trống</div>
             </div>
             <div class="mb-3">
-                <label for="typeOfRealEstate" class="form-label">Loại bất động sản <span class="text-required">*</span></label>
+                <label for="typeOfRealEstate" class="form-label">Mô tả ngắn <span class="text-required">*</span></label>
                 <div class="form-floating">
-                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                    <label for="floatingTextarea2">Comments</label>
+                    <textarea class="form-control" placeholder="Leave a comment here" name="description" rows="3"></textarea>
+                    <label for="description" class="floating">Mô tả ngắn</label>
                 </div>
-                <div id="typeOfRealEstateHelp" class="form-text">We'll never share your email with anyone else.</div>
+                <div id="typeOfRealEstateHelp" class="form-text text-danger">Trường không được bỏ trống</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="typeOfRealEstate" class="form-label">Mô tả chi tiết <span class="text-required">*</span></label>
+                <div class="form-floating">
+                    <textarea class="form-control" placeholder="Leave a comment here" name="description" rows="5"></textarea>
+                    <label for="description" class="floating">Mô tả chi tiết</label>
+                </div>
+                <div id="typeOfRealEstateHelp" class="form-text text-danger">Trường không được bỏ trống</div>
             </div>
         </div>
         <div class="tab-info real-estate-information">
@@ -105,7 +108,7 @@
                     <option value="2">Two</option>
                     <option value="3">Three</option>
                 </select>
-                <div id="typeOfRealEstateHelp" class="form-text">We'll never share your email with anyone else.</div>
+                <div id="typeOfRealEstateHelp" class="form-text text-danger">Trường không được bỏ trống</div>
             </div>
             <div class="mb-3">
                 <label for="typeOfRealEstate" class="form-label">Loại bất động sản <span class="text-required">*</span></label>
@@ -113,7 +116,7 @@
                     <div class="col-10">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        <div id="emailHelp" class="form-text">Trường không được bỏ trống</div>
                     </div>
                     <div class="col-2">
                         <select class="form-select" aria-label="Default select example">
@@ -124,7 +127,7 @@
                           </select>
                     </div>
                 </div>
-                <div id="typeOfRealEstateHelp" class="form-text">We'll never share your email with anyone else.</div>
+                <div id="typeOfRealEstateHelp" class="form-text text-danger">Trường không được bỏ trống</div>
             </div>
             <div class="mb-3">
                 <label for="typeOfRealEstate" class="form-label">Giấy tờ pháp lý <span class="text-required">*</span></label>
@@ -197,7 +200,7 @@
                 <label for="typeOfRealEstate" class="form-label">Loại bất động sản <span class="text-required">*</span></label>
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <div id="typeOfRealEstateHelp" class="form-text">We'll never share your email with anyone else.</div>
+                <div id="typeOfRealEstateHelp" class="form-text text-danger">Trường không được bỏ trống</div>
             </div>
             </div>
         </div>
