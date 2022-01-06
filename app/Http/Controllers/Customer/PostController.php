@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers\Customer;
 
-use App\Repository\Province\ProvinceRepositoryInterface;
-use App\Repository\Ward\WardRepositoryInterface;
-use App\Repository\District\DistrictRepositoryInterface;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -12,20 +9,6 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    protected $provinceRepo;
-    protected $wardRepo;
-    protected $districtRepo;
-
-    public function __construct(
-        ProvinceRepositoryInterface $provinceRepo,
-        DistrictRepositoryInterface $districtRepo,
-        WardRepositoryInterface $wardRepo
-    )
-    {
-        $this->provinceRepo = $provinceRepo;
-        $this->districtRepo = $districtRepo;
-        $this->wardRepo = $wardRepo;
-    }
 
     /**
      * Display a listing.
@@ -34,34 +17,13 @@ class PostController extends Controller
      */
     public function index()
     {
-        $province = $this->provinceRepo->getOrderBy('ASC');
         $data = [
-            'province' => $province,
+            'province' => Controller::getProvince(),
         ];
         return view('post.post', $data);
     }
 
-    /**
-     * get districts by province
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function getDistrict(Request $request){
-        // dd();
-        $province_id = $request->_province_id;
-        return $this->provinceRepo->find($province_id)->districts()->get();
-    }
-
-    public function getWards(Request $request){
-        $district_id = $request->_district_id;
-        $province_id = $request->_province_id;
-        return $this->districtRepo->find($district_id)->wards()->get();
-    }
-
-    public function getStreet(Request $request){
-        $district_id = $request->_district_id;
-        return $this->wardRepo->find($district_id)->streets()->get();
-    }
+   
 
     /**
      * Show the form for creating a new resource.

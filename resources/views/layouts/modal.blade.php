@@ -50,7 +50,7 @@
         </div>
     </div>
 </div>
-<!-- Đăng nhập -->
+<!-- Đăng kí -->
 <div class="modal fade" id="mRegister" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -93,21 +93,40 @@
                     <input type="date" class="form-control" name="birthday_register" id="birthday_register">
                     <span class="form-text text-danger d-none error_birthday_register">Không được bỏ trống</span>
                 </div>
-                <select class="form-select form-control mt-3" id="province_register" name="province_register" aria-label="Default select example">
-                    <option selected value="">Tỉnh/TP *</option>
-                    <option value="1">One</option>
-                </select>
+                <div class="modal-address">
+                    <div class="dropdown">
+                        <input placeholder="Tỉnh / Thành phố" class="form-control dropdown-toggle input-datalist" type="text" id="dropdownModalProvinces"
+                            data-bs-toggle="dropdown" aria-expanded="false" value="" autocomplete="off">
+                        <ul class="dropdown-menu" aria-labelledby="dropdownModalProvinces" datalist="dropdownModalProvinces" data-type="province">
+                            @foreach ($province as $prov)
+                                    <li value="{{ $prov->id }}">{{ $prov->_name }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
                     <span class="form-text text-danger d-none error_province_register mb-3">Không được bỏ trống</span>
-                <select class="form-select form-control mt-3" id="district_register" name="district_register" aria-label="Default select example">
-                    <option selected value="">Quận/Huyện *</option>
-                    <option value="1">One</option>
-                </select>
-                    <span class="form-text text-danger d-none error_district_register mb-3">Không được bỏ trống</span>
-                <select class="form-select form-control mt-3" id="ward_register" name="ward_register" aria-label="Default select example">
-                    <option selected value="">Phường/Xã/Thị trấn *</option>
-                    <option value="1">One</option>
-                </select>
-                    <span class="form-text text-danger d-none error_ward_register mb-3">Không được bỏ trống</span>
+                    <div class="dropdown">
+                        <input placeholder="Quận/ Huyện" class="form-control dropdown-toggle input-datalist" type="text" id="dropdownModalDistricts"
+                                data-bs-toggle="dropdown" aria-expanded="false" value="" autocomplete="off">
+                            <ul class="dropdown-menu" aria-labelledby="dropdownModalDistricts" datalist="dropdownModalDistricts" data-type="districts">
+
+                            </ul>
+                        </div>
+                        <span class="form-text text-danger d-none error_district_register mb-3">Không được bỏ trống</span>
+                    <div class="dropdown">
+                        <input placeholder="Phường / Xã" class="form-control dropdown-toggle input-datalist" type="text" id="dropdownModalWards"
+                                data-bs-toggle="dropdown" aria-expanded="false" value="" autocomplete="off">
+                        <ul class="dropdown-menu" aria-labelledby="dropdownModalWards" datalist="dropdownModalWards" data-type="wards">
+
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <input placeholder="Đường" class="form-control dropdown-toggle input-datalist" type="text" id="dropdownModalStreet"
+                            data-bs-toggle="dropdown" aria-expanded="false" value="" autocomplete="off">
+                        <ul class="dropdown-menu" aria-labelledby="dropdownModalStreet" datalist="dropdownModalStreet" data-type="streets">
+
+                        </ul>
+                    </div>
+                </div>
                 <div class="mb-3 mt-3">
                     <input type="text" class="form-control fa-icon" id="card_id" name="card_id" placeholder="CMND/CCCD *">
                     <span class="form-text text-danger d-none error_card_id">Không được bỏ trống</span>
