@@ -1,7 +1,7 @@
 window._ = require('lodash');
 window.$ = require('jquery');
-window.Swal = swal;
 import swal from 'sweetalert2';
+window.Swal = swal;
 
 import "bootstrap";
 try {

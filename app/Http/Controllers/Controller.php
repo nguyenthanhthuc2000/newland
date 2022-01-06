@@ -29,10 +29,10 @@ class Controller extends BaseController
 
     )
     {
-        $this->provinceRepo = new $provinceRepo;
-        $this->districtRepo = new $districtRepo;
-        $this->wardRepo = new $wardRepo;
-        $this->userRepo = new $userRepo;
+        $this->provinceRepo = $provinceRepo;
+        $this->districtRepo = $districtRepo;
+        $this->wardRepo = $wardRepo;
+        $this->userRepo = $userRepo;
     }
 
      /**
