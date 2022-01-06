@@ -51,13 +51,14 @@ var appendLocal = function(type, data, listId) {
     })
     list.html(output)
 }
-
+var resetLocal = function() {
+    $('.input-datalist').val('').removeAttr('data-id');
+}
 $('.dropdown-menu').on('click', 'li', function(e) {
     var parents = $(this).parents();
     var parentOfParent = parents.parents().className;
-    console.log(parentOfParent);
+    // console.log(parentOfParent);
     let type = parents.data('type');
-    // $(this).parents()
     var id = $(this).val();
     switch (type) {
         case 'wards':
@@ -66,8 +67,9 @@ $('.dropdown-menu').on('click', 'li', function(e) {
         case 'districts':
             getWard(id)
             break;
-        case 'province':
-            getDistrict(id)
+        case 'provinces':
+            getDistrict(id);
+            resetLocal();
             break;
         default:
             return false;
