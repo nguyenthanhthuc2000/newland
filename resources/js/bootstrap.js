@@ -1,6 +1,10 @@
+import swal from 'sweetalert2';
+// const jqueryValidation = require('jquery-validate');
+
 window._ = require('lodash');
 window.$ = require('jquery');
-import swal from 'sweetalert2';
+
+// window.validate = require('jquery-validate');
 window.Swal = swal;
 
 import "bootstrap";
@@ -34,3 +38,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+mix.autoload({
+  validator: ['validator', 'window.validator']
+});
