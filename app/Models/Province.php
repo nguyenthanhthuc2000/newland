@@ -19,4 +19,14 @@ class Province extends Model
     {
         return $this->hasMany(District::class, '_province_id');
     }
+
+    public function wards()
+    {
+        return $this->hasMany(Ward::class, '_province_id');
+    }
+
+    public function streets()
+    {
+        return $this->hasMany(Street::class, '_province_id');
+    }
 }

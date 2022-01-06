@@ -44,7 +44,7 @@
                         <div class="dropdown">
                         <input placeholder="Phường / Xã" class="form-control dropdown-toggle input-datalist" type="text" id="dropdownWards"
                                 data-bs-toggle="dropdown" aria-expanded="false" value="" autocomplete="off">
-                            <ul class="dropdown-menu" aria-labelledby="dropdownWards" datalist="dropdownWards" data-type="ward">
+                            <ul class="dropdown-menu" aria-labelledby="dropdownWards" datalist="dropdownWards" data-type="wards">
 
                             </ul>
                         </div>
@@ -54,7 +54,7 @@
                         <div class="dropdown">
                             <input placeholder="Đường" class="form-control dropdown-toggle input-datalist" type="text" id="dropdownStreet"
                                     data-bs-toggle="dropdown" aria-expanded="false" value="" autocomplete="off">
-                                <ul class="dropdown-menu" aria-labelledby="dropdownStreet" datalist="dropdownStreet" data-type="street">
+                                <ul class="dropdown-menu" aria-labelledby="dropdownStreet" datalist="dropdownStreet" data-type="streets">
 
                                 </ul>
                             </div>

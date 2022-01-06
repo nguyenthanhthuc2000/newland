@@ -13,6 +13,6 @@ class District extends Model
 
     public function wards()
     {
-        return $this->hasMany(Wards::class, '_district_id');
+        return $this->hasMany(Ward::class, '_district_id');
     }
 }
