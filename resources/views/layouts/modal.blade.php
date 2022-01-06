@@ -94,8 +94,8 @@
                     <span class="form-text text-danger d-none error_birthday_register">Không được bỏ trống</span>
                 </div>
                 <div class="modal-address">
-                    <div class="dropdown">
-                        <input placeholder="Tỉnh / Thành phố" class="form-control dropdown-toggle input-datalist" type="text" id="dropdownModalProvinces"
+                    <div class="dropdown mt-3">
+                        <input placeholder="Tỉnh / Thành phố" class="form-control dropdown-toggle input-datalist province_register" type="text" id="dropdownModalProvinces"
                             data-bs-toggle="dropdown" aria-expanded="false" value="" autocomplete="off">
                         <ul class="dropdown-menu" aria-labelledby="dropdownModalProvinces" datalist="dropdownModalProvinces" data-type="province">
                             @foreach ($province as $prov)
@@ -104,28 +104,22 @@
                         </ul>
                     </div>
                     <span class="form-text text-danger d-none error_province_register mb-3">Không được bỏ trống</span>
-                    <div class="dropdown">
-                        <input placeholder="Quận/ Huyện" class="form-control dropdown-toggle input-datalist" type="text" id="dropdownModalDistricts"
+                    <div class="dropdown mt-3">
+                        <input placeholder="Quận/ Huyện" class="form-control dropdown-toggle input-datalist district_register" type="text" id="dropdownModalDistricts"
                                 data-bs-toggle="dropdown" aria-expanded="false" value="" autocomplete="off">
                             <ul class="dropdown-menu" aria-labelledby="dropdownModalDistricts" datalist="dropdownModalDistricts" data-type="districts">
 
                             </ul>
                         </div>
                         <span class="form-text text-danger d-none error_district_register mb-3">Không được bỏ trống</span>
-                    <div class="dropdown">
-                        <input placeholder="Phường / Xã" class="form-control dropdown-toggle input-datalist" type="text" id="dropdownModalWards"
+                    <div class="dropdown mt-3">
+                        <input placeholder="Phường / Xã" class="form-control dropdown-toggle input-datalist ward_register" type="text" id="dropdownModalWards"
                                 data-bs-toggle="dropdown" aria-expanded="false" value="" autocomplete="off">
                         <ul class="dropdown-menu" aria-labelledby="dropdownModalWards" datalist="dropdownModalWards" data-type="wards">
 
                         </ul>
                     </div>
-                    <div class="dropdown">
-                        <input placeholder="Đường" class="form-control dropdown-toggle input-datalist" type="text" id="dropdownModalStreet"
-                            data-bs-toggle="dropdown" aria-expanded="false" value="" autocomplete="off">
-                        <ul class="dropdown-menu" aria-labelledby="dropdownModalStreet" datalist="dropdownModalStreet" data-type="streets">
-
-                        </ul>
-                    </div>
+                    <span class="form-text text-danger d-none error_ward_register mb-3">Không được bỏ trống</span>
                 </div>
                 <div class="mb-3 mt-3">
                     <input type="text" class="form-control fa-icon" id="card_id" name="card_id" placeholder="CMND/CCCD *">

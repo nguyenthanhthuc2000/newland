@@ -11,9 +11,16 @@ $('.btn-register').click(function(e) {
      var phone_register = $('#phone_register').val();
      var name_register = $('#name_register').val();
      var birthday_register = $('#birthday_register').val();
-     var province_register = $('#province_register').val();
-     var district_register = $('#district_register').val();
-     var ward_register = $('#ward_register').val();
+
+     var province_register = $('.province_register').data('id');
+     console.log(province_register)
+
+     var district_register = $('.district_register').data('id');
+     var ward_register = $('.ward_register').data('id');
+      console.log(district_register)
+      console.log(ward_register)
+
+
      var card_id = $('#card_id').val();
      var sex = $('input[name=sex]:checked').val();
      var regulation_confirm = $('#regulation_confirm');
@@ -59,21 +66,21 @@ $('.btn-register').click(function(e) {
         $('.error_name_register').addClass('d-none');
      }
 
-     if(ward_register == ''){
+     if(ward_register == undefined){
         $('.error_ward_register').removeClass('d-none');
      }
      else{
         $('.error_ward_register').addClass('d-none');
      }
 
-     if(province_register == ''){
+     if(province_register == undefined){
         $('.error_province_register').removeClass('d-none');
      }
      else{
         $('.error_province_register').addClass('d-none');
      }
 
-     if(district_register == ''){
+     if(district_register == undefined){
         $('.error_district_register').removeClass('d-none');
      }
      else{
@@ -101,17 +108,22 @@ $('.btn-register').click(function(e) {
      }
 
       if(email_register != '' && phone_register != '' &&  password_register != '' && password_confirm_register != '' && name_register != '' &&
-         name_register != '' && birthday_register != '' && province_register != '' && district_register != '' &&
-          ward_register != '' && card_id != '' && regulation_confirm.prop("checked") == true
+         name_register != '' && birthday_register != '' && province_register != undefined && district_register != undefined &&
+          ward_register != undefined && card_id != '' && regulation_confirm.prop("checked") == true && password_confirm_register == password_register
       ){
         $.ajax({
             url: window.route('auth.post.register'),
             method: 'POST',
             data: {email:email_register, password:password_register, password_confirm:password_confirm_register, name:name_register
              ,birthday:birthday_register, province:province_register, phone:phone_register
-             , district:district_register, ward:ward_register, card:card_id, sex:sex},
+             , district:district_register, ward:ward_register, card_id:card_id, sex:sex},
             success:function(data){
                 console.log(data)
+                Swal.fire(
+                  'The Internet?',
+                  'That thing is still around?',
+                  'question'
+                )
             }
         })
 
