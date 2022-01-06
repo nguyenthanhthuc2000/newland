@@ -22,7 +22,7 @@
                         <div class="dropdown">
                             <input placeholder="Tỉnh / Thành phố" class="form-control dropdown-toggle input-datalist" type="text" id="dropdownProvinces"
                                     data-bs-toggle="dropdown" aria-expanded="false" value="" autocomplete="off">
-                            <ul class="dropdown-menu" aria-labelledby="dropdownProvinces" datalist="dropdownProvinces" data-type="province">
+                            <ul class="dropdown-menu" aria-labelledby="dropdownProvinces" datalist="dropdownProvinces" data-type="provinces">
                                 @foreach ($province as $prov)
                                         <li value="{{ $prov->id }}">{{ $prov->_name }}</li>
                                 @endforeach
