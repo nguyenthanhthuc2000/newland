@@ -20,10 +20,10 @@
 
     </footer>
     <!-- end footer -->
+    @include('layouts.modal')
 
     <!-- script -->
     @include('layouts.script')
-    @include('layouts.modal')
     <!-- end script -->
 </body>
 

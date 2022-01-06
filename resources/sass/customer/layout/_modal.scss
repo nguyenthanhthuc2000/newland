@@ -8,19 +8,9 @@
         position: relative!important;
         padding: 0.55rem 0.75rem!important;
     }
-    .form-control::before{
-        content: '\e9c2';
-        top: 12px;
-        position: absolute;
-        z-index: 1;
-        text-align: center;
-        line-height: 24px;
-        width: 24px;
-        height: 24px;
-    }
 }
 .modal-header{
-    padding: 1rem 2rem 0 !important;
+    padding: 2rem 2rem 0 !important;
     border-bottom: none!important;
 }
 .modal-body{
@@ -28,4 +18,7 @@
 }
 .box__login__helper{
     justify-content: space-between;
+}
+.btn__border{
+    border: 1px solid #bdc3c7 !important;
 }

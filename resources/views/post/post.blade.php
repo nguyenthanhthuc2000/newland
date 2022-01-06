@@ -1,6 +1,6 @@
 @extends('index')
 @section('main')
-<div class="post-form-action col-8 mx-auto pt-3">
+<div class="post-form-action col-md-8 col-12 mx-auto pt-3">
     <form method="post" action="" class="form-post">
         @csrf
         <div class="tab-info basic-information">
