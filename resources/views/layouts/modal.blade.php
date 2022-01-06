@@ -3,12 +3,12 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"><strong>Đăng nhập hệ thống</strong></h5>
+                <h5 class="modal-title" id="exampleModalLabel"><strong>Đăng nhập</strong></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body mt-2">
                 <div class="mb-3">
-                    <input type="email" class="form-control fa-icon" id="email" placeholder="Số điện thoại đăng nhập">
+                    <input type="email" class="form-control fa-icon" id="email" placeholder="Email đăng nhập">
                 </div>
                 <div class="mb-3">
                     <input type="password" class="form-control fa-icon" id="password" placeholder="Mật khẩu">
@@ -27,6 +27,25 @@
                     </div>
                     <a href="" class="text-danger">Quên mật khẩu?</a>
                 </div>
+                <p class="text-center">Hoặc</p>
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <button type="button"
+                                    class="btn w-100 pb-3 pt-3 btn__border"><i class="fab fa-facebook text-primary"></i> Facebook
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <button type="button"
+                                    class="btn w-100 pb-3 pt-3 btn__border"><i class="fab fa-google-plus-g text-danger"></i> Google
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-center mb-0">Đã chưa có tài khoản? <span class="text-primary fw-bold">Đăng kí</span> tại đây.</p>
+
             </div>
         </div>
     </div>
@@ -39,7 +58,7 @@
                 <h5 class="modal-title" id="exampleModalLabel"><strong>Đăng kí tài khoản</strong></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body mt-2">
                 <p class="fw-bold">Thông tin đăng nhập</p>
                 <div class="mb-3">
                     <input type="email" class="form-control fa-icon" id="email" placeholder="Email *">

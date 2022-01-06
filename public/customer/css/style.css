@@ -11438,7 +11438,7 @@ main {
 }
 
 .modal-header {
-  padding: 1rem 2rem 0 !important;
+  padding: 2rem 2rem 0 !important;
   border-bottom: none !important;
 }
 
@@ -11448,6 +11448,10 @@ main {
 
 .box__login__helper {
   justify-content: space-between;
+}
+
+.btn__border {
+  border: 1px solid #bdc3c7 !important;
 }
 
 /**======================*
