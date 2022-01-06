@@ -52,7 +52,7 @@ var appendLocal = function(type, data, listId) {
     list.html(output)
 }
 var resetLocal = function() {
-    $('.input-datalist').val('');
+    $('.input-datalist').val('').removeAttr('data-id');
 }
 $('.dropdown-menu').on('click', 'li', function(e) {
     var parents = $(this).parents();
