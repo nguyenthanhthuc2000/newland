@@ -17,8 +17,13 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name', 35);
             $table->string('phone', 12)->nullable();
-            $table->string('email', 65);
-            $table->string('password', 65);
+            $table->string('facebook_id', 100)->nullable(); // login facebook
+            $table->string('google_id', 100)->nullable(); //login google
+            $table->string('email', 65)->nullable();
+            $table->string('password', 65)->nullable();
+            $table->date('birthday')->nullable();
+            $table->tinyInteger('sex')->nullable(); //1 nam //0 nữ
+            $table->string('card_id', 20)->nullable(); // cmnd/cccd
             $table->integer('district')->nullable(); // mã quận huyen
             $table->integer('province_id')->nullable(); // mã tỉnh/tp
             $table->integer('ward_id')->nullable(); // mã xã phường xã thi tran
