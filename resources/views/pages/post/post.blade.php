@@ -1,4 +1,4 @@
-@extends('index')
+@extends('layouts.master_layout')
 @section('main')
 <div class="post-form-action col-md-8 col-12 mx-auto pt-3">
     <form method="post" action="" class="form-post" id="formPost">

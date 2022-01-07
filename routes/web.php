@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Customer\PostController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,8 +16,8 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/', [PostController::class, 'index'])->name('post.index');
-// Route::get('post', "Customer/PostController@index")->name('post.index');
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('post', [PostController::class, 'index'])->name('post.index');
 
 
 // AUTH CONTROLLER

@@ -1,6 +1,7 @@
-@extends('index')
+@extends('layouts.master_layout')
 @section('main')
-    <div class="post-form-action col-md-4 col-12 mx-auto pt-3">
+    <div class="post-form-action col-md-6 col-12 mx-auto pt-5">
+        <h3 class="text-center ">ĐĂNG NHẬP</h3>
         <form action="{{ route('auth.post.login') }}" method="post">
             @csrf
             <div class="modal-body mt-2">
@@ -8,6 +9,12 @@
                     <div class="alert alert-danger alert-dismissible fade show" role="alert"
                          style="justify-content: center">
                         <strong>{{ session()->get('errorLogin') }}</strong>
+                    </div>
+                @endif
+                @if(session()->has('registerSuccess'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert"
+                         style="justify-content: center">
+                        <strong>{{ session()->get('registerSuccess') }}</strong>
                     </div>
                 @endif
                 <label for="phone" class="form-label">Tài khoản<span class="text-danger">*</span></label>
@@ -43,19 +50,19 @@
                     <div class="col-6">
                         <div class="mb-3">
                             <button type="button"
-                                    class="btn w-100 pb-3 pt-3 btn__border"><i class="fab fa-facebook text-primary"></i> Facebook
+                                    class="btn w-100 pb-3 pt-3 btn__border"><i class="fab fa-facebook text-primary"></i> &nbsp; Facebook
                             </button>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="mb-3">
                             <button type="button"
-                                    class="btn w-100 pb-3 pt-3 btn__border"><i class="fab fa-google-plus-g text-danger"></i> Google
+                                    class="btn w-100 pb-3 pt-3 btn__border"><i class="fab fa-google-plus-g text-danger"></i> &nbsp; Google
                             </button>
                         </div>
                     </div>
                 </div>
-                <p class="text-center mb-0">Đã chưa có tài khoản? <span class="text-primary fw-bold">Đăng kí</span> tại đây.</p>
+                <p class="text-center mb-0">Đã chưa có tài khoản? <a class="text-primary fw-bold" href="{{ route('auth.get.register') }}">Đăng kí</a> tại đây.</p>
 
             </div>
         </form>

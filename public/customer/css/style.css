@@ -11415,25 +11415,12 @@ main {
   margin-top: 96px;
 }
 
-.modal-content {
-  border-radius: 30px;
-}
-.modal-content .btn {
-  border-radius: 25px;
-}
-.modal-content .form-control {
-  border-radius: 10px !important;
-  position: relative !important;
-  padding: 0.55rem 0.75rem !important;
+.btn {
+  border-radius: 30px !important;
 }
 
-.modal-header {
-  padding: 2rem 2rem 0 !important;
-  border-bottom: none !important;
-}
-
-.modal-body {
-  padding: 1rem 2rem 2rem !important;
+input.form-control, select {
+  padding: 0.7rem 0.85rem !important;
 }
 
 .box__login__helper {

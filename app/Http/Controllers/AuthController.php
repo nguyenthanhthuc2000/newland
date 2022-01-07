@@ -40,70 +40,80 @@ class AuthController extends Controller
             ]
         );
 
-        if (Auth::attempt(['email' => $request->phone, 'password' => $request->password])) {
-            return redirect()->route('post.index');
+        if (Auth::attempt(['phone' => $request->phone, 'password' => $request->password])) {
+            return redirect()->route('home.index');
         }
         else{
-            dd($request->password);
             return back()->with([
                 'errorLogin' => 'Tài khoản hoặc mật khẩu không chính xác!',
             ]);
-
         }
-
-
     }
 
     public function postRegister(Request $request){
-        $data = $request->all();
-        dd($data);
         $this->validate( $request,
             [
-                'email' => 'required',
+                "email" => [
+                    "required",
+                    "unique:App\Models\User,email"
+                ],
                 'password' => 'required',
                 'name' => 'required',
+                'password_confirm' => 'required|same:password',
                 'birthday' => 'required',
-                'phone' => 'required',
-                'province_id' => 1,
-                'district_id' => 1,
-                'ward_id' => 1,
-                'card_id' => 'required',
+                "phone" => [
+                    "required",
+                    "unique:App\Models\User,phone"
+                ],
+                'province' => 'required',
+                'district' => 'required',
+                'ward' => 'required',
+                "card_id" => [
+                    "required",
+                    "unique:App\Models\User,card_id"
+                ],
                 'sex' => 'required',
             ],
             [
                 'email.required' => 'Email không được để trống',
-                'password.required' => 'Tiêu đề không được để trống',
-                'name.required' => 'Tiêu đề không được để trống',
-                'birthday.required' => 'Tiêu đề không được để trống',
-                'phone.required' => 'Tiêu đề không được để trống',
-                'province_id.required' => 'Tiêu đề không được để trống',
-                'district_id.required' => 'Tiêu đề không được để trống',
-                'ward_id.required' => 'Tiêu đề không được để trống',
-                'card_id.required' => 'Tiêu đề không được để trống',
-                'sex.required' => 'Tiêu đề không được để trống',
+                'email.unique' => 'Email đã tồn tại trên hệ thống',
+                'password.required' => 'Mật khẩu không được để trống',
+                'password_confirm.required' => 'Mật khẩu xác nhận không để trống',
+                'password_confirm.same' => 'Mật khẩu xác nhận không đúng',
+                'name.required' => 'Họ và tên không để trống',
+                'birthday.required' => 'Ngày sinh không để trống',
+                'phone.required' => 'Số điện thoại không để trống',
+                'phone.unique' => 'Số điện thoại đã tồn tại trên hệ thống',
+                'province.required' => 'Tỉnh/Tp không để trống',
+                'district.required' => 'Quận/huyện không để trống',
+                'ward.required' => 'Phường xã không để trống',
+                'card_id.required' => 'CMND/CCCD không để trống',
+                'card_id.unique' => 'CMND/CCCD đã tồn tại trên hệ thống',
+                'sex.required' => 'Giới tính không để trống',
             ]
         );
 
+        $data = $request->all();
+
         $attributes = [
             'email' => $data['email'],
-            'password' => $data['password'],
+            'password' => Hash::make($data['password']),
             'name' => $data['name'],
             'birthday' => $data['birthday'],
-            'province_id' => 1,
             'phone' => $data['phone'],
-            'district_id' => 1,
-            'ward_id' => 1,
+            'province_id' => $data['province'],
+            'district_id' => $data['district'],
+            'ward_id' => $data['ward'],
             'card_id' => $data['card_id'],
             'sex' => $data['sex'],
         ];
 
-
         $query = $this->userRepo->create($attributes);
         if($query){
-            return response()->json(['message' => 'Thành công !', 'status' => 200]);
+            return redirect()->route('auth.get.login')->with('registerSuccess', 'Đăng kí thành công, vui lòng đăng nhập để sử dụng!');
         }
         else{
-            return response()->json(['message' => 'Vui lòng thử lại sau!', 'status' => 500]);
+            return back()->with('registerError', 'Lỗi, vui lòng thử lại sau!');
         }
     }
 }

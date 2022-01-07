@@ -20,10 +20,10 @@ class PostController extends Controller
         $data = [
             'province' => Controller::getProvince(),
         ];
-        return view('post.post', $data);
+        return view('pages.post.post', $data);
     }
 
-   
+
 
     /**
      * Show the form for creating a new resource.
