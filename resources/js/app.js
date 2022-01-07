@@ -9,3 +9,9 @@ require('./ajax/auth');
     Require component
  ===================*/
 require('./component/data-list');
+
+
+/** =================
+    Require validate
+ ===================*/
+require('./validate/form-post');

@@ -1,7 +1,7 @@
 @extends('index')
 @section('main')
 <div class="post-form-action col-md-8 col-12 mx-auto pt-3">
-    <form method="post" action="" class="form-post">
+    <form method="post" action="" class="form-post" id="formPost">
         @csrf
         <div class="tab-info basic-information">
             <div class="title">Thông tin cơ bản</div>
@@ -33,7 +33,7 @@
                         <label for="districts" class="form-label">Quận/ Huyện <span class="text-required">*</span></label>
                         <div class="dropdown">
                         <input placeholder="Quận/ Huyện" class="form-control dropdown-toggle input-datalist" type="text" id="dropdownDistricts"
-                                data-bs-toggle="dropdown" aria-expanded="false" value="" autocomplete="off">
+                                data-bs-toggle="dropdown" aria-expanded="false" value="" autocomplete="off" name="district">
                             <ul class="dropdown-menu" aria-labelledby="dropdownDistricts" datalist="dropdownDistricts" data-type="districts">
 
                             </ul>
