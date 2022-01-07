@@ -45,11 +45,19 @@
                         </li>
                     </ul>
                     <div class="box__auth">
-                        <a  class="btn btn__re__line btn__auth"
-
-                        >
-                            Đăng nhập
-                        </a>
+                        @if(Auth::check())
+                            <a  class="btn btn__re__line btn__auth"
+                                href="{{ route('auth.get.logout') }}"
+                            >
+                                Đăng xuất
+                            </a>
+                        @else
+                            <a  class="btn btn__re__line btn__auth"
+                                href="{{ route('auth.get.login') }}"
+                            >
+                                Đăng nhập
+                            </a>
+                        @endif
                         <span class="re__line">|</span>
                         <a  class="btn btn__re__line btn__auth"
                             href="{{ route('auth.get.register') }}"

@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -15,6 +16,43 @@ class AuthController extends Controller
         return view('auth.register', $data);
     }
 
+    public function getLogin(){
+        return view('auth.login');
+    }
+
+    public function getLogout(Request $request){
+
+        $request->session()->flush();
+        Auth::logout();
+        return redirect()->route('auth.get.login');
+
+    }
+
+    public function postLogin(Request $request){
+        $this->validate( $request,
+            [
+                'phone' => 'required',
+                'password' => 'required',
+            ],
+            [
+                'phone.required' => 'Vui lòng nhập sdt đăng nhập',
+                'password.required' => 'Vui lòng nhập mật khẩu',
+            ]
+        );
+
+        if (Auth::attempt(['email' => $request->phone, 'password' => $request->password])) {
+            return redirect()->route('post.index');
+        }
+        else{
+            dd($request->password);
+            return back()->with([
+                'errorLogin' => 'Tài khoản hoặc mật khẩu không chính xác!',
+            ]);
+
+        }
+
+
+    }
 
     public function postRegister(Request $request){
         $data = $request->all();
@@ -34,7 +72,6 @@ class AuthController extends Controller
             ],
             [
                 'email.required' => 'Email không được để trống',
-                'password.required' => 'Tiêu đề không được để trống',
                 'password.required' => 'Tiêu đề không được để trống',
                 'name.required' => 'Tiêu đề không được để trống',
                 'birthday.required' => 'Tiêu đề không được để trống',

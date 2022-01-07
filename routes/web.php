@@ -21,8 +21,10 @@ Route::get('/', [PostController::class, 'index'])->name('post.index');
 
 // AUTH CONTROLLER
 Route::get('register',  [AuthController::class, 'getRegister'])->name('auth.get.register');
+Route::get('login',  [AuthController::class, 'getLogin'])->name('auth.get.login');
+Route::get('logout',  [AuthController::class, 'getLogout'])->name('auth.get.logout');
 Route::post('register',  [AuthController::class, 'postRegister'])->name('auth.post.register');
-Route::post('login',  [AuthController::class, 'postLogin'])->name('auth.post.login');
+Route::post('post-login',  [AuthController::class, 'postLogin'])->name('auth.post.login');
 
 // GET LOCAL AJAX
 Route::post('fetchDistrictList',  [Controller::class, 'getDistrict'])->name('get.districts');
