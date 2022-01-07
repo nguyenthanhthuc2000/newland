@@ -2,7 +2,8 @@ require('./bootstrap');
 /** =================
     Require ajax
  ===================*/
-require('./ajax/get-local');
+require('./ajax/get_local');
+require('./ajax/type_of_real_estate');
 require('./ajax/auth');
 
 /** =================

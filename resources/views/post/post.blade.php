@@ -7,24 +7,24 @@
             <div class="title">Thông tin cơ bản</div>
             <div class="mb3 type-post">
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
-                        Default radio
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                        <label class="form-check-label" for="flexRadioDefault2">
-                        Default checked radio
-                        </label>
-                    </div>
+                    <input class="type-post-input" type="radio" name="typePost" id="sell" checked hidden>
+                    <label class="form-check-label" for="sell">
+                        Bán
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="type-post-input" type="radio" name="typePost" id="lease" hidden data-type="">
+                    <label class="form-check-label" for="lease">
+                        Cho thuê
+                    </label>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="typeOfRealEstate" class="form-label">Loại bất động sản <span class="text-required">*</span></label>
-                <select class="form-select" aria-label="Default select example" id="typeOfRealEstate" aria-describedby="typeOfRealEstateHelp" placeholder="VD: Nhà riếng">
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                <select class="form-select" aria-label="Default select example" id="typeOfRealEstate" aria-describedby="typeOfRealEstateHelp" name="typeOfRealEstate">
+                    @foreach($cat as $c)
+                        <option value="{{ $c->id }}">{{ $c->name }}</option>
+                    @endforeach
                 </select>
                 <div id="typeOfRealEstateHelp" class="form-text text-danger">Trường không được bỏ trống</div>
             </div>

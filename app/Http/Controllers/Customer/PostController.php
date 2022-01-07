@@ -17,8 +17,10 @@ class PostController extends Controller
      */
     public function index()
     {
+        $cat = $this->catRepo->getByAttributesAll(['type' => 0]);
         $data = [
             'province' => Controller::getProvince(),
+            'cat' => $cat,
         ];
         return view('post.post', $data);
     }
