@@ -62,8 +62,8 @@
                 <div class="modal-body mt-2">
                 <p class="fw-bold">Thông tin đăng nhập</p>
                 <div class="mb-3">
-                    <input type="email" class="form-control fa-icon" name="email_register" id="email_register" placeholder="Email *">
-                    <span class="form-text text-danger d-none error_email_register">Không được bỏ trống</span>
+                    <input type="text" class="form-control" name="phone_register" maxlength="12" id="phone_register" placeholder="Số điện thoại *">
+                    <span class="form-text text-danger d-none error_phone_register">Không được bỏ trống</span>
                 </div>
                 <div class="row">
                     <div class="col-6">
@@ -82,8 +82,8 @@
                 </div>
                 <p class="fw-bold">Thông tin cá nhân</p>
                 <div class="mb-3">
-                    <input type="text" class="form-control" name="phone_register" maxlength="12" id="phone_register" placeholder="Số điện thoại *">
-                    <span class="form-text text-danger d-none error_phone_register">Không được bỏ trống</span>
+                    <input type="email" class="form-control fa-icon" name="email_register" id="email_register" placeholder="Email *">
+                    <span class="form-text text-danger d-none error_email_register">Không được bỏ trống</span>
                 </div>
                 <div class="mb-3">
                      <input type="text" class="form-control" name="name_register" id="name_register" placeholder="Họ và tên *">
@@ -145,7 +145,7 @@
                 </div>
                 <div class="form-check mb-3">
                     <input class="form-check-input" type="checkbox" id="regulation_confirm">
-                    <label class="form-check-label" for="flexCheckDefault">
+                    <label class="form-check-label" for="regulation_confirm">
                         Tôi đồng ý với các <a href="">điều khoản, điều kiện</a> & <a href="">chính sách</a> của NewLand
                     </label>
                     <span class="form-text text-danger d-none error_regulation_confirm">Không được bỏ trống</span>

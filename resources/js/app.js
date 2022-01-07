@@ -14,4 +14,4 @@ require('./component/data-list');
 /** =================
     Require validate
  ===================*/
-require('./validate/form-post');
+//require('./validate/form-post');

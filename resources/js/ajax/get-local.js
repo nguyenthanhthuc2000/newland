@@ -4,7 +4,8 @@ $.ajaxSetup({
     }
 });
 // lấy danh sách tỉnh, thành phố
-var getDistrict = function(province, listId) {
+var getDistrict = function(province) {
+console.log(123)
         $.ajax({
             url: window.route('get.districts'),
             method: 'post',
@@ -12,11 +13,11 @@ var getDistrict = function(province, listId) {
                 '_province_id': province
             }
         }).done(function(data) {
-            appendLocal('districts', data, listId);
+            appendLocal('districts', data);
         });
     }
     // lấy danh sách phường xã
-var getWard = function(district, listId) {
+var getWard = function(district) {
         var _province_id = $('.input-datalist').data('id');
         $.ajax({
             url: window.route('get.wards'),
@@ -26,11 +27,11 @@ var getWard = function(district, listId) {
                 '_province_id': _province_id
             }
         }).done(function(data) {
-            appendLocal('wards', data, listId);
+            appendLocal('wards', data);
         });
     }
     // lấy danh sách đường
-var getStreet = function(ward, listId) {
+var getStreet = function(ward) {
     var _province_id = $('.input-datalist').data('id');
     $.ajax({
         url: window.route('get.streets'),
@@ -40,10 +41,10 @@ var getStreet = function(ward, listId) {
             '_province_id': _province_id
         }
     }).done(function(data) {
-        appendLocal('streets', data, listId);
+        appendLocal('streets', data);
     });
 }
-var appendLocal = function(type, data, listId) {
+var appendLocal = function(type, data) {
     var list = $('.dropdown-menu[data-type=' + type + ']');
     var output = '';
     $.each(data, function(key, val) {
@@ -56,7 +57,7 @@ var resetLocal = function() {
 }
 $('.dropdown-menu').on('click', 'li', function(e) {
     var parents = $(this).parents();
-    var parentOfParent = parents.parents().className;
+//    var parentOfParent = parents.parents().className;
     // console.log(parentOfParent);
     let type = parents.data('type');
     var id = $(this).val();
