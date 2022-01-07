@@ -1,7 +1,7 @@
 @extends('layouts.master_layout')
 @section('main')
 <div class="post-form-action col-md-8 col-12 mx-auto pt-3">
-    <form method="post" action="{{ route('post.article') }}" class="form-post" id="formPost">
+    <form method="post" action="" class="form-post" id="formPost">
         @csrf
         <div class="form-body">
             <div class="tab-info basic-information">

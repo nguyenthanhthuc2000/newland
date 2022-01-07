@@ -1,9 +1,10 @@
 @extends('layouts.master_layout')
 @section('main')
     <div class="post-form-action col-md-6 col-12 mx-auto pt-5">
-        <h3 class="text-center">THÔNG TIN CÁ NHÂN</h3>
-        <form action="{{ route('auth.post.update') }}" method="post">
+        <form action="{{ route('auth.post.update') }}" method="post" class="form-post">
             @csrf
+            <div class="tab-info">
+                <h3 class="text-center mt-2 mb-3">THÔNG TIN CÁ NHÂN</h3>
             @if(session()->has('updateError'))
                 <div class="alert alert-danger alert-dismissible fade show" role="alert"
                      style="justify-content: center">
@@ -120,6 +121,7 @@
                     </button>
                 </div>
 
+            </div>
             </div>
         </form>
     </div>

@@ -1,9 +1,10 @@
 @extends('layouts.master_layout')
 @section('main')
     <div class="post-form-action col-md-6 col-12 mx-auto pt-5">
-            <h3 class="text-center">ĐỔI MẬT KHẨU</h3>
-        <form action="{{ route('auth.update.password') }}" method="post" id="register_form">
+        <form action="{{ route('auth.update.password') }}" method="post" id="register_form" class="form-post">
             @csrf
+            <div class="tab-info">
+                <h3 class="text-center mt-2 mb-3">ĐỔI MẬT KHẨU</h3>
             @if(session()->has('updatePasswordError'))
                 <div class="alert alert-danger alert-dismissible fade show" role="alert"
                      style="justify-content: center">
@@ -44,6 +45,7 @@
                             class="btn btn-primary w-100 pb-2 pt-2 btn-register">Lưu
                     </button>
                 </div>
+            </div>
             </div>
         </form>
     </div>

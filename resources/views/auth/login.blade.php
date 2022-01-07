@@ -1,10 +1,11 @@
 @extends('layouts.master_layout')
 @section('main')
     <div class="post-form-action col-md-6 col-12 mx-auto pt-5">
-        <h3 class="text-center ">ĐĂNG NHẬP</h3>
-        <form action="{{ route('auth.post.login') }}" method="post">
+        <form action="{{ route('auth.post.login') }}" method="post" class="form-post">
             @csrf
-            <div class="modal-body mt-2">
+            <div class="tab-info">
+                <h3 class="text-center mt-2 mb-3">ĐĂNG NHẬP</h3>
+                <div class="modal-body mt-2">
                 @if(session()->has('updatePasswordSuccess'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert"
                          style="justify-content: center">
@@ -62,14 +63,15 @@
                     </div>
                     <div class="col-6">
                         <div class="mb-3">
-                            <button type="button"
+                            <a href="{{ route('google.login') }}"
                                     class="btn w-100 pb-3 pt-3 btn__border"><i class="fab fa-google-plus-g text-danger"></i> &nbsp; Google
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
                 <p class="text-center mb-0">Đã chưa có tài khoản? <a class="text-primary fw-bold" href="{{ route('auth.get.register') }}">Đăng kí</a> tại đây.</p>
 
+            </div>
             </div>
         </form>
     </div>

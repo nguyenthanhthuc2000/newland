@@ -21,6 +21,10 @@ Route::get('post', [PostController::class, 'index'])->name('post.index');
 
 
 // AUTH CONTROLLER
+Route::get('/login-google', [AuthController::class, 'loginGoogle'])->name('google.login');
+Route::get('/google/callback', [AuthController::class, 'callbackGoogle'])->name('google.callback');
+
+Route::get('dang-nhap-google',  [AuthController::class, 'loginGoogle'])->name('auth.change.password');
 Route::get('doi-mat-khau',  [AuthController::class, 'changePassword'])->name('auth.change.password');
 Route::get('thong-tin-ca-nhan',  [AuthController::class, 'info'])->name('auth.info');
 Route::get('dang-ki',  [AuthController::class, 'getRegister'])->name('auth.get.register');

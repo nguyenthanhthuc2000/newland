@@ -5,9 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
+    public function loginGoogle(){
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function callbackGoogle(){
+        $user = Socialite::driver('google')->stateless()->user();
+        dd($user);
+    }
+
     public function updatePassword(Request $request){
         $this->validate( $request,
             [
