@@ -12,6 +12,8 @@ use App\Repository\Province\ProvinceRepositoryInterface;
 use App\Repository\Ward\WardRepositoryInterface;
 use App\Repository\District\DistrictRepositoryInterface;
 use App\Repository\User\UserRepositoryInterface;
+use App\Repository\Category\CategoryRepositoryInterface;
+
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -20,12 +22,14 @@ class Controller extends BaseController
     protected $wardRepo;
     protected $districtRepo;
     protected $userRepo;
+    protected $catRepo;
 
     public function __construct(
         ProvinceRepositoryInterface $provinceRepo,
         DistrictRepositoryInterface $districtRepo,
         WardRepositoryInterface $wardRepo,
-        UserRepositoryInterface $userRepo
+        UserRepositoryInterface $userRepo,
+        CategoryRepositoryInterface $catRepo
 
     )
     {
@@ -33,6 +37,7 @@ class Controller extends BaseController
         $this->districtRepo = $districtRepo;
         $this->wardRepo = $wardRepo;
         $this->userRepo = $userRepo;
+        $this->catRepo = $catRepo;
     }
 
      /**

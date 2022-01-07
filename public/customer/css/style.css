@@ -11456,6 +11456,23 @@ input.form-control, select {
   color: #3498db !important;
 }
 
+.input-group-step .input-group-btn button {
+  background: #3498DB;
+  color: #fff;
+  padding: 3px 6px;
+  border-radius: 3px;
+  border: none;
+}
+.input-group-step .input-group-btn button:disabled {
+  background: #3498db99;
+}
+.input-group-step .input-step {
+  border-radius: 5px;
+  padding: 0 8px !important;
+  margin: 0 10px !important;
+  text-align: center;
+}
+
 .is-invalid .form-control {
   border-color: red;
 }
@@ -11489,38 +11506,6 @@ input.form-control, select {
   transform-origin: left;
 }
 
-.input-datalist ~ .dropdown-menu {
-  margin-top: 3px !important;
-  width: 100%;
-  max-height: 200px;
-  overflow: auto;
-}
-.input-datalist ~ .dropdown-menu::-webkit-scrollbar {
-  width: 5px;
-}
-.input-datalist ~ .dropdown-menu::-webkit-scrollbar:hover {
-  width: 8px;
-}
-.input-datalist ~ .dropdown-menu::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-.input-datalist ~ .dropdown-menu::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 6px;
-  /* Handle on hover */
-}
-.input-datalist ~ .dropdown-menu::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-.input-datalist ~ .dropdown-menu li {
-  padding: 5px 8px;
-  cursor: pointer;
-}
-.input-datalist ~ .dropdown-menu li:hover {
-  background-color: #3498DB;
-  color: #fff;
-}
-
 /**======================*
     Import pages
 *========================*/
@@ -11538,6 +11523,45 @@ form.form-post .tab-info .title {
 form.form-post .tab-info label:not(.floating) {
   font-weight: bold;
   font-size: 14px;
+}
+form.form-post .tab-info .type-post {
+  display: flex;
+}
+form.form-post .tab-info .type-post .form-check {
+  width: 50%;
+  text-align: center;
+  padding: 0;
+}
+form.form-post .tab-info .type-post .form-check input[type=radio] ~ label {
+  width: 100%;
+  padding: 5px 0;
+  border: 1px solid #cacaca;
+  border-radius: 3px;
+  cursor: pointer;
+  color: #999999;
+}
+form.form-post .tab-info .type-post .form-check input[type=radio] ~ label:hover {
+  background: #e1e1e1;
+  color: #000;
+}
+form.form-post .tab-info .type-post .form-check input[type=radio]:checked ~ label {
+  color: #000;
+  background: #e1e1e1;
+}
+form.form-post .tab-info .sub-title {
+  font-size: 13px;
+  color: #000;
+  opacity: 0.7;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+form.form-post .tab-info .sub-title .line {
+  border-top: 1px solid #000;
+  height: 1px;
+  opacity: 0.2;
+  flex: 1 1 0%;
+  margin-left: 10px;
 }
 
 /* Extra small devices (phones, 992px and down) */

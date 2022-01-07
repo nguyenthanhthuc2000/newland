@@ -31,8 +31,9 @@ Route::post('post-login',  [AuthController::class, 'postLogin'])->name('auth.pos
 Route::post('post-update',  [AuthController::class, 'postUpdate'])->name('auth.post.update');
 Route::post('update-password',  [AuthController::class, 'updatePassword'])->name('auth.update.password');
 
-// GET LOCAL AJAX
+// AJAX
 Route::post('fetchDistrictList',  [Controller::class, 'getDistrict'])->name('get.districts');
 Route::post('fetchWards',  [Controller::class, 'getWards'])->name('get.wards');
 Route::post('fetchStreet',  [Controller::class, 'getStreet'])->name('get.streets');
+Route::post('fetchCategory',  [PostController::class, 'getCategory'])->name('get.category');
 

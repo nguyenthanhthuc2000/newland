@@ -12,3 +12,4 @@ $('.dropdown-menu').on('click', 'li', function(e) {
     let value = $(this).text();
     input.val(value).attr('data-id', $(this).attr('value', )).attr('value').trigger("input");
 })
+

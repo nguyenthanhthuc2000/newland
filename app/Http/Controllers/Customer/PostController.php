@@ -17,13 +17,18 @@ class PostController extends Controller
      */
     public function index()
     {
+        $cat = $this->catRepo->getByAttributesAll(['type' => 0])->reverse();
         $data = [
             'province' => Controller::getProvince(),
+            'cat' => $cat,
         ];
         return view('pages.post.post', $data);
     }
 
-
+    public function getCategory(Request $request){
+        $cat = $this->catRepo->getByAttributesAll(['type' => $request->type]);
+        return  view('pages.post.component._category', ['cat' => $cat]);
+    }
 
     /**
      * Show the form for creating a new resource.
