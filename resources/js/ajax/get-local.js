@@ -5,7 +5,7 @@ $.ajaxSetup({
 });
 // lấy danh sách tỉnh, thành phố
 var getDistrict = function(province) {
-console.log(123)
+        console.log(123)
         $.ajax({
             url: window.route('get.districts'),
             method: 'post',
@@ -45,25 +45,27 @@ var getStreet = function(ward) {
     });
 }
 var appendLocal = function(type, data) {
-    var list = $('.dropdown-menu[data-type=' + type + ']');
+    var list = $('.select-local[data-type=' + type + ']');
+    console.log('.select-local[data-type=' + type + ']');
     var output = '';
     $.each(data, function(key, val) {
-        output += `<li value="` + val.id + `">` + val._prefix + ` ` + val._name + `</li>`
+        output += `<option value="` + val.id + `">` + val._prefix + ` ` + val._name + `</option>`
     })
     list.html(output)
 }
 var resetLocal = function() {
     $('.input-datalist').val('').removeAttr('data-id');
 }
-$('.dropdown-menu').on('click', 'li', function(e) {
-    var parents = $(this).parents();
-//    var parentOfParent = parents.parents().className;
+$('.select-local').on('change', function(e) {
+    var parents = $(this);
+    //    var parentOfParent = parents.parents().className;
     // console.log(parentOfParent);
     let type = parents.data('type');
     var id = $(this).val();
+    console.log(type, id);
     switch (type) {
         case 'wards':
-            getStreet(id)
+            // getStreet(id)
             break;
         case 'districts':
             getWard(id)

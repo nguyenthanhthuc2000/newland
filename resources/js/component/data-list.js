@@ -10,5 +10,5 @@ $('.dropdown-menu').on('click', 'li', function(e) {
     let id = $(this).parents().attr('datalist');
     let input = $('#' + id);
     let value = $(this).text();
-    input.val(value).attr('data-id', $(this).attr('value')).attr('value', $(this).attr('value')).trigger("input");
+    input.val(value).attr('data-id', $(this).attr('value', )).attr('value').trigger("input");
 })
