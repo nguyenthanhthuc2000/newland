@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "706714f13eca4c3c58348629ddcd4386",
+    "content-hash": "4d873df705396dee4067945b0f382c37",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -962,6 +962,39 @@
                 }
             ],
             "time": "2021-10-06T17:43:30+00:00"
+        },
+        {
+            "name": "ingenious/jquery-validator",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Gimcrack/jquery-validator.git",
+                "reference": "044be2ef3a1dfdcd5d56262fe628018a4cbe86d7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Gimcrack/jquery-validator/zipball/044be2ef3a1dfdcd5d56262fe628018a4cbe86d7",
+                "reference": "044be2ef3a1dfdcd5d56262fe628018a4cbe86d7",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeremy Bloomstrom",
+                    "email": "jeremy@in.genio.us"
+                }
+            ],
+            "description": "Custom js form validation class",
+            "support": {
+                "issues": "https://github.com/Gimcrack/jquery-validator/issues",
+                "source": "https://github.com/Gimcrack/jquery-validator/tree/master"
+            },
+            "time": "2016-07-12T00:20:35+00:00"
         },
         {
             "name": "laravel/framework",
@@ -8115,7 +8148,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "ingenious/jquery-validator": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

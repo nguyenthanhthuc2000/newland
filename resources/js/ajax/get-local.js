@@ -62,7 +62,7 @@ $('.dropdown-menu').on('click', 'li', function(e) {
     var id = $(this).val();
     switch (type) {
         case 'wards':
-            getStreet(id)
+            // getStreet(id)
             break;
         case 'districts':
             getWard(id)
