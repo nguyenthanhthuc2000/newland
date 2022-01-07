@@ -10,6 +10,7 @@ require('./ajax/auth');
     Require component
  ===================*/
 require('./component/data-list');
+require('./component/input');
 
 
 /** =================

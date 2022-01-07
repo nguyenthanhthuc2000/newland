@@ -58,7 +58,7 @@
                 </div>
                 <div class="modal-address">
                     <div class="dropdown mt-3">
-                        <select placeholder="Tỉnh/ Thành phố" name="province" data-type="provinces" class="select-local form-control">
+                        <select name="province" data-type="provinces" class="select-local form-control">
                             <option disable value="">Tỉnh/ Thành phố</option>
                             @foreach ($province as $prov)
                                 <option value="{{ $prov->id }}">{{ $prov->_name }}</option>
@@ -69,7 +69,7 @@
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
                     <div class="dropdown mt-3">
-                        <select placeholder="Tỉnh/ Thành phố" name="district" data-type="districts" class="select-local form-control">
+                        <select name="district" data-type="districts" class="select-local form-control">
                             <option disable value="">Quận /  Huyện</option>
                         </select>
                     </div>
@@ -77,7 +77,7 @@
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
                     <div class="dropdown mt-3">
-                        <select placeholder="Tỉnh/ Thành phố" name="ward" data-type="wards" class="select-local form-control">
+                        <select  name="ward" data-type="wards" class="select-local form-control">
                             <option disable value="">Phường / xã</option>
                         </select>
                     </div>

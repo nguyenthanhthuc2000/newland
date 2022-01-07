@@ -39,5 +39,20 @@ form.form-post {
                 }
             }
         }
+        .sub-title{
+            font-size: 13px;
+            color: $black;
+            opacity: 0.7;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            .line{
+                border-top: 1px solid $black;
+                height: 1px;
+                opacity: 0.2;
+                flex: 1 1 0%;
+                margin-left: 10px;
+            }
+        }
     }
 }
