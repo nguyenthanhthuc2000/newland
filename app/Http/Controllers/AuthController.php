@@ -8,6 +8,14 @@ use Auth;
 class AuthController extends Controller
 {
 
+    public function getRegister(){
+        $data = [
+            'province' => Controller::getProvince(),
+        ];
+        return view('auth.register', $data);
+    }
+
+
     public function postRegister(Request $request){
         $data = $request->all();
 
@@ -24,12 +32,13 @@ class AuthController extends Controller
             'sex' => $data['sex'],
         ];
 
+
         $query = $this->userRepo->create($attributes);
         if($query){
             return response()->json(['message' => 'Thành công !', 'status' => 200]);
         }
         else{
-            return response()->json(['message' => 'Vui lòng thử lại sau!', 'status' => 403]);
+            return response()->json(['message' => 'Vui lòng thử lại sau!', 'status' => 500]);
         }
     }
 }

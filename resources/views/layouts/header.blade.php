@@ -45,17 +45,17 @@
                         </li>
                     </ul>
                     <div class="box__auth">
-                        <button type="button" class="btn btn__re__line btn__auth" type="submit"
-                                data-bs-toggle="modal" data-bs-target="#mLogin"
+                        <a  class="btn btn__re__line btn__auth"
+
                         >
                             Đăng nhập
-                        </button>
+                        </a>
                         <span class="re__line">|</span>
-                        <button type="button" class="btn btn__re__line btn__auth" type="submit"
-                                data-bs-toggle="modal" data-bs-target="#mRegister"
+                        <a  class="btn btn__re__line btn__auth"
+                            href="{{ route('auth.get.register') }}"
                         >
                             Đăng kí
-                        </button>
+                        </a>
                         <a href="{{ route('post.index') }}" class="btn btn__outline__blue btn__auth" type="submit">Đăng tin</a>
 
                     </div>

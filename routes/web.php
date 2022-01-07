@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\Customer\PostController;
 use App\Http\Controllers\AuthController;
 /*
@@ -19,11 +20,12 @@ Route::get('/', [PostController::class, 'index'])->name('post.index');
 
 
 // AUTH CONTROLLER
+Route::get('register',  [AuthController::class, 'getRegister'])->name('auth.get.register');
 Route::post('register',  [AuthController::class, 'postRegister'])->name('auth.post.register');
 Route::post('login',  [AuthController::class, 'postLogin'])->name('auth.post.login');
 
 // GET LOCAL AJAX
-Route::post('fetchDistrictList',  [PostController::class, 'getDistrict'])->name('get.districts');
-Route::post('fetchWards',  [PostController::class, 'getWards'])->name('get.wards');
-Route::post('fetchStreet',  [PostController::class, 'getStreet'])->name('get.streets');
+Route::post('fetchDistrictList',  [Controller::class, 'getDistrict'])->name('get.districts');
+Route::post('fetchWards',  [Controller::class, 'getWards'])->name('get.wards');
+Route::post('fetchStreet',  [Controller::class, 'getStreet'])->name('get.streets');
 
