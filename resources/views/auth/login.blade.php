@@ -5,6 +5,12 @@
         <form action="{{ route('auth.post.login') }}" method="post">
             @csrf
             <div class="modal-body mt-2">
+                @if(session()->has('updatePasswordSuccess'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert"
+                         style="justify-content: center">
+                        <strong>{{ session()->get('updatePasswordSuccess') }}</strong>
+                    </div>
+                @endif
                 @if(session()->has('errorLogin'))
                     <div class="alert alert-danger alert-dismissible fade show" role="alert"
                          style="justify-content: center">

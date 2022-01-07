@@ -37,4 +37,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function districts()
+    {
+        return $this->hasMany(District::class, '_province_id', 'province_id');
+    }
+
+    public function wards()
+    {
+        return $this->hasMany(Ward::class, '_district_id', 'district_id');
+    }
 }

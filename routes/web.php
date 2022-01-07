@@ -21,11 +21,15 @@ Route::get('post', [PostController::class, 'index'])->name('post.index');
 
 
 // AUTH CONTROLLER
-Route::get('register',  [AuthController::class, 'getRegister'])->name('auth.get.register');
-Route::get('login',  [AuthController::class, 'getLogin'])->name('auth.get.login');
-Route::get('logout',  [AuthController::class, 'getLogout'])->name('auth.get.logout');
+Route::get('doi-mat-khau',  [AuthController::class, 'changePassword'])->name('auth.change.password');
+Route::get('thong-tin-ca-nhan',  [AuthController::class, 'info'])->name('auth.info');
+Route::get('dang-ki',  [AuthController::class, 'getRegister'])->name('auth.get.register');
+Route::get('dang-nhap',  [AuthController::class, 'getLogin'])->name('auth.get.login');
+Route::get('dang-xuat',  [AuthController::class, 'getLogout'])->name('auth.get.logout');
 Route::post('register',  [AuthController::class, 'postRegister'])->name('auth.post.register');
 Route::post('post-login',  [AuthController::class, 'postLogin'])->name('auth.post.login');
+Route::post('post-update',  [AuthController::class, 'postUpdate'])->name('auth.post.update');
+Route::post('update-password',  [AuthController::class, 'updatePassword'])->name('auth.update.password');
 
 // GET LOCAL AJAX
 Route::post('fetchDistrictList',  [Controller::class, 'getDistrict'])->name('get.districts');

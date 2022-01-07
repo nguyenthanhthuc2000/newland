@@ -58,10 +58,10 @@
                 </div>
                 <div class="modal-address">
                     <div class="dropdown mt-3">
-                        <select placeholder="Tỉnh/ Thành phố" name="province" data-type="provinces" class="select-local form-control">
+                        <select placeholder="Tỉnh/ Thành phố" name="province" data-type="provinces" class="select-local form-select form-control">
                             <option disable value="">Tỉnh/ Thành phố</option>
                             @foreach ($province as $prov)
-                                <option value="{{ $prov->id }}">{{ $prov->_name }}</option>
+                                <option value="{{ $prov->id }}" >{{ $prov->_name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -69,7 +69,7 @@
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
                     <div class="dropdown mt-3">
-                        <select placeholder="Tỉnh/ Thành phố" name="district" data-type="districts" class="select-local form-control">
+                        <select placeholder="Tỉnh/ Thành phố" name="district" data-type="districts" class="select-local form-select form-control">
                             <option disable value="">Quận /  Huyện</option>
                         </select>
                     </div>
@@ -77,7 +77,7 @@
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
                     <div class="dropdown mt-3">
-                        <select placeholder="Tỉnh/ Thành phố" name="ward" data-type="wards" class="select-local form-control">
+                        <select placeholder="Tỉnh/ Thành phố" name="ward" data-type="wards" class="select-local form-select form-control">
                             <option disable value="">Phường / xã</option>
                         </select>
                     </div>
@@ -94,17 +94,25 @@
                 <div class="row mb-3">
                     <div class="col-4">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="sex"  value="1" checked>
-                            <label class="form-check-label" for="flexRadioDefault1">
+                            <input class="form-check-input" type="radio" name="sex" id="nam" value="1">
+                            <label class="form-check-label" for="nam">
                                 Nam
                             </label>
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="sex"  value="0" >
-                            <label class="form-check-label" for="flexRadioDefault2">
+                            <input class="form-check-input" type="radio" id="nu" name="sex"  value="0">
+                            <label class="form-check-label" for="nu">
                                 Nữ
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="khac" name="sex"  value="2">
+                            <label class="form-check-label" for="khac">
+                                Khác
                             </label>
                         </div>
                     </div>

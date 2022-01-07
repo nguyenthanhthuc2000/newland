@@ -47,11 +47,11 @@ var getStreet = function(ward) {
 var appendLocal = function(type, data) {
     var list = $('.select-local[data-type=' + type + ']');
     console.log('.select-local[data-type=' + type + ']');
-    var output = '';
+    var output = '<option disable="" value="">Chọn</option>';
     $.each(data, function(key, val) {
         output += `<option value="` + val.id + `">` + val._prefix + ` ` + val._name + `</option>`
     })
-    list.append(output)
+    list.html(output)
 }
 var resetLocal = function() {
     $('.input-datalist').val('').removeAttr('data-id');
