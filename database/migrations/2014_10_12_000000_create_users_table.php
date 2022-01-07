@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->date('birthday')->nullable();
             $table->tinyInteger('sex')->nullable(); //1 nam //0 nữ
             $table->string('card_id', 20)->nullable(); // cmnd/cccd
-            $table->integer('district')->nullable(); // mã quận huyen
+            $table->integer('district_id')->nullable(); // mã quận huyen
             $table->integer('province_id')->nullable(); // mã tỉnh/tp
             $table->integer('ward_id')->nullable(); // mã xã phường xã thi tran
             $table->double('surplus')->default(0);

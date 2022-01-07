@@ -7,25 +7,29 @@ use Auth;
 
 class AuthController extends Controller
 {
+
     public function postRegister(Request $request){
         $data = $request->all();
 
         $attributes = [
             'email' => $data['email'],
             'password' => $data['password'],
-            'name' => $data['email'],
+            'name' => $data['name'],
             'birthday' => $data['birthday'],
-            'province' => $data['province'],
+            'province_id' => 1,
             'phone' => $data['phone'],
-            'district' => $data['district'],
-            'ward' => $data['ward'],
+            'district_id' => 1,
+            'ward_id' => 1,
             'card_id' => $data['card_id'],
             'sex' => $data['sex'],
         ];
 
         $query = $this->userRepo->create($attributes);
         if($query){
-            return response()->json(['message' => 'Đăng kí thành công, vui lòng xác nhận email để đăng nhập!'], 200);
+            return response()->json(['message' => 'Thành công !', 'status' => 200]);
+        }
+        else{
+            return response()->json(['message' => 'Vui lòng thử lại sau!', 'status' => 403]);
         }
     }
 }

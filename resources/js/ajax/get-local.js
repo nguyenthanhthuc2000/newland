@@ -56,7 +56,7 @@ var resetLocal = function() {
 }
 $('.dropdown-menu').on('click', 'li', function(e) {
     var parents = $(this).parents();
-    var parentOfParent = parents.parents().className;
+//    var parentOfParent = parents.parents().className;
     // console.log(parentOfParent);
     let type = parents.data('type');
     var id = $(this).val();
