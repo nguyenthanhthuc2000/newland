@@ -6,19 +6,19 @@
             <div class="modal-body mt-2">
                 <p class="fw-bold">Thông tin đăng nhập</p>
                 <div class="mb-3">
-                    <input type="text" class="form-control" name="phone_register" maxlength="12" id="phone_register" placeholder="Số điện thoại *">
+                    <input type="text" class="form-control" name="phone" maxlength="12" id="phone_register" placeholder="Số điện thoại *">
                     <span class="form-text text-danger d-none error_phone_register">Không được bỏ trống</span>
                 </div>
                 <div class="row">
                     <div class="col-6">
                         <div class="mb-3">
-                            <input type="password" class="form-control fa-icon" maxlength="12" name="password_register" id="password_register" placeholder="Mật khẩu *">
+                            <input type="password" class="form-control fa-icon" maxlength="12" name="password" id="password_register" placeholder="Mật khẩu *">
                             <span class="form-text text-danger d-none error_password_register">Không được bỏ trống</span>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="mb-3">
-                            <input type="password" class="form-control fa-icon" maxlength="12" name="password_confirm_register" id="password_confirm_register" placeholder="Mật khẩu xác nhận *">
+                            <input type="password" class="form-control fa-icon" maxlength="12" name="password_confirm" id="password_confirm_register" placeholder="Mật khẩu xác nhận *">
                             <span class="form-text text-danger d-none error_password_confirm_register">Không được bỏ trống</span>
                             <span class="form-text text-danger d-none error_password_confirm">Sai mật khẩu xác nhận</span>
                         </div>
@@ -26,21 +26,21 @@
                 </div>
                 <p class="fw-bold">Thông tin cá nhân</p>
                 <div class="mb-3">
-                    <input type="email" class="form-control fa-icon" name="email_register" id="email_register" placeholder="Email *">
+                    <input type="email" class="form-control fa-icon" name="email" id="email_register" placeholder="Email *">
                     <span class="form-text text-danger d-none error_email_register">Không được bỏ trống</span>
                 </div>
                 <div class="mb-3">
-                    <input type="text" class="form-control" name="name_register" id="name_register" placeholder="Họ và tên *">
+                    <input type="text" class="form-control" name="name" id="name_register" placeholder="Họ và tên *">
                     <span class="form-text text-danger d-none error_name_register">Không được bỏ trống</span>
                 </div>
                 <div class="mb-3">
-                    <input type="date" class="form-control" name="birthday_register" id="birthday_register">
+                    <input type="date" class="form-control" name="birthday" id="birthday_register">
                     <span class="form-text text-danger d-none error_birthday_register">Không được bỏ trống</span>
                 </div>
                 <div class="modal-address">
                     <div class="dropdown mt-3">
                         <input placeholder="Tỉnh / Thành phố" class="form-control dropdown-toggle input-datalist province_register" type="text" id="dropdownModalProvinces"
-                               data-bs-toggle="dropdown" aria-expanded="false" value="" autocomplete="off">
+                               data-bs-toggle="dropdown" aria-expanded="false" value="" name="province" autocomplete="off">
                         <ul class="dropdown-menu" aria-labelledby="dropdownModalProvinces" datalist="dropdownModalProvinces" data-type="province">
                             @foreach ($province as $prov)
                                 <li value="{{ $prov->id }}">{{ $prov->_name }}</li>

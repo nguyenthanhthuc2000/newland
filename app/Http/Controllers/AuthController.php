@@ -18,6 +18,34 @@ class AuthController extends Controller
 
     public function postRegister(Request $request){
         $data = $request->all();
+        dd($data);
+        $this->validate( $request,
+            [
+                'email' => 'required',
+                'password' => 'required',
+                'name' => 'required',
+                'birthday' => 'required',
+                'phone' => 'required',
+                'province_id' => 1,
+                'district_id' => 1,
+                'ward_id' => 1,
+                'card_id' => 'required',
+                'sex' => 'required',
+            ],
+            [
+                'email.required' => 'Email không được để trống',
+                'password.required' => 'Tiêu đề không được để trống',
+                'password.required' => 'Tiêu đề không được để trống',
+                'name.required' => 'Tiêu đề không được để trống',
+                'birthday.required' => 'Tiêu đề không được để trống',
+                'phone.required' => 'Tiêu đề không được để trống',
+                'province_id.required' => 'Tiêu đề không được để trống',
+                'district_id.required' => 'Tiêu đề không được để trống',
+                'ward_id.required' => 'Tiêu đề không được để trống',
+                'card_id.required' => 'Tiêu đề không được để trống',
+                'sex.required' => 'Tiêu đề không được để trống',
+            ]
+        );
 
         $attributes = [
             'email' => $data['email'],
