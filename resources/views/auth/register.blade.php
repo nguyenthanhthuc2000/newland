@@ -1,25 +1,38 @@
-@extends('index')
+@extends('layouts.master_layout')
 @section('main')
-    <div class="post-form-action col-md-6 col-12 mx-auto pt-3">
+    <div class="post-form-action col-md-6 col-12 mx-auto pt-5">
+        <h3 class="text-center">ĐĂNG KÍ</h3>
         <form action="{{ route('auth.post.register') }}" method="post" id="register_form">
             @csrf
+            @if(session()->has('registerError'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert"
+                     style="justify-content: center">
+                    <strong>{{ session()->get('registerError') }}</strong>
+                </div>
+            @endif
             <div class="modal-body mt-2">
                 <p class="fw-bold">Thông tin đăng nhập</p>
                 <div class="mb-3">
                     <input type="text" class="form-control" name="phone" maxlength="12" id="phone_register" placeholder="Số điện thoại *">
-                    <span class="form-text text-danger d-none error_phone_register">Không được bỏ trống</span>
+                    @error('phone')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-md-6 col-12">
                         <div class="mb-3">
                             <input type="password" class="form-control fa-icon" maxlength="12" name="password" id="password_register" placeholder="Mật khẩu *">
-                            <span class="form-text text-danger d-none error_password_register">Không được bỏ trống</span>
+                            @error('password')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-md-6 col-12">
                         <div class="mb-3">
                             <input type="password" class="form-control fa-icon" maxlength="12" name="password_confirm" id="password_confirm_register" placeholder="Mật khẩu xác nhận *">
-                            <span class="form-text text-danger d-none error_password_confirm_register">Không được bỏ trống</span>
+                            @error('password_confirm')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
                             <span class="form-text text-danger d-none error_password_confirm">Sai mật khẩu xác nhận</span>
                         </div>
                     </div>
@@ -27,42 +40,56 @@
                 <p class="fw-bold">Thông tin cá nhân</p>
                 <div class="mb-3">
                     <input type="email" class="form-control fa-icon" name="email" id="email_register" placeholder="Email *">
-                    <span class="form-text text-danger d-none error_email_register">Không được bỏ trống</span>
+                    @error('email')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <input type="text" class="form-control" name="name" id="name_register" placeholder="Họ và tên *">
-                    <span class="form-text text-danger d-none error_name_register">Không được bỏ trống</span>
+                    @error('name')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <input type="date" class="form-control" name="birthday" id="birthday_register">
-                    <span class="form-text text-danger d-none error_birthday_register">Không được bỏ trống</span>
+                    @error('birthday')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="modal-address">
                     <div class="dropdown mt-3">
                         <select placeholder="Tỉnh/ Thành phố" name="province" data-type="provinces" class="select-local form-control">
-                            <option disable>Tỉnh/ Thành phố</option>
+                            <option disable value="">Tỉnh/ Thành phố</option>
                             @foreach ($province as $prov)
                                 <option value="{{ $prov->id }}">{{ $prov->_name }}</option>
                             @endforeach
                         </select>
                     </div>
-                    <span class="form-text text-danger d-none error_province_register mb-3">Không được bỏ trống</span>
+                    @error('province')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                     <div class="dropdown mt-3">
-                        <select placeholder="Tỉnh/ Thành phố" name="districts" data-type="districts" class="select-local form-control">
-                            <option disable>Quận /  Huyện</option>
+                        <select placeholder="Tỉnh/ Thành phố" name="district" data-type="districts" class="select-local form-control">
+                            <option disable value="">Quận /  Huyện</option>
                         </select>
                     </div>
-                    <span class="form-text text-danger d-none error_district_register mb-3">Không được bỏ trống</span>
+                    @error('district')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                     <div class="dropdown mt-3">
-                        <select placeholder="Tỉnh/ Thành phố" name="districts" data-type="wards" class="select-local form-control">
-                            <option disable>Phường / xã</option>
+                        <select placeholder="Tỉnh/ Thành phố" name="ward" data-type="wards" class="select-local form-control">
+                            <option disable value="">Phường / xã</option>
                         </select>
                     </div>
-                    <span class="form-text text-danger d-none error_ward_register mb-3">Không được bỏ trống</span>
+                    @error('ward')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="mb-3 mt-3">
                     <input type="text" class="form-control fa-icon" id="card_id" name="card_id" placeholder="CMND/CCCD *">
-                    <span class="form-text text-danger d-none error_card_id">Không được bỏ trống</span>
+                    @error('card_id')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="row mb-3">
                     <div class="col-4">
@@ -87,11 +114,11 @@
                     <label class="form-check-label" for="regulation_confirm">
                         Tôi đồng ý với các <a href="">điều khoản, điều kiện</a> & <a href="">chính sách</a> của NewLand
                     </label>
-                    <span class="form-text text-danger d-none error_regulation_confirm">Không được bỏ trống</span>
+                    <p class="text-danger d-none error_regulation_confirm">Vui lòng đồng ý với điều khoản của chúng tôi!</p>
                 </div>
                 <div class="mb-3">
-                    <button style=""
-                            class="btn btn-primary w-100 pb-2 pt-2">Đăng kí
+                    <button style="" type="button"
+                            class="btn btn-primary w-100 pb-2 pt-2 btn-register">Đăng kí
                     </button>
                 </div>
                 <div class="box-notification-register">
@@ -103,7 +130,7 @@
                     <p>Để được trợ giúp, vui lòng liên hệ tổng đài CSKH <span class="text-primary">1900 19001</span> hoặc email
                         <span class="text-primary">hotro@newland.vn</span>
                     </p>
-                    <p class="text-center mb-0">Đã có tài khoản? <span class="text-primary fw-bold">Đăng nhập</span> tại đây.</p>
+                    <p class="text-center mb-0">Đã có tài khoản? <a href="{{ route('auth.get.login') }}" class="text-primary fw-bold">Đăng nhập</a> tại đây.</p>
                 </div>
             </div>
         </form>

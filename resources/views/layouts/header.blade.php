@@ -44,19 +44,33 @@
                             </ul>
                         </li>
                     </ul>
-                    <div class="box__auth">
-                        <a  class="btn btn__re__line btn__auth"
-
+                    <div class="box__auth d-flex">
+                        @if(Auth::check())
+                            <li class="dropdown">
+                                <a class="nav-link line__hover dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <strong>{{Auth::user()->name}}</strong>
+                                </a>
+                                <ul class="dropdown-menu" >
+                                    <li><a class="dropdown-item" href="#"> Thông tin</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('auth.get.logout') }}"> Đăng xuất</a></li>
+                                </ul>
+                            </li>
+                        @else
+                            <a  class="btn btn__re__line btn__auth"
+                                href="{{ route('auth.get.login') }}"
+                            >
+                                Đăng nhập
+                            </a> &nbsp;
+                            <a  class="btn btn__re__line btn__auth"
+                                href="{{ route('auth.get.register') }}"
+                            >
+                                Đăng kí
+                            </a> &nbsp;
+                        @endif
+                        <a href="{{ Auth::check() ? route('post.index') : route('auth.get.login')}}" class="btn btn__outline__blue btn__auth" type="submit"
                         >
-                            Đăng nhập
+                            Đăng tin
                         </a>
-                        <span class="re__line">|</span>
-                        <a  class="btn btn__re__line btn__auth"
-                            href="{{ route('auth.get.register') }}"
-                        >
-                            Đăng kí
-                        </a>
-                        <a href="{{ route('post.index') }}" class="btn btn__outline__blue btn__auth" type="submit">Đăng tin</a>
 
                     </div>
                 </div>

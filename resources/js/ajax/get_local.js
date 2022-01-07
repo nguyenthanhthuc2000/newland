@@ -51,7 +51,7 @@ var appendLocal = function(type, data) {
     $.each(data, function(key, val) {
         output += `<option value="` + val.id + `">` + val._prefix + ` ` + val._name + `</option>`
     })
-    list.html(output)
+    list.append(output)
 }
 var resetLocal = function() {
     $('.input-datalist').val('').removeAttr('data-id');

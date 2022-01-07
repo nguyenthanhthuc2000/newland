@@ -11415,25 +11415,12 @@ main {
   margin-top: 96px;
 }
 
-.modal-content {
-  border-radius: 30px;
-}
-.modal-content .btn {
-  border-radius: 25px;
-}
-.modal-content .form-control {
-  border-radius: 10px !important;
-  position: relative !important;
-  padding: 0.55rem 0.75rem !important;
+.btn {
+  border-radius: 30px !important;
 }
 
-.modal-header {
-  padding: 2rem 2rem 0 !important;
-  border-bottom: none !important;
-}
-
-.modal-body {
-  padding: 1rem 2rem 2rem !important;
+input.form-control, select {
+  padding: 0.7rem 0.85rem !important;
 }
 
 .box__login__helper {
@@ -11467,6 +11454,23 @@ main {
 
 .btn__auth {
   color: #3498db !important;
+}
+
+.input-group-step .input-group-btn button {
+  background: #3498DB;
+  color: #fff;
+  padding: 3px 6px;
+  border-radius: 3px;
+  border: none;
+}
+.input-group-step .input-group-btn button:disabled {
+  background: #3498db99;
+}
+.input-group-step .input-step {
+  border-radius: 5px;
+  padding: 0 8px !important;
+  margin: 0 10px !important;
+  text-align: center;
 }
 
 .is-invalid .form-control {
@@ -11543,6 +11547,21 @@ form.form-post .tab-info .type-post .form-check input[type=radio] ~ label:hover 
 form.form-post .tab-info .type-post .form-check input[type=radio]:checked ~ label {
   color: #000;
   background: #e1e1e1;
+}
+form.form-post .tab-info .sub-title {
+  font-size: 13px;
+  color: #000;
+  opacity: 0.7;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+form.form-post .tab-info .sub-title .line {
+  border-top: 1px solid #000;
+  height: 1px;
+  opacity: 0.2;
+  flex: 1 1 0%;
+  margin-left: 10px;
 }
 
 /* Extra small devices (phones, 992px and down) */

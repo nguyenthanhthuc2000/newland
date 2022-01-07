@@ -1,73 +1,70 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
+@extends('layouts.master_layout')
+@section('main')
+    <div class="post-form-action col-md-6 col-12 mx-auto pt-5">
+        <h3 class="text-center ">ĐĂNG NHẬP</h3>
+        <form action="{{ route('auth.post.login') }}" method="post">
+            @csrf
+            <div class="modal-body mt-2">
+                @if(session()->has('errorLogin'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert"
+                         style="justify-content: center">
+                        <strong>{{ session()->get('errorLogin') }}</strong>
+                    </div>
+                @endif
+                @if(session()->has('registerSuccess'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert"
+                         style="justify-content: center">
+                        <strong>{{ session()->get('registerSuccess') }}</strong>
+                    </div>
+                @endif
+                <label for="phone" class="form-label">Tài khoản<span class="text-danger">*</span></label>
+                <div class="mb-3">
+                    <input type="text" id="phone" class="form-control fa-icon" name="phone" placeholder="Nhập số điện thoại">
+                    @error('phone')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
+                <label for="password" class="form-label">Mật khẩu<span class="text-danger">*</span></label>
+                <div class="mb-3">
+                    <input type="password" id="password" class="form-control fa-icon" name="password" placeholder="Nhập mật khẩu">
+                    @error('password')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <button
+                            class="btn btn-primary w-100 pb-2 pt-2">Đăng nhập
+                    </button>
+                </div>
+                <div class="box__login__helper d-flex">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Lưu đăng nhập
+                        </label>
+                    </div>
+                    <a href="" class="text-danger">Quên mật khẩu?</a>
+                </div>
+                <p class="text-center">Hoặc</p>
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <button type="button"
+                                    class="btn w-100 pb-3 pt-3 btn__border"><i class="fab fa-facebook text-primary"></i> &nbsp; Facebook
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <button type="button"
+                                    class="btn w-100 pb-3 pt-3 btn__border"><i class="fab fa-google-plus-g text-danger"></i> &nbsp; Google
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-center mb-0">Đã chưa có tài khoản? <a class="text-primary fw-bold" href="{{ route('auth.get.register') }}">Đăng kí</a> tại đây.</p>
+
             </div>
-        </div>
+        </form>
     </div>
-</div>
 @endsection
