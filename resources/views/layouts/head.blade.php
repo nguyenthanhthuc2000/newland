@@ -9,4 +9,15 @@
     <title>NEWLAND.VN</title>
     <link rel="stylesheet" href="{{ asset('customer/css/style.css') }}">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+    <script>
+        let map;
+
+        function initMap() {
+        map = new google.maps.Map(document.querySelector(".map"), {
+            center: { lat: -34.397, lng: 150.644 },
+            zoom: 8,
+        });
+        }
+    </script>
+
 </head>
