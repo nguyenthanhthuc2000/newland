@@ -305,7 +305,6 @@ class AuthController extends Controller
             [
                 "email" => [
                     "required",
-                    "unique:App\Models\User,email"
                 ],
                 'password' => 'required',
                 'name' => 'required',
@@ -326,7 +325,6 @@ class AuthController extends Controller
             ],
             [
                 'email.required' => 'Email không được để trống',
-                'email.unique' => 'Email đã tồn tại trên hệ thống',
                 'password.required' => 'Mật khẩu không được để trống',
                 'password_confirm.required' => 'Mật khẩu xác nhận không để trống',
                 'password_confirm.same' => 'Mật khẩu xác nhận không đúng',
