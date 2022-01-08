@@ -56,9 +56,9 @@
                 <div class="row mb-3">
                     <div class="col-6">
                         <div class="mb-3">
-                            <button type="button"
+                            <a href="{{route('facebook.login')}}"
                                     class="btn w-100 pb-3 pt-3 btn__border"><i class="fab fa-facebook text-primary"></i> &nbsp; Facebook
-                            </button>
+                            </a>
                         </div>
                     </div>
                     <div class="col-6">

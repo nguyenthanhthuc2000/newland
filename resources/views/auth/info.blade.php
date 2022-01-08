@@ -21,11 +21,14 @@
                 <p class="fw-bold">Thông tin cá nhân</p>
                 <div class="mb-3">
                     <label for="name" class="form-label">Số điện thoại <span style="color: red">*</span></label>
-                    <input type="number" class="form-control fa-icon" value="{{$info->phone}}" id="name" readonly>
+                    <input type="number" class="form-control fa-icon" name="phone" value="{{$info->phone}}" id="name" {{$info->google_id != null || $info->facebook_id != null ? '' : 'readonly'}}>
+                    @error('phone')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Địa chỉ email <span style="color: red">*</span></label>
-                    <input type="email" class="form-control fa-icon" name="email" value="{{$info->email}}" id="email" placeholder="Email *">
+                    <input type="email" class="form-control fa-icon" name="email" value="{{$info->email}}" id="email" placeholder="Email *" {{$info->google_id != null || $info->facebook_id != null ? 'readonly' : ''}}>
                     @error('email')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror

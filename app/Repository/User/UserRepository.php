@@ -11,4 +11,12 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
     {
         return new User();
     }
+
+    public function getUserByGoogleId($id){
+        return $this->model->where('google_id', $id)->first();
+    }
+
+    public function getUserByFacebookId($id){
+        return $this->model->where('facebook_id', $id)->first();
+    }
 }

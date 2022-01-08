@@ -9,15 +9,85 @@ use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
+    public function loginFacebook(){
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    public function callbackFacebook(){
+        $userByFacebook = Socialite::driver('facebook')->stateless()->user();
+        $id = $userByFacebook['id'];
+
+        $user = $this->userRepo->getUserByFacebookId($id);
+        if($user){
+            Auth::login($user);
+            return redirect()->route('home.index');
+        }
+        else{
+            $array = [
+                'email' => $userByFacebook['email'],
+                'name' => $userByFacebook['name'],
+                'facebook_id' => $userByFacebook['id'],
+                'sex' => 1,
+            ];
+            $newUser = $this->userRepo->create($array);
+            if($newUser){
+                Auth::login($newUser);
+                return redirect()->route('home.index');
+            }
+            else{
+                return redirect()->route('auth.get.login')->with([
+                    'errorLogin' => 'Vui lòng thử lại sau!',
+                ]);
+            }
+        }
+    }
+
+    /**
+     * Login google
+     * @return \Illuminate\Http\RedirectResponse|\Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function loginGoogle(){
         return Socialite::driver('google')->redirect();
     }
 
+    /**
+     * Login google
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function callbackGoogle(){
-        $user = Socialite::driver('google')->stateless()->user();
-        dd($user);
+        $userByGoogle = Socialite::driver('google')->stateless()->user();
+        $id = $userByGoogle['id'];
+
+        $user = $this->userRepo->getUserByGoogleId($id);
+        if($user){
+            Auth::login($user);
+            return redirect()->route('home.index');
+        }
+        else{
+            $array = [
+                'email' => $userByGoogle['email'],
+                'name' => $userByGoogle['name'],
+                'google_id' => $userByGoogle['id'],
+                'sex' => 1,
+            ];
+            $newUser = $this->userRepo->create($array);
+            if($newUser){
+                Auth::login($newUser);
+                return redirect()->route('home.index');
+            }
+            else{
+                return redirect()->route('auth.get.login')->with([
+                    'errorLogin' => 'Vui lòng thử lại sau!',
+                ]);
+            }
+        }
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function updatePassword(Request $request){
         $this->validate( $request,
             [
@@ -62,45 +132,92 @@ class AuthController extends Controller
      * @throws \Illuminate\Validation\ValidationException
      */
     public function postUpdate(Request $request){
-        $this->validate( $request,
-            [
-                "email" => [
-                    "required",
-                ],
-                'name' => 'required',
-                'birthday' => 'required',
-                'province' => 'required',
-                'district' => 'required',
-                'ward' => 'required',
-                "card_id" => [
-                    "required",
-                ],
-                'sex' => 'required',
-            ],
-            [
-                'email.required' => 'Email không được để trống',
-                'name.required' => 'Họ và tên không để trống',
-                'birthday.required' => 'Ngày sinh không để trống',
-                'province.required' => 'Tỉnh/Tp không để trống',
-                'district.required' => 'Quận/huyện không để trống',
-                'ward.required' => 'Phường xã không để trống',
-                'card_id.required' => 'CMND/CCCD không để trống',
-                'sex.required' => 'Giới tính không để trống',
-            ]
-        );
-
         $data = $request->all();
 
-        $attributes = [
-            'email' => $data['email'],
-            'name' => $data['name'],
-            'birthday' => $data['birthday'],
-            'province_id' => $data['province'],
-            'district_id' => $data['district'],
-            'ward_id' => $data['ward'],
-            'card_id' => $data['card_id'],
-            'sex' => $data['sex'],
-        ];
+        if(Auth::user()->google_id != null){
+            $this->validate( $request,
+                [
+                    "phone" => [
+                        'required',
+                        'digits_between:10,12',
+                    ],
+                    'name' => 'required',
+                    'birthday' => 'required',
+                    'province' => 'required',
+                    'district' => 'required',
+                    'ward' => 'required',
+                    "card_id" => [
+                        "required",
+                    ],
+                    'sex' => 'required',
+                ],
+                [
+                    'phone.required' => 'Số điện không được để trống',
+                    'phone.digits_between' =>  'Số điện thoại từ 10-12 số!',
+                    'name.required' => 'Họ và tên không để trống',
+                    'birthday.required' => 'Ngày sinh không để trống',
+                    'province.required' => 'Tỉnh/Tp không để trống',
+                    'district.required' => 'Quận/huyện không để trống',
+                    'ward.required' => 'Phường xã không để trống',
+                    'card_id.required' => 'CMND/CCCD không để trống',
+                    'sex.required' => 'Giới tính không để trống',
+                ]
+            );
+
+            $attributes = [
+                'phone' => $data['phone'],
+                'name' => $data['name'],
+                'birthday' => $data['birthday'],
+                'province_id' => $data['province'],
+                'district_id' => $data['district'],
+                'ward_id' => $data['ward'],
+                'card_id' => $data['card_id'],
+                'sex' => $data['sex'],
+            ];
+        }
+        else{
+            $this->validate( $request,
+                [
+                    "email" => [
+                        "required",
+                        "email:rfc,dns",
+                        "digits_between:6,65"
+                    ],
+                    'name' => 'required',
+                    'birthday' => 'required',
+                    'province' => 'required',
+                    'district' => 'required',
+                    'ward' => 'required',
+                    "card_id" => [
+                        "required",
+                    ],
+                    'sex' => 'required',
+                ],
+                [
+                    'email.required' => 'Email không được để trống',
+                    'email.email' => 'Sai định dạng email',
+                    'email.digits_between' => 'Sai định dạng email',
+                    'name.required' => 'Họ và tên không để trống',
+                    'birthday.required' => 'Ngày sinh không để trống',
+                    'province.required' => 'Tỉnh/Tp không để trống',
+                    'district.required' => 'Quận/huyện không để trống',
+                    'ward.required' => 'Phường xã không để trống',
+                    'card_id.required' => 'CMND/CCCD không để trống',
+                    'sex.required' => 'Giới tính không để trống',
+                ]
+            );
+            $attributes = [
+                'email' => $data['email'],
+                'name' => $data['name'],
+                'birthday' => $data['birthday'],
+                'province_id' => $data['province'],
+                'district_id' => $data['district'],
+                'ward_id' => $data['ward'],
+                'card_id' => $data['card_id'],
+                'sex' => $data['sex'],
+            ];
+        }
+
 
         $query = $this->userRepo->update(Auth::id(), $attributes);
         if($query){
@@ -139,6 +256,10 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function getLogout(Request $request){
 
         $request->session()->flush();

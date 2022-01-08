@@ -21,8 +21,13 @@ Route::get('post', [PostController::class, 'index'])->name('post.index');
 
 
 // AUTH CONTROLLER
+//LOGIN GOOGLE
 Route::get('/login-google', [AuthController::class, 'loginGoogle'])->name('google.login');
 Route::get('/google/callback', [AuthController::class, 'callbackGoogle'])->name('google.callback');
+
+//LOGIN FACEBOOK
+Route::get('/login-facebook', [AuthController::class, 'loginFacebook'])->name('facebook.login');
+Route::get('/facebook/callback', [AuthController::class, 'callbackFacebook'])->name('facebook.callback');
 
 Route::get('dang-nhap-google',  [AuthController::class, 'loginGoogle'])->name('auth.change.password');
 Route::get('doi-mat-khau',  [AuthController::class, 'changePassword'])->name('auth.change.password');
