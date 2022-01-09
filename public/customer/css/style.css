@@ -11323,6 +11323,12 @@ textarea.form-control-lg {
   font-style: normal;
   font-display: block;
 }
+@font-face {
+  font-family: "Nunito-bi";
+  src: url(/fonts/NunitoSans-BlackItalic.ttf);
+  font-style: normal;
+  font-display: block;
+}
 body {
   font-family: "Nunito";
   font-size: 16px;
@@ -11366,6 +11372,12 @@ a {
 @font-face {
   font-family: "Nunito";
   src: url(/fonts/Nunito-VariableFont_wght.ttf);
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "Nunito-bi";
+  src: url(/fonts/NunitoSans-BlackItalic.ttf);
   font-style: normal;
   font-display: block;
 }
@@ -11432,10 +11444,100 @@ input.form-control, select {
 }
 
 .footer {
-  background-color: #95a5a6;
+  position: relative;
+  padding: 30px 0 50px;
+  background-color: #ecf0f1;
 }
-.footer #logo-footer {
-  width: 100%;
+.footer .logo__foter .logo #logo-footer {
+  width: 100px;
+}
+.footer .company__title {
+  text-transform: uppercase !important;
+}
+.footer .box__ul {
+  padding-left: 0 !important;
+}
+.footer .box-input-group {
+  position: relative;
+}
+.footer .box-input-group input {
+  border-radius: 30px;
+}
+.footer .box-input-group .input-group-icon {
+  position: absolute;
+  z-index: 9999;
+  cursor: pointer;
+  right: 0;
+  top: 29%;
+  bottom: 50%;
+  transform: translate(-50%, -50%);
+}
+.footer .box-input-group .input-group-icon i {
+  padding: 8px;
+  border-radius: 20px;
+  background-color: #e74c3c;
+  color: #fff;
+  transition: 1s;
+}
+.footer .box-input-group .input-group-icon i:hover {
+  transform: rotate(360deg);
+}
+.footer .icon__footer {
+  margin-right: 10px;
+  font-size: 35px;
+}
+.footer .title__hotline {
+  color: #7f8c8d;
+  font-size: 13px;
+}
+.footer .content__hotline {
+  font-size: 15px;
+}
+.footer a {
+  color: #2c3e50;
+}
+.footer ul li {
+  margin-top: 10px;
+}
+.footer ul li a {
+  font-size: 14px;
+}
+.footer ul li a:hover {
+  color: #000;
+}
+.footer .social__network {
+  display: flex;
+}
+.footer .social__network li {
+  margin-top: 6px;
+}
+.footer .social__network li a img {
+  padding: 10px;
+  width: 60px;
+  transition: 1s;
+}
+.footer .social__network li a img:hover {
+  transform: rotate(360deg);
+}
+.footer .footer__bottom {
+  padding: 5px 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.footer .footer__bottom p {
+  padding: 0 0 7px;
+}
+.footer h5, .footer .h5 {
+  font-weight: 600;
+}
+.footer .logan {
+  font-family: Nunito-bi;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #2980b9;
+  text-shadow: 1px 1px 1px #f1c40f;
 }
 
 /**======================*
