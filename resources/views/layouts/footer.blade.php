@@ -85,7 +85,7 @@
                 </h5>
                 <div class="box-input-group">
                     <input type="text" class="form-control input__border" placeholder="Nhập email của bạn" >
-                    <span class="input-group-icon"><i class="fal fa-paper-plane"></i></span>
+                    <span class="input-group-icon" style="display: block;margin-right: -6px;"><i class="fal fa-paper-plane"></i></span>
                 </div>
                 <ul class="social__network box__ul">
                     <li>
