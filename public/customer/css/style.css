@@ -11423,6 +11423,35 @@ header .navbar .navbar-toggler {
   color: #3498DB;
 }
 
+.box__article {
+  cursor: pointer;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.box__article .card__article__body {
+  color: #2c3e50 !important;
+}
+.box__article .card__article__body h5, .box__article .card__article__body .h5 {
+  font-size: 16px;
+}
+.box__article .card__article__body .card__time {
+  font-size: 13px;
+  color: #7f8c8d !important;
+}
+.box__article .card__article__body .card__title {
+  margin-bottom: 0.5rem;
+  font-size: 16px !important;
+}
+.box__article .card__article__body .card__address {
+  font-size: 15px !important;
+}
+.box__article .card__article__body .card__heart {
+  font-size: 30px;
+}
+.box__article .card__article__body .card__heart.active {
+  color: #e74c3c;
+}
+
 main {
   margin-top: 96px;
 }
@@ -11441,6 +11470,24 @@ input.form-control, select {
 
 .btn__border {
   border: 1px solid #bdc3c7 !important;
+}
+
+.text-split-2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+}
+
+.text-split-1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
 }
 
 .footer {
@@ -11475,7 +11522,7 @@ input.form-control, select {
 .footer .box-input-group .input-group-icon i {
   padding: 8px;
   border-radius: 20px;
-  background-color: #e74c3c;
+  background-color: #3498db;
   color: #fff;
   transition: 1s;
 }

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row" style="align-items: center;">
             <div class="col-md-4 logo__foter p-2 d-flex" style="align-items: center">
-                <a href="" class="logo">
+                <a href="{{ route('home.index') }}" class="logo">
                     <img id="logo-footer" src="{{ asset('customer/image/logo.png') }}" alt="">
                 </a>
                 <h5 class="p-3 logan">

@@ -1,0 +1,29 @@
+
+.box__article{
+    cursor: pointer;
+    object-fit: cover;
+    .card__article__body{
+        color: #2c3e50 !important;
+        h5{
+            font-size: 16px;
+        }
+        .card__time{
+            font-size: 13px;
+            color: #7f8c8d !important;
+        }
+        .card__title{
+            margin-bottom: 0.5rem;
+            font-size: 16px !important;
+        }
+        .card__address{
+            font-size: 15px !important;
+        }
+        .card__heart{
+            font-size: 30px;
+        }
+
+        .card__heart.active{
+            color: #e74c3c;
+        }
+    }
+}

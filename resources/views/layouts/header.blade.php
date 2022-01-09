@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg">
                 <div class="logo">
-                    <a class="navbar-brand" href="#"><img id="logo" src="{{ asset('customer/image/logo.png') }}" alt=""></a>
+                    <a class="navbar-brand" href="{{ route('home.index') }}"><img id="logo" src="{{ asset('customer/image/logo.png') }}" alt=""></a>
                 </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
