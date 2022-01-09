@@ -61,7 +61,7 @@ var uploadImages = function() {
                                 </div>
                             </div>
                             <div class="card-body">
-                                <input type="text" class="form-control" placeholder="Nhập mô tả">
+                                <input type="text" class="form-control" placeholder="Nhập mô tả" name="description_img[]">
                             </div>
                         </div>
                     </div>`

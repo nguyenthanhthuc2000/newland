@@ -144,6 +144,10 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        '*' => [
+            'required' => 'Trường không được bỏ trống',
+        ],
+
     ],
 
     /*

@@ -11374,7 +11374,8 @@ a {
 *========================*/
 header {
   box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.08);
-  position: fixed;
+  position: -webkit-sticky;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
@@ -11411,15 +11412,12 @@ header .navbar .navbar-toggler {
   color: #3498DB;
 }
 
-main {
-  margin-top: 96px;
-}
-
 .btn {
   border-radius: 30px !important;
 }
 
-input.form-control, select {
+input.form-control,
+select {
   padding: 0.7rem 0.85rem !important;
 }
 
@@ -11618,6 +11616,11 @@ form.form-post .image-video .review-image-upload .card-body {
 form.form-post .image-video .review-image-upload .card-body input {
   padding: 0.375rem 0.85rem !important;
   box-shadow: none;
+}
+form.form-post .form-footer {
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
 }
 
 /* Extra small devices (phones, 992px and down) */

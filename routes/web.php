@@ -48,8 +48,3 @@ Route::post('fetchCategory',  [PostController::class, 'getCategory'])->name('get
 // ARTICLE
 Route::get('dang-tin', [PostController::class, 'index'])->name('post.index');
 Route::post('dang-tin', [PostController::class, 'store'])->name('post.store');
-
-//GET COMPONENTS
-Route::get('/load-review/{src}', function() {
-    return view('pages.post.component._card_image', compact('src'));
-});
