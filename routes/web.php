@@ -17,7 +17,6 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
-Route::get('post', [PostController::class, 'index'])->name('post.index');
 
 
 // AUTH CONTROLLER
@@ -46,3 +45,11 @@ Route::post('fetchWards',  [Controller::class, 'getWards'])->name('get.wards');
 Route::post('fetchStreet',  [Controller::class, 'getStreet'])->name('get.streets');
 Route::post('fetchCategory',  [PostController::class, 'getCategory'])->name('get.category');
 
+// ARTICLE
+Route::get('dang-tin', [PostController::class, 'index'])->name('post.index');
+Route::post('dang-tin', [PostController::class, 'store'])->name('post.store');
+
+//GET COMPONENTS
+Route::get('/load-review/{src}', function() {
+    return view('pages.post.component._card_image', compact('src'));
+});

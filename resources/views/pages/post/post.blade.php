@@ -1,7 +1,7 @@
 @extends('layouts.master_layout')
 @section('main')
 <div class="post-form-action col-md-8 col-12 mx-auto pt-3">
-    <form method="post" action="" class="form-post" id="formPost">
+    <form method="post" action="{{ route('post.store') }}" class="form-post" id="formPost">
         @csrf
         <div class="form-body">
             <div class="tab-info basic-information">
@@ -22,7 +22,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="typeOfRealEstate" class="form-label">Loại bất động sản <span class="text-required">*</span></label>
-                    <select class="form-select" aria-label="Default select example" id="typeOfRealEstate" aria-describedby="typeOfRealEstateHelp" name="typeOfRealEstate">
+                    <select class="form-select" aria-label="Default select example" id="typeOfRealEstate" aria-describedby="typeOfRealEstateHelp" name="type">
                         <option selected disable>Loại bất động sản</option>
                         @foreach($cat as $c)
                             <option value="{{ $c->id }}">{{ $c->name }}</option>
@@ -35,7 +35,8 @@
                     <div class="specific-address row">
                         <div class="col-6">
                             <label for="provinces" class="form-label">Tỉnh / Thành phố <span class="text-required">*</span></label>
-                                <select placeholder="Tỉnh/ Thành phố" name="province" data-type="provinces" class="select-local form-control">
+                                <select  name="province_id"
+                                        data-type="provinces" class="select-local form-control">
                                     <option disable value="">Tỉnh/ Thành phố</option>
                                     @foreach ($province as $prov)
                                         <option value="{{ $prov->id }}">{{ $prov->_name }}</option>
@@ -44,20 +45,22 @@
                         </div>
                         <div class="col-6">
                             <label for="districts" class="form-label">Quận/ Huyện <span class="text-required">*</span></label>
-                            <select name="district" data-type="districts" class="select-local form-control">
+                            <select name="district_id"
+                                    data-type="districts" class="select-local form-control">
                                 <option disable value="">Quận /  Huyện</option>
                             </select>
                         </div>
                         <div class="col-6">
                             <label for="districts" class="form-label">Phường / Xã <span class="text-required">*</span></label>
-                            <select placeholder="Tỉnh/ Thành phố" name="ward" data-type="wards" class="select-local form-control">
+                            <select name="ward_id"
+                                    data-type="wards" class="select-local form-control">
                                 <option disable value="">Phường / xã</option>
                             </select>
                         </div>
                         <div class="col-6">
                             <label for="districts" class="form-label">Đường <span class="text-required">*</span></label>
-                            <input placeholder="Đường" class="form-control dropdown-toggle input-datalist" type="text" id="dropdownStreet"
-                                    data-bs-toggle="dropdown" aria-expanded="false" value="" autocomplete="off">
+                            <input placeholder="Đường" class="form-control dropdown-toggle input-datalist" type="text"
+                                    value="" autocomplete="off" name="street_id">
                         </div>
                     </div>
                 </div>
@@ -68,7 +71,12 @@
                 </div>
                 <div class="mb-3">
                     <label for="typeOfRealEstate" class="form-label">Vị trí trên bản đồ</label>
-                    <div class="map"></div>
+                    <div class="map">
+                         {{-- <script
+                            src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initMap&v=weekly"
+                            async
+                        ></script> --}}
+                    </div>
                 </div>
             </div>
             <div class="tab-info post-information">
@@ -129,54 +137,54 @@
                 <div class="mb-3">
                     <div class="row g-3 align-items-center">
                         <div class="col-10">
-                        <label for="inputPassword6" class="col-form-label">Số phòng ngủ</label>
+                        <label for="bedroom" class="col-form-label">Số phòng ngủ</label>
                         </div>
                         <div class="col-2">
                             <div class="input-group input-group-step">
                                 <span class="input-group-btn">
-                                    <button type="button" class=" btn-step"  data-type="minus" data-field="number_of_rooms">
+                                    <button type="button" class=" btn-step"  data-type="minus" data-field="bedroom">
                                         <i class="fa fa-minus"></i>
                                     </button>
                                 </span>
-                                <input type="text" name="number_of_rooms" class="form-control input-step" value="0" min="0">
+                                <input type="text" name="bedroom" class="form-control input-step" value="0" min="0">
                                 <span class="input-group-btn">
-                                    <button type="button" class="btn-step" data-type="plus" data-field="number_of_rooms">
+                                    <button type="button" class="btn-step" data-type="plus" data-field="bedroom">
                                         <i class="fa fa-plus"></i>
                                     </button>
                                 </span>
                             </div>
                         </div>
                         <div class="col-10">
-                        <label for="inputPassword6" class="col-form-label">Số phòng tắm, vệ sinh</label>
+                        <label for="" class="col-form-label">Số phòng tắm, vệ sinh</label>
                         </div>
                         <div class="col-2">
                             <div class="input-group input-group-step">
                                 <span class="input-group-btn">
-                                    <button type="button" class=" btn-step"  data-type="minus" data-field="number_of_rooms">
+                                    <button type="button" class=" btn-step"  data-type="minus" data-field="toilet">
                                         <i class="fa fa-minus"></i>
                                     </button>
                                 </span>
-                                <input type="text" name="number_of_rooms" class="form-control input-step" value="0" min="0">
+                                <input type="text" name="toilet" class="form-control input-step" value="0" min="0">
                                 <span class="input-group-btn">
-                                    <button type="button" class="btn-step" data-type="plus" data-field="number_of_rooms">
+                                    <button type="button" class="btn-step" data-type="plus" data-field="toilet">
                                         <i class="fa fa-plus"></i>
                                     </button>
                                 </span>
                             </div>
                         </div>
                         <div class="col-10">
-                        <label for="inputPassword6" class="col-form-label">Số tầng</label>
+                        <label for="" class="col-form-label">Số tầng</label>
                         </div>
                         <div class="col-2">
                             <div class="input-group input-group-step">
                                 <span class="input-group-btn">
-                                    <button type="button" class=" btn-step"  data-type="minus" data-field="number_of_rooms">
+                                    <button type="button" class=" btn-step"  data-type="minus" data-field="floor">
                                         <i class="fa fa-minus"></i>
                                     </button>
                                 </span>
-                                <input type="text" name="number_of_rooms" class="form-control input-step" value="0" min="0">
+                                <input type="text" name="floor" class="form-control input-step" value="0" min="0">
                                 <span class="input-group-btn">
-                                    <button type="button" class="btn-step" data-type="plus" data-field="number_of_rooms">
+                                    <button type="button" class="btn-step" data-type="plus" data-field="floor">
                                         <i class="fa fa-plus"></i>
                                     </button>
                                 </span>
@@ -224,7 +232,18 @@
 
             <div class="tab-info image-video">
                 <div class="title">Thông tin bất động sản</div>
-                <p>Hãy dùng ảnh thật, không trùng, không chèn số điện thoại. Mỗi ảnh kích thước tối thiểu 400x400, tối đa 15 MB. Số lượng ảnh tối đa tuỳ theo loại tin. Xem thêm Quy định đăng tin.</p>
+                <p>Hãy dùng ảnh thật, không trùng, không chèn số điện thoại. Mỗi ảnh kích thước tối thiểu 400x400, tối đa 15 MB. Số lượng ảnh tối đa tuỳ theo loại tin</p>
+                <div class="container-upload">
+                    <input type="file" multiple accept="image/*" class="input-gallery" name="image">
+                    <div class="box-upload">
+                        <i class="fas fa-upload"></i>
+                        <p>Bấm để chọn ảnh cần tải lên</p>
+                        {{-- <span>Hoặc có thể kéo thả ảnh vào đây</span> --}}
+                    </div>
+                    <div class="review-image-upload row row-cols-1 row-cols-md-3 g-4">
+                        {{-- review img upload --}}
+                    </div>
+                </div>
             </div>
             <div class="tab-info contact">
                 <div class="title">Thông tin liên hệ</div>
@@ -256,3 +275,4 @@
     </form>
 </div>
 @endsection
+

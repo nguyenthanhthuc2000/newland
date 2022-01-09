@@ -20,7 +20,7 @@ class CreateArticle extends Migration
             $table->string('desc'); //mô tả
             $table->integer('acreage'); //diện tích m2
             $table->double('price'); //giá
-            $table->string('unit', 10); //đơn vị
+            $table->string('unit', 10); //đơn vị giá
             $table->text('content'); //nội dung
             $table->integer('user_id'); //người đăng
             $table->string('docs', 50); // giấy tờ
@@ -29,14 +29,14 @@ class CreateArticle extends Migration
             $table->integer('floor')->nullable(); // tầng lầu
             $table->text('furniture')->nullable(); //nội thất
             $table->text('video')->nullable(); // video
-            $table->text('image')->nullable();  // hình ảnh
+            // $table->text('image')->nullable();  // hình ảnh
             $table->text('image_360')->nullable(); // Hình ảnh 360
             $table->integer('category_id')->nullable(); // danh mục
             $table->integer('district')->nullable(); // mã quận huyen
             $table->integer('province_id')->nullable(); // mã tỉnh/tp
             $table->integer('ward_id')->nullable(); // mã xã phường xã thi tran
             $table->integer('street_id')->nullable(); // đường đi
-            $table->integer('project_id')->nullable(); // mã dự án
+            $table->sting('project_id', 128)->nullable(); // mã dự án
             $table->string('name_contact', 35); // tên người liên hệ
             $table->string('phone_contact', 12); // sdt người liên hệ
             $table->string('address_contact')->nullable(); // địa chỉ người liên hệ

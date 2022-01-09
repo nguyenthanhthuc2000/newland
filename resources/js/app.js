@@ -9,11 +9,7 @@ require('./ajax/auth');
 /** =================
     Require component
  ===================*/
-require('./component/data-list');
+require('./component/data_list');
+require('./component/card_image');
 require('./component/input');
-
-
-/** =================
-    Require validate
- ===================*/
-//require('./validate/form-post');
+require('./component/map');
