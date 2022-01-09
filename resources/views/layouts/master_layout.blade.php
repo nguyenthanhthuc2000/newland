@@ -16,9 +16,7 @@
     <!-- end main -->
 
     <!-- footer -->
-    <footer>
-
-    </footer>
+    @include('layouts.footer')
     <!-- end footer -->
     @include('layouts.modal')
 
