@@ -1,7 +1,6 @@
 .btn {
     border-radius: 30px !important;
 }
-
 input.form-control,
 select {
     padding: 0.7rem 0.85rem !important;
@@ -30,4 +29,13 @@ select {
     -webkit-box-orient: vertical;
     display: -webkit-box;
     -webkit-line-clamp: 1;
+}
+.btn__see__more:hover{
+    background-color: #3498db;
+    box-shadow: 0 5px 10px 2px #3498db40 !important;
+    color: #fff;
+}
+.btn__blue{
+    background-color: #3498db;
+    box-shadow: 0 5px 10px 2px #3498db40 !important;
 }

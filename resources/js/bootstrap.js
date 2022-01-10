@@ -3,6 +3,7 @@ import swal from 'sweetalert2';
 
 window._ = require('lodash');
 window.$ = require('jquery');
+window.slick = require('slick-carousel');
 
 window.Swal = swal;
 
