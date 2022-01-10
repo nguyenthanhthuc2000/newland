@@ -1,5 +1,6 @@
 @extends('layouts.master_layout')
 @section('main')
+
 <div class="post-form-action col-md-8 col-12 mx-auto pt-3">
     <form method="post" action="{{ route('post.store') }}" class="form-post" id="formPost">
         @csrf
@@ -8,13 +9,13 @@
                 <div class="title">Thông tin cơ bản</div>
                 <div class="mb3 type-post">
                     <div class="form-check">
-                        <input class="type-post-input" type="radio" name="typePost" id="sell" data-type="0" checked hidden>
+                        <input class="type-post-input" type="radio" name="form" id="sell" data-type="0" checked hidden value="0">
                         <label class="form-check-label" for="sell">
                             Bán
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="type-post-input" type="radio" name="typePost" id="lease" data-type="1" hidden data-type="">
+                        <input class="type-post-input" type="radio" name="form" id="lease" data-type="1" hidden value="1">
                         <label class="form-check-label" for="lease">
                             Cho thuê
                         </label>
@@ -22,55 +23,72 @@
                 </div>
                 <div class="mb-3">
                     <label for="typeOfRealEstate" class="form-label">Loại bất động sản <span class="text-required">*</span></label>
-                    <select class="form-select" aria-label="Default select example" id="typeOfRealEstate" aria-describedby="typeOfRealEstateHelp" name="type">
-                        <option selected disable>Loại bất động sản</option>
+                    <select class="form-select" aria-label="Default select example" id="typeOfRealEstate"
+                            aria-describedby="typeOfRealEstateHelp" name="category_id">
+                        <option selected disabled hidden>Loại bất động sản</option>
                         @foreach($cat as $c)
                             <option value="{{ $c->id }}">{{ $c->name }}</option>
                         @endforeach
                     </select>
-                    <div id="typeOfRealEstateHelp" class="form-text text-danger">Trường không được bỏ trống</div>
+                    @error('category_id')
+                         <div id="typeOfRealEstateHelp" class="form-text text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="address" class="form-label">Địa chỉ</label>
                     <div class="specific-address row">
                         <div class="col-6">
                             <label for="provinces" class="form-label">Tỉnh / Thành phố <span class="text-required">*</span></label>
-                                <select  name="province_id"
-                                        data-type="provinces" class="select-local form-control">
-                                    <option disable value="">Tỉnh/ Thành phố</option>
-                                    @foreach ($province as $prov)
-                                        <option value="{{ $prov->id }}">{{ $prov->_name }}</option>
-                                    @endforeach
-                                </select>
+                            <select  name="province_id" aria-describedby="provinceHelp"
+                                    data-type="provinces" class="select-local form-select">
+                                <option disabled selected hidden>Tỉnh/ Thành phố</option>
+                                @foreach ($province as $prov)
+                                    <option value="{{ $prov->id }}">{{ $prov->_name }}</option>
+                                @endforeach
+                            </select>
+                            @error('province_id')
+                                 <div id="provinceHelp" class="form-text text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="col-6">
                             <label for="districts" class="form-label">Quận/ Huyện <span class="text-required">*</span></label>
-                            <select name="district_id"
-                                    data-type="districts" class="select-local form-control">
-                                <option disable value="">Quận /  Huyện</option>
+                            <select name="district_id" aria-describedby="districtHelp"
+                                    data-type="districts" class="select-local form-select">
+                                <option disabled selected hidden>Quận /  Huyện</option>
                             </select>
+                            @error('district_id')
+                                 <div id="districtHelp" class="form-text text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="col-6">
                             <label for="districts" class="form-label">Phường / Xã <span class="text-required">*</span></label>
-                            <select name="ward_id"
-                                    data-type="wards" class="select-local form-control">
-                                <option disable value="">Phường / xã</option>
+                            <select name="ward_id" aria-describedby="wardHelp"
+                                    data-type="wards" class="select-local form-select">
+                                <option disabled selected hidden>Phường / xã</option>
                             </select>
+                            @error('ward_id')
+                                 <div id="wardHelp" class="form-text text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="col-6">
-                            <label for="districts" class="form-label">Đường <span class="text-required">*</span></label>
-                            <input placeholder="Đường" class="form-control dropdown-toggle input-datalist" type="text"
-                                    value="" autocomplete="off" name="street_id">
+                            <label for="street" class="form-label">Đường <span class="text-required">*</span></label>
+                            <input placeholder="Đường" class="form-control dropdown-toggle" type="text"
+                                    autocomplete="off" name="street_id" aria-describedby="streetHelp">
+                            @error('street_id')
+                                    <div id="streetHelp" class="form-text text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="typeOfRealEstate" class="form-label">Địa chỉ hiển thị trên tin đăng <span class="text-required">*</span></label>
-                    <input type="text" class="form-control" placeholder="Bạn có thể bổ sung hẻm, ngách, ngõ...">
-                    <div id="typeOfRealEstateHelp" class="form-text text-danger">Trường không được bỏ trống</div>
+                    <label for="address_on_post" class="form-label">Địa chỉ hiển thị trên tin đăng <span class="text-required">*</span></label>
+                    <input type="text" class="form-control" placeholder="Bạn có thể bổ sung hẻm, ngách, ngõ..." name="address_on_post" aria-describedby="addressOnPostHelp">
+                    @error('address_on_post')
+                            <div id="addressOnPostHelp" class="form-text text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="typeOfRealEstate" class="form-label">Vị trí trên bản đồ</label>
+                    <label for="position_map" class="form-label">Vị trí trên bản đồ</label>
                     <div class="map">
                          {{-- <script
                             src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initMap&v=weekly"
@@ -84,55 +102,75 @@
                 <div class="mb-3">
                     <label for="typeOfRealEstate" class="form-label">Tiêu đề <span class="text-required">*</span></label>
                     <div class="form-input">
-                        <textarea class="form-control" placeholder="VD: Bán nhà riêng 50m2 chính chủ tại Cầu Giấy" name="title" rows="2"></textarea>
+                        <textarea class="form-control" placeholder="VD: Bán nhà riêng 50m2 chính chủ tại Cầu Giấy" name="title" rows="2" aria-describedby="titleHelp"></textarea>
                     </div>
-                    <div id="typeOfRealEstateHelp" class="form-text text-danger">Trường không được bỏ trống</div>
+                    @error('address_on_post')
+                        <div id="titleHelp" class="form-text text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="typeOfRealEstate" class="form-label">Mô tả ngắn <span class="text-required">*</span></label>
                     <div class="form-input">
-                        <textarea class="form-control" placeholder="Nhập mô tả ngắn về bất động sản của bạn." name="sub-title" rows="3"></textarea>
+                        <textarea class="form-control" placeholder="Nhập mô tả ngắn về bất động sản của bạn."
+                                    name="sub_title" rows="3" aria-describedby="subTitleHelp"></textarea>
                     </div>
-                    <div id="typeOfRealEstateHelp" class="form-text text-danger">Trường không được bỏ trống</div>
+                    @error('sub_title')
+                        <div id="subTitleHelp" class="form-text text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <div class="mb-3">
-                    <label for="typeOfRealEstate" class="form-label">Mô tả chi tiết <span class="text-required">*</span></label>
+                    <label for="content" class="form-label">Mô tả chi tiết <span class="text-required">*</span></label>
                     <div class="form-input">
-                        <textarea class="form-control" placeholder="Nhập mô tả chung về bất động sản của bạn. Ví dụ: Khu nhà có vị trí thuận lợi, gần công viên, gần trường học,..." name="description" rows="5"></textarea>
+                        <textarea class="form-control" aria-describedby="contentHelp"
+                                placeholder="Nhập mô tả chung về bất động sản của bạn. Ví dụ: Khu nhà có vị trí thuận lợi, gần công viên, gần trường học,..."
+                                name="content" rows="5"></textarea>
                     </div>
-                    <div id="typeOfRealEstateHelp" class="form-text text-danger">Trường không được bỏ trống</div>
+                    @error('content')
+                        <div id="contentHelp" class="form-text text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
+
             <div class="tab-info real-estate-information">
                 <div class="title">Thông tin bất động sản</div>
                 <div class="mb-3">
-                    <label for="typeOfRealEstate" class="form-label">Diện tích <span class="text-required">*</span></label>
+                    <label for="acreage" class="form-label">Diện tích <span class="text-required">*</span></label>
                     <div class="acreage">
-                        <input type="text" class="form-control" placeholder="Nhập diện tích, VD 80" unit="m²">
+                        <input type="number" class="form-control" placeholder="Nhập diện tích, VD 80" unit="m²" name="acreage" aria-describedby="acreageHelp">
                     </div>
-                    <div id="typeOfRealEstateHelp" class="form-text text-danger">Trường không được bỏ trống</div>
+                    @error('acreage')
+                        <div id="acreageHelp" class="form-text text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="typeOfRealEstate" class="form-label">Mức giá <span class="text-required">*</span></label>
                     <div class="price row">
                         <div class="col-9">
-                            <input type="number" class="form-control price" aria-describedby="priceHelp">
+                            <input type="number" class="form-control price" aria-describedby="priceHelp" name="price">
+                            @error('price')
+                                <div id="priceHelp" class="form-text text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="col-3">
-                            <select class="form-select" aria-label="" name="unit">
-                                <option selected disable>Đơn vị</option>
+                            <select class="form-select" aria-label="" name="unit" aria-describedby="unitHelp">
+                                <option selected disabled hidden>Đơn vị</option>
                                 <option value="1">VNĐ</option>
                                 <option value="2">Giá / m²</option>
-                                <option value="3">THỏa thuận</option>
+                                <option value="3">Thỏa thuận</option>
                             </select>
+                            @error('unit')
+                                <div id="unitHelp" class="form-text text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
-                    <div id="typeOfRealEstateHelp" class="form-text text-danger">Trường không được bỏ trống</div>
                 </div>
                 <div class="mb-3">
                     <label for="legal_documents" class="form-label">Giấy tờ pháp lý <span class="text-required">*</span></label>
-                    <input type="text" class="form-control legal_documents" placeholder="Giấy tờ pháp lý">
+                    <input type="text" class="form-control legal_documents" placeholder="Giấy tờ pháp lý" name="legal_documents" aria-describedby="legalDocumentsHelp">
+                    @error('legal_documents')
+                        <div id="legalDocumentsHelp" class="form-text text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <div class="row g-3 align-items-center">
@@ -202,31 +240,46 @@
                 <div class="mb-3">
                     <div class="direction-address row">
                         <div class="col-6">
-                            <label for="districts" class="form-label">Hướng nhà</label>
-                            <input type="text" class="form-control home-direction" placeholder="Chọn hướng">
+                            <label for="house_direction" class="form-label">Hướng nhà</label>
+                            <select type="text" class="form-select home-direction" name="house_direction" aria-describedby="houseDirectionHelp">
+                                <option selected disabled hidden>Chọn hướng</option>
+                                @foreach ($direction as $dir)
+                                    <option value="{{ $dir->id }}">{{ $dir->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('house_direction')
+                                <div id="houseDirectionHelp" class="form-text text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="col-6">
-                            <label for="districts" class="form-label">Hướng ban công</label>
-                            <input type="text" class="form-control balcony-direction" placeholder="Chọn hướng">
+                            <label for="balcony_direction" class="form-label">Hướng ban công</label>
+                            <select type="text" class="form-select balcony-direction" name="balcony_direction" aria-describedby="acreageHelp">
+                                <option selected disabled hidden>Chọn hướng</option>
+                                @foreach ($direction as $dir)
+                                    <option value="{{ $dir->id }}">{{ $dir->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('balcony_direction')
+                                <div id="balconyDirectionHelp" class="form-text text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="col-6">
-                            <label for="districts" class="form-label">Đường vào</label>
+                            <label for="way" class="form-label">Đường vào</label>
                             <div>
-                                <input type="text" class="form-control road-house" list="" unit="m" placeholder="Nhập số">
+                                <input type="text" class="form-control road-house" list="" unit="m" placeholder="Nhập số" name="way">
                             </div>
                         </div>
                         <div class="col-6">
-                            <label for="districts" class="form-label">Mặt tiền</label>
+                            <label for="facade" class="form-label">Mặt tiền</label>
                             <div>
-                                <input type="text" class="form-control front" list="" unit="m" placeholder="Nhập số">
+                                <input type="text" class="form-control front" list="" unit="m" placeholder="Nhập số" name="facade">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="furniture" class="form-label">Nội thất</label>
-                    <input type="text" class="form-control" name="furniture" aria-describedby="furniture" placeholder="VD: Nội thất đầy đủ">
-                    <div id="furniture" class="form-text text-danger">Trường không được bỏ trống</div>
+                    <input type="text" class="form-control" name="furniture" aria-describedby="furnitureHelp" placeholder="VD: Nội thất đầy đủ">
                 </div>
             </div>
 
@@ -234,7 +287,8 @@
                 <div class="title">Thông tin bất động sản</div>
                 <p>Hãy dùng ảnh thật, không trùng, không chèn số điện thoại. Mỗi ảnh kích thước tối thiểu 400x400, tối đa 15 MB. Số lượng ảnh tối đa tuỳ theo loại tin</p>
                 <div class="container-upload">
-                    <input type="file" multiple accept="image/*" class="input-gallery" name="image">
+                    <label for="input-gallery" class="form-label">Địa chỉ</label>
+                    <input type="file" multiple accept="image/*" class="input-gallery" name="image[]" hidden>
                     <div class="box-upload">
                         <i class="fas fa-upload"></i>
                         <p>Bấm để chọn ảnh cần tải lên</p>
@@ -250,20 +304,32 @@
                 <div class="mb-3">
                     <div class="specific-address row">
                         <div class="col-6">
-                            <label for="districts" class="form-label">Tên liên hệ <span class="text-required">*</span></label>
-                            <input type="text" class="form-control contact-name" list="">
+                            <label for="name_contact" class="form-label">Tên liên hệ <span class="text-required">*</span></label>
+                            <input type="text" class="form-control" name="name_contact" aria-describedby="nameContactHelp">
+                            @error('name_contact')
+                                <div id="nameContactHelp" class="form-text text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="col-6">
-                            <label for="districts" class="form-label">Số điện thoại <span class="text-required">*</span></label>
-                            <input type="text" class="form-control districts" list="">
+                            <label for="phone_contact" class="form-label">Số điện thoại <span class="text-required">*</span></label>
+                            <input type="number" class="form-control" name="phone_contact" aria-describedby="phoneContactHelp">
+                            @error('phone_contact')
+                                <div id="phoneContactHelp" class="form-text text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="col-6">
-                            <label for="districts" class="form-label">Địa chỉ</label>
-                            <input type="text" class="form-control districts" list="">
+                            <label for="address_contact" class="form-label">Địa chỉ</label>
+                            <input type="text" class="form-control" name="address_contact" aria-describedby="addressContactHelp">
+                            @error('address_contact')
+                                <div id="addressContactHelp" class="form-text text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="col-6">
-                            <label for="districts" class="form-label">Email</label>
-                            <input type="text" class="form-control districts" list="">
+                            <label for="email_contact" class="form-label">Email</label>
+                            <input type="email" class="form-control" name="email_contact" aria-describedby="emailContactHelp">
+                            @error('email_contact')
+                                <div id="emailContactHelp" class="form-text text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                 </div>

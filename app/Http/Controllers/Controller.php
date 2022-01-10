@@ -13,6 +13,7 @@ use App\Repository\Ward\WardRepositoryInterface;
 use App\Repository\District\DistrictRepositoryInterface;
 use App\Repository\User\UserRepositoryInterface;
 use App\Repository\Category\CategoryRepositoryInterface;
+use App\Repository\Direction\DirectionRepositoryInterface;
 
 class Controller extends BaseController
 {
@@ -23,13 +24,15 @@ class Controller extends BaseController
     protected $districtRepo;
     protected $userRepo;
     protected $catRepo;
+    protected $dirRepo;
 
     public function __construct(
         ProvinceRepositoryInterface $provinceRepo,
         DistrictRepositoryInterface $districtRepo,
         WardRepositoryInterface $wardRepo,
         UserRepositoryInterface $userRepo,
-        CategoryRepositoryInterface $catRepo
+        CategoryRepositoryInterface $catRepo,
+        DirectionRepositoryInterface $dirRepo
 
     )
     {
@@ -38,6 +41,7 @@ class Controller extends BaseController
         $this->wardRepo = $wardRepo;
         $this->userRepo = $userRepo;
         $this->catRepo = $catRepo;
+        $this->dirRepo = $dirRepo;
     }
 
      /**

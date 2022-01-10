@@ -1,4 +1,4 @@
-// CRÊATE UNIT ON INPUT
+// CREATE UNIT ON INPUT
 $('input').attr('unit', function() {
     if ($(this).attr('unit')) {
         var unit = $(this).attr('unit');
@@ -9,6 +9,7 @@ $('input').attr('unit', function() {
     }
 });
 
+// CHECK NUMBER WHEN TYPE
 $('input[type=number]').on('keypress', function(event) {
     var charCode = (event.which) ? event.which : event.keyCode
     if (charCode > 31 && (charCode < 48 || charCode > 57))
@@ -80,3 +81,38 @@ function inputStep() {
     });
 }
 inputStep();
+
+// APPEND THE ADDRESS ON THE POST
+
+function appendAddressOnPost() {
+    var p = $('select[name="province_id"]');
+    var d = $('select[name="district_id"]');
+    var w = $('select[name="ward_id"]');
+    var s = $('input[name="street_id"]');
+
+    var r = $('input[name="address_on_post"]');
+
+
+    p.on('change', function() {
+        appendTo(r)
+    });
+    d.on('change', function() {
+        appendTo(r)
+    });
+    w.on('change', function() {
+        appendTo(r)
+    });
+    s.on('input', function() {
+        appendTo(r)
+    });
+
+    function appendTo(to) {
+        var tp = p.find("option:selected:not([disabled])").text() ? p.find("option:selected:not([disabled])").text() : '';
+        var td = d.find("option:selected:not([disabled])").text() ? d.find("option:selected:not([disabled])").text() + ', ' : '';
+        var tw = w.find("option:selected:not([disabled])").text() ? w.find("option:selected:not([disabled])").text() + ', ' : '';
+        var ts = s.val() ? s.val() + ', ' : '';
+        var t = ts + tw + td + tp;
+        to.val(t)
+    }
+}
+appendAddressOnPost()

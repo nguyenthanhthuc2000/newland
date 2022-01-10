@@ -17,10 +17,12 @@ class PostController extends Controller
      */
     public function index()
     {
+        $direction = $this->dirRepo->getOrDerBy()->reverse();
         $cat = $this->catRepo->getByAttributesAll(['type' => 0])->reverse();
         $data = [
             'province' => Controller::getProvince(),
             'cat' => $cat,
+            'direction' => $direction
         ];
         return view('pages.post.post', $data);
     }
@@ -48,7 +50,44 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $this->validate($request,
+            [
+                "form" => "accepted",
+                "street_id" => "required",
+                "district_id" => "required",
+                "ward_id" => "required",
+                "province_id" => "required",
+                "address_on_post" => "required",
+                "title" => "required",
+                "sub_title" => "required",
+                "content" => "required",
+                "acreage" => "required",
+                "price" => "required",
+                "unit" => "required",
+                "legal_documents" => "required",
+                "bedroom" => "required",
+                "toilet" => "required",
+                "floor" => "required",
+                "way" => "required",
+                "facade" => "required",
+                "image" => "required",
+                "name_contact" => "required",
+                "phone_contact" => "required",
+                "address_contact" => "required",
+                "email_contact" => "required",
+                "category_id" => "required",
+            ],
+            [
+                "district_id.required" => "Vui lòng chọn Quận / Huyện",
+                "ward_id.required" => "Vui lòng chọn Phường / Xã",
+                "province_id.required" => "Vui lòng chọn Tỉnh / Thành phố",
+                "unit.required" => "Vui lòng chọn Đơn vị",
+                "category_id.required" => "Vui lòng chọn Loại bất động sản",
+            ]
+        );
+
+
+
     }
 
     /**

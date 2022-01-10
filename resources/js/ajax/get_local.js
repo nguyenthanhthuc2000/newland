@@ -5,7 +5,6 @@ $.ajaxSetup({
 });
 // lấy danh sách tỉnh, thành phố
 var getDistrict = function(province) {
-        console.log(123)
         $.ajax({
             url: window.route('get.districts'),
             method: 'post',
@@ -46,7 +45,7 @@ var getStreet = function(ward) {
 }
 var appendLocal = function(type, data) {
     var list = $('.select-local[data-type=' + type + ']');
-    console.log('.select-local[data-type=' + type + ']');
+    // console.log('.select-local[data-type=' + type + ']');
     var output = '<option disable="" value="">Chọn</option>';
     $.each(data, function(key, val) {
         output += `<option value="` + val.id + `">` + val._prefix + ` ` + val._name + `</option>`
@@ -62,7 +61,7 @@ $('.select-local').on('change', function(e) {
     // console.log(parentOfParent);
     let type = parents.data('type');
     var id = $(this).val();
-    console.log(type, id);
+    // console.log(type, id);
     switch (type) {
         case 'wards':
             // getStreet(id)
