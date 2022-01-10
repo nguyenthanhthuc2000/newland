@@ -20,7 +20,7 @@ class CreateArticle extends Migration
             $table->integer('province_id')->nullable(); // mã tỉnh/tp
             $table->integer('district_id')->nullable(); // mã quận huyen
             $table->integer('ward_id')->nullable(); // mã xã phường
-            $table->integer('street_id')->nullable(); // đường đi
+            $table->string('street_id')->nullable(); // đường đi
             $table->string('address_on_post', 255)->nullable(); // đại chỉ trên bài đăng
             $table->string('google_map')->nullable(); // bản đồ
             $table->string('title'); //tiêu đề
@@ -40,7 +40,7 @@ class CreateArticle extends Migration
             $table->text('furniture')->nullable(); //nội thất
             $table->text('video')->nullable(); // video
             $table->text('image_360')->nullable(); // Hình ảnh 360
-            $table->integer('user_id'); //người đăng
+            $table->integer('user_id')->nullable(); //người đăng
             $table->string('name_contact', 35); // tên người liên hệ
             $table->string('phone_contact', 12); // sdt người liên hệ
             $table->string('address_contact')->nullable(); // địa chỉ người liên hệ
@@ -48,7 +48,7 @@ class CreateArticle extends Migration
             $table->tinyInteger('highlights')->default(0); // bài viết nổi bật (1 có nổi bật)
             $table->integer('type')->default(0); // loại bài viết (0:thường, vip, vip1, vip2, vip2,...)
             $table->string('project_id')->nullable(); // thuộc dự án nào ?
-            $table->tinyInteger('status'); //trạng thái (0: ẩn, 1: hiện)
+            $table->tinyInteger('status')->default(1); //trạng thái (0: ẩn, 1: hiện)
             $table->string('start_day')->nullable(); // ngày bắt đầu
             $table->string('end_day')->nullable(); // ngày kết thúc
             $table->timestamps();

@@ -1,7 +1,7 @@
 @extends('layouts.master_layout')
 @section('main')
 
-<div class="post-form-action col-md-8 col-12 mx-auto pt-3">
+<div class="post-form-action col-xl-8 mx-auto pt-3">
     <form method="post" action="{{ route('post.store') }}" class="form-post" id="formPost">
         @csrf
         <div class="form-body">
@@ -37,7 +37,7 @@
                 <div class="mb-3">
                     <label for="address" class="form-label">Địa chỉ</label>
                     <div class="specific-address row">
-                        <div class="col-6">
+                        <div class="col-sm-6">
                             <label for="provinces" class="form-label">Tỉnh / Thành phố <span class="text-required">*</span></label>
                             <select  name="province_id" aria-describedby="provinceHelp"
                                     data-type="provinces" class="select-local form-select">
@@ -50,7 +50,7 @@
                                  <div id="provinceHelp" class="form-text text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="col-6">
+                        <div class="col-sm-6">
                             <label for="districts" class="form-label">Quận/ Huyện <span class="text-required">*</span></label>
                             <select name="district_id" aria-describedby="districtHelp"
                                     data-type="districts" class="select-local form-select">
@@ -60,17 +60,17 @@
                                  <div id="districtHelp" class="form-text text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="col-6">
+                        <div class="col-sm-6">
                             <label for="districts" class="form-label">Phường / Xã <span class="text-required">*</span></label>
                             <select name="ward_id" aria-describedby="wardHelp"
                                     data-type="wards" class="select-local form-select">
-                                <option disabled selected hidden>Phường / xã</option>
+                                <option disabled selected hidden>Phường / Xã</option>
                             </select>
                             @error('ward_id')
                                  <div id="wardHelp" class="form-text text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="col-6">
+                        <div class="col-sm-6">
                             <label for="street" class="form-label">Đường <span class="text-required">*</span></label>
                             <input placeholder="Đường" class="form-control dropdown-toggle" type="text"
                                     autocomplete="off" name="street_id" aria-describedby="streetHelp">
@@ -146,13 +146,13 @@
                 <div class="mb-3">
                     <label for="typeOfRealEstate" class="form-label">Mức giá <span class="text-required">*</span></label>
                     <div class="price row">
-                        <div class="col-9">
+                        <div class="col-sm-9 col-7">
                             <input type="number" class="form-control price" aria-describedby="priceHelp" name="price">
                             @error('price')
                                 <div id="priceHelp" class="form-text text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="col-3">
+                        <div class="col-sm-3 col-5">
                             <select class="form-select" aria-label="" name="unit" aria-describedby="unitHelp">
                                 <option selected disabled hidden>Đơn vị</option>
                                 <option value="1">VNĐ</option>
@@ -174,10 +174,10 @@
                 </div>
                 <div class="mb-3">
                     <div class="row g-3 align-items-center">
-                        <div class="col-10">
+                        <div class="col-sm-9 col-6">
                         <label for="bedroom" class="col-form-label">Số phòng ngủ</label>
                         </div>
-                        <div class="col-2">
+                        <div class="col-sm-3 col-6">
                             <div class="input-group input-group-step">
                                 <span class="input-group-btn">
                                     <button type="button" class=" btn-step"  data-type="minus" data-field="bedroom">
@@ -192,10 +192,10 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="col-10">
+                        <div class="col-sm-9 col-6">
                         <label for="" class="col-form-label">Số phòng tắm, vệ sinh</label>
                         </div>
-                        <div class="col-2">
+                        <div class="col-sm-3 col-6">
                             <div class="input-group input-group-step">
                                 <span class="input-group-btn">
                                     <button type="button" class=" btn-step"  data-type="minus" data-field="toilet">
@@ -210,10 +210,10 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="col-10">
+                        <div class="col-sm-9 col-6">
                         <label for="" class="col-form-label">Số tầng</label>
                         </div>
-                        <div class="col-2">
+                        <div class="col-sm-3 col-6">
                             <div class="input-group input-group-step">
                                 <span class="input-group-btn">
                                     <button type="button" class=" btn-step"  data-type="minus" data-field="floor">
@@ -266,7 +266,7 @@
                         <div class="col-6">
                             <label for="way" class="form-label">Đường vào</label>
                             <div>
-                                <input type="text" class="form-control road-house" list="" unit="m" placeholder="Nhập số" name="way">
+                                <input type="number" class="form-control road-house" list="" unit="m" placeholder="Nhập số" name="way">
                             </div>
                         </div>
                         <div class="col-6">
@@ -303,29 +303,29 @@
                 <div class="title">Thông tin liên hệ</div>
                 <div class="mb-3">
                     <div class="specific-address row">
-                        <div class="col-6">
+                        <div class="col-sm-6">
                             <label for="name_contact" class="form-label">Tên liên hệ <span class="text-required">*</span></label>
                             <input type="text" class="form-control" name="name_contact" aria-describedby="nameContactHelp">
                             @error('name_contact')
                                 <div id="nameContactHelp" class="form-text text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="col-6">
+                        <div class="col-sm-6">
                             <label for="phone_contact" class="form-label">Số điện thoại <span class="text-required">*</span></label>
                             <input type="number" class="form-control" name="phone_contact" aria-describedby="phoneContactHelp">
                             @error('phone_contact')
                                 <div id="phoneContactHelp" class="form-text text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="col-6">
-                            <label for="address_contact" class="form-label">Địa chỉ</label>
+                        <div class="col-sm-6">
+                            <label for="address_contact" class="form-label">Địa chỉ <span class="text-required">*</span></label>
                             <input type="text" class="form-control" name="address_contact" aria-describedby="addressContactHelp">
                             @error('address_contact')
                                 <div id="addressContactHelp" class="form-text text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="col-6">
-                            <label for="email_contact" class="form-label">Email</label>
+                        <div class="col-sm-6">
+                            <label for="email_contact" class="form-label">Email <span class="text-required">*</span></label>
                             <input type="email" class="form-control" name="email_contact" aria-describedby="emailContactHelp">
                             @error('email_contact')
                                 <div id="emailContactHelp" class="form-text text-danger">{{ $message }}</div>
