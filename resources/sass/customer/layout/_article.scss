@@ -1,6 +1,15 @@
 
+.text__title{
+    text-transform: uppercase;
+}
+.padding-article{
+    padding: 12px;
+}
 .box__article{
     cursor: pointer;
+    .card-image{
+        overflow: hidden;
+    }
     .card__article__body{
         color: #2c3e50 !important;
         h5{
@@ -13,6 +22,9 @@
         .card__title{
             margin-bottom: 0.5rem;
             font-size: 16px !important;
+            &:hover{
+                color: #2980b9;
+            }
         }
         .card__address{
             font-size: 15px !important;
@@ -28,8 +40,11 @@
     .card-img-top{
         height: 200px;
         object-fit: cover;
+        transition: 0.7s;
     }
-
+    &:hover .card-img-top{
+       transform: scale(1.1);
+    }
     @media only screen and (max-width: 768px){
         .card-img-top{
             height: 250px;
@@ -40,4 +55,11 @@
             height: 220px;
         }
     }
+
+}
+.slick-prev, .slick-next{
+}
+.slick-prev:before, .slick-next:before{
+    color: #2c3e50 !important;
+    font-size: 25px !important;
 }
