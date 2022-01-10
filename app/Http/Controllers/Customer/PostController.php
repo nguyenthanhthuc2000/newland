@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Auth;
 
 class PostController extends Controller
 {
@@ -108,6 +108,7 @@ class PostController extends Controller
             "phone_contact" => $request->phone_contact,
             "address_contact" => $request->address_contact,
             "email_contact" => $request->email_contact,
+            "user_id" => Auth::id(),
         ];
 
         $idCreated = $this->artRepo->create($attributes)->id;
