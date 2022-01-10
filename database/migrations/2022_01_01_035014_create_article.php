@@ -36,7 +36,7 @@ class CreateArticle extends Migration
             $table->integer('house_direction')->nullable(); // hướng nhà
             $table->integer('balcony_direction')->nullable(); //hướng ban công
             $table->integer('way')->nullable(); // chiều rộng hẻm đường vào nhà/đất(đường vào)
-            $table->integer('facade')->nullable(); // chiều rộng mặt tiền
+            $table->float('facade')->nullable(); // chiều rộng mặt tiền
             $table->text('furniture')->nullable(); //nội thất
             $table->text('video')->nullable(); // video
             $table->text('image_360')->nullable(); // Hình ảnh 360
