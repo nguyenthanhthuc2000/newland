@@ -11425,8 +11425,6 @@ header .navbar .navbar-toggler {
 
 .box__article {
   cursor: pointer;
-  -o-object-fit: cover;
-     object-fit: cover;
 }
 .box__article .card__article__body {
   color: #2c3e50 !important;
@@ -11450,6 +11448,21 @@ header .navbar .navbar-toggler {
 }
 .box__article .card__article__body .card__heart.active {
   color: #e74c3c;
+}
+.box__article .card-img-top {
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media only screen and (max-width: 768px) {
+  .box__article .card-img-top {
+    height: 250px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .box__article .card-img-top {
+    height: 220px;
+  }
 }
 
 main {
