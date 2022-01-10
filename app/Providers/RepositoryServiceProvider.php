@@ -18,6 +18,10 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repository\Article\ArticleRepository::class
         );
         $this->app->singleton(
+            \App\Repository\ImagesArticle\ImagesArticleRepositoryInterface::class,
+            \App\Repository\ImagesArticle\ImagesArticleRepository::class
+        );
+        $this->app->singleton(
             \App\Repository\Category\CategoryRepositoryInterface::class,
             \App\Repository\Category\CategoryRepository::class
         );
@@ -45,7 +49,7 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repository\Street\StreetRepositoryInterface::class,
             \App\Repository\Street\StreetRepository::class
         );
-        
+
     }
 
     /**

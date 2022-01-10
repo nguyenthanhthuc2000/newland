@@ -14,6 +14,8 @@ use App\Repository\District\DistrictRepositoryInterface;
 use App\Repository\User\UserRepositoryInterface;
 use App\Repository\Category\CategoryRepositoryInterface;
 use App\Repository\Direction\DirectionRepositoryInterface;
+use App\Repository\Article\ArticleRepositoryInterface;
+use App\Repository\ImagesArticle\ImagesArticleRepositoryInterface;
 
 class Controller extends BaseController
 {
@@ -25,6 +27,8 @@ class Controller extends BaseController
     protected $userRepo;
     protected $catRepo;
     protected $dirRepo;
+    protected $artRepo;
+    protected $imgArtRepo;
 
     public function __construct(
         ProvinceRepositoryInterface $provinceRepo,
@@ -32,7 +36,9 @@ class Controller extends BaseController
         WardRepositoryInterface $wardRepo,
         UserRepositoryInterface $userRepo,
         CategoryRepositoryInterface $catRepo,
-        DirectionRepositoryInterface $dirRepo
+        DirectionRepositoryInterface $dirRepo,
+        ArticleRepositoryInterface $artRepo,
+        ImagesArticleRepositoryInterface $imgArtRepo
 
     )
     {
@@ -42,6 +48,8 @@ class Controller extends BaseController
         $this->userRepo = $userRepo;
         $this->catRepo = $catRepo;
         $this->dirRepo = $dirRepo;
+        $this->artRepo = $artRepo;
+        $this->imgArtRepo = $imgArtRepo;
     }
 
      /**
