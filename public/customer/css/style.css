@@ -11661,6 +11661,11 @@ header .navbar .navbar-toggler {
   color: #3498DB;
 }
 
+.card {
+  border: none;
+  box-shadow: 0px 5px 20px 0px #ecf0f1 !important;
+}
+
 .text__title {
   text-transform: uppercase;
 }
@@ -11673,6 +11678,19 @@ header .navbar .navbar-toggler {
   cursor: pointer;
 }
 .box__article .card-image {
+  overflow: hidden;
+}
+.box__article .card-highlight:before {
+  content: url(/icons/noi-bat.svg);
+  position: absolute;
+  height: 25px;
+  left: -4px;
+  top: 10px;
+  width: 65px;
+  z-index: 1;
+}
+.box__article .card-post {
+  border-radius: 20px;
   overflow: hidden;
 }
 .box__article .card__article__body {
@@ -11702,12 +11720,28 @@ header .navbar .navbar-toggler {
   color: #e74c3c;
 }
 .box__article .card-img-top {
+  position: relative;
   height: 200px;
   -o-object-fit: cover;
      object-fit: cover;
   transition: 0.7s;
+  width: 100%;
+  display: block;
+}
+.box__article .card-img-post {
+  height: 270px;
+  transition: 0.7s;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  display: block;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 .box__article:hover .card-img-top {
+  transform: scale(1.1);
+}
+.box__article:hover .card-img-post {
   transform: scale(1.1);
 }
 @media only screen and (max-width: 768px) {

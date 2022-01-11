@@ -49,3 +49,19 @@ $('.slick-b').slick({
     }
   ]
 });
+$('.slick-bv').slick({
+  centerPadding: '20px',
+  slidesToShow: 3,
+//  autoplay: true,
+  autoplaySpeed: 2000,
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        arrows: false,
+        centerPadding: '40px',
+        slidesToShow: 1
+      }
+    }
+  ]
+});
