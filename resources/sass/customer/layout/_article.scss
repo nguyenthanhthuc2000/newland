@@ -2,8 +2,12 @@
     border: none;
     box-shadow: 0px 5px 20px 0px #ecf0f1 !important;
 }
+.fa-star{
+    color: #f1c40f;
+}
 .text__title{
-    text-transform: uppercase;
+    text-transform: inherit;
+    font-weight: bold;
 }
 .padding-article{
     padding: 12px;
@@ -48,13 +52,19 @@
         .card__address{
             font-size: 15px !important;
         }
-        .card__heart{
-            font-size: 30px;
-        }
-
-        .card__heart.active{
-            color: #e74c3c;
-        }
+    }
+    .card__heart{
+        font-size: 30px;
+    }
+    .card__heart.active{
+        color: #e74c3c;
+    }
+    .card-view{
+        font-size: 14px;
+        color: #2980b9 !important;
+    }
+    .view-more{
+        font-size: 15px;
     }
     .card-img-top{
         position: relative;
@@ -91,9 +101,75 @@
     }
 
 }
-.slick-prev, .slick-next{
-}
 .slick-prev:before, .slick-next:before{
     color: #2c3e50 !important;
     font-size: 25px !important;
+}
+
+
+.box-article{
+    .box-article__left{
+        .box-article-content{
+            padding: 10px 0;
+            .card__time,{
+                color: black;
+                font-size: 14px;
+            }
+            .card__view{
+                color: #2980b9;
+                font-size: 14px;
+            }
+            .img{
+                overflow: hidden;
+            }
+            .box-article__content{
+                &:hover .box-article-content-img{
+                    transform: scale(1.1);
+                }
+            }
+            .box-article-content-img{
+                min-height: 330px;
+                transition: 0.5s;
+                object-fit: cover;
+                display: block;
+            }
+            .box-article-content-title{
+                padding: 13px 0;
+                color: black;
+                font-size: 20px;
+                margin: 0;
+            }
+            .list__article{
+                .article{
+                    .article__title{
+                        color: black !important;
+                        &:hover{
+                            color: #2980b9 !important;
+                        }
+
+                    }
+                }
+                .article:not(:last-child){
+                    padding-bottom: 10px;
+                    border-bottom: 1px solid #ecf0f1;
+                }
+                .article:not(:first-child){
+                    padding-top: 10px;
+                }
+
+            }
+            .box-article-content-desc{
+                color: #7f8c8d;
+                text-align: justify;
+                font-size: 14px;
+            }
+        }
+    }
+    .box-article__right{
+        .banner-ads-top{
+            max-height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+    }
 }
