@@ -11,10 +11,14 @@ $('input').attr('unit', function() {
 
 // CHECK NUMBER WHEN TYPE
 $('input[type=number]').on('keypress', function(event) {
-    var charCode = (event.which) ? event.which : event.keyCode
-    if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode != 46)
+    var charCode = (event.which) ? event.which : event.keyCode;
+    if (event.keyCode === 8 || event.keyCode === 46) {
+        return true;
+    } else if (charCode < 48 || charCode > 57) {
         return false;
-    return true;
+    } else {
+        return true;
+    }
 })
 
 // INPUT STEP

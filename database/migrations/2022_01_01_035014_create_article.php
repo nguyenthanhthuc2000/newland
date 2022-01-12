@@ -48,9 +48,10 @@ class CreateArticle extends Migration
             $table->tinyInteger('highlights')->default(0); // bài viết nổi bật (1 có nổi bật)
             $table->integer('type')->default(0); // loại bài viết (0:thường, vip, vip1, vip2, vip2,...)
             $table->string('project_id')->nullable(); // thuộc dự án nào ?
-            $table->tinyInteger('status')->default(1); //trạng thái (0: ẩn, 1: hiện)
             $table->string('start_day')->nullable(); // ngày bắt đầu
             $table->string('end_day')->nullable(); // ngày kết thúc
+            $table->tinyInteger('status')->default(1); //trạng thái (0: ẩn, 1: hiện)
+            $table->tinyInteger('state')->default(0); //trạng thái (0: tin mới,1: đã bán, 2: đã đc thuê, 3: đã đặt cọc)
             $table->timestamps();
         });
     }

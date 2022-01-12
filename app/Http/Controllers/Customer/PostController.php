@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Customer;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
+use DateTime;
 
 class PostController extends Controller
 {
@@ -50,7 +51,6 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-
         $this->validate($request,
             [
                 "form" => "required", //bán/thuê
@@ -113,14 +113,27 @@ class PostController extends Controller
 
         $idCreated = $this->artRepo->create($attributes)->id;
 
-        if($request->image && $idCreated){
-            $imgArr = $request->image;
+        if($request->file('image') && $idCreated){
+            $imgArr = $request->file('image');
             $description_img = $request->description_img;
+            $date = new DateTime();
+            $dateStr = $date->format('Y_m_d_H_i_s');
+
             for($i = 0; $i < count($imgArr); $i++){
-                echo $imgArr[$i].','.$description_img[$i];
-                $this->imgArtRepo->create(['id_article'=> $idCreated, 'image' => $imgArr[$i], 'description_img' => $description_img[$i]]);
+
+                $fileName = $imgArr[$i]->getClientOriginalName();
+                $newFileName = $dateStr.'_'.$fileName;
+
+                $this->imgArtRepo->create([
+                    'article_id'=> $idCreated,
+                    'image' => $newFileName,
+                    'description_img' => $description_img[$i]
+                ]);
+
+                $imgArr[$i]->move('images/articles', $newFileName);
             };
         }
+
         return back()->with('ok');
     }
 
