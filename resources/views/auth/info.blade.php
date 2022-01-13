@@ -1,6 +1,6 @@
 @extends('layouts.master_layout')
 @section('main')
-    <div class="post-form-action col-md-6 col-12 mx-auto pt-5">
+    <div class="post-form-action col-md-8 col-12 mx-auto pt-5">
         <form action="{{ route('auth.post.update') }}" method="post" class="form-post">
             @csrf
             <div class="tab-info">

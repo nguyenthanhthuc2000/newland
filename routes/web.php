@@ -31,6 +31,7 @@ Route::get('/facebook/callback', [AuthController::class, 'callbackFacebook'])->n
 Route::get('dang-nhap-google',  [AuthController::class, 'loginGoogle'])->name('auth.change.password');
 Route::get('doi-mat-khau',  [AuthController::class, 'changePassword'])->name('auth.change.password');
 Route::get('thong-tin-ca-nhan',  [AuthController::class, 'info'])->name('auth.info');
+Route::get('bai-viet-ca-nhan',  [AuthController::class, 'personalArticle'])->name('auth.article');
 Route::get('dang-ki',  [AuthController::class, 'getRegister'])->name('auth.get.register');
 Route::get('dang-nhap',  [AuthController::class, 'getLogin'])->name('auth.get.login');
 Route::get('dang-xuat',  [AuthController::class, 'getLogout'])->name('auth.get.logout');
