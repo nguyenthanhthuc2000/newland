@@ -1,71 +1,87 @@
 @extends('layouts.master_layout')
 @section('main')
-    <div class="row pt-4 pb-4">
+    <div class="row pt-4 pb-4 detail-post">
         <div class="col-md-1"></div>
         <div class="col-xl-8 pt-3 box__detail">
 
             <!-- Container for the image gallery -->
             <div class="container p-0 box__detail-album pb-3">
 
+                <div class="slider-for">
                 <!-- Full-width images with number text -->
                 <div class="mySlides">
                     <div class="numbertext">1 / 6</div>
                     <img src="{{asset('uploads/article/123.jpg')}}"  style="width:100%">
+
+                    <!-- Image text -->
+                    <div class="caption-container">mô tả ảnh 1
+                    </div>
                 </div>
 
                 <div class="mySlides">
                     <div class="numbertext">2 / 6</div>
                     <img src="{{asset('uploads/article/3.jpg')}}"  style="width:100%">
+                    <!-- Image text -->
+                    <div class="caption-container">mô tả ảnh 2
+                    </div>
                 </div>
 
                 <div class="mySlides">
                     <div class="numbertext">3 / 6</div>
                     <img src="{{asset('uploads/article/4.jpg')}}"  style="width:100%">
+                    <!-- Image text -->
+                    <div class="caption-container">mô tả ảnh 3
+                    </div>
                 </div>
 
                 <div class="mySlides">
                     <div class="numbertext">4 / 6</div>
                     <img src="{{asset('uploads/article/5.jpg')}}"  style="width:100%">
+                    <!-- Image text -->
+                    <div class="caption-container">mô tả ảnh 4
+                    </div>
                 </div>
 
                 <div class="mySlides">
                     <div class="numbertext">5 / 6</div>
                     <img src="{{asset('uploads/article/3.jpg')}}"  style="width:100%">
+                    <!-- Image text -->
+                    <div class="caption-container">mô tả ảnh 5
+                    </div>
                 </div>
 
                 <div class="mySlides">
                     <div class="numbertext">6 / 6</div>
                     <img src="{{asset('uploads/article/4.jpg')}}"  style="width:100%">
+                    <!-- Image text -->
+                    <div class="caption-container">mô tả ảnh 6
+                    </div>
                 </div>
-
+            </div>
                 <!-- Next and previous buttons -->
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                {{-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a> --}}
 
-                <!-- Image text -->
-                <div class="caption-container">
-                    <p class="m-0" id="caption"></p>
-                </div>
 
                 <!-- Thumbnail images -->
-                <div class="row" style="margin: auto; justify-content: center">
-                    <div class="column">
-                        <img class="demo cursor" src="{{asset('uploads/article/2.jpg')}}"  style="width:100%" onclick="currentSlide(1)" alt="The Woods">
+                <div class="row thumb-detail-post slider-nav" style="margin: auto; justify-content: center">
+                    <div class="column thumb-detail-post__item">
+                        <img class="demo cursor" src="{{asset('uploads/article/2.jpg')}}"  style="width:100%" data-index="1" alt="The Woods">
                     </div>
-                    <div class="column">
-                        <img class="demo cursor" src="{{asset('uploads/article/3.jpg')}}"  style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
+                    <div class="column thumb-detail-post__item">
+                        <img class="demo cursor" src="{{asset('uploads/article/3.jpg')}}"  style="width:100%" data-index="2" alt="Cinque Terre">
                     </div>
-                    <div class="column">
-                        <img class="demo cursor" src="{{asset('uploads/article/4.jpg')}}"  style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
+                    <div class="column thumb-detail-post__item">
+                        <img class="demo cursor" src="{{asset('uploads/article/4.jpg')}}"  style="width:100%" data-index="3" alt="Mountains and fjords">
                     </div>
-                    <div class="column">
-                        <img class="demo cursor" src="{{asset('uploads/article/5.jpg')}}"  style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
+                    <div class="column thumb-detail-post__item">
+                        <img class="demo cursor" src="{{asset('uploads/article/5.jpg')}}"  style="width:100%" data-index="4" alt="Northern Lights">
                     </div>
-                    <div class="column">
-                        <img class="demo cursor" src="{{asset('uploads/article/123.jpg')}}"  style="width:100%" onclick="currentSlide(5)" alt="Cinque Terre">
+                    <div class="column thumb-detail-post__item">
+                        <img class="demo cursor" src="{{asset('uploads/article/123.jpg')}}"  style="width:100%" data-index="5" alt="Cinque Terre">
                     </div>
-                    <div class="column">
-                        <img class="demo cursor" src="{{asset('uploads/article/4.jpg')}}"  style="width:100%" onclick="currentSlide(6)" alt="Mountains and fjords">
+                    <div class="column thumb-detail-post__item">
+                        <img class="demo cursor" src="{{asset('uploads/article/4.jpg')}}"  style="width:100%" data-index="6" alt="Mountains and fjords">
                     </div>
                 </div>
             </div>
@@ -162,35 +178,5 @@
         </div>
         <div class="col-md-1"></div>
     </div>
-    <script>
-        var slideIndex = 1;
-        showSlides(slideIndex);
-
-        function plusSlides(n) {
-          showSlides(slideIndex += n);
-        }
-
-        function currentSlide(n) {
-          showSlides(slideIndex = n);
-        }
-
-        function showSlides(n) {
-          var i;
-          var slides = document.getElementsByClassName("mySlides");
-          var dots = document.getElementsByClassName("demo");
-          var captionText = document.getElementById("caption");
-          if (n > slides.length) {slideIndex = 1}
-          if (n < 1) {slideIndex = slides.length}
-          for (i = 0; i < slides.length; i++) {
-              slides[i].style.display = "none";
-          }
-          for (i = 0; i < dots.length; i++) {
-              dots[i].className = dots[i].className.replace(" active", "");
-          }
-          slides[slideIndex-1].style.display = "block";
-          dots[slideIndex-1].className += " active";
-          captionText.innerHTML = dots[slideIndex-1].alt;
-        }
-    </script>
 @endsection
 
