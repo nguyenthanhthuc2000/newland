@@ -11,6 +11,10 @@ use DateTime;
 class PostController extends Controller
 {
 
+    public function detail($slug){
+        return view('pages.post.detail_post');
+    }
+
     /**
      * Display a listing.
      *

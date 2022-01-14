@@ -92,16 +92,7 @@
     &:hover .card-img-post {
         transform: scale(1.1);
     }
-    @media only screen and (max-width: 768px) {
-        .card-img-top {
-            height: 250px;
-        }
-    }
-    @media only screen and (max-width: 600px) {
-        .card-img-top {
-            height: 220px;
-        }
-    }
+
 }
 
 .slick-prev:before,
@@ -172,5 +163,179 @@
             object-fit: cover;
             display: block;
         }
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+    position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+    background-color: #7f8c8d;
+    display: none;
+    img{
+        max-height: 500px;
+        display: block;
+        object-fit: contain;
+    }
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+    cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    padding: 5px 15px;
+    margin-top: -30px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 25px;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 25px;
+}
+.prev,{
+    left: 25px;
+}
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+    text-align: center;
+    background-color: #222;
+    padding: 2px 16px;
+    color: white;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Six columns side by side */
+.column {
+    float: left;
+    width: 16.66%;
+    padding: 4px 2px;
+    /* Add a transparency effect for thumnbail images */
+    .demo {
+        opacity: 0.6;
+        max-height: 80px;
+        object-fit: cover;
+        display: block;
+
+    }
+    .active,
+    .demo:hover {
+        opacity: 1;
+    }
+
+}
+
+/*================DETAIL===============*/
+.b__dt-ct-title{
+    font-size: 23px;
+    font-weight: bold;
+    td{
+        padding: 0 !important;
+    }
+}
+.b__dt-ct-short.table > :not(caption) > * > *{
+    border: none!important;
+    padding: 2px!important;
+}
+.b__dt-ct-short{
+    padding: 10px 0 !important;
+    border-bottom: 1px solid #ecf0f1!important;
+    border-top: 1px solid #ecf0f1!important;
+}
+.box__dt-ct-desc-text p{
+    margin-bottom: 0.4rem !important;
+}
+.b__dt-ct-section-body{
+    padding: 7px 20px;
+    border: 1px solid #f2f2f2;
+    border-radius: 4px;
+    box-sizing: border-box;
+    .b__dt-ct-section-body-list{
+        display:flex ;
+        padding: 14px 0px;
+        .title{
+            font-weight: bold;
+            min-width: 115px;
+        }
+    }
+    .b__dt-ct-section-body-list:not(:last-child){
+        border-bottom: 1px solid #f2f2f2;
+    }
+}
+@media only screen and (max-width: 768px){
+    .mySlides {
+        img{
+            max-height: 350px;
+        }
+    }
+    .column {
+        .demo{
+            max-height: 60px;
+            min-height: 60px;
+        }
+    }
+    .box__article{
+        .card-img-top{
+            height: 250px;
+        }
+
+    }
+}
+@media only screen and (max-width: 600px){
+    .mySlides {
+        img{
+            max-height: 250px;
+        }
+    }
+    .column {
+        .demo{
+            min-height: 40px;
+            max-height: 40px;
+        }
+    }
+    .box__article{
+        .card-img-top{
+            height: 220px;
+        }
+
     }
 }
