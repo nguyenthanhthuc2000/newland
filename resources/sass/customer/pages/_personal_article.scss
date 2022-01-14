@@ -1,0 +1,30 @@
+.list-article {
+    ul.nav-tabs {
+        .nav-item {
+            .nav-link {}
+        }
+    }
+    .tab-content {
+        .tab-pane {
+            .card {
+                border: none;
+                box-shadow: unset;
+                background: transparent;
+            }
+            .card-article {
+                .card-img {
+                    width: 100px;
+                    margin: auto 0;
+                }
+                .card-body {
+                    padding-top: 0;
+                    padding-bottom: 0;
+                    .card-title {
+                        font-size: 1.25rem;
+                        color: $black;
+                    }
+                }
+            }
+        }
+    }
+}

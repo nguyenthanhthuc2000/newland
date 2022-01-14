@@ -30,7 +30,6 @@
 *========================*/
 
 @import './layout/header';
-@import './layout/article';
 @import './layout/main';
 @import './layout/grid';
 @import './layout/footer';
@@ -51,21 +50,5 @@
 *========================*/
 
 @import './pages/post';
-
-/* Extra small devices (phones, 992px and down) */
-
-@media only screen and (max-width: 992px) {
-    .navbar {
-        ul {
-            li {
-                padding-top: 20px;
-            }
-        }
-        .navbar-collapse {
-            padding-bottom: 30px;
-        }
-        .box__auth {
-            margin-left: 20px
-        }
-    }
-}
+@import './pages/detail_post';
+@import './pages/personal_article';
