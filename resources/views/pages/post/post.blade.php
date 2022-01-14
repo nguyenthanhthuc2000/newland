@@ -2,7 +2,7 @@
 @section('main')
 
 <div class="post-form-action col-xl-8 mx-auto pt-3">
-    <form method="post" action="{{ route('post.store') }}" class="form-post" id="formPost">
+    <form method="post" action="{{ route('post.store') }}" class="form-post" id="formPost"  enctype="multipart/form-data">
         @csrf
         <div class="form-body">
             <div class="tab-info basic-information">
@@ -155,9 +155,9 @@
                         <div class="col-sm-3 col-5">
                             <select class="form-select" aria-label="" name="unit" aria-describedby="unitHelp">
                                 <option selected disabled hidden>Đơn vị</option>
-                                <option value="1">VNĐ</option>
-                                <option value="2">Giá / m²</option>
-                                <option value="3">Thỏa thuận</option>
+                                <option value="VNĐ">VNĐ</option>
+                                <option value="/ m²">Giá / m²</option>
+                                <option value="Thỏa thuận">Thỏa thuận</option>
                             </select>
                             @error('unit')
                                 <div id="unitHelp" class="form-text text-danger">{{ $message }}</div>
@@ -266,13 +266,13 @@
                         <div class="col-6">
                             <label for="way" class="form-label">Đường vào</label>
                             <div>
-                                <input type="number" class="form-control road-house" list="" unit="m" placeholder="Nhập số" name="way">
+                                <input type="number" class="form-control road-house" unit="m" step="any" placeholder="Nhập số" name="way">
                             </div>
                         </div>
                         <div class="col-6">
                             <label for="facade" class="form-label">Mặt tiền</label>
                             <div>
-                                <input type="text" class="form-control front" list="" unit="m" placeholder="Nhập số" name="facade">
+                                <input type="text" class="form-control front" unit="m" placeholder="Nhập số" name="facade">
                             </div>
                         </div>
                     </div>
@@ -288,7 +288,7 @@
                 <p>Hãy dùng ảnh thật, không trùng, không chèn số điện thoại. Mỗi ảnh kích thước tối thiểu 400x400, tối đa 15 MB. Số lượng ảnh tối đa tuỳ theo loại tin</p>
                 <div class="container-upload">
                     <label for="input-gallery" class="form-label">Địa chỉ</label>
-                    <input type="file" multiple accept="image/*" class="input-gallery" name="image[]" hidden>
+                    <input type="file" multiple accept="image/*" class="input-gallery" name="image[]" step="any" hidden>
                     <div class="box-upload">
                         <i class="fas fa-upload"></i>
                         <p>Bấm để chọn ảnh cần tải lên</p>

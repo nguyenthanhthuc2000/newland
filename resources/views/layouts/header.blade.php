@@ -51,7 +51,8 @@
                                     <strong>{{Auth::user()->name}}</strong>
                                 </a>
                                 <ul class="dropdown-menu" >
-                                    <li><a class="dropdown-item" href="{{ route('auth.info') }}"> Thông tin</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('auth.info') }}"><i class="fas fa-id-card"></i> Thông tin cá nhân</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('auth.article') }}"><i class="fas fa-newspaper"></i> Bài viết của bạn</a></li>
                                     @if(Auth::user()->facebook_id == null && Auth::user()->google_id == null)
                                     <li><a class="dropdown-item" href="{{ route('auth.change.password') }}"> Đổi mật khẩu</a></li>
                                     @endif

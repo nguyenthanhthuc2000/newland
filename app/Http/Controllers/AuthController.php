@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
-
 class AuthController extends Controller
 {
     public function loginFacebook(){
@@ -363,5 +362,13 @@ class AuthController extends Controller
         else{
             return back()->with('registerError', 'Lỗi, vui lòng thử lại sau!');
         }
+    }
+
+    public function personalArticle() {
+        $personalArticle = $this->artRepo->getByAttributes(['user_id' => Auth::id()]);
+        $data = [
+            'personalArticle' => $personalArticle
+        ];
+        return view('auth.personal_article', $data);
     }
 }

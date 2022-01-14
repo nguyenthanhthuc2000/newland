@@ -11,8 +11,9 @@ class Article extends Model
     protected $table = 'article';
     protected $guarded = [];
     public $timestamps = true;
+    protected $perPage = 8;
 
-    public function images_article(){
+    public function imagesArticle(){
         return $this->hasMany(ImagesArticle::class);
     }
 }

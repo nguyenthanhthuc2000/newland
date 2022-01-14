@@ -23,6 +23,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('pages.index');
+        $articles = $this->artRepo->getOrderBy();
+        $data = [
+            'articles' => $articles,
+        ];
+        return view('pages.index', $data);
     }
 }
