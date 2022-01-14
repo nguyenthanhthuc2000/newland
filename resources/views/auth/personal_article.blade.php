@@ -1,8 +1,7 @@
 @extends('layouts.master_layout')
 @section('main')
-<div class="title-page">
-    Bài viết cá nhân
-</div>
+
+{{ Breadcrumbs::render('personal-article') }}
 <div class="list-article">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
@@ -20,22 +19,26 @@
       </ul>
       <div class="tab-content" id="personalArticle">
         <div class="tab-pane fade show active" id="allArticle" role="tabpanel" aria-labelledby="allArticle-tab">
-            <table class="table table-striped table-hover">
+            <table class="table table-hover">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">STT</th>
+                    <th scope="col">Mã đự án</th>
+                    <th scope="col">Tiêu đề</th>
+                    <th scope="col">Ngày hết hạn</th>
+                    <th scope="col">Thống kê</th>
+                    <th scope="col">Thao tác</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
+                    @foreach ($personalArticle as $art)
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>{{ $art->title }}</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                    </tr>
+                    @endforeach
                 </tbody>
               </table>
         </div>

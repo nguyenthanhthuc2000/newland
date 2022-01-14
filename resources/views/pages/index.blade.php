@@ -74,10 +74,11 @@
                 <div class="col-lg-3 col-md-6 box__article mb-4">
                     @php
                         $img_article[] = $article->imagesArticle->toArray();
+                        $img = $img_article[0] ? 'articles/'.$img_article[0][0]['image'] : 'img/no_photo.jpg';
                     @endphp
                     <div class="card" >
                         <a href="" class="card-image{{ ($article->featured == 1) ? ' card-featured' : '' }}">
-                            <img src="{{ asset('images/articles/'.$img_article[0][0]['image']) }}" class="card-img-top" alt="...">
+                            <img src="{{ asset('images/'.$img) }}" class="card-img-top" alt="...">
                         </a>
                         <a class="card-body card__article__body" href="">
                             <h5 class="text-split-2 card__title"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>{{ $article->title }}</h5>

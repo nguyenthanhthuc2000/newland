@@ -1,0 +1,10 @@
+.breadcumb-container {
+    padding-top: 20px;
+    .breadcumb {
+        &-item {
+            a {
+                color: $primary;
+            }
+        }
+    }
+}
