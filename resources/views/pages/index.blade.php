@@ -10,7 +10,7 @@
                 <div class="box-article-content">
                     <div class="row">
                         <div class="col-md-7 mb-4 box-article__content">
-                            <a href="">
+                            <a href="{{route('post.detail', 'chi-tiet-bai-viet')}}">
                                 <div class="img">
                                     <img class="w-100 box-article-content-img" src="{{asset('uploads/article/1.jpg')}}" alt="">
                                 </div>

@@ -48,3 +48,6 @@ Route::post('fetchCategory',  [PostController::class, 'getCategory'])->name('get
 // ARTICLE
 Route::get('dang-tin', [PostController::class, 'index'])->name('post.index');
 Route::post('dang-tin', [PostController::class, 'store'])->name('post.store');
+
+//ARTICLE
+Route::get('/{slug}', [PostController::class, 'detail'])->name('post.detail');
