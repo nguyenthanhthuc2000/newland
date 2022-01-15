@@ -85,7 +85,7 @@
                     </div>
                 </div>
             </div>
-            <div class="b__dt-ct">
+            <div class="b__dt-ct pt-2">
                 <h1 class="b__dt-ct-title">
                     <span>Bán tòa Homestay CC Mini 7 tầng Khương Hạ - 23 phòng full đồ - dòng tiền 120tr/th - 038 9946 423</span>
                 </h1>
@@ -173,10 +173,59 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-2">
-            x
+        <div class="col-md-2 pt-3">
+            <div class="b__ct">
+                <div class="b__ct-info">
+                    <img class="b__ct-info-avt img-fluid" src="{{asset('/images/avatar.jpg')}}" alt="">
+
+                        <p class="b__ct-info-name pt-3 mb-1"><strong>Nguyễn Thành Thức</strong></p>
+                        <a href="" class="b__ct-info-article ">Xem thêm 13 tin khác</a>
+                </div>
+                <div class="b__ct-contact">
+                    <button class="b__ct-contact-btn b__ct-contact-phone">038 9946 423</button>
+                    <br>
+                    <a href="mailto:nguyenthanhthuc@gmail.com" class="b__ct-contact-btn b__ct-contact-mail">Gửi mail</a>
+                    <br>
+                    <button class="b__ct-contact-btn" data-bs-toggle="modal" data-bs-target="#contactModal">Yêu cầu liên hệ</button>
+                </div>
+            </div>
+
         </div>
         <div class="col-md-1"></div>
+        <!-- Modal -->
+        <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" style="min-width: 35%">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Yêu cầu liên hệ</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="">
+                            <p><strong>Thông tin liên hệ</strong></p>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" id="name" placeholder="Họ và tên *">
+                            </div>
+                            <div class="mb-3">
+                                <input type="number" class="form-control" id="phone" placeholder="Số điện thoại *">
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" id="email" placeholder="Email *">
+                            </div>
+                            <div class="mb-3">
+                                <label for="content" class="form-label"><strong>Nội dung</strong></label>
+                                <textarea class="form-control" id="content" rows="3">Tôi cần tư vấn</textarea>
+                            </div>
+                            &nbsp;
+                            <button type="button" class="btn btn-primary w-100 btn__send__contact"
+                                    style="padding: 13px;">Gửi yêu cầu
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
 @endsection
 

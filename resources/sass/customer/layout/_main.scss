@@ -3,9 +3,13 @@
 }
 input.form-control,
 select {
-    padding: 0.7rem 0.85rem !important;
+    padding: 0.8rem 0.85rem !important;
+    border-radius: 10px;
 }
 
+textarea {
+    border-radius: 10px;
+}
 .box__login__helper {
     justify-content: space-between;
 }
