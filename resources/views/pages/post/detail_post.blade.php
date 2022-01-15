@@ -85,7 +85,7 @@
                     </div>
                 </div>
             </div>
-            <div class="b__dt-ct">
+            <div class="b__dt-ct pt-2">
                 <h1 class="b__dt-ct-title">
                     <span>Bán tòa Homestay CC Mini 7 tầng Khương Hạ - 23 phòng full đồ - dòng tiền 120tr/th - 038 9946 423</span>
                 </h1>
