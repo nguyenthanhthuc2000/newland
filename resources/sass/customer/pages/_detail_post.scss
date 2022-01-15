@@ -253,6 +253,14 @@
         }
     }
     /*================DETAIL===============*/
+
+        .slick-prev{
+            left: 5px !important;
+        }
+        .slick-next{
+            right: 5px !important;
+        }
+
     .b__dt-ct-title {
         font-size: 23px;
         font-weight: bold;
