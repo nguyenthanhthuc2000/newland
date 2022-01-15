@@ -77,10 +77,10 @@
                         $img = '';
                         $img_article = $article->imagesArticle->toArray();
                         // var_dump($img_article);
-                        $img = $img_article[0] ? 'articles/'.$img_article[0]['image'] : 'img/no_photo.jpg';
+                        $img = ( $img_article && $img_article[0]) ? 'articles/'.$img_article[0]['image'] : 'img/no_photo.jpg';
                     @endphp
                     <div class="card" >
-                        <a href="" class="card-image{{ ($article->featured == 1) ? ' card-featured' : '' }}" style="::before content='';background-image: url('{{ asset('images/'.$img) }}')">
+                        <a href="" class="card-image{{ ($article->featured == 1) ? ' card-featured' : '' }}">
                             <img src="{{ asset('images/'.$img) }}" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body card__article__body position-relative">
