@@ -76,7 +76,6 @@
                         $img_article = [];
                         $img = '';
                         $img_article = $article->imagesArticle->toArray();
-                        // var_dump($img_article);
                         $img = ( $img_article && $img_article[0]) ? 'articles/'.$img_article[0]['image'] : 'img/no_photo.jpg';
                     @endphp
                     <div class="card" >
@@ -271,13 +270,3 @@
         </div>
     </div>
 @endsection
-{{-- array(1) {
-    [0]=> array(6) {
-        ["id"]=> int(14)
-        ["article_id"]=> int(17)
-        ["image"]=> string(25) "2022_01_12_14_56_10_2.png"
-        ["description_img"]=> NULL
-        ["created_at"]=> string(27) "2022-01-12T14:56:10.000000Z"
-        ["updated_at"]=> string(27) "2022-01-12T14:56:10.000000Z"
-    }
-} --}}

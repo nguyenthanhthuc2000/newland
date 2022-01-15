@@ -38,7 +38,7 @@
                     @endphp
                     <tr>
                         <th scope="row">{{ numericalOrder($i) }}</th>
-                        <th>M001</th>
+                        <th>{{ $art->private_code }}</th>
                         <td>
                             <div class="card card-article">
                                 <div class="row g-0">
@@ -47,7 +47,7 @@
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
-                                            <a class="card-title stretched-link" href="{{ $i }}">{{ $art->title }}</a>
+                                            <a class="card-title stretched-link" href="{{ $art->slug }}">{{ $art->title }}</a>
                                             <p class="card-text">{{ $art->sub_title }}</p>
                                             {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
                                         </div>
@@ -57,7 +57,23 @@
                         </td>
                         <td>Otto</td>
                         <td>@mdo</td>
-                        <td>@mdo</td>
+                        <td class="actions">
+                            <div class="btn-group">
+                                <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-item"><i class="fas fa-sync-alt"></i> Bật tự động đăng lại</li>
+                                    <li class="dropdown-item"><i class="far fa-edit"></i> Sửa tin</li>
+                                    <li class="dropdown-item"><i class="far fa-copy"></i> Sao chép tin đăng</li>
+                                    <li class="dropdown-item"><i class="fas fa-phone-alt"></i> Yêu cầu liên hệ</li>
+                                    <li class="dropdown-item"><i class="fas fa-id-card-alt"></i> Thống kê tương tác</li>
+                                    <li class="dropdown-item"><i class="far fa-sticky-note"></i> Ghi chú</li>
+                                    <li class="dropdown-item"><i class="fas fa-expand-alt"></i> Xem tin đăng trên website</li>
+                                    <li class="dropdown-item"><i class="fas fa-trash-alt"></i> Xóa tin</li>
+                                </ul>
+                                </div>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
