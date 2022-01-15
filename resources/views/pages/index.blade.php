@@ -73,19 +73,22 @@
             @foreach ($articles as $article)
                 <div class="col-lg-3 col-md-6 box__article mb-4">
                     @php
-                        $img_article[] = $article->imagesArticle->toArray();
-                        $img = $img_article[0] ? 'articles/'.$img_article[0][0]['image'] : 'img/no_photo.jpg';
+                        $img_article = [];
+                        $img = '';
+                        $img_article = $article->imagesArticle->toArray();
+                        // var_dump($img_article);
+                        $img = $img_article[0] ? 'articles/'.$img_article[0]['image'] : 'img/no_photo.jpg';
                     @endphp
                     <div class="card" >
-                        <a href="" class="card-image{{ ($article->featured == 1) ? ' card-featured' : '' }}">
+                        <a href="" class="card-image{{ ($article->featured == 1) ? ' card-featured' : '' }}" style="::before content='';background-image: url('{{ asset('images/'.$img) }}')">
                             <img src="{{ asset('images/'.$img) }}" class="card-img-top" alt="...">
                         </a>
-                        <a class="card-body card__article__body" href="">
-                            <h5 class="text-split-2 card__title"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>{{ $article->title }}</h5>
+                        <div class="card-body card__article__body position-relative">
+                            <h5 class="text-split-2 card__title"><a href="" class="stretched-link card-title"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>{{ $article->title }}</a></h5>
                             <p class="card-text mb-0 text-split-1 card__price"><strong>{{ $article->price.' '.$article->unit.' - '.$article->acreage.' m²' }}</strong></p>
                             <p class="mb-0 text-split-1 card__address">{{ $article->address_on_post }}</p>
-                        </a>
-                        <div class="card__footer d-flex p-3 pt-0" style="justify-content: space-between; align-items: center">
+                        </div>
+                        <div class="card__footer d-flex p-3 pt-0 justify-content-between align-items-center">
                             <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> {{ $article->created_at->format('d/m/Y') }}</p>
                             <p class="mb-0"><i class="fas fa-heart card__heart active"></i></p>
                         </div>
@@ -268,3 +271,13 @@
         </div>
     </div>
 @endsection
+{{-- array(1) {
+    [0]=> array(6) {
+        ["id"]=> int(14)
+        ["article_id"]=> int(17)
+        ["image"]=> string(25) "2022_01_12_14_56_10_2.png"
+        ["description_img"]=> NULL
+        ["created_at"]=> string(27) "2022-01-12T14:56:10.000000Z"
+        ["updated_at"]=> string(27) "2022-01-12T14:56:10.000000Z"
+    }
+} --}}
