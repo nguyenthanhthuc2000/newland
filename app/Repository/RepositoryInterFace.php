@@ -74,4 +74,10 @@ interface RepositoryInterFace
      * @return mixed
      */
     public function createGetIdItem($attributes);
+
+    /**
+     * @param string $attributes
+     * @return mixed
+     */
+    public function getItemsBySlug($slug);
 }

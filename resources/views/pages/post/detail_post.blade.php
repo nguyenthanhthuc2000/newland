@@ -8,56 +8,21 @@
             <div class="container p-0 box__detail-album pb-3">
 
                 <div class="slider-for">
-                <!-- Full-width images with number text -->
-                <div class="mySlides">
-                    <div class="numbertext">1 / 6</div>
-                    <img src="{{asset('uploads/article/123.jpg')}}"  style="width:100%">
+                    @php
+                        $qtyImg = count($detailArticle->imagesArticle);
+                    @endphp
+                    <!-- Full-width images with number text -->
+                    @foreach ($detailArticle->imagesArticle as $i => $img)
+                        <div class="mySlides">
+                            <div class="numbertext">{{ $i.'/'.$qtyImg}}</div>
+                            <img src="{{ getUrlImageUpload($img->image) }}"  style="width:100%">
 
-                    <!-- Image text -->
-                    <div class="caption-container">mô tả ảnh 1
-                    </div>
+                            <!-- Image text -->
+                            <div class="caption-container">{{ $img->description_img }}
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
-
-                <div class="mySlides">
-                    <div class="numbertext">2 / 6</div>
-                    <img src="{{asset('uploads/article/3.jpg')}}"  style="width:100%">
-                    <!-- Image text -->
-                    <div class="caption-container">mô tả ảnh 2
-                    </div>
-                </div>
-
-                <div class="mySlides">
-                    <div class="numbertext">3 / 6</div>
-                    <img src="{{asset('uploads/article/4.jpg')}}"  style="width:100%">
-                    <!-- Image text -->
-                    <div class="caption-container">mô tả ảnh 3
-                    </div>
-                </div>
-
-                <div class="mySlides">
-                    <div class="numbertext">4 / 6</div>
-                    <img src="{{asset('uploads/article/5.jpg')}}"  style="width:100%">
-                    <!-- Image text -->
-                    <div class="caption-container">mô tả ảnh 4
-                    </div>
-                </div>
-
-                <div class="mySlides">
-                    <div class="numbertext">5 / 6</div>
-                    <img src="{{asset('uploads/article/3.jpg')}}"  style="width:100%">
-                    <!-- Image text -->
-                    <div class="caption-container">mô tả ảnh 5
-                    </div>
-                </div>
-
-                <div class="mySlides">
-                    <div class="numbertext">6 / 6</div>
-                    <img src="{{asset('uploads/article/4.jpg')}}"  style="width:100%">
-                    <!-- Image text -->
-                    <div class="caption-container">mô tả ảnh 6
-                    </div>
-                </div>
-            </div>
                 <!-- Next and previous buttons -->
                 {{-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                 <a class="next" onclick="plusSlides(1)">&#10095;</a> --}}
@@ -65,38 +30,25 @@
 
                 <!-- Thumbnail images -->
                 <div class="row thumb-detail-post slider-nav" style="margin: auto; justify-content: center">
-                    <div class="column thumb-detail-post__item">
-                        <img class="demo cursor" src="{{asset('uploads/article/2.jpg')}}"  style="width:100%" data-index="1" alt="The Woods">
-                    </div>
-                    <div class="column thumb-detail-post__item">
-                        <img class="demo cursor" src="{{asset('uploads/article/3.jpg')}}"  style="width:100%" data-index="2" alt="Cinque Terre">
-                    </div>
-                    <div class="column thumb-detail-post__item">
-                        <img class="demo cursor" src="{{asset('uploads/article/4.jpg')}}"  style="width:100%" data-index="3" alt="Mountains and fjords">
-                    </div>
-                    <div class="column thumb-detail-post__item">
-                        <img class="demo cursor" src="{{asset('uploads/article/5.jpg')}}"  style="width:100%" data-index="4" alt="Northern Lights">
-                    </div>
-                    <div class="column thumb-detail-post__item">
-                        <img class="demo cursor" src="{{asset('uploads/article/123.jpg')}}"  style="width:100%" data-index="5" alt="Cinque Terre">
-                    </div>
-                    <div class="column thumb-detail-post__item">
-                        <img class="demo cursor" src="{{asset('uploads/article/4.jpg')}}"  style="width:100%" data-index="6" alt="Mountains and fjords">
-                    </div>
+                    @foreach ($detailArticle->imagesArticle as $i => $img)
+                        <div class="column thumb-detail-post__item">
+                            <img class="demo cursor" src="{{ getUrlImageUpload($img->image) }}"  style="width:100%" data-index="{{ ++$i }}" alt="{{ $img->description_img }}">
+                        </div>
+                    @endforeach
                 </div>
             </div>
             <div class="b__dt-ct pt-2">
                 <h1 class="b__dt-ct-title">
-                    <span>Bán tòa Homestay CC Mini 7 tầng Khương Hạ - 23 phòng full đồ - dòng tiền 120tr/th - 038 9946 423</span>
+                    <span>{{ $detailArticle->title.' - '.$detailArticle->phone_contact }}</span>
                 </h1>
                 <div class="card__footer d-flex " style="justify-content: space-between; align-items: center">
-                    <p class="mb-0 "><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
+                    <p class="mb-0 "><i class="fal fa-calendar-alt"></i> {{ $detailArticle->created_at->format('d/m/Y') }}</p>
                     <p class="mb-0" style="cursor: pointer; font-size: 20px">
                         <i class="fal fa-share-alt"></i> &nbsp;
                         <i class="fal fa-heart card__heart"></i>
                     </p>
                 </div>
-                <p class="mb-2 "><i class="fal fa-map-marker-alt"></i>&nbsp; 138, Phố Khương Hạ, Phường Khương Đình, Thanh Xuân, Hà Nội</p>
+                <p class="mb-2 "><i class="fal fa-map-marker-alt"></i>&nbsp; {{ $detailArticle->address_on_post }}</p>
 
                 <table class="b__dt-ct-short table" style="border: none">
                     <tbody>
@@ -107,16 +59,16 @@
                         <td class="text-end">Phòng</td>
                     </tr>
                     <tr>
-                        <td><strong>15.8 tỷ</strong></td>
-                        <td><strong>Mặt tiền 7.5 m</strong></td>
-                        <td><strong>112 m²</strong></td>
-                        <td class="text-end"><strong>23 PN</strong></td>
+                        <td><strong>{{ convert_number_to_words($detailArticle->price) }} VNĐ</strong></td>
+                        <td><strong>{{ $detailArticle->facade ? 'Mặt tiền: '.$detailArticle->facade.' m' : '' }} </strong></td>
+                        <td><strong>{{ $detailArticle->acreage }} m</strong></td>
+                        <td class="text-end">{{ $detailArticle->bedroom ? $detailArticle->bedroom : '0' }} phòng ngủ</td>
                     </tr>
                     <tr>
-                        <td><span>~141.1 triệu/m²</span></td>
-                        <td><span>Hẻm 112 m</span></td>
+                        <td><span>~ {{ unitPrice($detailArticle->price, $detailArticle->acreage) }} / m²</span></td>
+                        <td><span>{{ $detailArticle->way ? 'Hẻm: '.$detailArticle->way.' m' : '' }}</span></td>
                         <td></td>
-                        <td class="text-end">3 WC</td>
+                        <td class="text-end">{{ $detailArticle->toilet ? $detailArticle->toilet : '0' }} toilet</td>
                     </tr>
                     </tbody>
                 </table>

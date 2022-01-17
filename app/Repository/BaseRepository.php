@@ -106,4 +106,10 @@ abstract class BaseRepository implements RepositoryInterface
 
         return $result;
     }
+
+    public function getItemsBySlug($slug){
+        $result = $this->model->where('slug', $slug)->first();
+
+        return $result;
+    }
 }

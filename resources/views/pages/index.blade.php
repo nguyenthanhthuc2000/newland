@@ -76,14 +76,14 @@
                         $img_article = [];
                         $img = '';
                         $img_article = $article->imagesArticle->toArray();
-                        $img = ( $img_article && $img_article[0]) ? 'articles/'.$img_article[0]['image'] : 'img/no_photo.jpg';
+                        $img = ( $img_article && $img_article[0]) ? $img_article[0]['image'] : null;
                     @endphp
                     <div class="card" >
                         <a href="" class="card-image{{ ($article->featured == 1) ? ' card-featured' : '' }}">
-                            <img src="{{ asset('images/'.$img) }}" class="card-img-top" alt="...">
+                            <img src="{{ getUrlImageUpload($img) }}" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body card__article__body position-relative">
-                            <h5 class="text-split-2 card__title"><a href="" class="stretched-link card-title"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>{{ $article->title }}</a></h5>
+                            <h5 class="text-split-2 card__title"><a href="{{ $article->slug }}" class="stretched-link card-title"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>{{ $article->title }}</a></h5>
                             <p class="card-text mb-0 text-split-1 card__price"><strong>{{ $article->price.' '.$article->unit.' - '.$article->acreage.' m²' }}</strong></p>
                             <p class="mb-0 text-split-1 card__address">{{ $article->address_on_post }}</p>
                         </div>

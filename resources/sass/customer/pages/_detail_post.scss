@@ -236,31 +236,39 @@
         clear: both;
     }
     /* Six columns side by side */
-    .column {
-        float: left;
-        width: 16.66%;
-        padding: 4px 2px;
-        /* Add a transparency effect for thumnbail images */
-        .demo {
-            opacity: 0.6;
-            max-height: 80px;
-            object-fit: cover;
-            display: block;
+    .slick-slide {
+        &.slick-current {
+            .column {
+                .demo {
+                    opacity: 1;
+                }
+            }
         }
-        .active,
-        .demo:hover {
-            opacity: 1;
+        .column {
+            float: left;
+            width: 16.66%;
+            padding: 4px 2px;
+            /* Add a transparency effect for thumnbail images */
+            .demo {
+                opacity: 0.6;
+                max-height: 100px;
+                object-fit: cover;
+                display: block;
+                transition: all 0.2s ease;
+            }
+            .active,
+            .demo:hover {
+                opacity: 1;
+            }
         }
     }
     /*================DETAIL===============*/
-
-        .slick-prev{
-            left: 5px !important;
-        }
-        .slick-next{
-            right: 5px !important;
-        }
-
+    .slick-prev {
+        left: 5px !important;
+    }
+    .slick-next {
+        right: 5px !important;
+    }
     .b__dt-ct-title {
         font-size: 23px;
         font-weight: bold;
@@ -333,7 +341,7 @@
             .b__ct-contact-btn:nth-child(3) {
                 color: #2c3e50;
             }
-            .b__ct-contact-btn:hover{
+            .b__ct-contact-btn:hover {
                 border-color: #1abc9c;
                 box-shadow: 0 5px 10px 2px #1abc9c33 !important;
             }
@@ -341,10 +349,10 @@
     }
     #contactModal {
         border-radius: 10px;
-        .modal-body{
+        .modal-body {
             padding: 30px 30px 50px;
         }
-        .btn__send__contact{
+        .btn__send__contact {
             box-shadow: 0 5px 10px 2px #3498db59 !important;
             font-weight: bold;
         }
