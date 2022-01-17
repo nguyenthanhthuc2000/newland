@@ -6,9 +6,9 @@
     }
     .tab-content {
         .tab-pane {
-            .card {
+            .card.card-article {
                 border: none;
-                box-shadow: unset;
+                box-shadow: unset !important;
                 background: transparent;
             }
             .card-article {

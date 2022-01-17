@@ -84,16 +84,22 @@ class PostController extends Controller
                 "category_id.required" => "Vui lòng chọn Loại bất động sản",
             ]
         );
+        $dateForCode = new DateTime();
+        $dateCodeStr = $dateForCode->format('dmyH');
+        $private_code = 'PC'.$dateCodeStr;
+        $slug = createSlug($request->title.'-'.$private_code);
 
         $attributes = [
             "form" => $request->form,
             "category_id" => $request->category_id,
+            "private_code" => $private_code,
             "province_id" => $request->province_id,
             "district_id" => $request->district_id,
             "ward_id" => $request->ward_id,
             "street_id" => $request->street_id,
             "address_on_post" => $request->address_on_post,
             "title" => $request->title,
+            "slug" => $slug,
             "sub_title" => $request->sub_title,
             "content" => $request->content,
             "acreage" => $request->acreage,
