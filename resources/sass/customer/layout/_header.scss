@@ -6,7 +6,7 @@ header {
     width: 100%;
     z-index: 1001;
     background: $white;
-    .box__auth{
+    .box__auth {
         display: inherit;
     }
     .navbar {
@@ -53,13 +53,15 @@ header {
             }
         }
         .navbar-collapse {
-            padding-bottom: 30px;
+            .box__auth {
+                padding-bottom: 30px;
+            }
         }
     }
     .box__auth {
         //margin-left: 20px;
     }
-    .account__manage{
+    .account__manage {
         padding-left: 0;
         margin-bottom: 15px;
     }
