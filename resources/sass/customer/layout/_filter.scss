@@ -1,0 +1,111 @@
+.filter {
+    padding: 3px;
+    border-top: 1px solid #ecf0f1;
+    .btn__filter {
+        cursor: pointer;
+        background: none;
+        padding: 5px 15px;
+        border: none;
+    }
+    .btn__search {
+        padding: 7px 10px;
+        border-radius: 25px;
+        border: 1px solid #ecf0f1;
+        font-size: 0.8rem;
+        &:hover {
+            background-color: #2980b9;
+            box-shadow: 0 5px 10px 2px #3498db40 !important;
+            color: #fff !important;
+        }
+    }
+    .filter-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding-left: 0;
+        .filter-item {
+            position: relative;
+            cursor: pointer;
+            min-width: 150px;
+            padding: 5px 10px;
+            .filter-link {
+                font-size: 0.8rem;
+                color: #2c3e50;
+                padding-left:0.2rem;
+            }
+            .list__option {
+                padding: 0.2rem !important;
+                cursor: pointer;
+                border: none !important;
+                &:focus {
+                    outline: none !important;
+                    border-color: unset !important;
+                    box-shadow: unset !important;
+                }
+            }
+            &:not(:last-child){
+                border-right: 1px solid #ecf0f1;
+            }
+        }
+    }
+}
+
+.filter-btn {
+    display: none;
+    position: sticky;
+    right: 5rem;
+    padding: 6px 15px;
+    //border-radius: 25px;
+    //border: 1px solid #bdc3c7;
+    border: none;
+    background: none;
+}
+
+@media only screen and (max-width: 900px){
+
+    .filter__btns{
+        text-align: center;
+        padding-top: 20px;
+        .btn__search{
+            background-color: #2980b9;
+            box-shadow: 0 5px 10px 2px #3498db40 !important;
+            color: #fff !important;
+        }
+    }
+    .filter-btn{
+        display:  block;
+        .close{
+            display: none;
+        }
+    }
+
+    .search__title{
+        text-align: center;
+        padding: 15px 15px 0;
+        text-transform: uppercase;
+    }
+    .filter{
+        display: none;
+        .filter-nav{
+            display: block;
+            height: 100vh;
+            z-index: 99999;
+            .filter-item{
+                .list__option{
+                    padding: 0.8rem 0.85rem !important;
+                    border: 1px solid #ced4da !important;
+                    border-radius: 0.25rem !important;
+                    &:focus {
+                        outline: initial !important;
+                        border-color: initial !important;
+                        box-shadow: initial !important;
+                    }
+                }
+                &:not(:last-child) {
+                    border-right: none;
+                }
+            }
+        }
+    }
+}

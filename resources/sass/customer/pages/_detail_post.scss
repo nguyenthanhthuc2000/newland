@@ -349,6 +349,11 @@
             font-weight: bold;
         }
     }
+    @media only screen and (max-width: 1025px) {
+        .b__ct{
+            display: none;
+        }
+    }
     @media only screen and (max-width: 768px) {
         .mySlides {
             img {

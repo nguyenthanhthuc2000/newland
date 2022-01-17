@@ -15,3 +15,4 @@ require('./component/slick/detail_article');
 require('./component/card_image');
 require('./component/input');
 require('./component/map');
+require('./component/filter');
