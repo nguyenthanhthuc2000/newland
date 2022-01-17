@@ -8,7 +8,6 @@
                 <div class="d-flex">
                     <button class="filter-btn" type="button" >
                         <span class="open"><i class="fas fa-filter"></i></span>
-                        <span class="close"><i class="fas fa-times" style="font-size: 1.4rem;"></i></span>
                     </button> &nbsp;
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -92,62 +91,67 @@
     </div>
 
 
-    <div class="filter">
-        <div class="container">
-            <form action="">
-                <h3 class="search__title d-none">Tìm kiếm</h3>
-                <ul class="filter-nav">
-                    <li class="filter-item">
-                        <a class="filter-link" ><span>Hình thức</span></a>
-                        <select class="form-select list__option" aria-label="Default select example">
-                            <option selected>Tất cả</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </li>
-                    <li class="filter-item">
-                        <a class="filter-link" ><span>Danh mục</span></a>
-                        <select class="form-select list__option" aria-label="Default select example">
-                            <option selected>Tất cả</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </li>
-                    <li class="filter-item">
-                        <a class="filter-link" ><span>Khu vực</span></a>
-                        <select class="form-select list__option" aria-label="Default select example">
-                            <option selected>Tất cả</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </li>
-                    <li class="filter-item">
-                        <a class="filter-link" ><span>Mức giá</span></a>
-                        <select class="form-select list__option" aria-label="Default select example">
-                            <option selected>Tất cả</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </li>
-                    <li class="filter-item">
-                        <a class="filter-link" ><span>Diện tích</span></a>
-                        <select class="form-select list__option" aria-label="Default select example">
-                            <option selected>Tất cả</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </li>
-                    <li class="filter-item filter__btns">
-                        <i class="fal fa-sync btn__filter"></i>
-                        <button class="btn__filter btn__search">Tìm kiếm</button>
-                    </li>
-                </ul>
-            </form>
-        </div>
-    </div>
 </header>
+<div class="filter ">
+    <div class="container">
+        <button class="filter-btn filter-btn-close" type="button" >
+            <span class="close"><i class="fas fa-times" style="font-size: 1.4rem;"></i></span>
+        </button> &nbsp;
+        <form action="">
+            <h3 class="search__title d-none">Tìm kiếm</h3>
+            <ul class="filter-nav">
+                <li class="filter-item">
+                    <a class="filter-link" ><span>Hình thức</span></a>
+                    <select class="form-select list__option" aria-label="Default select example">
+                        <option selected>Tất cả</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </li>
+                <li class="filter-item">
+                    <a class="filter-link" ><span>Danh mục</span></a>
+                    <select class="form-select list__option" aria-label="Default select example">
+                        <option selected>Tất cả</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </li>
+                <li class="filter-item">
+                    <a class="filter-link" ><span>Khu vực</span></a>
+                    <select class="form-select list__option" aria-label="Default select example">
+                        <option selected>Tất cả</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </li>
+                <li class="filter-item">
+                    <a class="filter-link" ><span>Mức giá</span></a>
+                    <select class="form-select list__option" aria-label="Default select example">
+                        <option selected>Tất cả</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </li>
+                <li class="filter-item">
+                    <a class="filter-link" ><span>Diện tích</span></a>
+                    <select class="form-select list__option" aria-label="Default select example">
+                        <option selected>Tất cả</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </li>
+                <li class="filter-item filter__btns">
+                </li>
+            </ul>
+            <div class="filter__btns">
+                <i class="fal fa-sync btn__filter"></i>
+                <button class="btn__filter btn__search">Tìm kiếm</button>
+            </div>
+        </form>
+    </div>
+</div>
