@@ -12,7 +12,11 @@ class PostController extends Controller
 {
 
     public function detail($slug){
-        return view('pages.post.detail_post');
+        $detailArticle = $this->artRepo->getItemsBySlug($slug);
+        $data = [
+            'detailArticle' => $detailArticle,
+        ];
+        return view('pages.post.detail_post', $data);
     }
 
     /**
