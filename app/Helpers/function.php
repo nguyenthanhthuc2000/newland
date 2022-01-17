@@ -184,7 +184,7 @@ function unitPrice($number, $acreage = 1){
 function totalPrice($total_price, $unit_price, $acreage, $type_unit){
     switch($type_unit) {
         case '/ m²':
-
+            return $unit_price*$acreage;
             break;
     }
     return false;

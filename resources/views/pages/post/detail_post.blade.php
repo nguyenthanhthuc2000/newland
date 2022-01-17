@@ -2,7 +2,7 @@
 @section('main')
     <div class="row pt-4 pb-4 detail-post">
         <div class="col-md-1"></div>
-        <div class="col-xl-8 pt-3 box__detail">
+        <div class="col-xl-8 col-12 pt-3 box__detail">
 
             <!-- Container for the image gallery -->
             <div class="container p-0 box__detail-album pb-3">
@@ -125,7 +125,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-2 pt-3">
+        <div class="col-md-2 col-12 pt-3">
             <div class="b__ct">
                 <div class="b__ct-info">
                     <img class="b__ct-info-avt img-fluid" src="{{asset('/images/avatar.jpg')}}" alt="">
@@ -134,7 +134,7 @@
                         <a href="" class="b__ct-info-article ">Xem thêm 13 tin khác</a>
                 </div>
                 <div class="b__ct-contact">
-                    <button class="b__ct-contact-btn b__ct-contact-phone">038 9946 423</button>
+                    <button class="b__ct-contact-btn b__ct-contact-phone" title="Sao chép" id="phone_contact" value="0389946423">038 9946 423</button>
                     <br>
                     <a href="mailto:nguyenthanhthuc@gmail.com" class="b__ct-contact-btn b__ct-contact-mail">Gửi mail</a>
                     <br>
