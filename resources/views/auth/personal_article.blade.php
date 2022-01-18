@@ -34,7 +34,7 @@
                     @foreach ($personalArticle as $i => $art)
                     @php
                         $img_article[] = $art->imagesArticle->toArray();
-                        $img = $img_article[0] ? 'articles/'.$img_article[0][0]['image'] : 'img/no_photo.jpg';
+                        $img = $img_article[0] ? $img_article[0][0]['image'] : 'img/no_photo.jpg';
                     @endphp
                     <tr>
                         <th scope="row">{{ numericalOrder($i) }}</th>
@@ -43,7 +43,7 @@
                             <div class="card card-article">
                                 <div class="row g-0">
                                     <div class="col-md-4 card-img">
-                                        <img src="{{ asset('images/'.$img) }}" class="img-fluid rounded-start" alt="{{ $art->title }}">
+                                        <img src="{{ getUrlImageUpload($img) }}" class="img-fluid rounded-start" alt="{{ $art->title }}">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">

@@ -1,62 +1,26 @@
-.footer{
+.footer {
     position: relative;
     padding: 30px 0 50px;
     background-color: #ecf0f1;
-    .menu__mobile {
-        box-shadow: 0px 4px 10px 2px #95a5a6 !important;
-        width: 100%;
-        margin: auto;
-        color: #fff;
-        position: fixed;
-        bottom: -1px;
-        padding: 12px 5px;
-        background: #fff;
-        z-index: 10001;
-        justify-content: center;
-        .button{
-            display: flex;
-            align-items: center;
-            margin: 0 5px;
-            padding: 10px 10px;
-            border: 1px solid #95a5a6;
-            border-radius: 10px;
-            background: none;
-            i{
-                font-size: 18px;
-            }
-        }
-        .button:nth-child(3){
-            background-color: #1abc9c;
-            color: #fff;
-            i{
-                animation-name: rotate;
-                animation-duration: 0.4s;
-                animation-timing-function: ease-in-out;
-                animation-iteration-count: infinite;
-                animation-direction: alternate;
-                transform: rotate(-50deg);
-            }
-        }
-    }
-    .logo__foter{
-        .logo{
-            #logo-footer{
+    .logo__foter {
+        .logo {
+            #logo-footer {
                 width: 100px;
             }
         }
     }
-    .company__title{
+    .company__title {
         text-transform: uppercase !important;
     }
-    .box__ul{
+    .box__ul {
         padding-left: 0 !important;
     }
-    .box-input-group{
+    .box-input-group {
         position: relative;
-        input{
+        input {
             border-radius: 30px;
         }
-        .input-group-icon{
+        .input-group-icon {
             position: absolute;
             z-index: 9;
             cursor: pointer;
@@ -64,73 +28,72 @@
             top: 29%;
             bottom: 50%;
             transform: translate(-50%, -50%);
-            i{
+            i {
                 padding: 8px;
                 border-radius: 20px;
                 background-color: #3498db;
                 color: #fff;
                 transition: 1s;
-                &:hover{
+                &:hover {
                     transform: rotate(360deg);
                 }
             }
         }
     }
-    .icon__footer{
+    .icon__footer {
         margin-right: 10px;
         font-size: 35px;
     }
-    .title__hotline{
+    .title__hotline {
         color: #7f8c8d;
         font-size: 13px;
     }
-    .content__hotline{
+    .content__hotline {
         font-size: 15px;
     }
-    a{
-        color:#2c3e50;
+    a {
+        color: #2c3e50;
     }
-    ul li{
+    ul li {
         margin-top: 10px;
-        a{
+        a {
             font-size: 14px;
-            &:hover{
+            &:hover {
                 color: #000;
             }
         }
     }
-    .social__network{
+    .social__network {
         display: flex;
-        li{
-        margin-top:6px;
-        a{
-            img{
-                margin-left: -10px;
-                padding: 10px;
-                width: 60px;
-                transition: 1s;
-                &:hover{
-                    transform: rotate(360deg);
+        li {
+            margin-top: 6px;
+            a {
+                img {
+                    margin-left: -10px;
+                    padding: 10px;
+                    width: 60px;
+                    transition: 1s;
+                    &:hover {
+                        transform: rotate(360deg);
+                    }
                 }
             }
         }
     }
-
-    }
-    .footer__bottom{
+    .footer__bottom {
         padding: 5px 0;
         position: absolute;
         bottom: 0;
         left: 0;
         right: 0;
-        p{
+        p {
             padding: 0 0 7px;
         }
     }
-    h5{
+    h5 {
         font-weight: 600;
     }
-    .logan{
+    .logan {
         font-family: Nunito-bi;
         font-size: 16px;
         text-transform: uppercase;
@@ -138,21 +101,32 @@
         text-shadow: 1px 1px 1px #f1c40f;
     }
 }
+
 @-moz-keyframes rotate {
-    50% { -moz-transform: rotate(50deg); }
-    100% { -moz-transform: rotate(-50deg); }
+    50% {
+        -moz-transform: rotate(50deg);
+    }
+    100% {
+        -moz-transform: rotate(-50deg);
+    }
 }
+
 @-webkit-keyframes rotate {
-    50% { -webkit-transform: rotate(-50deg); }
-    100% { -webkit-transform: rotate(50deg); }
+    50% {
+        -webkit-transform: rotate(-50deg);
+    }
+    100% {
+        -webkit-transform: rotate(50deg);
+    }
 }
+
 @keyframes rotate {
     50% {
         -webkit-transform: rotate(50deg);
-        transform:rotate(50deg);
+        transform: rotate(50deg);
     }
     100% {
         -webkit-transform: rotate(-50deg);
-        transform:rotate(-50deg);
+        transform: rotate(-50deg);
     }
 }

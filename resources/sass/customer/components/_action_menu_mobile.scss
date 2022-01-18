@@ -1,0 +1,37 @@
+.menu__mobile {
+    box-shadow: 0px 4px 10px 2px #95a5a6 !important;
+    width: 100%;
+    margin: auto;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 12px 5px;
+    background: #fff;
+    z-index: 10001;
+    justify-content: center;
+    .button {
+        display: flex;
+        align-items: center;
+        margin: 0 5px;
+        padding: 10px 10px;
+        border: 1px solid #95a5a6;
+        border-radius: 10px;
+        background: none;
+        i {
+            font-size: 18px;
+        }
+    }
+    .button:nth-child(3) {
+        background-color: #1abc9c;
+        color: #fff;
+        i {
+            animation-name: rotate;
+            animation-duration: 0.4s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            transform: rotate(-50deg);
+        }
+    }
+}

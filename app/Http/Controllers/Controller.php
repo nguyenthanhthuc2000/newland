@@ -76,4 +76,6 @@ class Controller extends BaseController
         $district_id = $request->_district_id;
         return $this->wardRepo->find($district_id)->streets()->get();
     }
+
+
 }

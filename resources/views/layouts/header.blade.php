@@ -20,8 +20,9 @@
                             Nhà đất bán
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                @foreach ($sell as $item)
+                                    <li><a class="dropdown-item" href="#">{{ $item->name }}</a></li>
+                                @endforeach
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -29,8 +30,9 @@
                             Nhà đất cho thuê
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                @foreach ($lease as $item)
+                                    <li><a class="dropdown-item" href="#">{{ $item->name }}</a></li>
+                                @endforeach
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
