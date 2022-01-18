@@ -181,6 +181,11 @@
             </div>
         </div>
     </div>
-    @include('pages.post.component._action_menu_mobile')
+    @php
+        $data = [
+            'phone' => $detailArticle->phone_contact
+];
+    @endphp
+    @include('pages.post.component._action_menu_mobile',$data)
 @endsection
 
