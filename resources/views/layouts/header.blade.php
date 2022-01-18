@@ -96,8 +96,8 @@
     <div class="container">
         <button class="filter-btn filter-btn-close" type="button" >
             <span class="close"><i class="fas fa-times" style="font-size: 1.4rem;"></i></span>
-        </button> &nbsp;
-        <form action="">
+        </button>
+        <form action="" id="frm-search">
             <h3 class="search__title d-none">Tìm kiếm</h3>
             <ul class="filter-nav">
                 <li class="filter-item">
@@ -144,8 +144,6 @@
                         <option value="2">Two</option>
                         <option value="3">Three</option>
                     </select>
-                </li>
-                <li class="filter-item filter__btns">
                 </li>
             </ul>
             <div class="filter__btns">

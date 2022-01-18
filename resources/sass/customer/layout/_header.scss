@@ -18,7 +18,6 @@ header {
             }
         }
         &-collapse {
-            margin-left: 80px;
             .nav-item {
                 &:not(:last-child) {
                     margin-right: 40px;
@@ -50,11 +49,6 @@ header {
         ul {
             li {
                 padding-top: 20px;
-            }
-        }
-        .navbar-collapse {
-            .box__auth {
-                padding-bottom: 30px;
             }
         }
     }
