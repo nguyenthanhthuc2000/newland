@@ -11,7 +11,7 @@ $("body").click(function () {
          $('.filter').toggleClass('open')
     }
     else{
-       e.stopPropagation();
+//       e.stopPropagation();
     }
 });
 
@@ -24,7 +24,7 @@ $('.navbar-toggler').click(function(e){
         $('.filter-btn').click();
     }
     else{
-        e.stopPropagation();
+//        e.stopPropagation();
     }
 })
 $(".filter-btn").click(function (e) {

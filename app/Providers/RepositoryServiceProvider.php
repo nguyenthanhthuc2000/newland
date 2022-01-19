@@ -49,6 +49,11 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repository\Street\StreetRepositoryInterface::class,
             \App\Repository\Street\StreetRepository::class
         );
+        $this->app->singleton(
+            \App\Repository\RequestContact\RequestContactRepositoryInterface::class,
+            \App\Repository\RequestContact\RequestContactRepository::class
+        );
+
 
     }
 

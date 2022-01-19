@@ -153,19 +153,22 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Yêu cầu liên hệ</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="">
+                        <form action="" id="frm-contact">
+                            <input type="hidden" name="" id="article_id" value="{{ $detailArticle->id }}">
                             <p><strong>Thông tin liên hệ</strong></p>
                             <div class="mb-3">
-                                <input type="text" class="form-control" id="name" placeholder="Họ và tên *">
+                                <input type="text" class="form-control" id="name" maxlength="32" placeholder="Họ và tên *">
+                                <span class="text-danger d-none name-error">Vui lòng nhập tên</span>
                             </div>
                             <div class="mb-3">
-                                <input type="number" class="form-control" id="phone" placeholder="Số điện thoại *">
+                                <input type="number" class="form-control" id="phone" maxlength="12" placeholder="Số điện thoại *">
+                                <span class="text-danger d-none phone-error">Vui lòng nhập số điện thoại</span>
                             </div>
                             <div class="mb-3">
-                                <input type="email" class="form-control" id="email" placeholder="Email *">
+                                <input type="email" class="form-control" id="email" maxlength="65" placeholder="Email *">
                             </div>
                             <div class="mb-3">
                                 <label for="content" class="form-label"><strong>Nội dung</strong></label>
@@ -184,8 +187,8 @@
     @php
         $data = [
             'phone' => $detailArticle->phone_contact
-];
+        ];
     @endphp
-    @include('pages.post.component._action_menu_mobile',$data)
+    @include('pages.post.component._action_menu_mobile', $data)
 @endsection
 
