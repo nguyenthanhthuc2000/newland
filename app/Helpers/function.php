@@ -4,6 +4,7 @@ function numericalOrder($index){
     $currPage = (isset($_REQUEST['page']) && $_REQUEST['page']) ?  $_REQUEST['page'] : 1;
     return ($index + 1) * $currPage;
 }
+
 /**
  * Chuyển đổi chuỗi kí tự thành dạng slug dùng cho việc tạo friendly url.
  * @access    public

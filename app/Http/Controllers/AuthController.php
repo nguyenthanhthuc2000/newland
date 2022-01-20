@@ -251,7 +251,7 @@ class AuthController extends Controller
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function getLogin(){
+    public function getLogin(Request $request){
         return view('auth.login');
     }
 
@@ -265,6 +265,20 @@ class AuthController extends Controller
         Auth::logout();
         return redirect()->route('auth.get.login');
 
+    }
+
+    public function getIp(){
+        foreach (array('HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR') as $key){
+            if (array_key_exists($key, $_SERVER) === true){
+                foreach (explode(',', $_SERVER[$key]) as $ip){
+                    $ip = trim($ip); // just to be safe
+                    if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) !== false){
+                        return $ip;
+                    }
+                }
+            }
+        }
+        return request()->ip(); // it will return server ip when no client ip found
     }
 
     /**
@@ -285,6 +299,11 @@ class AuthController extends Controller
         );
 
         if (Auth::attempt(['phone' => $request->phone, 'password' => $request->password])) {
+            $ip = $this->getIp();
+            if($ip){
+                $array = ['last_ip_login' => $ip];
+                $this->userRepo->update(Auth::id(), $array);
+            }
             return redirect()->route('home.index');
         }
         else{
