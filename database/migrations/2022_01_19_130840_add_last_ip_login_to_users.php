@@ -14,7 +14,7 @@ class AddLastIpLoginToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('last_ip_login', 10)->nullable()->after('surplus');
+            $table->string('last_ip_login', 15)->nullable()->after('surplus');
 
         });
     }
