@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Ward::class, '_district_id', 'district_id');
     }
+
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
 }

@@ -11,4 +11,8 @@ class Category extends Model
     protected $table = 'category';
     protected $guarded = [];
     public $timestamps = true;
+
+    public function articles(){
+        return $this->hasMany(Article::class);
+    }
 }

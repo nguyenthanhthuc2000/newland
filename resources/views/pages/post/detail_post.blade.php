@@ -60,8 +60,8 @@
                     </tr>
                     <tr>
                         <td><strong>{{ price_project($detailArticle->price, $detailArticle->acreage, $detailArticle->unit)['total_price'] }} VNĐ</strong></td>
-                        <td><strong>{{ $detailArticle->facade ? 'Mặt tiền: '.$detailArticle->facade.' m' : '' }} </strong></td>
-                        <td><strong>{{ $detailArticle->acreage }} m</strong></td>
+                        <td><strong>{{ $detailArticle->facade ? 'Mặt tiền: '.$detailArticle->facade.' m' : '' }}</strong></td>
+                        <td><strong>{{ $detailArticle->acreage }} m²</strong></td>
                         <td class="text-end">{{ $detailArticle->bedroom ? $detailArticle->bedroom : '0' }} phòng ngủ</td>
                     </tr>
                     <tr>
@@ -75,42 +75,38 @@
                 <div class="b__dt-ct-desc">
                     <h5 style="font-weight: bold">Thông tin chi tiết</h5>
                     <div class="box__dt-ct-desc-text">
-                        <p>+ Diện tích: 112m2. Mặt tiền 7,5m</p>
-                        <p>+ Tòa nhà căn hộ dịch vụ 7 tầng thang máy, tổng 23 phòng, full nội thất.</p>
-                        <p>Tầng 1: Nhà xe, thang máy, thang bộ, 01 phòng khép kín.</p>
-                        <p>Tầng 7: 1 phòng khép kín + 1 Phòng to trong đó có 2 ngủ và 1 khách + sân phơi</p>
-                        <p>+ Dòng tiền ổn định, doanh thu 120tr/tháng</p>
+                        {!! $detailArticle->content !!}
                     </div>
                 </div>
                 <br>
                 <div class="b__dt-ct-section-body">
                     <div class="b__dt-ct-section-body-list">
                         <span class="title">Loại tin đăng:</span>
-                        <span class="value">Bán nhà riêng</span>
+                        <span class="value">{{ $detailArticle->category->name }}</span>
                     </div>
                     <div class="b__dt-ct-section-body-list">
                         <span class="title">Địa chỉ:</span>
-                        <span class="value">Phố Khương Hạ, Phường Khương Đình, Thanh Xuân, Hà Nội</span>
+                        <span class="value">{{ $detailArticle->address_on_post }}</span>
                     </div>
                     <div class="b__dt-ct-section-body-list">
                         <span class="title">Mặt tiền:</span>
-                        <span class="value">7.5 m</span>
+                        <span class="value">{{ $detailArticle->facade ? 'Mặt tiền: '.$detailArticle->facade.' m' : '' }}</span>
                     </div>
                     <div class="b__dt-ct-section-body-list">
                         <span class="title">Số tầng:</span>
-                        <span class="value">7 tầng</span>
+                        <span class="value">{{ $detailArticle->floor ? $detailArticle->floor.' tầng' : '0' }}</span>
                     </div>
                     <div class="b__dt-ct-section-body-list">
                         <span class="title">Số phòng ngủ:</span>
-                        <span class="value">23 phòng</span>
+                        <span class="value">{{ $detailArticle->bedroom ? $detailArticle->bedroom.' phòng ngủ' : '0' }}</span>
                     </div>
                     <div class="b__dt-ct-section-body-list">
                         <span class="title">Nội thất:</span>
-                        <span class="value">Nội thất đầy đủ</span>
+                        <span class="value">{{ $detailArticle->furniture }}</span>
                     </div>
                     <div class="b__dt-ct-section-body-list">
                         <span class="title">Pháp lý:</span>
-                        <span class="value">Sổ đỏ/ Sổ hồng</span>
+                        <span class="value">{{ $detailArticle->legal_documents }}</span>
                     </div>
                 </div>
                 <div class="b__dt-ct-desc mt-3">
@@ -128,10 +124,10 @@
         <div class="col-md-2 col-12 pt-3">
             <div class="b__ct">
                 <div class="b__ct-info">
-                    <img class="b__ct-info-avt img-fluid" src="{{asset('/images/avatar.jpg')}}" alt="">
+                    <img class="b__ct-info-avt img-fluid" src="{{asset('/images/non_avatar.jpg')}}" alt="">
 
-                        <p class="b__ct-info-name pt-3 mb-1"><strong>Nguyễn Thành Thức</strong></p>
-                        <a href="" class="b__ct-info-article ">Xem thêm 13 tin khác</a>
+                        <p class="b__ct-info-name pt-3 mb-1"><strong>{{ ($detailArticle->user->name) }}</strong></p>
+                        <a href="" class="b__ct-info-article ">Xem thêm {{ $countArticleOfUser }} tin khác</a>
                 </div>
                 <div class="b__ct-contact">
                     <button class="b__ct-contact-btn b__ct-contact-phone" title="Sao chép" id="phone_contact" value="0389946423">

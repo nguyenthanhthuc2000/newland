@@ -11,13 +11,6 @@ use DateTime;
 class PostController extends Controller
 {
 
-    public function detail($slug){
-        $detailArticle = $this->artRepo->getItemsBySlug($slug);
-        $data = [
-            'detailArticle' => $detailArticle,
-        ];
-        return view('pages.post.detail_post', $data);
-    }
 
     /**
      * Display a listing.
@@ -160,6 +153,17 @@ class PostController extends Controller
     public function show($id)
     {
         //
+    }
+
+    public function detail($slug){
+        $detailArticle = $this->artRepo->getItemsBySlug($slug);
+        $userId = $detailArticle->user->id;
+        $countArticleOfUser = $this->artRepo->getByAttributesAll(["user_id" => $userId])->count();
+        $data = [
+            'detailArticle' => $detailArticle,
+            'countArticleOfUser' => $countArticleOfUser
+        ];
+        return view('pages.post.detail_post', $data);
     }
 
     /**

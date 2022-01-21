@@ -21,6 +21,7 @@ li:not(.ck-content li) {
 }
 
 .btn {
+    transition: all 0.3s ease-in-out;
     &:focus {
         box-shadow: unset;
     }
