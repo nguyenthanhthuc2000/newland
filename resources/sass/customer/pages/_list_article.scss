@@ -1,0 +1,42 @@
+.l__a {
+    .l__a-article {
+        cursor: pointer;
+        .l__a-article-img {
+            .img {
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+        }
+        .l__a-article-content {
+
+            border: 1px solid #ecf0f1;
+            &:hover{
+                box-shadow: 3px 3px 13px 3px #95a5a617;
+            }
+            a{
+                display: block;
+                color: #2c3e50;
+                .content-title {
+                    font-size: 1rem;
+                    text-transform: uppercase;
+                    font-weight: bold;
+                }
+                .content-price {
+
+                }
+                .content-desc {
+
+                }
+            }
+        }
+        .content-footer {
+            .card-time {
+
+            }
+            .card-heart{
+                font-size: 30px;
+            }
+        }
+    }
+}

@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Customer\PostController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Customer\RequestContactController;
 /*
 |--------------------------------------------------------------------------
@@ -54,3 +55,7 @@ Route::get('/{slug}', [PostController::class, 'detail'])->name('post.detail');
 
 //REQUEST CONTACT
 Route::post('request-contact', [RequestContactController::class, 'store'])->name('request.contact.store');
+
+
+//LIST ARTICLE
+Route::get('danh-muc/{slugs}', [CategoryController::class, 'viewCategory'])->name('category.index');
