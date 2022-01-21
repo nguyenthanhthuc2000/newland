@@ -169,23 +169,50 @@ if (!function_exists('currency_format')) {
 }
 
 
-function unitPrice($number, $acreage = 1){
+function unit_price($price, $acreage = 1){
     // echo pow(1000, floor(log($number, 1000))).',';
-    switch ($number) {
-        case $number < 10000:
-            return round((float)($number/$acreage), 2).' nghìn';
+    switch ($price) {
+        case $price < 10000:
+            return round((float)($price/$acreage), 2).' nghìn';
             break;
         default:
-            return convert_number_to_words(round((float)($number/$acreage), -3));
+            return convert_number_to_words(round((float)($price/$acreage), -3));
+            break;
+    }
+}
+function total_price($price, $acreage){
+    switch ($price) {
+        case $price < 10000:
+            return round((float)($price*$acreage), 2).' nghìn';
+            break;
+        default:
+            return convert_number_to_words(round((float)($price*$acreage), -3));
             break;
     }
 }
 
-function totalPrice($total_price, $unit_price, $acreage, $type_unit){
+function price_project($price, $acreage, $type_unit){
+    $price_result = [
+        'total_price' => null,
+        'unit_price' => null
+    ];
     switch($type_unit) {
         case '/ m²':
-            return $unit_price*$acreage;
+            $price_result = [
+                'total_price' => total_price($price, $acreage),
+                'unit_price' => $price
+            ];
+            return $price_result;
+            break;
+        case 'VNĐ':
+            $price_result = [
+                'total_price' => $price,
+                'unit_price' => unit_price($price, $acreage)
+            ];
+            return $price_result;
+            break;
+        default:
+            null;
             break;
     }
-    return false;
 }

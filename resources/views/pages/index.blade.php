@@ -84,7 +84,7 @@
                         </a>
                         <div class="card-body card__article__body position-relative">
                             <h5 class="text-split-2 card__title"><a href="{{ $article->slug }}" class="stretched-link card-title"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>{{ $article->title }}</a></h5>
-                            <p class="card-text mb-0 text-split-1 card__price"><strong>{{ $article->price.' '.$article->unit.' - '.$article->acreage.' m²' }}</strong></p>
+                            <p class="card-text mb-0 text-split-1 card__price"><strong>{{ price_project($article->price, $article->acreage, $article->unit)['total_price'].' - '.$article->acreage.' m²' }}</strong></p>
                             <p class="mb-0 text-split-1 card__address">{{ $article->address_on_post }}</p>
                         </div>
                         <div class="card__footer d-flex p-3 pt-0 justify-content-between align-items-center">

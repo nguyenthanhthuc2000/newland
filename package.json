@@ -23,6 +23,8 @@
         "sass-loader": "^11.0.1"
     },
     "dependencies": {
+        "@ckeditor/ckeditor5-build-classic": "^31.1.0",
+        "ckeditor4": "^4.17.1",
         "jquery": "^3.6.0",
         "jquery-validate": "^2.0.0",
         "slick-carousel": "^1.8.1",

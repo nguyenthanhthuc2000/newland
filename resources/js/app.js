@@ -11,6 +11,7 @@ require('./ajax/auth');
     ===================*/
 require('./component/slick/article');
 require('./component/slick/detail_article');
+require('./component/ckeditor/create_article');
 // require('./component/data_list');
 require('./component/card_image');
 require('./component/input');

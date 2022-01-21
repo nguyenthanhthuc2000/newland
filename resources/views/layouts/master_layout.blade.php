@@ -22,7 +22,6 @@
 
     <!-- script -->
     @include('layouts.script')
-    <!-- end script -->
 </body>
 
 </html>

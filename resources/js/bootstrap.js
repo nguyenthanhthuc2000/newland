@@ -1,16 +1,18 @@
 import swal from 'sweetalert2';
-// import validation form 'jquery-validate';
+require('@ckeditor/ckeditor5-build-classic/build/ckeditor.js');
 
 window._ = require('lodash');
 window.$ = require('jquery');
 window.slick = require('slick-carousel');
-
 window.Swal = swal;
 
 import "bootstrap";
 try {
     require('bootstrap');
-} catch (e) {}
+    // window.CK = require('@ckeditor/ckeditor5-build-classic');
+} catch (e) {
+    console.error(e);
+}
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

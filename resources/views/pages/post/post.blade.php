@@ -124,7 +124,7 @@
                 <div class="mb-3">
                     <label for="content" class="form-label">Mô tả chi tiết <span class="text-required">*</span></label>
                     <div class="form-input">
-                        <textarea class="form-control" aria-describedby="contentHelp"
+                        <textarea class="form-control ck-editor" aria-describedby="contentHelp"
                                 placeholder="Nhập mô tả chung về bất động sản của bạn. Ví dụ: Khu nhà có vị trí thuận lợi, gần công viên, gần trường học,..."
                                 name="content" rows="5"></textarea>
                     </div>
