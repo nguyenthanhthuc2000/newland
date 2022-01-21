@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Customer\PostController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Customer\RequestContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,6 +51,11 @@ Route::post('fetchCategory',  [PostController::class, 'getCategory'])->name('get
 // ARTICLE
 Route::get('dang-tin', [PostController::class, 'index'])->name('post.index');
 Route::post('dang-tin', [PostController::class, 'store'])->name('post.store');
-
-//ARTICLE
 Route::get('/{slug}', [PostController::class, 'detail'])->name('post.detail');
+
+//REQUEST CONTACT
+Route::post('request-contact', [RequestContactController::class, 'store'])->name('request.contact.store');
+
+
+//LIST ARTICLE
+Route::get('danh-muc/{slugs}', [CategoryController::class, 'viewCategory'])->name('category.index');
