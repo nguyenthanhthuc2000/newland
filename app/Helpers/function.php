@@ -184,7 +184,7 @@ function unit_price($price, $acreage = 1){
 function total_price($price, $acreage){
     switch ($price) {
         case $price < 10000:
-            return round((float)($price*$acreage), 2).' nghìn';
+            return number_format(round((float)($price*$acreage), 2), 0, ",", ".").' nghìn';
             break;
         default:
             return convert_number_to_words(round((float)($price*$acreage), -3));
@@ -201,13 +201,13 @@ function price_project($price, $acreage, $type_unit){
         case '/ m²':
             $price_result = [
                 'total_price' => total_price($price, $acreage),
-                'unit_price' => $price
+                'unit_price' => number_format($price, 0, ",", ".").' nghìn'
             ];
             return $price_result;
             break;
         case 'VNĐ':
             $price_result = [
-                'total_price' => $price,
+                'total_price' =>  number_format($price, 0, ",", ".").' nghìn',
                 'unit_price' => unit_price($price, $acreage)
             ];
             return $price_result;
