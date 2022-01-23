@@ -59,13 +59,13 @@
                         <td class="text-end">Phòng</td>
                     </tr>
                     <tr>
-                        <td><strong>{{ price_project($detailArticle->price, $detailArticle->acreage, $detailArticle->unit)['total_price'] }} VNĐ</strong></td>
+{{--                        <td><strong>{{ price_project($detailArticle->price, $detailArticle->acreage, $detailArticle->unit)['total_price'] }} VNĐ</strong></td>--}}
                         <td><strong>{{ $detailArticle->facade ? 'Mặt tiền: '.$detailArticle->facade.' m' : '' }}</strong></td>
                         <td><strong>{{ $detailArticle->acreage }} m²</strong></td>
                         <td class="text-end">{{ $detailArticle->bedroom ? $detailArticle->bedroom : '0' }} phòng ngủ</td>
                     </tr>
                     <tr>
-                        <td><span>~ {{ price_project($detailArticle->price, $detailArticle->acreage, $detailArticle->unit)['unit_price'] }} / m²</span></td>
+{{--                        <td><span>~ {{ price_project($detailArticle->price, $detailArticle->acreage, $detailArticle->unit)['unit_price'] }} / m²</span></td>--}}
                         <td><span>{{ $detailArticle->way ? 'Hẻm: '.$detailArticle->way.' m' : '' }}</span></td>
                         <td></td>
                         <td class="text-end">{{ $detailArticle->toilet ? $detailArticle->toilet : '0' }} toilet</td>

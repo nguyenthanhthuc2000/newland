@@ -1,16 +1,25 @@
 .l__a {
     .l__a-article {
+        .content-title-moblie{
+            display: none;
+        }
         cursor: pointer;
         .l__a-article-img {
+            overflow: hidden;
             .img {
+                transition: 0.4s;
                 height: 100%;
                 object-fit: cover;
                 display: block;
             }
         }
         .l__a-article-content {
-
+            padding-bottom: 5px !important;
+            padding-left: 5px !important;
             border: 1px solid #ecf0f1;
+            border-radius: 10px;
+            border-top: none;
+            border-left: none;
             &:hover{
                 box-shadow: 3px 3px 13px 3px #95a5a617;
             }
@@ -18,25 +27,68 @@
                 display: block;
                 color: #2c3e50;
                 .content-title {
-                    font-size: 1rem;
+                    font-size: 0.9rem;
                     text-transform: uppercase;
                     font-weight: bold;
+                    color: #2980b9;
                 }
                 .content-price {
 
                 }
                 .content-desc {
-
+                    color: #7f8c8d;
+                    font-size: 0.9rem;
                 }
             }
         }
         .content-footer {
+            color: #7f8c8d;
             .card-time {
-
+                font-size: 0.9rem;
             }
             .card-heart{
                 font-size: 30px;
             }
+        }
+    }
+}
+@media only screen and (max-width: 768px) {
+    .l__a {
+        .l__a-article {
+            .content-title-moblie{
+                display: block;
+            }
+            .l__a-article-img {
+                .img {
+                    height: 150px;
+                }
+            }
+            .l__a-article-content {
+                border: none !important;
+                a{
+                    .content-title {
+                        display: none;
+                        font-size: 0.8rem;
+                    }
+                    .content-price {
+                        strong {
+                            display: grid;
+                        }
+                    }
+                    .content-desc {
+                        font-size: 0.8rem;
+                    }
+                }
+                .content-footer {
+                    .card-time {
+                        font-size: 0.8rem;
+                    }
+                    .card-heart{
+                        font-size: 20px;
+                    }
+                }
+            }
+
         }
     }
 }
