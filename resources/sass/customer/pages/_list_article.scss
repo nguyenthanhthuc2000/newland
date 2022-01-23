@@ -11,6 +11,7 @@
                 height: 100%;
                 object-fit: cover;
                 display: block;
+                border-radius: 10px;
             }
         }
         .l__a-article-content {
@@ -55,9 +56,18 @@
 @media only screen and (max-width: 768px) {
     .l__a {
         .l__a-article {
+            .border-bt{
+                height: 1px;
+                border-bottom: 1px solid #ecf0f1;
+                padding-bottom: 15px;
+                width: 94%;
+                margin: auto;
+            }
             .content-title-moblie{
                 h5{
-                    font-size: 1rem;
+                    text-transform: uppercase;
+                    font-size: 0.9rem;
+                    font-weight: bold;
                 }
                 display: block;
             }
