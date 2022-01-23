@@ -34,6 +34,14 @@ textarea {
     display: -webkit-box;
     -webkit-line-clamp:3;
 }
+.text-split-4{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp:4;
+}
 .text-split-1{
     overflow: hidden;
     text-overflow: ellipsis;
