@@ -7,6 +7,10 @@
         @include("layouts.header")
     <!-- end header -->
 
+     <!-- filter -->
+     @include("layouts.filter")
+     <!-- end filter -->
+
     <!-- main -->
     <main>
         <div class="container">

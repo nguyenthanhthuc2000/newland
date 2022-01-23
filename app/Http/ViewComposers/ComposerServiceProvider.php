@@ -22,7 +22,7 @@ class ComposerServiceProvider extends ServiceProvider
         // );
 
         // Using Closure based composers...
-        View::composer('layouts.header', function ($view) {
+        View::composer(['layouts.header', 'layouts.filter'], function ($view) {
             $data = [
                 'sell' => DB::table('category')->where('type', 0)->get(),
                 'lease' => DB::table('category')->where('type', 1)->get()
