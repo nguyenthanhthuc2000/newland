@@ -5,8 +5,9 @@
         <p>Hiện có 27,793 bất động sản.</p>
         <div class="l__a">
             <div class="l__a-article row mb-3">
-                <a href="" class="content-title-moblie text-split-2 mb-2">
-                  </i><i class="fas fa-star"></i><i class="fas fa-star"></i> &nbsp; Trực tiếp từ chủ đầu tư HANCO3 BRG ( không qua trung gian). Duy nhất 1 cơ hội cuối cùng a trung gian). Duy nhất 1 cơ hội cuối cùng
+                <a href="" class="content-title-moblie ">
+                    <h5 class="text-split-2 mb-2"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> &nbsp;Trực tiếp từ chủ đầu tư HANCO3 BRG ( không qua trung gian). Duy nhất 1 cơ hội cuối cùng a trung gian). Duy nhất 1 cơ hội cuối cùng
+                    </h5>
                 </a>
                 <a class="l__a-article-img col-md-4 col-6">
                     <img class="w-100 img-fluid img" src="{{asset('uploads/article/1.jpg')}}" alt="">
@@ -24,8 +25,9 @@
                 </div>
             </div>
             <div class="l__a-article row mb-3">
-                <a href="" class="content-title-moblie text-split-2 mb-2">
-                    </i><i class="fas fa-star"></i><i class="fas fa-star"></i> &nbsp; Trực tiếp từ chủ đầu tư HANCO3 BRG ( không qua trung gian). Duy nhất 1 cơ hội cuối cùng a trung gian). Duy nhất 1 cơ hội cuối cùng
+                <a href="" class="content-title-moblie ">
+                    <h5 class="text-split-2 mb-2"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> &nbsp;Trực tiếp từ chủ đầu tư HANCO3 BRG ( không qua trung gian). Duy nhất 1 cơ hội cuối cùng a trung gian). Duy nhất 1 cơ hội cuối cùng
+                    </h5>
                 </a>
                 <a class="l__a-article-img col-md-4 col-6">
                     <img class="w-100 img-fluid img" src="{{asset('uploads/article/1.jpg')}}" alt="">
@@ -43,8 +45,9 @@
                 </div>
             </div>
             <div class="l__a-article row mb-3">
-                <a href="" class="content-title-moblie text-split-2 mb-2">
-                    </i><i class="fas fa-star"></i><i class="fas fa-star"></i> &nbsp; Trực tiếp từ chủ đầu tư HANCO3 BRG ( không qua trung gian). Duy nhất 1 cơ hội cuối cùng a trung gian). Duy nhất 1 cơ hội cuối cùng
+                <a href="" class="content-title-moblie ">
+                    <h5 class="text-split-2 mb-2"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> &nbsp;Trực tiếp từ chủ đầu tư HANCO3 BRG ( không qua trung gian). Duy nhất 1 cơ hội cuối cùng a trung gian). Duy nhất 1 cơ hội cuối cùng
+                    </h5>
                 </a>
                 <a class="l__a-article-img col-md-4 col-6">
                     <img class="w-100 img-fluid img" src="{{asset('uploads/article/1.jpg')}}" alt="">
@@ -62,8 +65,9 @@
                 </div>
             </div>
             <div class="l__a-article row mb-3">
-                <a href="" class="content-title-moblie text-split-2 mb-2">
-                    </i><i class="fas fa-star"></i><i class="fas fa-star"></i> &nbsp; Trực tiếp từ chủ đầu tư HANCO3 BRG ( không qua trung gian). Duy nhất 1 cơ hội cuối cùng a trung gian). Duy nhất 1 cơ hội cuối cùng
+                <a href="" class="content-title-moblie ">
+                    <h5 class="text-split-2 mb-2"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> &nbsp;Trực tiếp từ chủ đầu tư HANCO3 BRG ( không qua trung gian). Duy nhất 1 cơ hội cuối cùng a trung gian). Duy nhất 1 cơ hội cuối cùng
+                    </h5>
                 </a>
                 <a class="l__a-article-img col-md-4 col-6">
                     <img class="w-100 img-fluid img" src="{{asset('uploads/article/1.jpg')}}" alt="">
