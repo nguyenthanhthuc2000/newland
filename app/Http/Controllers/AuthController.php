@@ -227,16 +227,6 @@ class AuthController extends Controller
         }
     }
 
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function info(){
-        $data = [
-            'province' => Controller::getProvince(),
-            'info' => $this->userRepo->find(Auth::id())
-        ];
-        return view('auth.info', $data);
-    }
 
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
@@ -383,11 +373,4 @@ class AuthController extends Controller
         }
     }
 
-    public function personalArticle() {
-        $personalArticle = $this->artRepo->getByAttributes(['user_id' => Auth::id()]);
-        $data = [
-            'personalArticle' => $personalArticle
-        ];
-        return view('auth.personal_article', $data);
-    }
 }

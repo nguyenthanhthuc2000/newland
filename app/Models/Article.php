@@ -24,4 +24,13 @@ class Article extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+
+    public function province(){
+        return $this->belongsTo(Province::class);
+    }
+
+    public function district(){
+        return $this->belongsTo(District::class);
+    }
 }

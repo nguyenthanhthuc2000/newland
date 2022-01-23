@@ -83,13 +83,11 @@
                             <img src="{{ getUrlImageUpload($img) }}" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body card__article__body position-relative">
-                            <h5 class="text-split-2 card__title"><a href="{{ $article->slug }}" class="stretched-link card-title"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>{{ $article->title }}</a></h5>
+                            <h5 class="text-split-2 card__title"><a href="{{ route('post.detail',$article->slug) }}" class="stretched-link card-title"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>{{ $article->title }}</a></h5>
                             <p class="card-text mb-0 text-split-1 card__price">
                                 <strong>
                                     {{
-                                        price_project($article->price, $article->acreage, $article->unit) ?
-                                            price_project($article->price, $article->acreage, $article->unit)['total_price'].' - '.$article->acreage.' m²' :
-                                                'Giá thỏa thuận'
+                                        price_project($article->price, $article->acreage, $article->unit)['total_price'].' - '.$article->acreage .' m²'
                                     }}
                                 </strong>
                             </p>

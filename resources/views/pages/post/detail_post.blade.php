@@ -62,9 +62,7 @@
                         <td>
                             <strong>
                                 {{
-                                    price_project($detailArticle->price, $detailArticle->acreage, $detailArticle->unit) ?
-                                        price_project($detailArticle->price, $detailArticle->acreage, $detailArticle->unit)['total_price'].' VNĐ' :
-                                            'Giá thỏa thuận'
+                                        price_project($detailArticle->price, $detailArticle->acreage, $detailArticle->unit)['total_price']
                                 }}
                             </strong>
                         </td>
@@ -76,9 +74,7 @@
                         <td>
                             <span>
                                 {{
-                                    price_project($detailArticle->price, $detailArticle->acreage, $detailArticle->unit) ?
-                                        '~ '.price_project($detailArticle->price, $detailArticle->acreage, $detailArticle->unit)['unit_price'].'/ m²' :
-                                            ''
+                                    price_project($detailArticle->price, $detailArticle->acreage, $detailArticle->unit)['unit_price']
                                 }}
                             </span>
                         </td>
@@ -143,7 +139,7 @@
                     <img class="b__ct-info-avt img-fluid" src="{{asset('/images/non_avatar.jpg')}}" alt="">
 
                         <p class="b__ct-info-name pt-3 mb-1"><strong>{{ ($detailArticle->user->name) }}</strong></p>
-                        <a href="" class="b__ct-info-article ">Xem thêm {{ $countArticleOfUser }} tin khác</a>
+                        <a href="{{ route('article.SameEntrant', $detailArticle->user->id) }}" class="b__ct-info-article ">Xem thêm {{ $countArticleOfUser }} tin khác</a>
                 </div>
                 <div class="b__ct-contact">
                     <button class="b__ct-contact-btn b__ct-contact-phone" title="Sao chép" id="phone_contact" value="0389946423">

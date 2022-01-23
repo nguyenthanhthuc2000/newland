@@ -29,4 +29,9 @@ class Province extends Model
     {
         return $this->hasMany(Street::class, '_province_id');
     }
+
+    public function articles()
+    {
+        return $this->hasMany(Article::class, 'province_id');
+    }
 }

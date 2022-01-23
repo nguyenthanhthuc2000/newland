@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\Customer\PostController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
@@ -32,8 +35,6 @@ Route::get('/facebook/callback', [AuthController::class, 'callbackFacebook'])->n
 
 Route::get('dang-nhap-google',  [AuthController::class, 'loginGoogle'])->name('auth.change.password');
 Route::get('doi-mat-khau',  [AuthController::class, 'changePassword'])->name('auth.change.password');
-Route::get('thong-tin-ca-nhan',  [AuthController::class, 'info'])->name('auth.info');
-Route::get('bai-viet-ca-nhan',  [AuthController::class, 'personalArticle'])->name('auth.article');
 Route::get('dang-ki',  [AuthController::class, 'getRegister'])->name('auth.get.register');
 Route::get('dang-nhap',  [AuthController::class, 'getLogin'])->name('auth.get.login');
 Route::get('dang-xuat',  [AuthController::class, 'getLogout'])->name('auth.get.logout');
@@ -41,6 +42,10 @@ Route::post('register',  [AuthController::class, 'postRegister'])->name('auth.po
 Route::post('post-login',  [AuthController::class, 'postLogin'])->name('auth.post.login');
 Route::post('post-update',  [AuthController::class, 'postUpdate'])->name('auth.post.update');
 Route::post('update-password',  [AuthController::class, 'updatePassword'])->name('auth.update.password');
+
+// USER
+Route::get('thong-tin-ca-nhan',  [UserController::class, 'info'])->name('auth.info');
+Route::get('bai-viet-ca-nhan',  [UserController::class, 'personalArticle'])->name('auth.article');
 
 // AJAX
 Route::post('fetchDistrictList',  [Controller::class, 'getDistrict'])->name('get.districts');
@@ -51,7 +56,7 @@ Route::post('fetchCategory',  [PostController::class, 'getCategory'])->name('get
 // ARTICLE
 Route::get('dang-tin', [PostController::class, 'index'])->name('post.index');
 Route::post('dang-tin', [PostController::class, 'store'])->name('post.store');
-Route::get('/{slug}', [PostController::class, 'detail'])->name('post.detail');
+Route::get('tin-dang/{slug}', [PostController::class, 'detail'])->name('post.detail');
 
 //REQUEST CONTACT
 Route::post('request-contact', [RequestContactController::class, 'store'])->name('request.contact.store');
@@ -59,3 +64,8 @@ Route::post('request-contact', [RequestContactController::class, 'store'])->name
 
 //LIST ARTICLE
 Route::get('danh-muc/{slugs}', [CategoryController::class, 'viewCategory'])->name('category.index');
+
+Route::prefix('tim-kiem')->group(function () {
+    Route::get('/theo-gia', [ArticleController::class, 'searchByPrice'])->name('article.search');
+    Route::get('/bai-viet-cung-nguoi-dang-us{id}', [UserController::class, 'articlesSameEntrant'])->name('article.SameEntrant');
+});

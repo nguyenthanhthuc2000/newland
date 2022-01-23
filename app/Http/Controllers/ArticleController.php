@@ -8,14 +8,10 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    protected $userRepo;
-    protected $articleRepo;
+    public function searchByPrice(Request $request)
+    {
+        $from = convert_words_to_numbers($request->tu);
+        $to = convert_words_to_numbers($request->den);
 
-    public function __construct(
-        UserRepositoryInterface $userRepo,
-        ArticleRepositoryInterface $articleRepo
-    ){
-        $this->userRepo = $userRepo;
-        $this->articleRepo = $articleRepo;
     }
 }

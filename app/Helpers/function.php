@@ -155,6 +155,25 @@ function convert_number_to_words($number) {
     return $string;
 }
 
+function convert_words_to_numbers($words){
+    $dictionary = [
+        'nghin'            => 1000,
+        'trieu'            => 1000000,
+        'ty'               => 1000000000,
+    ];
+    $words = strtolower($words);
+
+    $arr = explode(' ', $words);
+    $number = 0;
+    foreach($arr as $v){
+        if (!is_numeric($v)) {
+            $number *= isset($dictionary[$v]) ? (int)$dictionary[$v] : 1;
+        }
+        $number += (int)$v;
+    }
+    return $number;
+}
+
 /**
  *
  * @access    public
@@ -174,10 +193,10 @@ function unit_price($price, $acreage = 1){
     // echo pow(1000, floor(log($number, 1000))).',';
     switch ($price) {
         case $price < 10000:
-            return round((float)($price/$acreage), 2).' nghìn';
+            return '~ '.number_format(round((float)($price/$acreage), 2), 0, ",", ".").' nghìn';
             break;
         default:
-            return convert_number_to_words(round((float)($price/$acreage), -3));
+            return '~ '.convert_number_to_words(round((float)($price/$acreage), -3));
             break;
     }
 }
@@ -201,19 +220,23 @@ function price_project($price, $acreage, $type_unit){
         case '/ m²':
             $price_result = [
                 'total_price' => total_price($price, $acreage),
-                'unit_price' => number_format($price, 0, ",", ".").' nghìn'
+                'unit_price' => number_format($price, 0, ",", ".").' nghìn / m²'
             ];
             return $price_result;
             break;
         case 'VNĐ':
             $price_result = [
                 'total_price' =>  number_format($price, 0, ",", ".").' nghìn',
-                'unit_price' => unit_price($price, $acreage)
+                'unit_price' => unit_price($price, $acreage).' / m²'
             ];
             return $price_result;
             break;
         default:
-            null;
+            $price_result = [
+                'total_price' => 'Giá thỏa thuận',
+                'unit_price' => null
+            ];
+            return $price_result;
             break;
     }
 }
