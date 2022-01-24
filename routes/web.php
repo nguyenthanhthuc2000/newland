@@ -10,6 +10,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Customer\RequestContactController;
+use App\Http\Controllers\Admin\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -68,4 +69,9 @@ Route::get('danh-muc/{slugs}', [CategoryController::class, 'viewCategory'])->nam
 Route::prefix('tim-kiem')->group(function () {
     Route::get('/theo-gia', [ArticleController::class, 'searchByPrice'])->name('article.search');
     Route::get('/bai-viet-cung-nguoi-dang-us{id}', [UserController::class, 'articlesSameEntrant'])->name('article.SameEntrant');
+});
+
+// ADMIN
+Route::prefix("admin")->group(function(){
+    Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
 });

@@ -1,5 +1,5 @@
 import swal from 'sweetalert2';
-// require('@ckeditor/ckeditor5-build-classic/build/ckeditor.js');
+
 window.ClassicEditor = require('@ckeditor/ckeditor5-build-classic');
 
 window._ = require('lodash');

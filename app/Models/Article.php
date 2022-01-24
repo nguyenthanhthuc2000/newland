@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Filters\ArticleFilter;
 class Article extends Model
 {
     use HasFactory;
@@ -33,4 +33,6 @@ class Article extends Model
     public function district(){
         return $this->belongsTo(District::class);
     }
+
+
 }

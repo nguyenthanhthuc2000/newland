@@ -137,7 +137,7 @@ class PostController extends Controller
                     'description_img' => $description_img[$i]
                 ]);
 
-                $imgArr[$i]->move('images/articles', $newFileName);
+                $imgArr[$i]->move('images/uploads/articles', $newFileName);
             };
         }
 

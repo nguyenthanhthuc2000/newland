@@ -3,6 +3,7 @@ namespace App\Repository\Article;
 
 use App\Repository\BaseRepository;
 use App\Models\Article;
+use App\Filters\ArticleFilter;
 
 class ArticleRepository extends BaseRepository implements ArticleRepositoryInterface
 {
@@ -11,4 +12,8 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
     {
         return new Article();
     }
+
+    // public function getArticleByPrice($from, $to){
+    //     return $this->model->filter($from, $to)->get();
+    // }
 }
