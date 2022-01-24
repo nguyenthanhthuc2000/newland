@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddAvatarToUser extends Migration
+class AddLevelToUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddAvatarToUser extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('avatar')->after('id')->nullable();
+            $table->string('level')->after('last_ip_login')->default(0); // 0 là khách hàng
         });
     }
 
@@ -25,7 +25,7 @@ class AddAvatarToUser extends Migration
      */
     public function down()
     {
-        Schema::table('user', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
         });
     }

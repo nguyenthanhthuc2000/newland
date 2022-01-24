@@ -125,6 +125,7 @@
             overflow-y: auto;
             z-index: 99999;
             .filter-item{
+                max-width: 100% !important;
                 .list__option{
                     padding: 0.8rem 0.85rem !important;
                     border: 1px solid #ced4da !important;

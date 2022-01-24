@@ -66,6 +66,9 @@
                                     @if(Auth::user()->facebook_id == null && Auth::user()->google_id == null)
                                     <li><a class="dropdown-item" href="{{ route('auth.change.password') }}"> Đổi mật khẩu</a></li>
                                     @endif
+                                    @if(Auth::user()->level == 2 || Auth::user()->level == 1)
+                                    <li><a class="dropdown-item" href=""> Quản trị website</a></li>
+                                    @endif
                                     <li><a class="dropdown-item" href="{{ route('auth.get.logout') }}"> Đăng xuất</a></li>
                                 </ul>
                             </li>

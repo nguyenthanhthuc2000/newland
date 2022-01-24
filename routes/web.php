@@ -10,6 +10,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Customer\RequestContactController;
+use App\Http\Controllers\Admin\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,9 +44,6 @@ Route::post('post-login',  [AuthController::class, 'postLogin'])->name('auth.pos
 Route::post('post-update',  [AuthController::class, 'postUpdate'])->name('auth.post.update');
 Route::post('update-password',  [AuthController::class, 'updatePassword'])->name('auth.update.password');
 
-// USER
-Route::get('thong-tin-ca-nhan',  [UserController::class, 'info'])->name('auth.info');
-Route::get('bai-viet-ca-nhan',  [UserController::class, 'personalArticle'])->name('auth.article');
 
 // AJAX
 Route::post('fetchDistrictList',  [Controller::class, 'getDistrict'])->name('get.districts');
@@ -53,9 +51,7 @@ Route::post('fetchWards',  [Controller::class, 'getWards'])->name('get.wards');
 Route::post('fetchStreet',  [Controller::class, 'getStreet'])->name('get.streets');
 Route::post('fetchCategory',  [PostController::class, 'getCategory'])->name('get.category');
 
-// ARTICLE
-Route::get('dang-tin', [PostController::class, 'index'])->name('post.index');
-Route::post('dang-tin', [PostController::class, 'store'])->name('post.store');
+
 Route::get('tin-dang/{slug}', [PostController::class, 'detail'])->name('post.detail');
 
 //REQUEST CONTACT
@@ -68,4 +64,22 @@ Route::get('danh-muc/{slugs}', [CategoryController::class, 'viewCategory'])->nam
 Route::prefix('tim-kiem')->group(function () {
     Route::get('/theo-gia', [ArticleController::class, 'searchByPrice'])->name('article.search');
     Route::get('/bai-viet-cung-nguoi-dang-us{id}', [UserController::class, 'articlesSameEntrant'])->name('article.SameEntrant');
+});
+
+
+Route::middleware(['auth'])->group(function () {
+    // ARTICLE
+    Route::get('dang-tin', [PostController::class, 'index'])->name('post.index');
+    Route::post('dang-tin', [PostController::class, 'store'])->name('post.store');
+    // USER
+    Route::get('thong-tin-ca-nhan',  [UserController::class, 'info'])->name('auth.info');
+    Route::get('bai-viet-ca-nhan',  [UserController::class, 'personalArticle'])->name('auth.article');
+});
+
+
+///ADMIN
+Route::middleware(['checkLevel'])->group(function () {
+    Route::prefix('admin')->group(function () {
+
+    });
 });
