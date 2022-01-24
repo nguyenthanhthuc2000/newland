@@ -51,16 +51,24 @@ $('.slick-b').slick({
 });
 $('.slick-bv').slick({
   centerPadding: '20px',
-  slidesToShow: 3,
+  slidesToShow: 4,
 //  autoplay: true,
   autoplaySpeed: 2000,
   responsive: [
+    {
+        breakpoint: 1024,
+        settings: {
+          arrows: false,
+          centerPadding: '40px',
+          slidesToShow: 3
+        }
+      },
     {
       breakpoint: 768,
       settings: {
         arrows: false,
         centerPadding: '40px',
-        slidesToShow: 1
+        slidesToShow: 2
       }
     }
   ]

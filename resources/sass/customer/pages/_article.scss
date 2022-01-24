@@ -33,7 +33,6 @@
         }
     }
     .card-post {
-        border-radius: 20px;
         overflow: hidden;
     }
     .card__article__body {
@@ -47,7 +46,7 @@
         }
         .card__title {
             margin-bottom: 0.5rem;
-            font-size: 16px !important;
+            font-size: 0.9rem !important;
             &:hover {
                 color: #2980b9;
             }
@@ -78,13 +77,11 @@
         display: block;
     }
     .card-img-post {
-        height: 270px;
+        height: 200px;
         transition: 0.7s;
         object-fit: cover;
         width: 100%;
         display: block;
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
     }
     &:hover .card-img-top {
         transform: scale(1.1);

@@ -78,8 +78,10 @@ Route::middleware(['auth'])->group(function () {
 
 
 ///ADMIN
-Route::middleware(['checkLevel'])->group(function () {
-    Route::prefix('admin')->group(function () {
+Route::middleware(['auth'])->group(function () {
+    Route::middleware(['checkLevel'])->group(function () {
+        Route::prefix('admin')->group(function () {
 
+        });
     });
 });
