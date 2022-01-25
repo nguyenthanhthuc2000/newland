@@ -30,7 +30,7 @@ class PostController extends Controller
     }
 
     public function getCategory(Request $request){
-        $cat = $this->catRepo->getByAttributesAll(['type' => $request->type]);
+        $cat = $this->catRepo->getByAttributesAll(['type' => $request->type])->reverse();
         return  view('pages.post.component._category', ['cat' => $cat]);
     }
 
@@ -184,7 +184,16 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $article = $this->artRepo->find($id);
+        $direction = $this->dirRepo->getOrDerBy()->reverse();
+        $cat = $this->catRepo->getByAttributesAll(['type' => 0])->reverse();
+        $data = [
+            'province' => Controller::getProvince(),
+            'cat' => $cat,
+            'direction' => $direction,
+            'article' => $article
+        ];
+        return view('pages.post.post', $data);
     }
 
     /**

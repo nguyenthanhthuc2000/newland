@@ -18,3 +18,4 @@ require('./component/card_image');
 require('./component/input');
 require('./component/map');
 require('./component/filter');
+require('./component/hidden_field');
