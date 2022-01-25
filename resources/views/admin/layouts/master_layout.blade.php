@@ -357,10 +357,10 @@
                                   <td class="fw-600"><a href="">{{ $article->title }}</a></td>
                                   <td><span class="text-success">Miễn phí</span></td>
                                   <td>{{ $article->created_at }}</td>
-                                  <td><span class="badge bgc-blue-50 c-blue-700 p-10 lh-0 tt-c rounded-pill">Thêm mới</span></td>
+                                  <td><span class="badge {{ $article->status == 0 ? 'bgc-blue-50 c-blue-700' : 'bgc-warning-50 c-warning-700' }} p-10 lh-0 tt-c rounded-pill">{{ $article->status == 0 ? 'Thêm mới' : 'Cập nhật' }}</span></td>
                                   <td class="text-end d-flex" style="justify-content: end">
-                                      <span class="badge bgc-red-50 c-red-700 p-10 lh-0 tt-c rounded-pill btn__confirm">Từ chối</span> &nbsp;
-                                      <span class="badge bgc-green-50 c-green-700 p-10 lh-0 tt-c rounded-pill btn__confirm">Duyệt</span>
+                                      <span class="badge bgc-red-50 c-red-700 p-10 lh-0 tt-c rounded-pill btn__confirm btn__unconfirm__article" data-id="{{ $article->id }}">Từ chối</span> &nbsp;
+                                      <span class="badge bgc-green-50 c-green-700 p-10 lh-0 tt-c rounded-pill btn__confirm btn__confirm__article">Duyệt</span>
                                   </td>
                                 </tr>
                             @endforeach

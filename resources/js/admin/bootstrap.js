@@ -4,6 +4,7 @@ import swal from 'sweetalert2';
 window.ClassicEditor = require('@ckeditor/ckeditor5-build-classic');
 
 window._ = require('lodash');
+window.$ = require('jquery');
 // window.slick = require('slick-carousel');
 window.Swal = swal;
 

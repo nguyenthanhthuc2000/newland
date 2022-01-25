@@ -1,5 +1,4 @@
 require('./bootstrap');
-
 // import "@popperjs/core";
 // import bootstrap from 'bootstrap';
 
