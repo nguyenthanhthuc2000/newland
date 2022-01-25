@@ -171,7 +171,7 @@
                         $img = ( $img_article && $img_article[0]) ? $img_article[0]['image'] : null;
                     @endphp
                     <div class="card" >
-                        <a href="" class="card-image{{ ($article->featured == 1) ? ' card-featured' : '' }}">
+                        <a href="{{ route('post.detail',$article->slug) }}" class="card-image{{ ($article->featured == 1) ? ' card-featured' : '' }}">
                             <img src="{{ getUrlImageUpload($img) }}" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body card__article__body position-relative">

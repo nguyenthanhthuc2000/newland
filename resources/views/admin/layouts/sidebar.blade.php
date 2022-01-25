@@ -4,7 +4,7 @@
       <div class="sidebar-logo">
         <div class="peers ai-c fxw-nw">
           <div class="peer peer-greed">
-            <a class="sidebar-link td-n" href="index.html">
+            <a class="sidebar-link td-n" href="{{ route('admin.dashboard') }}">
               <div class="peers ai-c fxw-nw">
                 <div class="peer">
                   <div class="logo">
@@ -49,10 +49,24 @@
               </a>
               <ul class="dropdown-menu">
                   <li>
-                      <a class='sidebar-link' href="blank.html">Chờ xử lí</a>
+                      <a class='sidebar-link' href="{{ route('article.list') }}">Tất cả</a>
                   </li>
                   <li>
-                      <a class='sidebar-link' href="404.html">Đã duyệt</a>
+                      <a class='sidebar-link' href="{{ route('article.list.waiting') }}">Chờ xử lí</a>
+                  </li>
+              </ul>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="dropdown-toggle" href="javascript:void(0);">
+                  <span class="icon-holder"><i class="c-teal-500 ti-view-list-alt"></i> </span>
+                  <span class="title">Cài đặt</span>
+                  <span class="arrow">
+                <i class="ti-angle-right"></i>
+              </span>
+              </a>
+              <ul class="dropdown-menu">
+                  <li>
+                      <a class='sidebar-link' href="{{ route('admin.setting') }}">Thông tin website</a>
                   </li>
               </ul>
           </li>

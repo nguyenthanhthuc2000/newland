@@ -126,7 +126,7 @@
                     <div class="form-input">
                         <textarea class="form-control ck-editor" aria-describedby="contentHelp"
                                 placeholder="Nhập mô tả chung về bất động sản của bạn. Ví dụ: Khu nhà có vị trí thuận lợi, gần công viên, gần trường học,..."
-                                name="content" rows="5"></textarea>
+                                name="contents" rows="5"></textarea>
                     </div>
                     @error('content')
                         <div id="contentHelp" class="form-text text-danger">{{ $message }}</div>

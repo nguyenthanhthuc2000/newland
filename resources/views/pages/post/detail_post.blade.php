@@ -47,6 +47,11 @@
                         <i class="fal fa-share-alt"></i> &nbsp;
                         <i class="fal fa-heart card__heart"></i>
                     </p>
+                    @if($detailArticle->status == 2)
+                        <p class="alert-danger alert-status">Bài viết bị từ chối phê duyệt</p>
+                    @elseif($detailArticle->status == 0)
+                        <p class="alert-warning alert-status">Bài viết bị từ đang chờ xử lí</p>
+                    @endif
                 </div>
                 <p class="mb-2 "><i class="fal fa-map-marker-alt"></i>&nbsp; {{ $detailArticle->address_on_post }}</p>
 
