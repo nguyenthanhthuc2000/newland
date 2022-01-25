@@ -9,13 +9,13 @@
                 <div class="title">Thông tin cơ bản</div>
                 <div class="mb3 type-post">
                     <div class="form-check">
-                        <input class="type-post-input" type="radio" name="form" id="sell" data-type="0" checked hidden value="0">
+                        <input class="type-post-input" type="radio" name="form" id="sell" data-type="0" {{ isset($article) ? (($article->form == 0) ? 'checked' : '') : 'checked'}} hidden value="0">
                         <label class="form-check-label" for="sell">
                             Bán
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="type-post-input" type="radio" name="form" id="lease" data-type="1" hidden value="1">
+                        <input class="type-post-input" type="radio" name="form" id="lease" data-type="1" hidden value="1" {{ (isset($article)) ? (($article->form == 1) ? 'checked' : '') : '' }}>
                         <label class="form-check-label" for="lease">
                             Cho thuê
                         </label>
@@ -27,7 +27,7 @@
                             aria-describedby="typeOfRealEstateHelp" name="category_id">
                         <option selected disabled hidden>Loại bất động sản</option>
                         @foreach($cat as $c)
-                            <option value="{{ $c->id }}">{{ $c->name }}</option>
+                            <option value="{{ $c->id }}" {{ (isset($article) && $article->category_id == $c->id) ? 'selected' : '' }}>{{ $c->name }}</option>
                         @endforeach
                     </select>
                     @error('category_id')
@@ -246,7 +246,7 @@
                             <select type="text" class="form-select home-direction" name="house_direction" aria-describedby="houseDirectionHelp">
                                 <option selected disabled hidden>Chọn hướng</option>
                                 @foreach ($direction as $dir)
-                                    <option value="{{ $dir->id }}">{{ $dir->name }}</option>
+                                    <option value="{{ $dir->id }}" {{ (isset($article) && $article->house_direction == $dir->id) ? 'selected' : '' }}>{{ $dir->name }}</option>
                                 @endforeach
                             </select>
                             @error('house_direction')
@@ -258,7 +258,7 @@
                             <select type="text" class="form-select balcony-direction" name="balcony_direction" aria-describedby="acreageHelp">
                                 <option selected disabled hidden>Chọn hướng</option>
                                 @foreach ($direction as $dir)
-                                    <option value="{{ $dir->id }}">{{ $dir->name }}</option>
+                                    <option value="{{ $dir->id }}" {{ (isset($article) && $article->balcony_direction == $dir->id) ? 'selected' : '' }}>{{ $dir->name }}</option>
                                 @endforeach
                             </select>
                             @error('balcony_direction')
@@ -268,20 +268,23 @@
                         <div class="col-6">
                             <label for="way" class="form-label">Đường vào</label>
                             <div>
-                                <input type="number" class="form-control road-house" unit="m" step="any" placeholder="Nhập số" name="way">
+                                <input type="number" class="form-control road-house" unit="m" step="any" placeholder="Nhập số" name="way"
+                                        value="{{ (isset($article) && $article->way) ? $article->way : '' }}">
                             </div>
                         </div>
                         <div class="col-6">
                             <label for="facade" class="form-label">Mặt tiền</label>
                             <div>
-                                <input type="text" class="form-control front" unit="m" placeholder="Nhập số" name="facade">
+                                <input type="text" class="form-control front" unit="m" placeholder="Nhập số" name="facade"
+                                        value="{{ (isset($article) && $article->facade) ? $article->facade : '' }}">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="mb-3 hidden_field">
                     <label for="furniture" class="form-label">Nội thất</label>
-                    <input type="text" class="form-control" name="furniture" aria-describedby="furnitureHelp" placeholder="VD: Nội thất đầy đủ">
+                    <input type="text" class="form-control" name="furniture" aria-describedby="furnitureHelp" placeholder="VD: Nội thất đầy đủ"
+                            value="{{ (isset($article) && $article->furniture) ? $article->furniture : '' }}">
                 </div>
             </div>
 
@@ -307,28 +310,32 @@
                     <div class="specific-address row">
                         <div class="col-sm-6">
                             <label for="name_contact" class="form-label">Tên liên hệ <span class="text-required">*</span></label>
-                            <input type="text" class="form-control" name="name_contact" aria-describedby="nameContactHelp">
+                            <input type="text" class="form-control" name="name_contact" aria-describedby="nameContactHelp"
+                                    value="{{ (isset($article) && $article->name_contact) ? $article->name_contact : '' }}">
                             @error('name_contact')
                                 <div id="nameContactHelp" class="form-text text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="col-sm-6">
                             <label for="phone_contact" class="form-label">Số điện thoại <span class="text-required">*</span></label>
-                            <input type="number" class="form-control" name="phone_contact" aria-describedby="phoneContactHelp">
+                            <input type="number" class="form-control" name="phone_contact" aria-describedby="phoneContactHelp"
+                                    value="{{ (isset($article) && $article->phone_contact) ? $article->phone_contact : '' }}">
                             @error('phone_contact')
                                 <div id="phoneContactHelp" class="form-text text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="col-sm-6">
                             <label for="address_contact" class="form-label">Địa chỉ <span class="text-required">*</span></label>
-                            <input type="text" class="form-control" name="address_contact" aria-describedby="addressContactHelp">
+                            <input type="text" class="form-control" name="address_contact" aria-describedby="addressContactHelp"
+                                    value="{{ (isset($article) && $article->address_contact) ? $article->address_contact : '' }}">
                             @error('address_contact')
                                 <div id="addressContactHelp" class="form-text text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="col-sm-6">
                             <label for="email_contact" class="form-label">Email <span class="text-required">*</span></label>
-                            <input type="email" class="form-control" name="email_contact" aria-describedby="emailContactHelp">
+                            <input type="email" class="form-control" name="email_contact" aria-describedby="emailContactHelp"
+                            value="{{ (isset($article) && $article->email_contact) ? $article->email_contact : '' }}">
                             @error('email_contact')
                                 <div id="emailContactHelp" class="form-text text-danger">{{ $message }}</div>
                             @enderror
