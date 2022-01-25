@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $articles = $this->artRepo->getOrderBy();
+        $articles = $this->artRepo->getByStatus(1);
         $data = [
             'articles' => $articles,
         ];

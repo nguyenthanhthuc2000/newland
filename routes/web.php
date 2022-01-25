@@ -10,7 +10,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Customer\RequestContactController;
-use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\DashboardController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -80,7 +81,8 @@ Route::middleware(['auth'])->group(function () {
 ///ADMIN
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['checkLevel'])->group(function () {
-        Route::prefix('admin')->group(function () {
+        Route::prefix("admin")->group(function(){
+            Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
 
         });
     });

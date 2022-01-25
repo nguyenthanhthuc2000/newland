@@ -2,7 +2,8 @@
 /public/hot
 /public/storage
 /public/customer/css/
-/public/admin/css/
+/public/administrator/css/
+/public/administrator/js/
 /public/js/
 /storage/*.key
 /vendor
