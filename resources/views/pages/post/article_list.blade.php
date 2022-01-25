@@ -11,10 +11,10 @@
                     </h5>
                 </a>
                     <div class="l__a-article row mb-3">
-                        <a class="l__a-article-img col-md-4">
+                        <a class="l__a-article-img col-4">
                             <img class="w-100 img-fluid img" src="{{ getUrlImageUpload(($l->imagesArticle->first() ? $l->imagesArticle->first()->image : null)) }}" alt="">
                         </a>
-                        <div class="l__a-article-content col-md-8 p-3">
+                        <div class="l__a-article-content col-8 p-3">
                             <a href="{{ route('post.detail', $l->slug) }}">
                                 <h5 class="content-title text-split-2">
                                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> &nbsp; {{ $l->title }}
