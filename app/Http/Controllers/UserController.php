@@ -37,4 +37,5 @@ class UserController extends Controller
         ];
         return view('pages.post.article_list', $data);
     }
+
 }

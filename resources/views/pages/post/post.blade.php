@@ -342,5 +342,20 @@
         </div>
     </form>
 </div>
+
+@push('scripts')
+
+    @if (session('msg'))
+        <script>
+                Swal.fire({
+                    position: 'top-end',
+                    icon: '{!! session('status') !!}',
+                    title: '{!! session('msg') !!}',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            </script>
+    @endif
+@endpush
 @endsection
 

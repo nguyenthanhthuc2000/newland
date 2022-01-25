@@ -68,12 +68,11 @@ Route::prefix('tim-kiem')->group(function () {
 });
 
 // ADMIN
-
-
 Route::middleware(['auth'])->group(function () {
     // ARTICLE
     Route::get('dang-tin', [PostController::class, 'index'])->name('post.index');
     Route::post('dang-tin', [PostController::class, 'store'])->name('post.store');
+    Route::get('destroy/{id}',  [PostController::class, 'destroy'])->name('post.destroy');
     // USER
     Route::get('thong-tin-ca-nhan',  [UserController::class, 'info'])->name('auth.info');
     Route::get('bai-viet-ca-nhan',  [UserController::class, 'personalArticle'])->name('auth.article');

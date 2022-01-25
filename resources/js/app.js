@@ -9,6 +9,7 @@ require('./ajax/auth');
 /** =================
     Require component
     ===================*/
+require('./component/alert');
 require('./component/slick/article');
 require('./component/slick/detail_article');
 require('./component/ckeditor/create_article');
