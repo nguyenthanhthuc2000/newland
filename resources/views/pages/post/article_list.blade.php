@@ -3,7 +3,6 @@
     <div class="row">
         <div class="post-form-action col-xl-8 pt-3">
             <h3>{{ $title }}</h3>
-
             <p>Hiện có {{ $lstArticle->count() }} bất động sản.</p>
             <div class="l__a">
                 @foreach ($lstArticle as $l)
@@ -13,7 +12,7 @@
                             </h5>
                         </a>
                         <a class="l__a-article-img col-md-4">
-                            <img class="w-100 img-fluid img" src="{{ getUrlImageUpload($l->imagesArticle->first()->image) }}" alt="">
+                            <img class="w-100 img-fluid img" src="{{ getUrlImageUpload(($l->imagesArticle->first() ? $l->imagesArticle->first()->image : null)) }}" alt="">
                         </a>
                         <div class="l__a-article-content col-md-8 p-3">
                             <a href="{{ route('post.detail', $l->slug) }}">

@@ -65,7 +65,7 @@ function getUrlImageUpload($image, $direction = 'article'){
     if($image){
         return asset($urlImage);
     }
-    return $no_photo;
+    return asset($no_photo);
 }
 
 function convert_number_to_words($number) {
