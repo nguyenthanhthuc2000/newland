@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function index(){
-        $articles = $this->artRepo->getByStatus([0, 2]);
+        $articles = $this->artRepo->getByStatus([0]);
         $data = [
             'articles' => $articles,
         ];

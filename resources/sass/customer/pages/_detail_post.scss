@@ -1,3 +1,4 @@
+
 .detail-post {
     .mySlides {
         position: relative;
@@ -269,7 +270,13 @@
     .slick-next {
         right: 5px !important;
     }
+    .alert-status {
+        display: inline;
+        padding: 5px 15px;
+        border-radius: 20px;
+    }
     .b__dt-ct-title {
+
         font-size: 23px;
         font-weight: bold;
         td {

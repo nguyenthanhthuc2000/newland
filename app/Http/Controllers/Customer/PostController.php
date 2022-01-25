@@ -52,7 +52,6 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
         $this->validate($request,
             [
                 "form" => "required", //bán/thuê
@@ -99,7 +98,7 @@ class PostController extends Controller
             "title" => $request->title,
             "slug" => $slug,
             "sub_title" => $request->sub_title,
-            "content" => $request->content,
+            "content" => $request->contents,
             "acreage" => $request->acreage,
             "price" => $request->price,
             "unit" => $request->unit,
@@ -138,7 +137,7 @@ class PostController extends Controller
                     'description_img' => $description_img[$i]
                 ]);
 
-                $imgArr[$i]->move('images/uploads/articles', $newFileName);
+                $imgArr[$i]->move('uploads/article', $newFileName);
             };
 
             return back()->with(['msg' => 'Đã thêm thành công', 'status' => 'success']);
@@ -165,6 +164,15 @@ class PostController extends Controller
             'detailArticle' => $detailArticle,
             'countArticleOfUser' => $countArticleOfUser
         ];
+        if($detailArticle->status != 1){
+            if(Auth::check()){
+                if(Auth::user()->level == 2 || $detailArticle->user_id == Auth::id()){
+                    return view('pages.post.detail_post', $data);
+                }
+                return redirect()->route('home.index');
+            }
+            return redirect()->route('home.index');
+        }
         return view('pages.post.detail_post', $data);
     }
 

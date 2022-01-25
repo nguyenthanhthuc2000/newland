@@ -41,6 +41,11 @@
                 <h1 class="b__dt-ct-title">
                     <span>{{ $detailArticle->title.' - '.$detailArticle->phone_contact }}</span>
                 </h1>
+                @if($detailArticle->status == 2)
+                    <p class="alert-danger alert-status">Bài viết bị từ chối phê duyệt</p>
+                @elseif($detailArticle->status == 0)
+                    <p class="alert-warning alert-status">Bài viết bị từ đang chờ xử lí</p>
+                @endif
                 <div class="card__footer d-flex " style="justify-content: space-between; align-items: center">
                     <p class="mb-0 "><i class="fal fa-calendar-alt"></i> {{ $detailArticle->created_at->format('d/m/Y') }}</p>
                     <p class="mb-0" style="cursor: pointer; font-size: 20px">

@@ -1,7 +1,4 @@
 
-import * as $ from 'jquery';
-import swal from 'sweetalert2';
-window.Swal = swal;
 $.ajaxSetup({
    headers: {
        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

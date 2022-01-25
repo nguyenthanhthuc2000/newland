@@ -54,6 +54,9 @@
                   <li>
                       <a class='sidebar-link' href="404.html">Đã duyệt</a>
                   </li>
+                  <li>
+                      <a class='sidebar-link' href="404.html">Đã từ chối</a>
+                  </li>
               </ul>
           </li>
 {{--        <li class="nav-item">--}}

@@ -354,13 +354,13 @@
                           @if($articles->count() > 0)
                             @foreach($articles as $article)
                                 <tr>
-                                  <td class="fw-600"><a href="">{{ $article->title }}</a></td>
+                                  <td class="fw-600"><a href="{{ route('post.detail',$article->slug) }}">{{ $article->title }}</a></td>
                                   <td><span class="text-success">Miễn phí</span></td>
                                   <td>{{ $article->created_at }}</td>
-                                  <td><span class="badge {{ $article->status == 0 ? 'bgc-blue-50 c-blue-700' : 'bgc-warning-50 c-warning-700' }} p-10 lh-0 tt-c rounded-pill">{{ $article->status == 0 ? 'Thêm mới' : 'Cập nhật' }}</span></td>
+                                  <td><span class=" badge bgc-yellow-50 c-yellow-700 p-10 lh-0 tt-c rounded-pill">Chờ xử lí</span></td>
                                   <td class="text-end d-flex" style="justify-content: end">
-                                      <span class="badge bgc-red-50 c-red-700 p-10 lh-0 tt-c rounded-pill btn__confirm btn__unconfirm__article" data-id="{{ $article->id }}">Từ chối</span> &nbsp;
-                                      <span class="badge bgc-green-50 c-green-700 p-10 lh-0 tt-c rounded-pill btn__confirm btn__confirm__article">Duyệt</span>
+                                      <span class="badge bgc-red-50 c-red-700 p-15 lh-0 tt-c rounded-pill btn__confirm btn__unconfirm__article" data-id="{{ $article->id }}">Từ chối</span> &nbsp;
+                                      <span class="badge bgc-green-50 c-green-700 p-15 lh-0 tt-c rounded-pill btn__confirm btn__confirm__article">Duyệt</span>
                                   </td>
                                 </tr>
                             @endforeach
