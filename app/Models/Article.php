@@ -34,5 +34,4 @@ class Article extends Model
         return $this->belongsTo(District::class);
     }
 
-
 }

@@ -1,5 +1,9 @@
 <?php
 
+function formatTime($time){
+    return date_format($time, 'd-m-Y');
+}
+
 function numericalOrder($index){
     $currPage = (isset($_REQUEST['page']) && $_REQUEST['page']) ?  $_REQUEST['page'] : 1;
     return ($index + 1) * $currPage;

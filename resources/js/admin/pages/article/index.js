@@ -5,6 +5,7 @@ $.ajaxSetup({
    }
 });
 $('.btn__confirm__article').click(function(){
+   var id = $(this).data('id');
     Swal.fire({
       title: 'Xác nhận',
       text: "Duyệt bài viết này!",
@@ -16,11 +17,30 @@ $('.btn__confirm__article').click(function(){
       cancelButtonText: 'Đóng'
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
+        $.ajax({
+           url: window.route('article.confirm'),
+           method: 'POST',
+           data: {id:id},
+       }).done(function(data) {
+        console.log(data.status)
+          if(data.status == 200){
+               Swal.fire({
+                 icon: 'success',
+                 title:  'Cập nhật',
+                 text: data.messages +'!'
+               });
+               window.setTimeout(function(){
+                   location.reload();
+               },1000);
+           }
+           else if(data.status == 500){
+               Swal.fire({
+                 icon: 'error',
+                 title:  'Cập nhật thất bại',
+                 text: data.messages +'!'
+               })
+           }
+       });
       }
     })
 })
@@ -60,7 +80,7 @@ $('.btn__unconfirm__article').click(function(){
                        });
                        window.setTimeout(function(){
                            location.reload();
-                       },1500);
+                       },1000);
                    }
                    else if(data.status == 500){
                        Swal.fire({
@@ -71,7 +91,6 @@ $('.btn__unconfirm__article').click(function(){
                    }
                });
            }
-     }
-
+        }
     })
 })
