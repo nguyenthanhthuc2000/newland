@@ -50,14 +50,13 @@ class CreateArticle extends Migration
             $table->string('project_id')->nullable(); // thuộc dự án nào ?
             $table->dateTime('start_day')->nullable(); // ngày bắt đầu
             $table->dateTime('end_day')->nullable(); // ngày kết thúc
-            $table->tinyInteger('status')->default(1); //trạng thái (0: ẩn, 1: hiện)
+            $table->tinyInteger('status')->default(0); //trạng thái (0: ẩn, 1: hiện)
             $table->tinyInteger('featured')->default(0); //trạng thái (0: không nổi bật, 1: nổi bật)
             $table->tinyInteger('vip')->nullable(); //trạng thái (0: không nổi bật, 1: nổi bật)
             $table->tinyInteger('state')->default(0); //trạng thái (0: tin mới,1: đã bán, 2: đã đc thuê, 3: đã đặt cọc)
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *

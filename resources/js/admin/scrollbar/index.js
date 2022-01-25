@@ -1,4 +1,4 @@
-import * as $ from 'jquery';
+// import * as $ from 'jquery';
 import PerfectScrollbar from 'perfect-scrollbar';
 
 export default (function() {

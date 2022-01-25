@@ -1,4 +1,4 @@
-import * as $ from 'jquery';
+// import * as $ from 'jquery';
 import Masonry from 'masonry-layout';
 
 export default (function() {

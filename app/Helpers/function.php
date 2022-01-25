@@ -226,7 +226,7 @@ function price_project($price, $acreage, $type_unit){
             break;
         case 'VNĐ':
             $price_result = [
-                'total_price' =>  number_format($price, 0, ",", ".").' nghìn',
+                'total_price' =>  convert_number_to_words($price),
                 'unit_price' => unit_price($price, $acreage).' / m²'
             ];
             return $price_result;

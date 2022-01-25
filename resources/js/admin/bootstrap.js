@@ -1,5 +1,5 @@
 import swal from 'sweetalert2';
-// window.$ = require('jquery');
+window.$ = require('jquery');
 
 window.ClassicEditor = require('@ckeditor/ckeditor5-build-classic');
 
@@ -10,7 +10,6 @@ window.Swal = swal;
 import "bootstrap";
 try {
     require('bootstrap');
-    // window.CK = require('@ckeditor/ckeditor5-build-classic');
 } catch (e) {
     console.error(e);
 }

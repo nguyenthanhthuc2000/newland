@@ -13,7 +13,7 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
         return new Article();
     }
 
-    // public function getArticleByPrice($from, $to){
-    //     return $this->model->filter($from, $to)->get();
-    // }
+    public function getByStatus($status){
+        return $this->model->where('status', $status)->paginate();
+    }
 }

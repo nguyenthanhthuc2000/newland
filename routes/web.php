@@ -68,6 +68,7 @@ Route::prefix('tim-kiem')->group(function () {
 });
 
 // ADMIN
+
 Route::middleware(['auth'])->group(function () {
     // ARTICLE
     Route::get('dang-tin', [PostController::class, 'index'])->name('post.index');
@@ -80,9 +81,11 @@ Route::middleware(['auth'])->group(function () {
 
 
 ///ADMIN
-Route::middleware(['checkLevel'])->group(function () {
-    Route::prefix("admin")->group(function(){
-        Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
+Route::middleware(['auth'])->group(function () {
+    Route::middleware(['checkLevel'])->group(function () {
+        Route::prefix("admin")->group(function(){
+            Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
 
+        });
     });
 });

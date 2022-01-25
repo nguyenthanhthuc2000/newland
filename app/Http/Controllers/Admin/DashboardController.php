@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function index(){
-        return view('admin.layouts.master_layout');
+        $articles = $this->artRepo->getByStatus(0);
+        $data = [
+            'articles' => $articles,
+        ];
+        return view('admin.layouts.master_layout', $data);
     }
 }
