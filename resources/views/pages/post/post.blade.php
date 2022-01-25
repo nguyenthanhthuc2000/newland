@@ -175,7 +175,7 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <div class="row g-3 align-items-center">
+                    <div class="row g-3 align-items-center hidden_field">
                         <div class="col-sm-9 col-6">
                         <label for="bedroom" class="col-form-label">Số phòng ngủ</label>
                         </div>
@@ -241,7 +241,7 @@
                 </div>
                 <div class="mb-3">
                     <div class="direction-address row">
-                        <div class="col-6">
+                        <div class="col-6 hidden_field">
                             <label for="house_direction" class="form-label">Hướng nhà</label>
                             <select type="text" class="form-select home-direction" name="house_direction" aria-describedby="houseDirectionHelp">
                                 <option selected disabled hidden>Chọn hướng</option>
@@ -253,7 +253,7 @@
                                 <div id="houseDirectionHelp" class="form-text text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="col-6">
+                        <div class="col-6 hidden_field">
                             <label for="balcony_direction" class="form-label">Hướng ban công</label>
                             <select type="text" class="form-select balcony-direction" name="balcony_direction" aria-describedby="acreageHelp">
                                 <option selected disabled hidden>Chọn hướng</option>
@@ -279,7 +279,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 hidden_field">
                     <label for="furniture" class="form-label">Nội thất</label>
                     <input type="text" class="form-control" name="furniture" aria-describedby="furnitureHelp" placeholder="VD: Nội thất đầy đủ">
                 </div>
@@ -289,7 +289,7 @@
                 <div class="title">Thông tin bất động sản</div>
                 <p>Hãy dùng ảnh thật, không trùng, không chèn số điện thoại. Mỗi ảnh kích thước tối thiểu 400x400, tối đa 15 MB. Số lượng ảnh tối đa tuỳ theo loại tin</p>
                 <div class="container-upload">
-                    <label for="input-gallery" class="form-label">Địa chỉ</label>
+                    <label for="input-gallery" class="form-label">Hình ảnh</label>
                     <input type="file" multiple accept="image/*" class="input-gallery" name="image[]" step="any" hidden>
                     <div class="box-upload">
                         <i class="fas fa-upload"></i>

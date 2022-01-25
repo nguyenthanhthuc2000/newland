@@ -52,7 +52,6 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
         $this->validate($request,
             [
                 "form" => "required", //bán/thuê
@@ -138,7 +137,7 @@ class PostController extends Controller
                     'description_img' => $description_img[$i]
                 ]);
 
-                $imgArr[$i]->move('images/uploads/articles', $newFileName);
+                $imgArr[$i]->move(' uploads/articles', $newFileName);
             };
 
             return back()->with(['msg' => 'Đã thêm thành công', 'status' => 'success']);
