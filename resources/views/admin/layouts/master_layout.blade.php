@@ -359,8 +359,8 @@
                                   <td>{{ $article->created_at }}</td>
                                   <td><span class="badge bgc-blue-50 c-blue-700 p-10 lh-0 tt-c rounded-pill">Thêm mới</span></td>
                                   <td class="text-end d-flex" style="justify-content: end">
-                                      <span class="badge bgc-red-50 c-red-700 p-10 lh-0 tt-c rounded-pill">Từ chối</span> &nbsp;
-                                      <span class="badge bgc-green-50 c-green-700 p-10 lh-0 tt-c rounded-pill">Duyệt</span>
+                                      <span class="badge bgc-red-50 c-red-700 p-10 lh-0 tt-c rounded-pill btn__confirm">Từ chối</span> &nbsp;
+                                      <span class="badge bgc-green-50 c-green-700 p-10 lh-0 tt-c rounded-pill btn__confirm">Duyệt</span>
                                   </td>
                                 </tr>
                             @endforeach
@@ -374,8 +374,8 @@
                        </div>
                     </div>
                   </div>
-                  <div class="ta-c bdT w-100 p-20">
-                    <a href="#">Check all the sales</a>
+                  <div class="ta-c bdT w-100 p-20 d-flex" style="justify-content: end">
+                    {{ $articles->links() }}
                   </div>
                 </div>
               </div>
