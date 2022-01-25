@@ -14,7 +14,10 @@
             .card-article {
                 .card-img {
                     width: 100px;
-                    margin: auto 0;
+                    img {
+                        object-fit: contain;
+                        height: 100%;
+                    }
                 }
                 .card-body {
                     padding-top: 0;

@@ -2,7 +2,6 @@ require('./bootstrap');
 // import "@popperjs/core";
 // import bootstrap from 'bootstrap';
 
-import './pages/article/';
 
 // import '../styles/index.scss';
 import './fullcalendar';
@@ -13,10 +12,11 @@ import './scrollbar';
 import './search';
 import './sidebar';
 import './skycons';
-import './vectorMaps';
+// import './vectorMaps';
 import './chat';
 import './datatable';
 import './datepicker';
 import './email';
-import './googleMaps';
+// import './googleMaps';
 import './utils';
+import './pages/article/';

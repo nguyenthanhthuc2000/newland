@@ -52,6 +52,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         $this->validate($request,
             [
                 "form" => "required", //bán/thuê
@@ -139,9 +140,10 @@ class PostController extends Controller
 
                 $imgArr[$i]->move('images/uploads/articles', $newFileName);
             };
-        }
 
-        return back()->with('ok');
+            return back()->with(['msg' => 'Đã thêm thành công', 'status' => 'success']);
+        }
+        return back()->with(['msg' => 'Đã xảy ra lỗi', 'status' => 'error']);
     }
 
     /**
@@ -197,6 +199,11 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $article = $this->artRepo->find($id);
+        if($article){
+            $article->delete();
+            return back()->with(['msg' => 'Đã xóa thành công', 'status' => 'success']);
+        }
+        return back()->with(['msg' => 'Đã xảy ra lỗi', 'status' => 'error']);
     }
 }
