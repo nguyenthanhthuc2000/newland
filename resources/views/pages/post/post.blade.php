@@ -122,13 +122,13 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="content" class="form-label">Mô tả chi tiết <span class="text-required">*</span></label>
+                    <label for="contents" class="form-label">Mô tả chi tiết <span class="text-required">*</span></label>
                     <div class="form-input">
                         <textarea class="form-control ck-editor" aria-describedby="contentHelp"
                                 placeholder="Nhập mô tả chung về bất động sản của bạn. Ví dụ: Khu nhà có vị trí thuận lợi, gần công viên, gần trường học,..."
                                 name="contents" rows="5"></textarea>
                     </div>
-                    @error('content')
+                    @error('contents')
                         <div id="contentHelp" class="form-text text-danger">{{ $message }}</div>
                     @enderror
                 </div>
