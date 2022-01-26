@@ -63,7 +63,7 @@ class PostController extends Controller
                 "address_on_post" => "required",//địa chủ trên bài đăng
                 "title" => "required",// tiêu đề trên bài viết
                 "sub_title" => "required",// mô tả ngắn
-                "content" => "required",//mô tả chi tiết
+                "contents" => "required",//mô tả chi tiết
                 "acreage" => "required",//diện tích
                 "price" => "required",//giá
                 "unit" => "required",//dơn vị giá
