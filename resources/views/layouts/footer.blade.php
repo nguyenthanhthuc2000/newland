@@ -3,11 +3,10 @@
         <div class="row" style="align-items: center;">
             <div class="col-md-4 logo__foter p-2 d-flex" style="align-items: center">
                 <a href="{{ route('home.index') }}" class="logo">
-                    <img id="logo-footer" src="{{ asset('customer/image/logo.png') }}" alt="">
+                    <img id="logo-footer" src="{{ asset('uploads/setting/logo.png') }}" alt="">
                 </a>
                 <h5 class="p-3 logan">
-                    <p class="m-0">Nhà bạn đẹp</p>
-                    <p class="m-0">Thành công của chúng tôi!</p>
+                    <p class="m-0">Uy tín - Chất lượng!</p>
                 </h5>
             </div>
             <div class="col-md-8">

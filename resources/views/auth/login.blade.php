@@ -52,23 +52,23 @@
                     </div>
                     <a href="" class="text-danger">Quên mật khẩu?</a>
                 </div>
-                <p class="text-center">Hoặc</p>
-                <div class="row mb-3">
-                    <div class="col-6">
-                        <div class="mb-3">
-                            <a href="{{route('facebook.login')}}"
-                                    class="btn w-100 pb-3 pt-3 btn__border"><i class="fab fa-facebook text-primary"></i> &nbsp; Facebook
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="mb-3">
-                            <a href="{{ route('google.login') }}"
-                                    class="btn w-100 pb-3 pt-3 btn__border"><i class="fab fa-google-plus-g text-danger"></i> &nbsp; Google
-                            </a>
-                        </div>
-                    </div>
-                </div>
+{{--                <p class="text-center">Hoặc</p>--}}
+{{--                <div class="row mb-3">--}}
+{{--                    <div class="col-6">--}}
+{{--                        <div class="mb-3">--}}
+{{--                            <a href="{{route('facebook.login')}}"--}}
+{{--                                    class="btn w-100 pb-3 pt-3 btn__border"><i class="fab fa-facebook text-primary"></i> &nbsp; Facebook--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-6">--}}
+{{--                        <div class="mb-3">--}}
+{{--                            <a href="{{ route('google.login') }}"--}}
+{{--                                    class="btn w-100 pb-3 pt-3 btn__border"><i class="fab fa-google-plus-g text-danger"></i> &nbsp; Google--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
                 <p class="text-center mb-0">Đã chưa có tài khoản? <a class="text-primary fw-bold" href="{{ route('auth.get.register') }}">Đăng kí</a> tại đây.</p>
 
             </div>

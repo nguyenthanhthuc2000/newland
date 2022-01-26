@@ -88,12 +88,12 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix("admin")->group(function(){
             Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
             Route::get('thong-tin-website', [DashboardController::class, 'setting'])->name('admin.setting');
+            Route::post('update-setting', [DashboardController::class, 'updateSetting'])->name('setting.update');
         });
         Route::prefix("bai-viet")->group(function(){
             Route::post('unconfirm-article', [AdminArticleController::class, 'unconfirmArticle'])->name('article.unconfirm');
             Route::post('confirm-article', [AdminArticleController::class, 'confirmArticle'])->name('article.confirm');
-            Route::get('tat-ca', [AdminArticleController::class, 'listArticle'])->name('article.list');
-            Route::get('cho-xu-li', [AdminArticleController::class, 'listArticleWaiting'])->name('article.list.waiting');
+            Route::get('', [AdminArticleController::class, 'listArticle'])->name('article.list');
         });
     });
 });

@@ -19,17 +19,6 @@ class AdminArticleController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function listArticleWaiting(){
-        $articles = $this->artRepo->getByStatus([0]);
-        $data = [
-            'articles' => $articles,
-        ];
-        return view('admin.pages.article.index', $data);
-    }
-
-    /**
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
