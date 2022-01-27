@@ -1,7 +1,7 @@
 @extends('layouts.master_layout')
 @section('main')
     <div class="row">
-        <div class="post-form-action col-xl-8 pt-3">
+        <div class="post-form-action col-sm-8 pt-3">
             <h3>{{ $title }}</h3>
             <p>Hiện có {{ $lstArticle->count() }} bất động sản.</p>
             <div class="l__a">
@@ -42,7 +42,7 @@
                 @endif
             </div>
         </div>
-        <div class="col-md-4 pt-3">
+        <div class="col-sm-4 pt-3 filter-container">
             @include('pages.post.component._filter')
         </div>
     </div>
