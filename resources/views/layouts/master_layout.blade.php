@@ -11,6 +11,10 @@
      @include("layouts.filter")
      <!-- end filter -->
 
+    <!-- slider-->
+    @include("layouts.slider")
+    <!-- end slider-->
+
     <!-- main -->
     <main>
         <div class="container">

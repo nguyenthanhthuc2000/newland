@@ -92,6 +92,10 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
             Route::get('thong-tin-website', [DashboardController::class, 'setting'])->name('admin.setting');
             Route::post('update-setting', [DashboardController::class, 'updateSetting'])->name('setting.update');
+
+            //KHACH HANG
+            Route::get('khach-hang', [UserController::class, 'listCustomer'])->name('admin.list.customer');
+            Route::post('update-status', [UserController::class, 'updateStatus'])->name('admin.update.status');
         });
         Route::prefix("bai-viet")->group(function(){
             Route::post('unconfirm-article', [AdminArticleController::class, 'unconfirmArticle'])->name('article.unconfirm');

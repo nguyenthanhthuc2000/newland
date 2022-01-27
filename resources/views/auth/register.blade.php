@@ -94,7 +94,7 @@
                     <div class="row mb-3">
                         <div class="col-4">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="sex" id="nam" value="1">
+                                <input class="form-check-input" type="radio" name="sex" id="nam" value="1" checked>
                                 <label class="form-check-label" for="nam">
                                     Nam
                                 </label>
@@ -113,6 +113,24 @@
                                 <input class="form-check-input" type="radio" id="khac" name="sex"  value="2">
                                 <label class="form-check-label" for="khac">
                                     Khác
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="account_type" id="canhan" value="0" checked>
+                                <label class="form-check-label" for="canhan">
+                                    Cá nhân
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="congty" name="account_type"  value="2">
+                                <label class="form-check-label" for="congty">
+                                    Công ty
                                 </label>
                             </div>
                         </div>

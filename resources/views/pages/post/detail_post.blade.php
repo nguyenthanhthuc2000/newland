@@ -14,6 +14,7 @@
                     <!-- Full-width images with number text -->
                     @foreach ($detailArticle->imagesArticle as $i => $img)
                         <div class="mySlides">
+                            @php  $i+=1; @endphp
                             <div class="numbertext">{{ $i.'/'.$qtyImg}}</div>
                             <img src="{{ getUrlImageUpload($img->image) }}"  style="width:100%">
 

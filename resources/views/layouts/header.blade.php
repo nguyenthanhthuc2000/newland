@@ -5,43 +5,43 @@
                 <div class="logo">
                     <a class="navbar-brand" href="{{ route('home.index') }}"><img id="logo" src="{{ getUrlImageUpload($settings ? $settings->logo : '', 'setting', 'nologo.jpg') }}" alt=""></a>
                 </div>
-                <div class="d-flex">
+                <div class="d-flex" style="align-items: center">
+                    <a href="#" class="favorite-product"><i class="fal fa-heart" style="font-size: 1.5rem; color: #7f8c8d;"></i></a>
                     <button class="filter-btn" type="button" >
-                        <span class="open"><i class="fas fa-filter"></i></span>
+                        <span class="open"><i class="fal fa-search" style="font-size: 1.4rem;color: #7f8c8d"></i></span>
                     </button> &nbsp;
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="    margin: auto;">
                         <li class="nav-item dropdown">
-                            <a class="nav-link line__hover dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link line__hover dropdown-toggle active" href="#" id="nha-dat-ban" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Nhà đất bán
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <ul class="dropdown-menu" aria-labelledby="nha-dat-ban">
                                 @foreach ($sell as $item)
                                     <li><a class="dropdown-item" href="{{route('category.index', $item->slug) }}">{{ $item->name }}</a></li>
                                 @endforeach
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link line__hover dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link line__hover dropdown-toggle" href="#" id="nha-dat-cho-thue" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Nhà đất cho thuê
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <ul class="dropdown-menu" aria-labelledby="nha-dat-cho-thue">
                                 @foreach ($lease as $item)
                                     <li><a class="dropdown-item" href="{{route('category.index', $item->slug) }}">{{ $item->name }}</a></li>
                                 @endforeach
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link line__hover dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link line__hover dropdown-toggle" href="#" id="noi-ngoai-that" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Nội - Ngoại thất
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <ul class="dropdown-menu" aria-labelledby="noi-ngoai-that">
+                                <li><a class="dropdown-item" href="#">Chưa cập nhật</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -49,13 +49,15 @@
                                 Tin tức
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Chưa cập nhật</a></li>
                             </ul>
                         </li>
                     </ul>
                     <div class="box__auth">
                         @if(Auth::check())
+                            <li>
+                                <a href="#" class="favorite-produc-menu"><i class="fal fa-heart" style="font-size: 1.5rem; color: #7f8c8d;"></i></a>
+                            </li>
                             <li class="dropdown">
                                 <a class="nav-link line__hover dropdown-toggle account__manage" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <strong>{{Auth::user()->name}}</strong>

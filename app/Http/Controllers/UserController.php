@@ -8,6 +8,29 @@ use Auth;
 class UserController extends Controller
 {
 
+    public function updateStatus(Request $request){
+        $attributes = [
+            'status' => $request->status
+        ];
+        if($this->userRepo->update($request->id, $attributes)){
+            return response()->json(['status' => 200]);
+        }
+        return response()->json(['status' => 500]);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function listCustomer(){
+        $attributes = [
+            'level' => 0
+        ];
+        $data = [
+            'customers' => $this->userRepo->getByAttributes($attributes)
+        ];
+        return view('admin.pages.customer.index', $data);
+    }
+
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
@@ -19,6 +42,9 @@ class UserController extends Controller
         return view('auth.info', $data);
     }
 
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function personalArticle() {
         $personalArticle = $this->artRepo->getByAttributes(['user_id' => Auth::id()]);
         $data = [
@@ -27,6 +53,10 @@ class UserController extends Controller
         return view('auth.personal_article', $data);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function articlesSameEntrant($id) {
         $user = $this->userRepo->find($id);
         $lstArticle = $this->userRepo->find($id)->articles;

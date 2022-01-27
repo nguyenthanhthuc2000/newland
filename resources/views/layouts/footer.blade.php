@@ -1,4 +1,4 @@
-<footer class="footer ">
+<footer class="footer mt-3">
     <div class="container">
         <div class="row" style="align-items: center;">
             <div class="col-md-4 logo__foter p-2 d-flex" style="align-items: center">
@@ -59,10 +59,9 @@
                             Hướng dẩn
                         </h5>
                         <ul class="box__article box__ul title_article">
-                            <li><a href="">Báo giá & hỗ trợ</a></li>
-                            <li><a href="">Câu hỏi thường gặp</a></li>
-                            <li><a href="">Thông báo</a></li>
-                            <li><a href="">Liên hệ</a></li>
+                            <li><a href="#">Nạp tiền</a></li>
+                            <li><a href="#">Tài khoản công ty</a></li>
+                            <li><a href="#">Tài khoản cá nhân</a></li>
                         </ul>
                     </div>
                     <div class="col-md-6 mb-3">
@@ -70,10 +69,9 @@
                             Qui định
                         </h5>
                         <ul class="box__article box__ul title_article">
-                            <li><a href="">Báo giá & hỗ trợ</a></li>
-                            <li><a href="">Câu hỏi thường gặp</a></li>
-                            <li><a href="">Thông báo</a></li>
-                            <li><a href="">Liên hệ</a></li>
+                            <li><a href="#">Nội quy đăng bài</a></li>
+                            <li><a href="#">Chính sách</a></li>
+                            <li><a href="#">Quy định</a></li>
                         </ul>
                     </div>
                 </div>
@@ -88,17 +86,17 @@
                 </div>
                 <ul class="social__network box__ul">
                     <li>
-                        <a href="">
+                        <a href="{{$settings->youtube}}">
                             <img src="{{asset('/icons/youtube.svg')}}" alt="">
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="{{$settings->facebook}}">
                             <img src="{{asset('/icons/facebook.svg')}}" alt="">
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="{{$settings->zalo}}">
                             <img src="{{asset('/icons/zalo.svg')}}" alt="">
                         </a>
                     </li>

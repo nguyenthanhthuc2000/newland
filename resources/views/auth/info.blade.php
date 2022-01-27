@@ -1,6 +1,6 @@
 @extends('layouts.master_layout')
 @section('main')
-    <div class="post-form-action col-md-8 col-12 mx-auto pt-5">
+    <div class="post-form-action col-md-6 col-12 mx-auto pt-5">
         <form action="{{ route('auth.post.update') }}" method="post" class="form-post">
             @csrf
             <div class="tab-info">
@@ -114,6 +114,24 @@
                             <input class="form-check-input" type="radio" id="khac" name="sex"  value="2" {{$info->sex == 2 ? 'checked':''}}>
                             <label class="form-check-label" for="khac">
                                 Khác
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="account_type" id="canhan" value="0" {{$info->account_type == 0 ? 'checked':''}}>
+                            <label class="form-check-label" for="canhan">
+                                Cá nhân
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="congty" name="account_type"  value="2" {{$info->account_type == 2 ? 'checked':''}}>
+                            <label class="form-check-label" for="congty">
+                                Công ty
                             </label>
                         </div>
                     </div>

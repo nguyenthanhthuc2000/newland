@@ -14,7 +14,7 @@ class AddLevelToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('level')->after('last_ip_login')->default(0); // 0 là khách hàng
+            $table->integer('level')->after('last_ip_login')->default(0); // 0 là khách hàng
         });
     }
 

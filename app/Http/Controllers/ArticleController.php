@@ -34,7 +34,6 @@ class ArticleController extends Controller
     }
 
     public function filter(Request $request){
-        // dd($request->all());
         if(!$request->all() ||
             (
                 $request->all()['danh-muc'] == null &&

@@ -26,7 +26,7 @@ class DashboardController extends Controller
                 'hotline_1' => ['required', 'numeric', 'digits_between:8,12'],
                 'hotline_2' => ['required', 'numeric', 'digits_between:8,12'],
                 'email' => ['required', 'email:rfc,dns', 'max:65'],
-                'zalo' => ['required', 'numeric', 'digits_between:8,12'],
+                'zalo' => ['required'],
                 'facebook' => ['required'],
                 'youtube' => ['required'],
                 'google_map' => ['required']

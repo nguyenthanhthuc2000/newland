@@ -42,7 +42,7 @@
                         <option value="">Tất cả</option>
                         <option value="Thoa-thuan">Thỏa thuận</option>
                         <option value="0 - 500 trieu" class="filter-optionnk">< 500 triệu</option>
-                        <option value="500 trieu - 800 trieu" class="filter-optionnk">Từ 500 triệu đén 800 triệu</option>
+                        <option value="500 trieu - 800 trieu" class="filter-optionnk">Từ 500 triệu đến 800 triệu</option>
                         <option value="800 trieu - 1 ty" class="filter-optionnk">Từ 800 triệu đến 1 tỷ</option>
                         <option value="1 ty - 2 ty" class="filter-optionnk">Từ 1 tỷ đến 2 tỷ</option>
                         <option value="2 ty - 3 ty" class="filter-optionnk">Từ 2 tỷ đêns 3 tỷ</option>

@@ -9,6 +9,10 @@ function formatTime($time){
     return date_format($time, 'd-m-Y');
 }
 
+function formatNumber($number){
+    return number_format($number, 0, ',', '.');
+}
+
 function numericalOrder($index){
     $currPage = (isset($_REQUEST['page']) && $_REQUEST['page']) ?  $_REQUEST['page'] : 1;
     return ($index + 1) * $currPage;

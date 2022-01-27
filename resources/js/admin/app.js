@@ -20,4 +20,5 @@ import './email';
 import './googleMaps';
 import './utils';
 import './pages/article/'
+import './pages/user/'
 import './pages/main.js'
