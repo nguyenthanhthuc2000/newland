@@ -16,14 +16,14 @@ function hidden_field() {
         }
     })
 
-    // if (idPlatform.includes(idSelect) && !idHome.includes(idSelect)) {
-    //     field.find('input').attr('disabled', true)
-    //     field.find('select').attr('disabled', true)
-    //     field.addClass('d-none');
-    // } else {
-    //     field.find('select').removeAttr('disabled');
-    //     field.removeClass('d-none');
-    // }
+    if (idPlatform.includes(idSelect) && !idHome.includes(idSelect)) {
+        field.find('input').attr('disabled', true)
+        field.find('select').attr('disabled', true)
+        field.addClass('d-none');
+    } else {
+        field.find('select').removeAttr('disabled');
+        field.removeClass('d-none');
+    }
 
     var unit = $('select[name="unit"]');
     unit.on('change', function() {
