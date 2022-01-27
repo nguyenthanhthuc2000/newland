@@ -3,10 +3,10 @@
         <div class="row" style="align-items: center;">
             <div class="col-md-4 logo__foter p-2 d-flex" style="align-items: center">
                 <a href="{{ route('home.index') }}" class="logo">
-                    <img id="logo-footer" src="{{ asset('uploads/setting/logo.png') }}" alt="">
+                    <img id="logo-footer" src="{{ asset('uploads/setting/'.$settings->logo) }}" alt="">
                 </a>
                 <h5 class="p-3 logan">
-                    <p class="m-0">Uy tín - Chất lượng!</p>
+                    <p class="m-0">{{$settings->logan}}</p>
                 </h5>
             </div>
             <div class="col-md-8">
@@ -15,21 +15,21 @@
                         <i class="fal fa-headphones icon__footer"></i>
                         <div class="box__text">
                             <p class="mb-0 title__hotline">Hotline 1</p>
-                            <p class="mb-0 text-black content__hotline"><strong> 1900 1000</strong></p>
+                            <p class="mb-0 text-black content__hotline"><strong> {{$settings->hotline_1}}</strong></p>
                         </div>
                     </div>
                     <div class="col-md-4 col-6 d-flex p-2" style="align-items: center">
                         <i class="fal fa-phone-volume icon__footer"></i>
                         <div class="box__text">
                             <p class="mb-0 title__hotline">Hotline 2</p>
-                            <p class="mb-0 text-black content__hotline"><strong> 1900 1000</strong></p>
+                            <p class="mb-0 text-black content__hotline"><strong> {{$settings->hotline_2}}</strong></p>
                         </div>
                     </div>
                     <div class="col-md-4 col-12 d-flex p-2" style="align-items: center">
                         <i class="fal fa-user-md-chat icon__footer"></i>
                         <div class="box__text">
                             <p class="mb-0 title__hotline">Email</p>
-                            <a href="mailto:hotro@newland.vn" class="mb-0 text-black content__hotline"><strong>hotro@newland.vn</strong></a>
+                            <a href="mailto:hotro@newland.vn" class="mb-0 text-black content__hotline"><strong>{{$settings->email}}</strong></a>
                         </div>
                     </div>
                 </div>
@@ -39,14 +39,14 @@
         <div class="row  mt-3">
             <div class="col-md-4 mb-3">
                 <h5 class="company__title">
-                    CÔNG TY CỔ PHẦN NEWLAND VIỆT NAM
+                    {{$settings->name}}
                 </h5>
                 <ul class="box__ul">
                     <li>
-                        <a href="">
+                        <a href="{{$settings->google_map}}">
                             <i class="fal fa-map-marker-alt"></i>
                             <span>
-                        Tầng 31, Keangnam Hanoi Landmark, Phạm Hùng, Nam Từ Liêm, Hà Nội
+                        {{$settings->address}}
                         </span>
                         </a>
                     </li>
@@ -110,6 +110,6 @@
     </div>
     <div class="footer__bottom container">
         <hr type="color:#7f8c8d;">
-        <p class="text-center m-0" style="font-size: 13px">Copyright © 2022 Newland.vn</p>
+        <p class="text-center m-0" style="font-size: 13px">Copyright © 2022 {{$settings->name}}</p>
     </div>
 </footer>

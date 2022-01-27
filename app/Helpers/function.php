@@ -1,4 +1,9 @@
 <?php
+use App\Models\Setting;
+
+function getSetting(){
+    return Setting::find(1);
+}
 
 function formatTime($time){
     return date_format($time, 'd-m-Y');
