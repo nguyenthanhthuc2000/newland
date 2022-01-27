@@ -205,7 +205,7 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
+        // dd($request->file('image'));
 
         $this->validate($request,
             [
@@ -314,9 +314,12 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $deleted = $this->artRepo->delete($id);
-        if($deleted){
-            $this->artRepo->find($id)->imagesArticle->delete();
+        $article = $this->artRepo->find($id)->first();
+        if($article){
+            if($article->imagesArticle->count() > 0){
+                $article->imagesArticle->where('article_id', $id)->each->delete();
+            }
+            $this->artRepo->delete($id);
             return back()->with(['msg' => 'Đã xóa thành công', 'status' => 'success']);
         }
         return back()->with(['msg' => 'Đã xảy ra lỗi', 'status' => 'error']);

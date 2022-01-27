@@ -84,10 +84,10 @@ abstract class BaseRepository implements RepositoryInterface
         return false;
     }
 
-    public function deleteItems($arrId)
+    public function deleteItems($arrId , $column = 'id')
     {
 
-        if ($this->model->whereIn('id', $arrId)->delete()) {
+        if ($this->model->whereIn($column, $arrId)->delete()) {
             return true;
         }
         return false;

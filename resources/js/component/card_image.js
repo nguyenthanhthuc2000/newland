@@ -4,6 +4,9 @@ var uploadImages = function() {
     var boxReview = $('.review-image-upload');
     const dt = new DataTransfer();
 
+    var indexImg = boxReview.children().length > 0 ? boxReview.children().length : 0;
+
+
     boxInput.click(function() {
         input.click();
     })
@@ -15,28 +18,32 @@ var uploadImages = function() {
         for (let file of this.files) {
             dt.items.add(file);
         }
-
         this.files = dt.files;
 
         boxReview.on('click', '.destroy', function() {
-            let name = $(this).next('span.name').text();
+            var i = parseInt($(this).data('index')) - 1;
+            $(this).closest('.col').remove();
+            i = parseInt(i - indexImg);
+            dt.items.remove(i);
 
-            // $(this).closest('.col').remove();
-            // for (let i = 0; i < dt.items.length; i++) {
-            //     // Khớp tệp và tên
-            //     if (name === dt.items[i].getAsFile().name) {
-            //         // Xóa tệp trong đối tượng DataTransfer
-            //         dt.items.remove(i);
-            //         continue;
-            //     }
+            // Cập nhật các tệp tin đầu vào sau khi xóa
+            console.log(input.files);
+            // boxReview.files[i] = dt.files;
+            // for (let ind = 0; ind < dt.items.length; ind++) {
+            input.files = dt.files;
             // }
-            //Cập nhật các tệp tin đầu vào sau khi xóa
-            // input.files = dt.files;
+
+            boxReview.children('.col').each(function(index) {
+                var p = $(this).find('.destroy');
+                if (index != p.data('index')) {
+                    p.attr('data-index', parseInt(index + 1));
+                }
+            })
         });
     });
 
     // boxReview.on('click', '.destroy', function(e) {
-    //     // $(this).closest('.col').remove();
+    // $(this).closest('.col').remove();
     //     var index = $(this).data('index');
     //     var files = $('.input-gallery')[0].files;
 
@@ -89,7 +96,7 @@ var uploadImages = function() {
                                 <img src="${ event.target.result }" class="card-img-top" alt="...">
                                 <div class="actions">
                                     <i class="fas fa-undo rotate mr-3" title="Xoay"></i>
-                                    <i class="far fa-window-close destroy" title="Xóa" data-index="${index}"></i>
+                                    <i class="far fa-window-close destroy" title="Xóa" data-index="${++index}"></i>
                                 </div>
                             </div>
                             <div class="card-body">

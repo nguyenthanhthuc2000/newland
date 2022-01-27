@@ -3,7 +3,7 @@
         <div class="row" style="align-items: center;">
             <div class="col-md-4 logo__foter p-2 d-flex" style="align-items: center">
                 <a href="{{ route('home.index') }}" class="logo">
-                    <img id="logo-footer" src="{{ getUrlImageUpload($settings ? $settings->logo : '', 'setting', 'nologo.jpg') }}" alt="">
+                    <img id="logo-footer" src="{{ getUrlImageUpload($settings ? $settings->logo_footer : '', 'setting', 'nologo.jpg') }}" alt="">
                 </a>
                 <h5 class="p-3 logan">
                     <p class="m-0">{{ $settings ? $settings->logan : '' }}</p>
