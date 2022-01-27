@@ -68,8 +68,8 @@ if (!function_exists('createSlug')) {
  * @param string $direction
  * @return string
  */
-function getUrlImageUpload($image, $direction = 'article'){
-    $no_photo = 'images/img/no_photo.jpg';
+function getUrlImageUpload($image, $direction = 'article', $no_img = 'no_photo.jpg'){
+    $no_photo = 'images/img/'.$no_img;
     $urlImage = 'uploads/'.$direction.'/'.$image;
     if($image){
         return asset($urlImage);

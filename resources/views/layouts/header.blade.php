@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg">
                 <div class="logo">
-                    <a class="navbar-brand" href="{{ route('home.index') }}"><img id="logo" src="{{ asset('uploads/setting/'.$settings->logo) }}" alt=""></a>
+                    <a class="navbar-brand" href="{{ route('home.index') }}"><img id="logo" src="{{ getUrlImageUpload($settings ? $settings->logo : '', 'setting', 'nologo.jpg') }}" alt=""></a>
                 </div>
                 <div class="d-flex">
                     <button class="filter-btn" type="button" >
