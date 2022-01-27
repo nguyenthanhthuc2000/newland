@@ -14,7 +14,19 @@ class CreateTableSetting extends Migration
     public function up()
     {
         Schema::create('setting', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->text('logo')->nullable();
+            $table->text('logo_footer')->nullable();
+            $table->string('name')->nullable();
+            $table->string('address')->nullable();
+            $table->string('hotline_1', 12)->nullable();
+            $table->string('hotline_2', 12)->nullable();
+            $table->string('zalo', 12)->nullable();
+            $table->string('facebook' )->nullable();
+            $table->string('youtube')->nullable();
+            $table->string('email', 65)->nullable();
+            $table->string('logan')->nullable();
+            $table->text('google_map')->nullable();
             $table->timestamps();
         });
     }

@@ -51,9 +51,6 @@
                   <li>
                       <a class='sidebar-link' href="{{ route('article.list') }}">Tất cả</a>
                   </li>
-                  <li>
-                      <a class='sidebar-link' href="{{ route('article.list.waiting') }}">Chờ xử lí</a>
-                  </li>
               </ul>
           </li>
           <li class="nav-item dropdown">

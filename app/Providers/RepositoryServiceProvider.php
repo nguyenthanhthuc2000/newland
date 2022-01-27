@@ -53,6 +53,10 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repository\RequestContact\RequestContactRepositoryInterface::class,
             \App\Repository\RequestContact\RequestContactRepository::class
         );
+        $this->app->singleton(
+            \App\Repository\Setting\SettingRepositoryInterface::class,
+            \App\Repository\Setting\SettingRepository::class
+        );
 
 
     }
