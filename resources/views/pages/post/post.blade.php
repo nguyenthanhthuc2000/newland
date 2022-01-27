@@ -323,14 +323,14 @@
                         {{-- review img upload --}}
                         @if (isset($article) && $article->imagesArticle)
                             @foreach ($article->imagesArticle as $index => $img)
-                                <input type="text" value="{{ $img->id }}" name="old_images[]"hidden>
-                                <div class="col">
+                            <div class="col">
+                                    <input type="text" value="{{ $img->id }}" name="old_images[]"hidden>
                                     <div class="card">
                                         <div class="card-img">
                                             <img src="{{ getUrlImageUpload($img->image) }}" class="card-img-top" alt="...">
                                             <div class="actions">
                                                 <i class="fas fa-undo rotate mr-3" title="Xoay"></i>
-                                                <i class="far fa-window-close destroy" title="Xóa" data-index="{{ $index }}"></i>
+                                                <i class="far fa-window-close destroy" title="Xóa" data-index="{{ ++$index }}"></i>
                                             </div>
                                         </div>
                                         <div class="card-body">
