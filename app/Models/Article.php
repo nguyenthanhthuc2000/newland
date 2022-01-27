@@ -34,4 +34,42 @@ class Article extends Model
         return $this->belongsTo(District::class);
     }
 
+    public function scopePrice($query, $from, $to, $negotiable){
+        if($negotiable){
+            $query->where('unit', 'Thỏa thuận');
+            return $query;
+        }
+        else if($to && !$negotiable){
+            $query->whereBetween('price', [$from, $to]);
+            return $query;
+        }
+        else {
+            $query->where('price', '>', $from);
+            return $query;
+        }
+    }
+
+    public function scopeFilter($query, $request){
+        if(isset($request['hinh-thuc'])){
+            $query->where('form', $request['hinh-thuc']);
+        }
+        if(isset($request['id-danh-muc'])){
+            $query->where('category_id', $request['id-danh-muc']);
+        }
+        if(isset($request['id-khu-vuc'])){
+            $query->where('province_id', $request['id-khu-vuc']);
+        }
+        if(isset($request['muc-gia'])){
+            if($request['muc-gia'] == 'Thỏa thuận'){
+                $query->where('unit', 'Thỏa thuận');
+            }
+            else {
+                $query->where('price', $request['muc-gia']);
+            }
+        }
+        if(isset($request['dien-tich'])){
+            $query->where('acreage', $request['dien-tich']);
+        }
+        return $query;
+    }
 }

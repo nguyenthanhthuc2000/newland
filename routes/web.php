@@ -62,8 +62,10 @@ Route::post('request-contact', [RequestContactController::class, 'store'])->name
 
 //LIST ARTICLE
 Route::get('danh-muc/{slugs}', [CategoryController::class, 'viewCategory'])->name('category.index');
+Route::get('danh-sach-bat-dong-san-tren-toan-quoc', [ArticleController::class, 'allArticle'])->name('article.index');
 
 Route::prefix('tim-kiem')->group(function () {
+    Route::get('', [ArticleController::class, 'filter'])->name('article.filter');
     Route::get('/theo-gia', [ArticleController::class, 'searchByPrice'])->name('article.search');
     Route::get('/bai-viet-cung-nguoi-dang-us{id}', [UserController::class, 'articlesSameEntrant'])->name('article.SameEntrant');
 });
@@ -76,6 +78,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('dang-tin', [PostController::class, 'store'])->name('post.store');
     Route::get('destroy/{id}',  [PostController::class, 'destroy'])->name('post.destroy');
     Route::get('chinh-sua-bai-viet/{id}',  [PostController::class, 'edit'])->name('post.edit');
+    Route::post('update/{id}',  [PostController::class, 'update'])->name('post.update');
     // USER
     Route::get('thong-tin-ca-nhan',  [UserController::class, 'info'])->name('auth.info');
     Route::get('bai-viet-ca-nhan',  [UserController::class, 'personalArticle'])->name('auth.article');

@@ -2,6 +2,9 @@
     <h2>Lọc theo khoản giá</h2>
     <ul class="filter-list">
         <li class="filter-item">
+            <a href="{{ route('article.search', ['gia' => 'thoa-thuan']) }}" class="filter-link">Thỏa thuận</a>
+        </li>
+        <li class="filter-item">
             <a href="{{ route('article.search', ['tu' => '0', 'den' => '500 trieu']) }}" class="filter-link">< 500 triệu</a>
         </li>
         <li class="filter-item">

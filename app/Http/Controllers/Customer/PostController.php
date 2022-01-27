@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DateTime;
-
+use Str;
 class PostController extends Controller
 {
 
@@ -20,10 +20,8 @@ class PostController extends Controller
     public function index()
     {
         $direction = $this->dirRepo->getOrDerBy()->reverse();
-        $cat = $this->catRepo->getByAttributesAll(['type' => 0])->reverse();
         $data = [
             'province' => Controller::getProvince(),
-            'cat' => $cat,
             'direction' => $direction
         ];
         return view('pages.post.post', $data);
@@ -65,7 +63,7 @@ class PostController extends Controller
                 "sub_title" => "required",// mô tả ngắn
                 "contents" => "required",//mô tả chi tiết
                 "acreage" => "required",//diện tích
-                "price" => "required",//giá
+                "price" => "sometimes|required",//giá
                 "unit" => "required",//dơn vị giá
                 "legal_documents" => "required",//giấy tờ pháp lí
                 "name_contact" => "required",
@@ -128,7 +126,7 @@ class PostController extends Controller
 
             for($i = 0; $i < count($imgArr); $i++){
 
-                $fileName = $imgArr[$i]->getClientOriginalName();
+                $fileName = Str::random(35);
                 $newFileName = $dateStr.'_'.$fileName;
 
                 $this->imgArtRepo->create([
@@ -140,9 +138,9 @@ class PostController extends Controller
                 $imgArr[$i]->move('uploads/article', $newFileName);
             };
 
-            return back()->with(['msg' => 'Đã thêm thành công', 'status' => 'success']);
         }
-        return back()->with(['msg' => 'Đã xảy ra lỗi', 'status' => 'error']);
+        return back()->with(['msg' => 'Đã thêm thành công', 'status' => 'success']);
+
     }
 
     /**
@@ -188,7 +186,9 @@ class PostController extends Controller
         $direction = $this->dirRepo->getOrDerBy()->reverse();
         $cat = $this->catRepo->getByAttributesAll(['type' => 0])->reverse();
         $data = [
-            'province' => Controller::getProvince(),
+            // 'province' => $this->provinceRepo->find($article->province_id),
+            'districts' => $this->districtRepo->find($article->province_id)->get(),
+            'wards' => $this->wardRepo->find($article->district_id)->get(),
             'cat' => $cat,
             'direction' => $direction,
             'article' => $article
@@ -205,7 +205,105 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request->all());
+
+        $this->validate($request,
+            [
+                "form" => "required", //bán/thuê
+                "category_id" => "required", //Loại bất động sản
+                "province_id" => "required",// tỉnh Thành phố
+                "district_id" => "required",// qquận huyện
+                "ward_id" => "required",//Phường / Xã
+                "street_id" => "required",//đường
+                "address_on_post" => "required",//địa chủ trên bài đăng
+                "title" => "required",// tiêu đề trên bài viết
+                "sub_title" => "required",// mô tả ngắn
+                "contents" => "required",//mô tả chi tiết
+                "acreage" => "required",//diện tích
+                "price" => "sometimes|required",//giá
+                "unit" => "required",//dơn vị giá
+                "legal_documents" => "required",//giấy tờ pháp lí
+                "name_contact" => "required",
+                "phone_contact" => "required",
+                "address_contact" => "required",
+                "email_contact" => "required",
+            ],
+            [
+                "district_id.required" => "Vui lòng chọn Quận / Huyện",
+                "ward_id.required" => "Vui lòng chọn Phường / Xã",
+                "province_id.required" => "Vui lòng chọn Tỉnh / Thành phố",
+                "unit.required" => "Vui lòng chọn Đơn vị",
+                "category_id.required" => "Vui lòng chọn Loại bất động sản",
+            ]
+        );
+        $private_code = $this->artRepo->find($id)->private_code;
+        $slug = createSlug($request->title.'-'.$private_code);
+        $attributes = [
+            "form" => $request->form,
+            "category_id" => $request->category_id,
+            "province_id" => $request->province_id,
+            "district_id" => $request->district_id,
+            "ward_id" => $request->ward_id,
+            "street_id" => $request->street_id,
+            "address_on_post" => $request->address_on_post,
+            "title" => $request->title,
+            "slug" => $slug,
+            "sub_title" => $request->sub_title,
+            "content" => $request->contents,
+            "acreage" => $request->acreage,
+            "price" => $request->price,
+            "unit" => $request->unit,
+            "legal_documents" => $request->legal_documents,
+            "bedroom" => $request->bedroom,
+            "toilet" => $request->toilet,
+            "floor" => $request->floor,
+            "house_direction" => $request->house_direction,
+            "balcony_direction" => $request->balcony_direction,
+            "way" => $request->way,
+            "facade" => $request->facade,
+            "furniture" => $request->furniture,
+            "name_contact" => $request->name_contact,
+            "phone_contact" => $request->phone_contact,
+            "address_contact" => $request->address_contact,
+            "email_contact" => $request->email_contact,
+            "user_id" => Auth::id(),
+        ];
+
+        $updated = $this->artRepo->update($id, $attributes);
+        if($updated){
+            $old_images = $request->old_images;
+
+            $get_old_images = $this->artRepo->imagesArticle;
+            foreach($get_old_images as $img){
+                if(!in_array($img->id, $old_images)){
+                    $get_old_images->delete($img->id);
+                }
+            }
+
+            if($request->file('image')){
+                $imgArr = $request->file('image');
+                $description_img = $request->description_img;
+                $date = new DateTime();
+                $dateStr = $date->format('Y_m_d_H_i_s');
+
+                for($i = 0; $i < count($imgArr); $i++){
+
+                    $fileName = Str::random(35);
+                    $newFileName = $dateStr.'_'.$fileName;
+
+                    $this->imgArtRepo->create([
+                        'article_id'=> $id,
+                        'image' => $newFileName,
+                        'description_img' => $description_img[$i]
+                    ]);
+
+                    $imgArr[$i]->move('uploads/article', $newFileName);
+                };
+
+            }
+        }
+
+        return back()->with(['msg' => 'Chỉnh sửa thành công', 'status' => 'success']);
     }
 
     /**
@@ -216,9 +314,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $article = $this->artRepo->find($id);
-        if($article){
-            $article->delete();
+        $deleted = $this->artRepo->delete($id);
+        if($deleted){
+            $this->artRepo->find($id)->imagesArticle->delete();
             return back()->with(['msg' => 'Đã xóa thành công', 'status' => 'success']);
         }
         return back()->with(['msg' => 'Đã xảy ra lỗi', 'status' => 'error']);

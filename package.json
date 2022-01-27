@@ -9,7 +9,7 @@
         "prod": "npm run production",
         "production": "mix --production",
         "serve": "php artisan serve",
-        "start": "start npm run serve && npm run prod && npm run watch"
+        "start": "start npm run serve && npm run watch"
     },
     "devDependencies": {
         "@popperjs/core": "^2.11.0",

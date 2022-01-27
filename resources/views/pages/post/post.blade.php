@@ -2,7 +2,7 @@
 @section('main')
 
 <div class="post-form-action col-xl-8 mx-auto pt-3">
-    <form method="post" action="{{ route('post.store') }}" class="form-post" id="formPost"  enctype="multipart/form-data">
+    <form method="post" action="{{ isset($article) ? route('post.update', $article->id) : route('post.store') }}" class="form-post" id="formPost"  enctype="multipart/form-data">
         @csrf
         <div class="form-body">
             <div class="tab-info basic-information">
@@ -15,7 +15,8 @@
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="type-post-input" type="radio" name="form" id="lease" data-type="1" hidden value="1" {{ (isset($article)) ? (($article->form == 1) ? 'checked' : '') : '' }}>
+                        <input class="type-post-input" type="radio" name="form" id="lease" data-type="1" hidden
+                                value="1" {{ (isset($article)) ? (($article->form == 1) ? 'checked' : '') : '' }}>
                         <label class="form-check-label" for="lease">
                             Cho thuê
                         </label>
@@ -26,7 +27,7 @@
                     <select class="form-select" aria-label="Default select example" id="typeOfRealEstate"
                             aria-describedby="typeOfRealEstateHelp" name="category_id">
                         <option selected disabled hidden>Loại bất động sản</option>
-                        @foreach($cat as $c)
+                        @foreach($sell as $c)
                             <option value="{{ $c->id }}" {{ (isset($article) && $article->category_id == $c->id) ? 'selected' : '' }}>{{ $c->name }}</option>
                         @endforeach
                     </select>
@@ -43,7 +44,7 @@
                                     data-type="provinces" class="select-local form-select">
                                 <option disabled selected hidden>Tỉnh/ Thành phố</option>
                                 @foreach ($province as $prov)
-                                    <option value="{{ $prov->id }}">{{ $prov->_name }}</option>
+                                    <option value="{{ $prov->id }}" {{ (isset($article) && $article->province_id == $prov->id) ? 'selected' : '' }}>{{ $prov->_name }}</option>
                                 @endforeach
                             </select>
                             @error('province_id')
@@ -55,6 +56,11 @@
                             <select name="district_id" aria-describedby="districtHelp"
                                     data-type="districts" class="select-local form-select">
                                 <option disabled selected hidden>Quận /  Huyện</option>
+                                @if (isset($article) && isset($districts))
+                                    @foreach ($districts as $dist)
+                                        <option value="{{ $dist->id }}" {{ ($article->district_id == $dist->id) ? 'selected' : '' }}>{{ $dist->_name }}</option>
+                                    @endforeach
+                                @endif
                             </select>
                             @error('district_id')
                                  <div id="districtHelp" class="form-text text-danger">{{ $message }}</div>
@@ -65,6 +71,11 @@
                             <select name="ward_id" aria-describedby="wardHelp"
                                     data-type="wards" class="select-local form-select">
                                 <option disabled selected hidden>Phường / Xã</option>
+                                @if (isset($article) && isset($wards))
+                                    @foreach ($wards as $ward)
+                                        <option value="{{ $ward->id }}" {{ ($article->district_id == $ward->id) ? 'selected' : '' }}>{{ $ward->_name }}</option>
+                                    @endforeach
+                                @endif
                             </select>
                             @error('ward_id')
                                  <div id="wardHelp" class="form-text text-danger">{{ $message }}</div>
@@ -73,7 +84,8 @@
                         <div class="col-sm-6">
                             <label for="street" class="form-label">Đường <span class="text-required">*</span></label>
                             <input placeholder="Đường" class="form-control dropdown-toggle" type="text"
-                                    autocomplete="off" name="street_id" aria-describedby="streetHelp">
+                                    autocomplete="off" name="street_id" aria-describedby="streetHelp"
+                                    value="{{ isset($article) ? (($article->street_id) ? $article->street_id : '') : '' }}">
                             @error('street_id')
                                     <div id="streetHelp" class="form-text text-danger">{{ $message }}</div>
                             @enderror
@@ -82,7 +94,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="address_on_post" class="form-label">Địa chỉ hiển thị trên tin đăng <span class="text-required">*</span></label>
-                    <input type="text" class="form-control" placeholder="Bạn có thể bổ sung hẻm, ngách, ngõ..." name="address_on_post" aria-describedby="addressOnPostHelp">
+                    <input type="text" class="form-control" placeholder="Bạn có thể bổ sung hẻm, ngách, ngõ..." name="address_on_post" aria-describedby="addressOnPostHelp"
+                            value="{{ isset($article) ? (($article->address_on_post) ? $article->address_on_post : '') : '' }}">
                     @error('address_on_post')
                             <div id="addressOnPostHelp" class="form-text text-danger">{{ $message }}</div>
                     @enderror
@@ -104,7 +117,7 @@
                 <div class="mb-3">
                     <label for="typeOfRealEstate" class="form-label">Tiêu đề <span class="text-required">*</span></label>
                     <div class="form-input">
-                        <textarea class="form-control" placeholder="VD: Bán nhà riêng 50m2 chính chủ tại Cầu Giấy" name="title" rows="2" aria-describedby="titleHelp"></textarea>
+                        <textarea class="form-control" placeholder="VD: Bán nhà riêng 50m2 chính chủ tại Cầu Giấy" name="title" rows="2" aria-describedby="titleHelp">{{ isset($article) ? (($article->title) ? $article->title : '') : '' }}</textarea>
                     </div>
                     @error('address_on_post')
                         <div id="titleHelp" class="form-text text-danger">{{ $message }}</div>
@@ -114,7 +127,7 @@
                     <label for="typeOfRealEstate" class="form-label">Mô tả ngắn <span class="text-required">*</span></label>
                     <div class="form-input">
                         <textarea class="form-control" placeholder="Nhập mô tả ngắn về bất động sản của bạn."
-                                    name="sub_title" rows="3" aria-describedby="subTitleHelp"></textarea>
+                                    name="sub_title" rows="3" aria-describedby="subTitleHelp">{{ isset($article) ? (($article->sub_title) ? $article->sub_title : '') : '' }}</textarea>
                     </div>
                     @error('sub_title')
                         <div id="subTitleHelp" class="form-text text-danger">{{ $message }}</div>
@@ -126,7 +139,7 @@
                     <div class="form-input">
                         <textarea class="form-control ck-editor" aria-describedby="contentHelp"
                                 placeholder="Nhập mô tả chung về bất động sản của bạn. Ví dụ: Khu nhà có vị trí thuận lợi, gần công viên, gần trường học,..."
-                                name="contents" rows="5"></textarea>
+                                name="contents" rows="5">{{ isset($article) ? (($article->content) ? $article->content : '') : '' }}</textarea>
                     </div>
                     @error('contents')
                         <div id="contentHelp" class="form-text text-danger">{{ $message }}</div>
@@ -139,7 +152,8 @@
                 <div class="mb-3">
                     <label for="acreage" class="form-label">Diện tích <span class="text-required">*</span></label>
                     <div class="acreage">
-                        <input type="number" class="form-control" placeholder="Nhập diện tích, VD 80" unit="m²" name="acreage" aria-describedby="acreageHelp">
+                        <input type="number" class="form-control" placeholder="Nhập diện tích, VD 80" unit="m²" name="acreage" aria-describedby="acreageHelp"
+                                value="{{ isset($article) ? (($article->acreage) ? $article->acreage : '') : '' }}">
                     </div>
                     @error('acreage')
                         <div id="acreageHelp" class="form-text text-danger">{{ $message }}</div>
@@ -149,7 +163,9 @@
                     <label for="typeOfRealEstate" class="form-label">Mức giá <span class="text-required">*</span></label>
                     <div class="price row">
                         <div class="col-sm-9 col-7">
-                            <input type="number" class="form-control price" aria-describedby="priceHelp" name="price">
+                            <input type="number" class="form-control price" aria-describedby="priceHelp" name="price"\
+                                    value="{{ isset($article) ? (($article->price) ? $article->price : '') : '' }}"
+                                    {{ isset($article) ? (($article->unit == 'Thỏa thuận') ? 'disabled' : '') : '' }}>
                             @error('price')
                                 <div id="priceHelp" class="form-text text-danger">{{ $message }}</div>
                             @enderror
@@ -157,9 +173,9 @@
                         <div class="col-sm-3 col-5">
                             <select class="form-select" aria-label="" name="unit" aria-describedby="unitHelp">
                                 <option selected disabled hidden>Đơn vị</option>
-                                <option value="VNĐ">VNĐ</option>
-                                <option value="/ m²">Giá / m²</option>
-                                <option value="Thỏa thuận">Thỏa thuận</option>
+                                <option value="VNĐ" {{ isset($article) ? (($article->unit == 'VNĐ') ? 'selected' : '') : '' }}>VNĐ</option>
+                                <option value="/ m²" {{ isset($article) ? (($article->unit == '/ m²') ? 'selected' : '') : '' }}>Giá / m²</option>
+                                <option value="Thỏa thuận" {{ isset($article) ? (($article->unit == 'Thỏa thuận') ? 'selected' : '') : '' }}>Thỏa thuận</option>
                             </select>
                             @error('unit')
                                 <div id="unitHelp" class="form-text text-danger">{{ $message }}</div>
@@ -169,7 +185,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="legal_documents" class="form-label">Giấy tờ pháp lý <span class="text-required">*</span></label>
-                    <input type="text" class="form-control legal_documents" placeholder="Giấy tờ pháp lý" name="legal_documents" aria-describedby="legalDocumentsHelp">
+                    <input type="text" class="form-control legal_documents" placeholder="Giấy tờ pháp lý" name="legal_documents"
+                            value="{{ isset($article) && $article->legal_documents ? $article->legal_documents : '' }}" aria-describedby="legalDocumentsHelp">
                     @error('legal_documents')
                         <div id="legalDocumentsHelp" class="form-text text-danger">{{ $message }}</div>
                     @enderror
@@ -186,7 +203,8 @@
                                         <i class="fa fa-minus"></i>
                                     </button>
                                 </span>
-                                <input type="text" name="bedroom" class="form-control input-step" value="0" min="0">
+                                <input type="text" name="bedroom" class="form-control input-step"
+                                        value="{{ isset($article) ? (($article->bedroom) ? $article->bedroom : 0) : 0 }}" min="0">
                                 <span class="input-group-btn">
                                     <button type="button" class="btn-step" data-type="plus" data-field="bedroom">
                                         <i class="fa fa-plus"></i>
@@ -204,7 +222,8 @@
                                         <i class="fa fa-minus"></i>
                                     </button>
                                 </span>
-                                <input type="text" name="toilet" class="form-control input-step" value="0" min="0">
+                                <input type="text" name="toilet" class="form-control input-step"
+                                        value="{{ isset($article) ? (($article->toilet) ? $article->toilet : 0) : 0 }}" min="0">
                                 <span class="input-group-btn">
                                     <button type="button" class="btn-step" data-type="plus" data-field="toilet">
                                         <i class="fa fa-plus"></i>
@@ -222,7 +241,8 @@
                                         <i class="fa fa-minus"></i>
                                     </button>
                                 </span>
-                                <input type="text" name="floor" class="form-control input-step" value="0" min="0">
+                                <input type="text" name="floor" class="form-control input-step"
+                                        value="{{ isset($article) ? (($article->floor) ? $article->floor : 0) : 0 }}" min="0">
                                 <span class="input-group-btn">
                                     <button type="button" class="btn-step" data-type="plus" data-field="floor">
                                         <i class="fa fa-plus"></i>
@@ -293,7 +313,7 @@
                 <p>Hãy dùng ảnh thật, không trùng, không chèn số điện thoại. Mỗi ảnh kích thước tối thiểu 400x400, tối đa 15 MB. Số lượng ảnh tối đa tuỳ theo loại tin</p>
                 <div class="container-upload">
                     <label for="input-gallery" class="form-label">Hình ảnh</label>
-                    <input type="file" multiple accept="image/*" class="input-gallery" name="image[]" step="any" hidden>
+                    <input type="file" multiple accept="image/*" class="input-gallery" name="image[]" step="any" >
                     <div class="box-upload">
                         <i class="fas fa-upload"></i>
                         <p>Bấm để chọn ảnh cần tải lên</p>
@@ -301,6 +321,26 @@
                     </div>
                     <div class="review-image-upload row row-cols-1 row-cols-md-3 g-4">
                         {{-- review img upload --}}
+                        @if (isset($article) && $article->imagesArticle)
+                            @foreach ($article->imagesArticle as $index => $img)
+                                <input type="text" value="{{ $img->id }}" name="old_images[]"hidden>
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-img">
+                                            <img src="{{ getUrlImageUpload($img->image) }}" class="card-img-top" alt="...">
+                                            <div class="actions">
+                                                <i class="fas fa-undo rotate mr-3" title="Xoay"></i>
+                                                <i class="far fa-window-close destroy" title="Xóa" data-index="{{ $index }}"></i>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <input type="text" class="form-control"  placeholder="Nhập mô tả" name="description_img[]"
+                                                    value="{{ $img->description_img }}">
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
             </div>

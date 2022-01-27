@@ -27,7 +27,7 @@ class CreateArticle extends Migration
             $table->string('sub_title'); //mô tả
             $table->text('content'); //nội dung
             $table->integer('acreage'); //diện tích m2
-            $table->double('price'); //giá
+            $table->double('price')->nullable(); //giá
             $table->string('unit', 10); //đơn vị giá
             $table->string('legal_documents', 64); // giấy tờ pháp lí
             $table->integer('bedroom')->nullable(); //phòng ngủ

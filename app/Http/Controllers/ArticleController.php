@@ -8,11 +8,58 @@ use Illuminate\Http\Request;
 use App\Models\Article;
 class ArticleController extends Controller
 {
+    public function allArticle(){
+        $articles = $this->artRepo->getByAttributes(['status' => 1]);
+        $title = 'Bất động sản trên toàn quốc';
+        $data = [
+            'title' => $title,
+            'lstArticle' => $articles,
+        ];
+        return view('pages.post.article_list', $data);
+    }
+
     public function searchByPrice(Request $request)
     {
+        $negotiable = $request->gia;
         $from = convert_words_to_numbers($request->tu);
         $to = convert_words_to_numbers($request->den);
-        $result = Article::filter($from, $to);
-        dd($result);
+        $result = Article::price($from, $to, $negotiable)->get();
+
+        $title = 'Các tin đăng có giá '.($from == 0 ? 'dưới '.convert_number_to_words($to) : 'từ '.convert_number_to_words($from). (convert_number_to_words($to) ? ' đến '. convert_number_to_words($to) : ''));
+        $data = [
+            'title' => $title,
+            'lstArticle' => $result,
+        ];
+        return view('pages.post.article_list', $data);
+    }
+
+    public function filter(Request $request){
+        // dd($request->all());
+        if(!$request->all() ||
+            (
+                $request->all()['danh-muc'] == null &&
+                $request->all()['hinh-thuc'] == null &&
+                $request->all()['khu-vuc'] == null &&
+                $request->all()['muc-gia'] == null &&
+                $request->all()['dien-tich'] == null
+            )
+        ){
+            return redirect()->route('article.index');
+        }
+        if(isset($request->all()['danh-muc'])){
+            $idCat = $this->catRepo->getByAttributes(['slug' => $request->all()['danh-muc']])->first()->id;
+            $request->request->add(['id-danh-muc' => $idCat]);
+        }
+        if(isset($request->all()['khu-vuc'])){
+            $idArea = $this->provinceRepo->getByAttributes(['_code' => $request->all()['khu-vuc']])->first()->id;
+            $request->request->add(['id-khu-vuc' => $idArea]);
+        }
+        $result = Article::filter($request->all())->get();
+        $title = 'Kết quả tìm kiếm';
+        $data = [
+            'title' => $title,
+            'lstArticle' => $result,
+        ];
+        return view('pages.post.article_list', $data);
     }
 }

@@ -57,12 +57,11 @@ class Controller extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    protected function getProvince(){
+    public function getProvince(){
         return $province = $this->provinceRepo->getOrderBy('ASC');
     }
 
     protected function getDistrict(Request $request){
-        // dd();
         $province_id = $request->_province_id;
         return $this->provinceRepo->find($province_id)->districts()->get();
     }
@@ -72,10 +71,10 @@ class Controller extends BaseController
         return $this->districtRepo->find($district_id)->wards()->get();
     }
 
-    protected function getStreet(Request $request){
-        $district_id = $request->_district_id;
-        return $this->wardRepo->find($district_id)->streets()->get();
-    }
+    // protected function getStreet(Request $request){
+    //     $district_id = $request->_district_id;
+    //     return $this->wardRepo->find($district_id)->streets()->get();
+    // }
 
 
 }

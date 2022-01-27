@@ -84,8 +84,10 @@ form.form-post {
                 &-img {
                     height: 250px;
                     position: relative;
+                    background-color: #cecece8a;
                     &-top {
                         height: 100%;
+                        object-fit: contain;
                     }
                     .actions {
                         position: absolute;

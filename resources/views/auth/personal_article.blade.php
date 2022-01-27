@@ -34,7 +34,7 @@
                     @foreach ($personalArticle as $i => $art)
                     @php
                         $img_article[] = $art->imagesArticle->toArray();
-                        $img = $img_article[0] ? $img_article[0][$i]['image'] : 'img/no_photo.jpg';
+                        $img = $img_article[$i] ? $img_article[$i][0]['image'] : '';
                     @endphp
                     <tr>
                         <th scope="row">{{ numericalOrder($i) }}</th>

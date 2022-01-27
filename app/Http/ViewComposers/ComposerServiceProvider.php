@@ -1,12 +1,11 @@
 <?php
 
-// namespace App\Providers;
 namespace App\Http\ViewComposers;
 
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use DB;
-
+use App\Http\Controllers\Controller;
 class ComposerServiceProvider extends ServiceProvider
 {
     /**
@@ -22,13 +21,15 @@ class ComposerServiceProvider extends ServiceProvider
         // );
 
         // Using Closure based composers...
-        View::composer(['layouts.header', 'layouts.filter'], function ($view) {
+        View::composer(['layouts.header', 'layouts.filter', 'pages.post.post'], function ($view) {
             $data = [
                 'sell' => DB::table('category')->where('type', 0)->get(),
-                'lease' => DB::table('category')->where('type', 1)->get()
+                'lease' => DB::table('category')->where('type', 1)->get(),
+                'province' => DB::table('province')->get(),
             ];
             $view->with($data);
         });
+
     }
 
     /**
