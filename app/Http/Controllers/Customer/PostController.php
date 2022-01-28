@@ -277,7 +277,7 @@ class PostController extends Controller
             $get_old_images = $this->artRepo->imagesArticle;
             foreach($get_old_images as $img){
                 if(!in_array($img->id, $old_images)){
-                    $img_name = $get_old_images->fimd($img->id)->image;
+                    $img_name = $get_old_images->find($img->id)->image;
                     $img_path = public_path() .'uploads/article/' . $img_name;
                     if(File::exists($img_path)){
                         File::delete($img_path);
@@ -322,7 +322,13 @@ class PostController extends Controller
     {
         $article = $this->artRepo->find($id)->first();
         if($article){
-            if($article->imagesArticle->count() > 0){
+            $get_images = $article->imagesArticle;
+            if($get_images->count() > 0){
+                $img_name = $get_images->find($id)->image;
+                $img_path = public_path() .'uploads/article/' . $img_name;
+                if(File::exists($img_path)){
+                    File::delete($img_path);
+                }
                 $article->imagesArticle->where('article_id', $id)->each->delete();
             }
             $this->artRepo->delete($id);
