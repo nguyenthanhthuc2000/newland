@@ -52,7 +52,7 @@ class CreateArticle extends Migration
             $table->dateTime('end_day')->nullable(); // ngày kết thúc
             $table->tinyInteger('status')->default(0); //trạng thái (0: ẩn, 1: hiện)
             $table->tinyInteger('featured')->default(0); //trạng thái (0: không nổi bật, 1: nổi bật)
-            $table->tinyInteger('vip')->nullable(); //trạng thái (0: không nổi bật, 1: nổi bật)
+            $table->tinyInteger('vip')->default(0); //trạng thái (0: không nổi bật, 1: nổi bật)
             $table->tinyInteger('state')->default(0); //trạng thái (0: tin mới,1: đã bán, 2: đã đc thuê, 3: đã đặt cọc)
             $table->timestamps();
         });

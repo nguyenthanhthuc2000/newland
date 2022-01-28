@@ -24,6 +24,7 @@
                                     <th class=" bdwT-0">Mã</th>
                                     <th class=" bdwT-0">Tiêu đề</th>
                                     <th class=" bdwT-0 text-center">Loại</th>
+                                    <th class=" bdwT-0 text-center">Nổi bật</th>
                                     <th class=" bdwT-0">Người đăng</th>
                                     <th class=" bdwT-0">Thời gian</th>
                                     <th class=" bdwT-0">Trạng thái</th>
@@ -35,14 +36,19 @@
                                         <tr>
                                             <td class="fw-600">{{ $article->private_code }}</td>
                                             <td class="fw-600"><a href="{{ route('post.detail',$article->slug) }}">{{ $article->title }}</a></td>
-                                            <td class=" text-center">
+                                            <td class=" text-center" style="min-width: 120px">
                                                 <select class="form-select" aria-label="Default select example">
-                                                    <option selected>Open this select menu</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
+                                                    <option value="0" {{ $article->vip == 0 ? 'checked' : '' }}>Thường</option>
+                                                    <option value="1" {{ $article->vip == 1 ? 'checked' : '' }}>Vip 1</option>
+                                                    <option value="2" {{ $article->vip == 2 ? 'checked' : '' }}>Vip 2</option>
+                                                    <option value="3" {{ $article->vip == 3 ? 'checked' : '' }}>Vip 3</option>
                                                 </select>
                                             </td>
+                                            <td class="text-center">
+                                                <div class="form-check form-switch text-center">
+                                                    <input class="form-check-input update-facade-article" type="checkbox" data-id="{{$article->id}}"
+                                                           {{ $article->featured == 1 ? 'checked' : '' }}>
+                                                </div>
                                             <td><a href="" class="">{{ $article->user->name }}</a>
                                             </td>
                                             <td>
