@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DateTime;
 use Str;
+use File;
 class PostController extends Controller
 {
 
@@ -276,6 +277,11 @@ class PostController extends Controller
             $get_old_images = $this->artRepo->imagesArticle;
             foreach($get_old_images as $img){
                 if(!in_array($img->id, $old_images)){
+                    $img_name = $get_old_images->fimd($img->id)->image;
+                    $img_path = public_path() .'uploads/article/' . $img_name;
+                    if(File::exists($img_path)){
+                        File::delete($img_path);
+                    }
                     $get_old_images->delete($img->id);
                 }
             }
