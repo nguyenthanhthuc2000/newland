@@ -1,4 +1,7 @@
 @extends('layouts.master_layout')
+@section('title')
+    {{ $detailArticle->title }}
+@endsection
 @section('main')
     <div class="row pt-4 pb-4 detail-post">
         <div class="col-md-1"></div>

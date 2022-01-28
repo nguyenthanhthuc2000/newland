@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @routes()
 
-    <title>NEWLAND.VN</title>
+    <title>@yield('title')</title>
     <link rel="stylesheet" href="{{ asset('customer/css/style.css') }}">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
     <script>

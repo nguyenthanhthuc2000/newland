@@ -157,6 +157,9 @@ class PostController extends Controller
 
     public function detail($slug){
         $detailArticle = $this->artRepo->getItemsBySlug($slug);
+        if(!$detailArticle){
+            return abort('404');
+        }
         $userId = $detailArticle->user->id;
         $countArticleOfUser = $this->artRepo->getByAttributesAll(["user_id" => $userId])->count();
         $data = [
