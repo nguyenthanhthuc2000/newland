@@ -86,7 +86,6 @@ abstract class BaseRepository implements RepositoryInterface
 
     public function deleteItems($arrId , $column = 'id')
     {
-
         if ($this->model->whereIn($column, $arrId)->delete()) {
             return true;
         }
@@ -109,6 +108,12 @@ abstract class BaseRepository implements RepositoryInterface
 
     public function getItemsBySlug($slug){
         $result = $this->model->where('slug', $slug)->first();
+
+        return $result;
+    }
+
+    public function findByAttributes($attributes){
+        $result = $this->model->where($attributes)->first();
 
         return $result;
     }

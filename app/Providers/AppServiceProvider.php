@@ -25,15 +25,5 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::useBootstrap();
-
-        if (! $this->app->runningInConsole()) {
-            view()->composer('*', function ($view)
-            {
-
-                $settings = getSetting();
-
-                $view->with('settings', $settings );
-            });
-        }
     }
 }

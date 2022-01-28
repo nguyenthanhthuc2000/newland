@@ -15,7 +15,7 @@ class CreateImagesArticle extends Migration
     {
         Schema::create('images_article', function (Blueprint $table) {
             $table->id();
-            $table->integer('article_id');
+            $table->integer('article_id')->nullable();
             $table->string('image')->nullable();
             $table->string('description_img', 150)->nullable();
             $table->timestamps();

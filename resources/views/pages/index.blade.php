@@ -1,6 +1,6 @@
 @extends('layouts.master_layout')
 @section('main')
-    <div class="box-post  pt-2 pb-2"  >
+    <div class="box-post  pt-3 pb-2"  >
         <div class="box-title d-flex p-2  " style="justify-content: space-between; align-items: center">
             <h3 class="text-center text__title">Tin tức mới nhất</h3>
             <a href="" class="view-more">Xem tất cả<i class="fal fa-arrow-right"></i></a>
@@ -175,7 +175,7 @@
                             <img src="{{ getUrlImageUpload($img) }}" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body card__article__body position-relative">
-                            <h5 class="text-split-2 card__title"><a href="{{ route('post.detail',$article->slug) }}" class="stretched-link card-title"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>{{ $article->title }}</a></h5>
+                            <h5 class="text-split-2 card__title"><a href="{{ route('post.detail',$article->slug) }}" class="stretched-link card-title">{{ $article->title }}</a></h5>
                             <p class="card-text mb-0 text-split-1 card__price">
                                 <strong>
                                     {{

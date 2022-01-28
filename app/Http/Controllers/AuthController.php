@@ -180,7 +180,6 @@ class AuthController extends Controller
                     "email" => [
                         "required",
                         "email:rfc,dns",
-                        "digits_between:6,65"
                     ],
                     'name' => 'required',
                     'birthday' => 'required',
@@ -195,7 +194,6 @@ class AuthController extends Controller
                 [
                     'email.required' => 'Email không được để trống',
                     'email.email' => 'Sai định dạng email',
-                    'email.digits_between' => 'Sai định dạng email',
                     'name.required' => 'Họ và tên không để trống',
                     'birthday.required' => 'Ngày sinh không để trống',
                     'province.required' => 'Tỉnh/Tp không để trống',
@@ -214,9 +212,14 @@ class AuthController extends Controller
                 'ward_id' => $data['ward'],
                 'card_id' => $data['card_id'],
                 'sex' => $data['sex'],
+                'account_type' => $data['account_type'],
             ];
+            if($request->avatar){
+                $image = Auth::id().'-'.substr(md5(microtime()),rand(0,5), 10).'.'.$request->file('avatar')->getClientOriginalExtension();
+                $request->file('avatar')->move('uploads/avatar/', $image);
+                $attributes = $attributes + array('avatar' => $image);
+            }
         }
-
 
         $query = $this->userRepo->update(Auth::id(), $attributes);
         if($query){
@@ -362,7 +365,13 @@ class AuthController extends Controller
             'ward_id' => $data['ward'],
             'card_id' => $data['card_id'],
             'sex' => $data['sex'],
+            'account_type' => $data['account_type'],
         ];
+        if($request->avatar){
+            $image = Auth::id().'-'.substr(md5(microtime()),rand(0,5), 10).'.'.$request->file('avatar')->getClientOriginalExtension();
+            $request->file('avatar')->move('uploads/avatar/', $image);
+            $attributes = $attributes + array('avatar' => $image);
+        }
 
         $query = $this->userRepo->create($attributes);
         if($query){

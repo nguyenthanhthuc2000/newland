@@ -1,7 +1,7 @@
 @extends('layouts.master_layout')
 @section('main')
-    <div class="post-form-action col-md-8 col-12 mx-auto pt-5">
-        <form action="{{ route('auth.post.update') }}" method="post" class="form-post">
+    <div class="post-form-action col-md-6 col-12 mx-auto pt-5">
+        <form action="{{ route('auth.post.update') }}" method="post" class="form-post" enctype="multipart/form-data">
             @csrf
             <div class="tab-info">
                 <h3 class="text-center mt-2 mb-3">THÔNG TIN CÁ NHÂN</h3>
@@ -19,19 +19,35 @@
             @endif
             <div class="modal-body mt-2">
                 <p class="fw-bold">Thông tin cá nhân</p>
-                <div class="mb-3">
-                    <label for="name" class="form-label">Số điện thoại <span style="color: red">*</span></label>
-                    <input type="number" class="form-control fa-icon" name="phone" value="{{$info->phone}}" id="name" {{$info->google_id != null || $info->facebook_id != null ? '' : 'readonly'}}>
-                    @error('phone')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Địa chỉ email <span style="color: red">*</span></label>
-                    <input type="email" class="form-control fa-icon" name="email" value="{{$info->email}}" id="email" placeholder="Email *" {{$info->google_id != null || $info->facebook_id != null ? 'readonly' : ''}}>
-                    @error('email')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Số điện thoại <span style="color: red">*</span></label>
+                            <input type="number" class="form-control fa-icon" name="phone" value="{{$info->phone}}" id="name" {{$info->google_id != null || $info->facebook_id != null ? '' : 'readonly'}}>
+                            @error('phone')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Địa chỉ email <span style="color: red">*</span></label>
+                            <input type="email" class="form-control fa-icon" name="email" value="{{$info->email}}" id="email" placeholder="Email *" {{$info->google_id != null || $info->facebook_id != null ? 'readonly' : ''}}>
+                            @error('email')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <div class="mb-3">
+                            <input type="file" name="avatar"  id="input_file_img" class="form-control" id="image" hidden>
+                            @error('image')
+                            <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                            <div class="review-img">
+                                <img id="review-img" style="width: 150px; height:150px; border-radius: 50%; object-fit: cover; display: block;margin: auto; cursor: pointer" class="img-fluid" src="{{ getUrlImageUpload($info ? $info->avatar : '' , 'avatar') }}">
+                                <small class="m-auto">Ảnh đại diện</small>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="name" class="form-label">Họ và tên <span style="color: red">*</span></label>
@@ -114,6 +130,24 @@
                             <input class="form-check-input" type="radio" id="khac" name="sex"  value="2" {{$info->sex == 2 ? 'checked':''}}>
                             <label class="form-check-label" for="khac">
                                 Khác
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="account_type" id="canhan" value="0" {{$info->account_type == 0 ? 'checked':''}}>
+                            <label class="form-check-label" for="canhan">
+                                Cá nhân
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="congty" name="account_type"  value="2" {{$info->account_type == 2 ? 'checked':''}}>
+                            <label class="form-check-label" for="congty">
+                                Công ty
                             </label>
                         </div>
                     </div>

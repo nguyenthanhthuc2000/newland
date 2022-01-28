@@ -28,6 +28,8 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+    public $timestamps = true;
+    protected $perPage = 8;
 
     /**
      * The attributes that should be cast.

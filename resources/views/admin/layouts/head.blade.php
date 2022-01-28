@@ -5,6 +5,7 @@
     @routes()
     <title>Dashboard</title>
     <link rel="stylesheet" href="{{ asset('administrator/css/style.css') }}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
 
     <style>
       #loader {

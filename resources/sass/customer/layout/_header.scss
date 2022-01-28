@@ -1,3 +1,4 @@
+
 header {
     box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.08);
     position: sticky;
@@ -7,6 +8,7 @@ header {
     z-index: 1001;
     background: $white;
     .box__auth {
+        align-items: center;
         display: inherit;
     }
     .navbar {
@@ -20,7 +22,7 @@ header {
         &-collapse {
             .nav-item {
                 &:not(:last-child) {
-                    margin-right: 40px;
+                    margin-right: 19px;
                 }
                 .nav-link {
                     color: $black;

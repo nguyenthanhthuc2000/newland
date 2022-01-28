@@ -7,9 +7,16 @@
         @include("layouts.header")
     <!-- end header -->
 
+
      <!-- filter -->
      @include("layouts.filter")
      <!-- end filter -->
+
+    <!-- slider-->
+    @if( request()->route()->getName() == 'home.index')
+    @include("layouts.slider")
+    @endif
+    <!-- end slider-->
 
     <!-- main -->
     <main>

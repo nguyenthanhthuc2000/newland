@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddAccountTypeToUsers extends Migration
+class AddStatusToImagesArticle extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddAccountTypeToUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('account_type')->after('level')->nullable();// loại tài khoản/1 cty/ 0cá nhân
+        Schema::table('images_article', function (Blueprint $table) {
+            $table->tinyInteger('status')->default(1)->after('description_img'); //1 hd //0 k hd
         });
     }
 
@@ -25,7 +25,7 @@ class AddAccountTypeToUsers extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('images_article', function (Blueprint $table) {
             //
         });
     }
