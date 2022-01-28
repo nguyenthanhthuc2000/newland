@@ -1,0 +1,12 @@
+.img-slider {
+    max-height: 400px;
+    min-height: auto;
+    object-fit: contain;
+    display: block
+}
+
+@media only screen and (max-width: 992px) {
+    .img-slider {
+        max-height: 250px !important;
+    }
+}

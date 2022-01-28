@@ -9,3 +9,13 @@
     font-size: 1rem !important;
     float: inherit !important;
 }
+
+.img__table {
+    height: 60px;
+    width: 100px;
+    display: block;
+    object-fit: cover;
+}
+.max-w-100 {
+    max-width: 100px!important;
+}

@@ -25,7 +25,7 @@ use App\Http\Controllers\Admin\AdminArticleController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
-
+Route::get('404', [HomeController::class, 'page404'])->name('home.page404');
 
 // AUTH CONTROLLER
 //LOGIN GOOGLE
@@ -46,19 +46,16 @@ Route::post('post-login',  [AuthController::class, 'postLogin'])->name('auth.pos
 Route::post('post-update',  [AuthController::class, 'postUpdate'])->name('auth.post.update');
 Route::post('update-password',  [AuthController::class, 'updatePassword'])->name('auth.update.password');
 
-
 // AJAX
 Route::post('fetchDistrictList',  [Controller::class, 'getDistrict'])->name('get.districts');
 Route::post('fetchWards',  [Controller::class, 'getWards'])->name('get.wards');
 Route::post('fetchStreet',  [Controller::class, 'getStreet'])->name('get.streets');
 Route::post('fetchCategory',  [PostController::class, 'getCategory'])->name('get.category');
 
-
 Route::get('tin-dang/{slug}', [PostController::class, 'detail'])->name('post.detail');
 
 //REQUEST CONTACT
 Route::post('request-contact', [RequestContactController::class, 'store'])->name('request.contact.store');
-
 
 //LIST ARTICLE
 Route::get('danh-muc/{slugs}', [CategoryController::class, 'viewCategory'])->name('category.index');
@@ -70,8 +67,7 @@ Route::prefix('tim-kiem')->group(function () {
     Route::get('/bai-viet-cung-nguoi-dang-us{id}', [UserController::class, 'articlesSameEntrant'])->name('article.SameEntrant');
 });
 
-// ADMIN
-
+// CHECK LOGIN
 Route::middleware(['auth'])->group(function () {
     // ARTICLE
     Route::get('dang-tin', [PostController::class, 'index'])->name('post.index');
@@ -84,7 +80,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('bai-viet-ca-nhan',  [UserController::class, 'personalArticle'])->name('auth.article');
 });
 
-
 ///ADMIN
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['checkLevel'])->group(function () {
@@ -93,9 +88,19 @@ Route::middleware(['auth'])->group(function () {
             Route::get('thong-tin-website', [DashboardController::class, 'setting'])->name('admin.setting');
             Route::post('update-setting', [DashboardController::class, 'updateSetting'])->name('setting.update');
 
+            //HINH ANH
+            //SLIDER
+            Route::get('slider', [DashboardController::class, 'listSlider'])->name('admin.sliders');
+            Route::get('chinh-sua-slider/{id}', [DashboardController::class, 'editSlider'])->name('admin.edit.slider');
+            Route::get('them-moi-slider', [DashboardController::class, 'createSlider'])->name('admin.create.slider');
+            Route::post('store-slider', [DashboardController::class, 'storeSlider'])->name('admin.store.slider');
+            Route::post('update-slider/{id}', [DashboardController::class, 'updateSlider'])->name('admin.update.slider');
+            Route::post('destroy-slider', [DashboardController::class, 'destroySlider'])->name('admin.destroy.slider');
+            Route::post('update-status-slider', [DashboardController::class, 'updateStatusSlider'])->name('admin.update.status.slider');
+
             //KHACH HANG
-            Route::get('khach-hang', [UserController::class, 'listCustomer'])->name('admin.list.customer');
-            Route::post('update-status', [UserController::class, 'updateStatus'])->name('admin.update.status');
+            Route::get('nguoi-dung', [UserController::class, 'listCustomer'])->name('admin.list.customer');
+            Route::post('update-status', [UserController::class, 'updateStatus'])->name('admin.update.status.user');
         });
         Route::prefix("bai-viet")->group(function(){
             Route::post('unconfirm-article', [AdminArticleController::class, 'unconfirmArticle'])->name('article.unconfirm');

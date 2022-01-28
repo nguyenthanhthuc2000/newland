@@ -120,3 +120,16 @@ function appendAddressOnPost() {
     }
 }
 appendAddressOnPost()
+$('#input_file_img').change(function() {
+    var img = document.getElementById('review-img');
+    img.src = URL.createObjectURL(event.target.files[0]);
+    img.onload = function(){
+        URL.revokeObjectURL(img.src);
+    }
+})
+
+$(document).ready(function(){
+    $('#review-img').click(function(){
+        $('#input_file_img').click();
+    })
+})

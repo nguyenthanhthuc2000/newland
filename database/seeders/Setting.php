@@ -28,6 +28,7 @@ class Setting extends Seeder
             'logan' => 'Uy tín - Chất lượng!',
             'address' => 'Tầng 31, Keangnam Hanoi Landmark, Phạm Hùng, Nam Từ Liêm, Hà Nội',
             'google_map' => 'Tầng 31, Keangnam Hanoi Landmark, Phạm Hùng, Nam Từ Liêm, Hà Nội',
+            'domain' => 'newland.vn',
         ]);
     }
 }

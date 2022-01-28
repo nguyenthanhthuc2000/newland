@@ -8,11 +8,11 @@
               <div class="peers ai-c fxw-nw">
                 <div class="peer">
                   <div class="logo">
-                    <img src="{{ asset('images/admin/logo.png') }}" alt="">
+                    <img style="width: 70px" src="{{ getUrlImageUpload($settings ? $settings->logo : '', 'setting', 'nologo.jpg') }}" alt="">
                   </div>
                 </div>
                 <div class="peer peer-greed">
-                  <h5 class="lh-1 mB-0 logo-text">Adminator</h5>
+                  <h5 class="lh-1 mB-0 logo-text" style="text-transform: capitalize">{{$settings->domain}}</h5>
                 </div>
               </div>
             </a>
@@ -56,7 +56,7 @@
           <li class="nav-item dropdown">
               <a class="dropdown-toggle" href="javascript:void(0);">
                   <span class="icon-holder"><i class="c-indigo-500 ti-bar-chart"></i> </span>
-                  <span class="title">Khách hàng</span>
+                  <span class="title">Người dùng</span>
                   <span class="arrow">
                 <i class="ti-angle-right"></i>
               </span>
@@ -67,6 +67,7 @@
                   </li>
               </ul>
           </li>
+
           <li class="nav-item dropdown">
               <a class="dropdown-toggle" href="javascript:void(0);">
                   <span class="icon-holder"><i class="c-teal-500 ti-view-list-alt"></i> </span>
@@ -79,8 +80,21 @@
                   <li>
                       <a class='sidebar-link' href="{{ route('admin.setting') }}">Thông tin website</a>
                   </li>
-                  <li>
-                      <a class='sidebar-link' href="{{ route('admin.setting') }}">Hình ảnh</a>
+                  <li class="nav-item dropdown">
+                      <a href="javascript:void(0);">
+                          <span>Hình ảnh</span>
+                          <span class="arrow">
+                      <i class="ti-angle-right"></i>
+                    </span>
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li>
+                              <a href="{{ route('admin.sliders') }}">Slider</a>
+                          </li>
+                          <li>
+                              <a href="javascript:void(0);">Banner</a>
+                          </li>
+                      </ul>
                   </li>
               </ul>
           </li>

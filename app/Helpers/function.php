@@ -1,10 +1,14 @@
 <?php
 use App\Models\Setting;
+use App\Models\ImagesArticle;
 
 function getSetting(){
     return Setting::find(1);
 }
 
+function getSlider(){
+    return ImagesArticle::where('type', 'slider')->where('status', 1)->get();
+}
 function formatTime($time){
     return date_format($time, 'd-m-Y');
 }

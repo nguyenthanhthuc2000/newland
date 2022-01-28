@@ -12,7 +12,7 @@
                         <div class="bgc-light-blue-500 c-white p-10">
                             <div class="peers ai-c jc-sb gap-40">
                                 <div class="peer peer-greed">
-                                    <h5>Có tổng {{$customers->count()}} khách hàng trên hệ thống</h5>
+                                    <h5>Có tổng {{$customers->count()}} người dùng trên hệ thống</h5>
                                 </div>
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                                             </td>
                                             <td class="fw-600 text-center">
                                                 <div class="form-check form-switch text-center">
-                                                    <input class="form-check-input update-status" type="checkbox" data-id="{{$customer->id}}"
+                                                    <input class="form-check-input update-status-user" type="checkbox" data-id="{{$customer->id}}"
                                                            id="flexSwitchCheckDefault" {{ $customer->status == 1 ? 'checked' : '' }}>
                                                 </div>
                                             </td>

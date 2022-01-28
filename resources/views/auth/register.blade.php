@@ -1,7 +1,7 @@
 @extends('layouts.master_layout')
 @section('main')
     <div class="post-form-action col-md-6 col-12 mx-auto pt-5">
-        <form action="{{ route('auth.post.register') }}" method="post" id="register_form" class="form-post">
+        <form action="{{ route('auth.post.register') }}" method="post" id="register_form" class="form-post" enctype="multipart/form-data">
             <div class="tab-info">
                     <h3 class="text-center mt-2 mb-3">ĐĂNG KÍ</h3>
                 @if(session()->has('registerError'))
@@ -12,28 +12,50 @@
                 @endif
                 <div class="modal-body mt-2">
                     <p class="fw-bold">Thông tin đăng nhập</p>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" name="phone" maxlength="12" id="phone_register" placeholder="Số điện thoại *">
-                        @error('phone')
-                        <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
                     <div class="row">
-                        <div class="col-md-6 col-12">
-                            <div class="mb-3">
-                                <input type="password" class="form-control fa-icon" maxlength="12" name="password" id="password_register" placeholder="Mật khẩu *">
-                                @error('password')
-                                <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-12">
-                            <div class="mb-3">
-                                <input type="password" class="form-control fa-icon" maxlength="12" name="password_confirm" id="password_confirm_register" placeholder="Mật khẩu xác nhận *">
-                                @error('password_confirm')
-                                <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                                <span class="form-text text-danger d-none error_password_confirm">Sai mật khẩu xác nhận</span>
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-md-8 col-12">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control" name="phone" maxlength="12" id="phone_register" placeholder="Số điện thoại *">
+                                            @error('phone')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <input type="password" class="form-control fa-icon" maxlength="12" name="password" id="password_register" placeholder="Mật khẩu *">
+                                            @error('password')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <input type="password" class="form-control fa-icon" maxlength="12" name="password_confirm" id="password_confirm_register" placeholder="Mật khẩu xác nhận *">
+                                            @error('password_confirm')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                            <span class="form-text text-danger d-none error_password_confirm">Sai mật khẩu xác nhận</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12 text-center">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <input type="file" name="avatar"  id="input_file_img" class="form-control" id="image" hidden>
+                                            @error('image')
+                                            <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                            <div class="review-img">
+                                                <img id="review-img" style="width: 150px; height:150px; border-radius: 50%; object-fit: cover; display: block;margin: auto; cursor: pointer" class="img-fluid" src="{{ getUrlImageUpload(null, null, 'non_avatar.jpg') }}">
+                                                <small class="m-auto">Ảnh đại diện</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

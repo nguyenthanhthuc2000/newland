@@ -214,8 +214,12 @@ class AuthController extends Controller
                 'sex' => $data['sex'],
                 'account_type' => $data['account_type'],
             ];
+            if($request->avatar){
+                $image = Auth::id().'-'.substr(md5(microtime()),rand(0,5), 10).'.'.$request->file('avatar')->getClientOriginalExtension();
+                $request->file('avatar')->move('uploads/avatar/', $image);
+                $attributes = $attributes + array('avatar' => $image);
+            }
         }
-
 
         $query = $this->userRepo->update(Auth::id(), $attributes);
         if($query){
@@ -363,6 +367,11 @@ class AuthController extends Controller
             'sex' => $data['sex'],
             'account_type' => $data['account_type'],
         ];
+        if($request->avatar){
+            $image = Auth::id().'-'.substr(md5(microtime()),rand(0,5), 10).'.'.$request->file('avatar')->getClientOriginalExtension();
+            $request->file('avatar')->move('uploads/avatar/', $image);
+            $attributes = $attributes + array('avatar' => $image);
+        }
 
         $query = $this->userRepo->create($attributes);
         if($query){

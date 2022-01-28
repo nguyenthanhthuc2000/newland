@@ -23,7 +23,7 @@
                                 <tr>
                                     <th class=" bdwT-0">Mã</th>
                                     <th class=" bdwT-0">Tiêu đề</th>
-                                    <th class=" bdwT-0">Chi phí</th>
+                                    <th class=" bdwT-0 text-center">Loại</th>
                                     <th class=" bdwT-0">Người đăng</th>
                                     <th class=" bdwT-0">Thời gian</th>
                                     <th class=" bdwT-0">Trạng thái</th>
@@ -35,7 +35,14 @@
                                         <tr>
                                             <td class="fw-600">{{ $article->private_code }}</td>
                                             <td class="fw-600"><a href="{{ route('post.detail',$article->slug) }}">{{ $article->title }}</a></td>
-                                            <td><span class="text-success">Miễn phí</span></td>
+                                            <td class=" text-center">
+                                                <select class="form-select" aria-label="Default select example">
+                                                    <option selected>Open this select menu</option>
+                                                    <option value="1">One</option>
+                                                    <option value="2">Two</option>
+                                                    <option value="3">Three</option>
+                                                </select>
+                                            </td>
                                             <td><a href="" class="">{{ $article->user->name }}</a>
                                             </td>
                                             <td>

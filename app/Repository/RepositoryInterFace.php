@@ -80,4 +80,10 @@ interface RepositoryInterFace
      * @return mixed
      */
     public function getItemsBySlug($slug);
+
+    /**
+     * @param $attributes
+     * @return mixed
+     */
+    public function findByAttributes($attributes);
 }
