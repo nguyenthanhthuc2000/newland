@@ -105,6 +105,8 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix("bai-viet")->group(function(){
             Route::post('unconfirm-article', [AdminArticleController::class, 'unconfirmArticle'])->name('article.unconfirm');
             Route::post('confirm-article', [AdminArticleController::class, 'confirmArticle'])->name('article.confirm');
+            Route::post('update-featured-article', [AdminArticleController::class, 'updateFeaturedArticle'])->name('update-featured-article');
+            Route::post('update-vip-article', [AdminArticleController::class, 'updateVipArticle'])->name('update-vip-article');
             Route::get('', [AdminArticleController::class, 'listArticle'])->name('article.list');
         });
     });

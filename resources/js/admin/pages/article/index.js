@@ -4,6 +4,40 @@ $.ajaxSetup({
        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
    }
 });
+
+
+$('.update-vip-article').change(function() {
+    var id = $(this).data('id');
+    var status = $( "#select-"+id+" option:selected" ).val();
+    $.ajax({
+        url: window.route('update-vip-article'),
+        method: 'POST',
+        data:{status:status, id:id},
+        success:function(data){
+            if(data.status === 500){
+                alert('Lỗi, thử lại sau!')
+            }
+        }
+    })
+})
+
+$('.update-featured-article').click(function(){
+    var status = 0;
+    var id = $(this).data('id');
+    if($(this).prop('checked') ? status = 1 : status = 0);
+    $.ajax({
+        url: window.route('update-featured-article'),
+        method: 'POST',
+        data:{status:status, id:id},
+        success:function(data){
+            if(data.status === 500){
+                alert('Lỗi, thử lại sau!')
+            }
+        }
+    })
+})
+
+
 $('.btn__confirm__article').click(function(){
    var id = $(this).data('id');
     Swal.fire({

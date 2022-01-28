@@ -7,6 +7,31 @@ use Illuminate\Http\Request;
 
 class AdminArticleController extends Controller
 {
+    public function updateVipArticle(Request $request){
+        $attributes = [
+            'vip' => $request->status
+        ];
+        if($this->artRepo->update($request->id, $attributes)){
+            return response()->json(['status' => 200]);
+        }
+        return response()->json(['status' => 500]);
+    }
+
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updateFeaturedArticle(Request $request){
+        $attributes = [
+            'featured' => $request->status
+        ];
+        if($this->artRepo->update($request->id, $attributes)){
+            return response()->json(['status' => 200]);
+        }
+        return response()->json(['status' => 500]);
+    }
+
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
