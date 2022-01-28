@@ -37,18 +37,19 @@
                                             <td class="fw-600">{{ $article->private_code }}</td>
                                             <td class="fw-600"><a href="{{ route('post.detail',$article->slug) }}">{{ $article->title }}</a></td>
                                             <td class=" text-center" style="min-width: 120px">
-                                                <select class="form-select" aria-label="Default select example">
-                                                    <option value="0" {{ $article->vip == 0 ? 'checked' : '' }}>Thường</option>
-                                                    <option value="1" {{ $article->vip == 1 ? 'checked' : '' }}>Vip 1</option>
-                                                    <option value="2" {{ $article->vip == 2 ? 'checked' : '' }}>Vip 2</option>
-                                                    <option value="3" {{ $article->vip == 3 ? 'checked' : '' }}>Vip 3</option>
+                                                <select class="form-select update-vip-article" id="select-{{$article->id}}" aria-label="Default select example" data-id="{{ $article->id }}">
+                                                    <option value="0" {{ $article->vip == 0 ? 'selected' : '' }}>Thường</option>
+                                                    <option value="1" {{ $article->vip == 1 ? 'selected' : '' }}>Vip 1</option>
+                                                    <option value="2" {{ $article->vip == 2 ? 'selected' : '' }}>Vip 2</option>
+                                                    <option value="3" {{ $article->vip == 3 ? 'selected' : '' }}>Vip 3</option>
                                                 </select>
                                             </td>
                                             <td class="text-center">
                                                 <div class="form-check form-switch text-center">
-                                                    <input class="form-check-input update-facade-article" type="checkbox" data-id="{{$article->id}}"
+                                                    <input class="form-check-input update-featured-article" type="checkbox"  data-id="{{$article->id}}"
                                                            {{ $article->featured == 1 ? 'checked' : '' }}>
                                                 </div>
+                                            </td>
                                             <td><a href="" class="">{{ $article->user->name }}</a>
                                             </td>
                                             <td>
