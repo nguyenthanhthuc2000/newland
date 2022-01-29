@@ -92,69 +92,7 @@
             </div>
         </div>
     </div>
-{{--    <div class="box-article pt-5 pb-3">--}}
-{{--        <div class="row">--}}
-{{--            <div class="col-md-9 box-article__left">--}}
-{{--                <div class="box-article-title d-flex" style="justify-content: space-between">--}}
-{{--                    <h3 class="text-center text__title">Tin mới nhất</h3>--}}
-{{--                    <a href="" class="view__more">Xem tất cả <i class="fal fa-arrow-right"></i></a>--}}
-{{--                </div>--}}
-{{--                <div class="box-article-content">--}}
-{{--                    <div class="row">--}}
-{{--                        <div class="col-md-7 mb-4 box-article__content">--}}
-{{--                            <a href="{{route('post.detail', 'chi-tiet-bai-viet')}}">--}}
-{{--                                <div class="img">--}}
-{{--                                    <img class="w-100 box-article-content-img" src="{{asset('uploads/article/1.jpg')}}" alt="">--}}
-{{--                                </div>--}}
-{{--                                <h3 class="box-article-content-title">Nhà đất Cần Giuộc, Bến Lức “ăn theo” sức nóng khu Tây Nam TP.HCM</h3>--}}
-{{--                                <p class="text-split-3 box-article-content-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit.--}}
-{{--                                    Assumenda at delectus dignissimos dolores id ipsum praesentium, quidem quisquam.--}}
-{{--                                    Aliquam asperiores atque facilis ipsam iusto nostrum perspiciatis placeat recusandae saepe vel!</p>--}}
-{{--                                <div class="card__footer d-flex " style="justify-content: space-between; align-items: center">--}}
-{{--                                    <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>--}}
-{{--                                    <p class="mb-0 card__view">Xem chi tiết <i class="fal fa-arrow-right"></i></p>--}}
-{{--                                </div>--}}
-{{--                            </a>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-md-5">--}}
-{{--                            <ul style="padding-left: 0.5rem;" class="list__article">--}}
-{{--                                <li class="article">--}}
-{{--                                    <a class="article__title" href="">Giá bán tăng cao, căn hộ vừa túi tiền tiếp tục “mất tích” tại TP.HCM</a>--}}
-{{--                                </li>--}}
-{{--                                <li class="article">--}}
-{{--                                    <a class="article__title" href="">Nhà đất Cần Giuộc, Bến Lức “ăn theo” sức nóng khu Tây Nam TP.HCM</a>--}}
-{{--                                </li>--}}
-{{--                                <li class="article">--}}
-{{--                                    <a class="article__title" href="">[Cập nhật] Lãi suất ngân hàng vay mua nhà tháng 1/2022: Thấp nhất 5%/năm</a>--}}
-{{--                                </li>--}}
-{{--                                <li class="article">--}}
-{{--                                    <a class="article__title" href="">Giá bán tăng cao, căn hộ vừa túi tiền tiếp tục “mất tích” tại TP.HCM</a>--}}
-{{--                                </li>--}}
-{{--                                <li class="article">--}}
-{{--                                    <a class="article__title" href="">[Cập nhật] Lãi suất ngân hàng vay mua nhà tháng 1/2022: Thấp nhất 5%/năm</a>--}}
-{{--                                </li>--}}
-{{--                                <li class="article">--}}
-{{--                                    <a class="article__title" href="">Giá bán tăng cao, căn hộ vừa túi tiền tiếp tục “mất tích” tại TP.HCM</a>--}}
-{{--                                </li>--}}
-{{--                                <li class="article">--}}
-{{--                                    <a class="article__title" href="">[Cập nhật] Lãi suất ngân hàng vay mua nhà tháng 1/2022: Thấp nhất 5%/năm</a>--}}
-{{--                                </li>--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <div class="col-md-3  box-article__right">--}}
-{{--                <a href="">--}}
-{{--                    <img class="w-100 banner-ads-top" src="{{asset('uploads/banner/bn2.jpg')}}" alt="">--}}
-{{--                </a>--}}
-{{--                &nbsp;--}}
-{{--                <a href="">--}}
-{{--                    <img class="w-100 banner-ads-top" src="{{asset('uploads/banner/bn2.jpg')}}" alt="">--}}
-{{--                </a>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
+
     {{-- BẤT ĐỘNG SẢN CHO BẠN --}}
     <div class="box-product pt-2 pb-2">
         <div class="box-title d-flex pt-2 pb-2 justify-content-between align-items-center">

@@ -10,8 +10,7 @@ require('./ajax/auth');
     Require component
     ===================*/
 require('./component/alert');
-require('./component/slick/article');
-require('./component/slick/detail_article');
+require('./component/layout');
 require('./component/ckeditor/create_article');
 // require('./component/data_list');
 require('./component/card_image');
@@ -19,3 +18,5 @@ require('./component/input');
 require('./component/map');
 require('./component/filter');
 require('./component/hidden_field');
+require('./component/slick/article');
+require('./component/slick/detail_article');
