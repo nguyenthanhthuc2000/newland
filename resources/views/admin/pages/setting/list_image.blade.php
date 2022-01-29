@@ -7,8 +7,8 @@
         @include('admin.layouts.alert')
         <div class="masonry-item col-md-12 pt-3">
             <div class="d-flex mb-3" style="justify-content: space-between;    align-items: center;">
-                <h4 class="c-grey-900 m-0">Slider</h4>
-                <a href="{{ route('admin.create.slider') }}" class="btn btn-primary bdrs-50p p-10 lh-0 "
+                <h4 class="c-grey-900 m-0">{{$titlePage}}</h4>
+                <a href="{{ route($routeCreate) }}" class="btn btn-primary bdrs-50p p-10 lh-0 "
                 >
                     <i class="ti-plus"></i>
                 </a>
@@ -18,7 +18,7 @@
                 <div class="layers">
                     <div class="layer w-100">
                         <div class="table-responsive p-20">
-                            @if($sliders->count() > 0)
+                            @if($images->count() > 0)
                                 <table class="table">
                                     <thead>
                                     <tr>
@@ -31,25 +31,25 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($sliders as $slider)
+                                    @foreach($images as $image)
                                         <tr>
                                             <td class="max-w-100">
-                                                <img class="img__table" src="{{ getUrlImageUpload($slider->image, 'slider') }}">
+                                                <img class="img__table" target="_blank" src="{{ getUrlImageUpload($image->image, 'slider') }}">
                                             </td>
-                                            <td class="fw-600">{{ $slider->description_img }}</td>
-                                            <td>{{ formatTime($slider->created_at) }}</td>
-                                            <td class="fw-600 text-center"><a href="{{ $slider->link }}"><i class="fal fa-link"></i></a></td>
+                                            <td class="fw-600">{{ $image->description_img }}</td>
+                                            <td>{{ formatTime($image->created_at) }}</td>
+                                            <td class="fw-600 text-center"><a href="{{ $image->link }}"><i class="fal fa-link"></i></a></td>
                                             <td class="text-center">
                                                 <div class="form-check form-switch text-center">
-                                                    <input class="form-check-input update-status-slider" type="checkbox" data-id="{{$slider->id}}"
-                                                           id="flexSwitchCheckDefault" {{ $slider->status == 1 ? 'checked' : '' }}>
+                                                    <input class="form-check-input update-status-slider" type="checkbox" data-id="{{$image->id}}"
+                                                           id="flexSwitchCheckDefault" {{ $image->status == 1 ? 'checked' : '' }}>
                                                 </div>
                                             </td>
                                             <td class="text-end ">
-                                                <a href="{{ route('admin.edit.slider',  $slider->id) }}"
+                                                <a href="{{ route('admin.edit.slider',  $image->id) }}"
                                                    class="td-n c-deep-purple-500 cH-blue-500 fsz-md p-5"><i class="ti-pencil"></i>
                                                 </a>
-                                                <a href="#" class="td-n c-red-500 cH-blue-500 fsz-md p-5 btn__delete__slider" data-id="{{ $slider->id }}"><i class="ti-trash"></i>
+                                                <a href="#" class="td-n c-red-500 cH-blue-500 fsz-md p-5 btn__delete__slider" data-id="{{ $image->id }}"><i class="ti-trash"></i>
                                                 </a>
                                             </td>
                                         </tr>

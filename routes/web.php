@@ -91,7 +91,10 @@ Route::middleware(['auth'])->group(function () {
             Route::post('update-setting', [DashboardController::class, 'updateSetting'])->name('setting.update');
 
             //HINH ANH
-            //SLIDER
+            //BANNER
+            Route::get('banner', [DashboardController::class, 'listBanner'])->name('admin.banners');
+            Route::get('them-moi-banner', [DashboardController::class, 'createBanner'])->name('admin.create.banner');
+
             Route::get('slider', [DashboardController::class, 'listSlider'])->name('admin.sliders');
             Route::get('chinh-sua-slider/{id}', [DashboardController::class, 'editSlider'])->name('admin.edit.slider');
             Route::get('them-moi-slider', [DashboardController::class, 'createSlider'])->name('admin.create.slider');

@@ -15,12 +15,6 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Using class based composers...
-        // View::composer(
-        //     'profile', 'App\Http\ViewComposers\ProfileComposer'
-        // );
-
-        // Using Closure based composers...
         View::composer( '*', function ($view) {
             $data = [
                 'sell' => DB::table('category')->where('type', 0)->get(),

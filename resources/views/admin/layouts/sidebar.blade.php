@@ -92,7 +92,7 @@
                               <a href="{{ route('admin.sliders') }}">Slider</a>
                           </li>
                           <li>
-                              <a href="javascript:void(0);">Banner</a>
+                              <a href="{{ route('admin.banners') }}">Banner</a>
                           </li>
                       </ul>
                   </li>

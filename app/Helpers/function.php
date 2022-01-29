@@ -9,6 +9,11 @@ function getSetting(){
 function getSlider(){
     return ImagesArticle::where('type', 'slider')->where('status', 1)->get();
 }
+
+function getBanner(){
+    return ImagesArticle::where('type', 'banner')->where('status', 1)->get();
+}
+
 function formatTime($time){
     return date_format($time, 'd-m-Y');
 }

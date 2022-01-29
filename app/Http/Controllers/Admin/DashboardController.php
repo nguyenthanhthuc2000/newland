@@ -8,6 +8,20 @@ use File;
 
 class DashboardController extends Controller
 {
+
+    public function listBanner(){
+        $attributes = [
+            'type' => 'banner'
+        ];
+        $titlePage = 'Banner';
+        $routeCreate = 'admin.create.banner';
+        $images = $this->imgArtRepo->getByAttributesAll($attributes);
+        return view('admin.pages.setting.list_image', compact('images', 'titlePage', 'routeCreate'));
+    }
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function updateStatusSlider(Request $request){
         $attributes = [
             'status' => $request->status
@@ -23,8 +37,16 @@ class DashboardController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function destroySlider(Request $request){
-        if($this->imgArtRepo->delete($request->id)) {
-            return response()->json(['messages' => 'Xóa thành công', 'status' => 200]);
+        $img = $this->find($request->id);
+        if($img){
+            //xóa hình cũ
+            if (File::exists(public_path() . "/uploads/slider/" . $img->image)) {
+                File::delete(public_path() . "/uploads/slider/" . $img->image);
+            }
+            if($this->imgArtRepo->delete($request->id)) {
+                return response()->json(['messages' => 'Xóa thành công', 'status' => 200]);
+            }
+            return response()->json(['messages' => 'Lỗi, thử lại sau', 'status' => 500]);
         }
         return response()->json(['messages' => 'Lỗi, thử lại sau', 'status' => 500]);
     }
@@ -45,30 +67,46 @@ class DashboardController extends Controller
             ],
         );
         $attributes = [
-            'type' => 'slider',
             'id' => $id
         ];
-        $slider = $this->imgArtRepo->findByAttributes($attributes);
-        if($slider){
-            //xóa hình cũ
-            if (File::exists(public_path() . "/uploads/slider/" . $slider->image)) {
-                File::delete(public_path() . "/uploads/slider/" . $slider->image);
-            }
-            $image = substr(md5(microtime()),rand(0,5), 10).'.'.$request->file('image')->getClientOriginalExtension();
-            $request->file('image')->move('uploads/slider/', $image);
-
+        $imageUpdate = $this->imgArtRepo->findByAttributes($attributes);
+        if($imageUpdate){
             $arrayData = [
                 'description_img' => $request->description_img,
                 'link' => $request->link,
-                'image' => $image,
-                'type' => 'slider'
             ];
-            if($this->imgArtRepo->update($id, $arrayData)){
-                return redirect()->route('admin.sliders')->with('success', 'Cập nhật thành công');
+
+            if($request->image){
+                //xóa hình cũ
+                if (File::exists(public_path() . "/uploads/slider/" . $imageUpdate->image)) {
+                    File::delete(public_path() . "/uploads/slider/" . $imageUpdate->image);
+                }
+                $image = substr(md5(microtime()),rand(0,5), 10).'.'.$request->file('image')->getClientOriginalExtension();
+                $request->file('image')->move('uploads/slider/', $image);
+                $arrayData = $arrayData + array('image' => $image);
             }
-            return redirect()->route('admin.sliders')->with('error', 'Cập nhật thất bại, thử lại sau');
+
+            if($this->imgArtRepo->update($id, $arrayData)){
+                if($imageUpdate->type == 'slider')
+                {
+                    return redirect()->route('admin.sliders')->with('success', 'Cập nhật thành công');
+                }
+                return redirect()->route('admin.banners')->with('success', 'Cập nhật thành công');
+            }
+
+            if($imageUpdate->type == 'slider')
+            {
+                return redirect()->route('admin.sliders')->with('error', 'Cập nhật thất bại, thử lại sau');
+            }
+            return redirect()->route('admin.banners')->with('error', 'Cập nhật thất bại, thử lại sau');
         }
-        return redirect()->route('admin.sliders')->with('error', 'Không tìm thấy slider');
+
+        if($imageUpdate->type == 'slider')
+        {
+            return redirect()->route('admin.sliders')->with('error', 'Không tìm thấy slider');
+        }
+        return redirect()->route('admin.banners')->with('error', 'Không tìm thấy slider');
+
     }
 
     /**
@@ -77,13 +115,13 @@ class DashboardController extends Controller
      */
     public function editSlider($id){
         $attributes = [
-            'type' => 'slider',
             'id' => $id
         ];
-        $slider = $this->imgArtRepo->findByAttributes($attributes);
-        if($slider){
+        $image = $this->imgArtRepo->findByAttributes($attributes);
+        $type = $image->type;
+        if($image){
             $route = "admin.update.slider";
-            return view('admin.pages.setting.form_image', compact('route', 'id', 'slider'));
+            return view('admin.pages.setting.form_image', compact('route', 'id', 'image', 'type'));
         }
     }
 
@@ -95,10 +133,11 @@ class DashboardController extends Controller
     public function storeSlider(Request $request){
         $this->validate($request,
             [
-                'image' => ['mimes:jpg,png'],
+                'image' => ['mimes:jpg,png', 'required'],
             ],
             [
                 'image.mimes' => 'Vui lòng chọn đúng định dạng (png,jpg)',
+                'image.required' => 'Chưa chọn ảnh',
             ],
         );
         $image = substr(md5(microtime()),rand(0,5), 10).'.'.$request->file('image')->getClientOriginalExtension();
@@ -108,13 +147,21 @@ class DashboardController extends Controller
             'description_img' => $request->description_img,
             'link' => $request->link,
             'image' => $image,
-            'type' => 'slider'
+            'type' => $request->type
         ];
 
         if($this->imgArtRepo->create($arrayData)){
-            return redirect()->route('admin.sliders')->with('success', 'Thêm mới thành công');
+            if($request->type == 'slider'){
+                return redirect()->route('admin.sliders')->with('success', 'Thêm mới thành công');
+            }
+            return redirect()->route('admin.banners')->with('success', 'Thêm mới thành công');
+
         }
-        return redirect()->route('admin.sliders')->with('error', 'Thêm mới thất bại, thử lại sau');
+        if($request->type == 'slider'){
+            return redirect()->route('admin.sliders')->with('error', 'Thêm mới thất bại, thử lại sau');
+        }
+        return redirect()->route('admin.banners')->with('error', 'Thêm mới thất bại, thử lại sau');
+
 
     }
 
@@ -122,10 +169,23 @@ class DashboardController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function createSlider(){
-        $slider = null;
+
+        $image = null;
         $id = '';
         $route = "admin.store.slider";
-        return view('admin.pages.setting.form_image', compact('route', 'id', 'slider'));
+        $type = 'slider';
+        return view('admin.pages.setting.form_image', compact('route', 'id', 'image', 'type'));
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function createBanner(){
+        $image = null;
+        $id = '';
+        $route = "admin.store.slider";
+        $type = 'banner';
+        return view('admin.pages.setting.form_image', compact('route', 'id', 'image', 'type'));
     }
 
     /**
@@ -135,8 +195,10 @@ class DashboardController extends Controller
         $attributes = [
             'type' => 'slider'
         ];
-        $sliders = $this->imgArtRepo->getByAttributesAll($attributes);
-        return view('admin.pages.setting.slider', compact('sliders'));
+        $titlePage = 'Slider';
+        $routeCreate = 'admin.create.slider';
+        $images = $this->imgArtRepo->getByAttributesAll($attributes);
+        return view('admin.pages.setting.list_image', compact('images', 'titlePage', 'routeCreate'));
     }
 
     /**
