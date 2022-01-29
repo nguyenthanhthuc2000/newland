@@ -137,7 +137,7 @@
     </div>
     <div class="banner pt-4 pb-4">
         <a href="">
-            <img class="w-100" src="{{asset('uploads/banner/bn1.jpg')}}" alt="">
+            <img class="w-100" src="{{asset('uploads/slider/bn1.jpg')}}" alt="">
         </a>
     </div>
     <div class="box-product pt-2 pb-2">
