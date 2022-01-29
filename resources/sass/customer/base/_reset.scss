@@ -9,6 +9,15 @@ html {
 a {
     text-decoration: none;
     font-family: "Nunito-re" !important;
+    &.card-title {
+        font-size: 1.125rem !important;
+        font-weight: 600;
+        transition: color 0.3s ease;
+        color: $black;
+        &:hover {
+            color: $primary;
+        }
+    }
 }
 
 li:not(.ck-content li) {

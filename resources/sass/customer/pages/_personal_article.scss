@@ -1,31 +1,31 @@
 .list-article {
-    ul.nav-tabs {
-        .nav-item {
-            .nav-link {}
+    table {
+        th,
+        td {
+            white-space: nowrap;
         }
-    }
-    .tab-content {
-        .tab-pane {
-            .card.card-article {
-                border: none;
-                box-shadow: unset !important;
-                background: transparent;
-            }
-            .card-article {
-                .card-img {
-                    width: 100px;
-                    img {
-                        object-fit: contain;
-                        height: 100%;
-                    }
+        #state {
+            min-width: 100px;
+        }
+        .card.card-article {
+            border: none;
+            box-shadow: unset !important;
+            background: transparent;
+        }
+        .card-article {
+            .card-img {
+                width: 100px;
+                img {
+                    object-fit: contain;
+                    height: 100%;
                 }
-                .card-body {
-                    padding-top: 0;
-                    padding-bottom: 0;
-                    .card-title {
-                        font-size: 1.25rem;
-                        color: $black;
-                    }
+            }
+            .card-body {
+                padding-top: 0;
+                padding-bottom: 0;
+                .card-title {
+                    font-size: 1.25rem;
+                    color: $black;
                 }
             }
         }
