@@ -38,10 +38,10 @@
             <tr>
                 <th scope="col">STT</th>
                 <th scope="col">Mã đự án</th>
-                <th scope="col">Tiêu đề</th>
+                <th scope="col" style="max-width: 30%;">Tiêu đề</th>
                 {{-- <th scope="col">Ngày hết hạn</th> --}}
                 <th scope="col">Trạng thái</th>
-                <th scope="col">Tình trạng</th>
+                <th scope="col" style="min-width: 150px">Tình trạng</th>
                 {{-- <th scope="col">Thống kê</th> --}}
                 <th scope="col">Thao tác</th>
             </tr>
@@ -58,11 +58,11 @@
                 <tr>
                     <th scope="row">{{ numericalOrder($i) }}</th>
                     <th>{{ $art->private_code }}</th>
-                    <td>
+                    <td style="max-width: 30%">
                         <div class="card card-article">
                             <div class="row g-0 flex-nowrap">
                                 <div class="col-4 card-img">
-                                    <img src="{{ getUrlImageUpload($img) }}" class="img-fluid rounded-start" alt="{{ $art->title }}">
+                                    <img src="{{ getUrlImageUpload($img) }}" class="img-fluid rounded-start" alt="">
                                 </div>
                                 <div class="col-8">
                                     <div class="card-body">
@@ -114,7 +114,11 @@
                 @endforeach
             @endif
         </tbody>
-    </table></div>
+    </table>
+    </div>
+    <div class="p-3 d-flex" style="justify-content: end;">
+        {{ $personalArticle->links() }}
+    </div>
 </div>
 
 @push('scripts')
