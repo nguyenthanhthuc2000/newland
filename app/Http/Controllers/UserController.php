@@ -49,12 +49,14 @@ class UserController extends Controller
         $personalArticle = $this->artRepo->getByAttributes(['user_id' => Auth::id()]);
         $articlesUnverified = $personalArticle->where('status', 0);
         $articlesCanled = $personalArticle->where('status', 2);
+        $articlesDeposited = $personalArticle->where('state', 1);
         $data = [
             'personalArticle' => $personalArticle,
             'articlesUnverified' => $articlesUnverified,
-            'articlesCanled' => $articlesCanled
+            'articlesCanled' => $articlesCanled,
+            'articlesDeposited' => $articlesDeposited,
         ];
-        return view('auth.personal_article', $data);
+        return view('pages.post.personal_article', $data);
     }
 
     /**

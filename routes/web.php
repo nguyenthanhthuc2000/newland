@@ -51,6 +51,7 @@ Route::post('fetchDistrictList',  [Controller::class, 'getDistrict'])->name('get
 Route::post('fetchWards',  [Controller::class, 'getWards'])->name('get.wards');
 Route::post('fetchStreet',  [Controller::class, 'getStreet'])->name('get.streets');
 Route::post('fetchCategory',  [PostController::class, 'getCategory'])->name('get.category');
+Route::post('updateState',  [PostController::class, 'updateState'])->name('article.update.state');
 
 Route::get('tin-dang/{slug}', [PostController::class, 'detail'])->name('post.detail');
 

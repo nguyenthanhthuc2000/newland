@@ -339,4 +339,19 @@ class PostController extends Controller
         }
         return back()->with(['msg' => 'Đã xảy ra lỗi', 'status' => 'error']);
     }
+
+    public function updateState(Request $request){
+        $id = $request->id;
+        $state = $request->state;
+        $exceptState = [0, 1, 2, 3];
+
+        if(!in_array($state, $exceptState)){
+            return response()->json(['status'=>'error', 'msg' => 'Cập nhật thất bại']);
+        }
+        $updated = $this->artRepo->update($id, ['state'=> $state]);
+        if($updated){
+            return response()->json(['status'=>'success', 'msg' => 'Cập nhật thành công']);
+        }
+        return response()->json(['status'=>'error', 'msg' => 'Cập nhật thất bại']);
+    }
 }
