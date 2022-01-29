@@ -116,7 +116,7 @@
                             <img src="{{ getUrlImageUpload($img) }}" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body card__article__body position-relative">
-                            <h5 class="text-split-2 card__title"><a href="{{ route('post.detail',$article->slug) }}" class="stretched-link card-title">{{ $article->title }}</a></h5>
+                            <h5 class="text-split-2"><a href="{{ route('post.detail',$article->slug) }}" class="stretched-link card-title">{{ $article->title }}</a></h5>
                             <p class="card-text mb-0 text-split-1 card__price">
                                 <strong>
                                     {{
@@ -146,7 +146,7 @@
             <a href="{{ route('article.featured') }}">Xem thêm <i class="fal fa-arrow-right"></i></a>
         </div>
         <div class="slick-nb">
-            @foreach ($featureArticled as $article)
+            @foreach ($featuredArticled as $article)
                 <div class="padding-article box__article mb-4">
                     @php
                         $img_article = [];

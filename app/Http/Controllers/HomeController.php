@@ -27,7 +27,7 @@ class HomeController extends Controller
         $featureArticled = $articles->where('featured', 1);
         $data = [
             'articles' => $articles,
-            'featureArticled' => $featureArticled
+            'featuredArticled' => $featureArticled
         ];
         return view('pages.index', $data);
     }
