@@ -388,7 +388,7 @@
             </div>
         </div>
         <div class="tab-info form-footer text-end">
-            <button type="submit" class="btn btn-primary">Đăng bài</button>
+            <button type="submit" class="btn btn-primary" style="min-width: 100px;">{{ isset($article) ? 'Lưu' : 'Đăng bài' }}</button>
         </div>
     </form>
 </div>

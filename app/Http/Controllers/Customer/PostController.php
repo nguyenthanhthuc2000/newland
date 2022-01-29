@@ -209,7 +209,6 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request->file('image'));
 
         $this->validate($request,
             [
@@ -277,15 +276,17 @@ class PostController extends Controller
         if($updated){
             $old_images = $request->old_images;
 
-            $get_old_images = $this->artRepo->imagesArticle;
-            foreach($get_old_images as $img){
-                if(!in_array($img->id, $old_images)){
-                    $img_name = $get_old_images->find($img->id)->image;
-                    $img_path = public_path() .'uploads/article/' . $img_name;
-                    if(File::exists($img_path)){
-                        File::delete($img_path);
+            $get_old_images = $this->artRepo->find($id)->imagesArticle;
+            if($get_old_images){
+                foreach($get_old_images as $img){
+                    if(!in_array($img->id, $old_images)){
+                        $img_name = $get_old_images->find($img->id)->image;
+                        $img_path = public_path() .'uploads/article/' . $img_name;
+                        if(File::exists($img_path)){
+                            File::delete($img_path);
+                        }
+                        $get_old_images->delete($img->id);
                     }
-                    $get_old_images->delete($img->id);
                 }
             }
 

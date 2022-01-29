@@ -13,11 +13,11 @@ const mix = require('laravel-mix');
 //mix.js('resources/js/app.js', 'public/js').sourceMaps();
 //
 mix
-    .autoload(
-        {
-            jquery: ['$', 'window.jQuery',"jQuery","window.$","jquery","window.jquery"],
-            'popper.js/dist/umd/popper.js': ['Popper']
-        })
+    .autoload({
+        jquery: ['$', 'window.jQuery', "jQuery", "window.$", "jquery", "window.jquery"],
+        // 'popper.js/dist/umd/popper.js': ['Popper'],
+        'popper.js/dist/umd/popper.js': ['Popper', 'window.Popper']
+    })
     .js('resources/js/app.js', 'public/js')
     .js('resources/js/admin/app.js', 'public/administrator/js')
     .sass('resources/sass/customer/style.scss', 'public/customer/css')

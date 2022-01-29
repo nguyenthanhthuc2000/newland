@@ -10,6 +10,9 @@ $('button[type="reset"]').on('click', function() {
     );
 
     // mark the first option as selected
-    form.find('select').children("option:first").attr('selected', 'selected');
-
+    if (form.find('select').children("option[disabled]")) {
+        form.find('select').children("option[disabled]").attr('selected', 'selected');
+    } else {
+        form.find('select').children("option:first").attr('selected', 'selected');
+    }
 })

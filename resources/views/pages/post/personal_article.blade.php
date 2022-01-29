@@ -5,7 +5,34 @@
 @section('main')
 
 {{ Breadcrumbs::render('personal-article') }}
+
+<form class="filter-bar row" action="{{ route('auth.article') }}" method="get">
+    <div class="col-md-3">
+        <select class="form-select py-2" aria-label="Status" name="trang-thai">
+            <option {{ request()->get('trang-thai') == null ? 'selected' : '' }} disabled hidden>-- Trạng thái --</option>
+            <option value="0" {{ request()->get('trang-thai') == '0' ? 'selected' : ''}}>Chờ duyệt</option>
+            <option value="1" {{ request()->get('trang-thai') == '1' ? 'selected' : ''}}>Đã duyệt</option>
+            <option value="2" {{ request()->get('trang-thai') == '2' ? 'selected' : ''}}>Đã hủy</option>
+          </select>
+    </div>
+    <div class="col-md-3">
+        <select class="form-select py-2" aria-label="Status" name="tinh-trang">
+            <option {{ request()->get('tinh-trang') == null ? 'selected' : '' }} disabled hidden>-- Tình trạng --</option>
+            <option value="0" {{ request()->get('tinh-trang') == '0' ? 'selected' : ''}}>Tin mới</option>
+            <option value="1" {{ request()->get('tinh-trang') == '1' ? 'selected' : ''}}>Đã đặt cọc</option>
+            <option value="2" {{ request()->get('tinh-trang') == '2' ? 'selected' : ''}}>Đã được bán</option>
+            <option value="3" {{ request()->get('tinh-trang') == '3' ? 'selected' : ''}}>Đã được thuê</option>
+          </select>
+    </div>
+
+    <div class="col-md-3">
+        <button type="reset" class="btn btn-mute"><i class="fal fa-sync btn__filter"></i></button>
+       <button class="btn btn-primary">Tìm kiếm</button>
+    </div>
+</form>
+
 <div class="list-article">
+    <div class="table-responsive">
     <table class="table table-hover">
         <thead>
             <tr>
@@ -33,11 +60,11 @@
                     <th>{{ $art->private_code }}</th>
                     <td>
                         <div class="card card-article">
-                            <div class="row g-0">
-                                <div class="col-md-4 card-img">
+                            <div class="row g-0 flex-nowrap">
+                                <div class="col-4 card-img">
                                     <img src="{{ getUrlImageUpload($img) }}" class="img-fluid rounded-start" alt="{{ $art->title }}">
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-8">
                                     <div class="card-body">
                                         <a class="card-title stretched-link" href="{{ route('post.detail',$art->slug) }}">{{ $art->title }}</a>
                                         <p class="card-text">{{ $art->sub_title }}</p>
@@ -60,15 +87,15 @@
                     {{-- <td>{{ $art->end_day }}</td> --}}
                     <td>
                         <select class="form-select p-1" aria-label="state" name="state" id="state" data-id="{{ $art->id }}">
-                            <option value="0" selected>Tin mới</option>
-                            <option value="1">Đã đặt cọc</option>
-                            <option value="2">Đã được bán</option>
-                            <option value="3">Đã được thuê</option>
-                            </select>
+                            <option value="0" {{ $art->state == '0' ? 'selected' : ''}}>Tin mới</option>
+                            <option value="1" {{ $art->state == '1' ? 'selected' : ''}}>Đã đặt cọc</option>
+                            <option value="2" {{ $art->state == '2' ? 'selected' : ''}}>Đã được bán</option>
+                            <option value="3" {{ $art->state == '3' ? 'selected' : ''}}>Đã được thuê</option>
+                        </select>
                     </td>
                     <td class="actions">
                         <div class="btn-group">
-                            <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button type="button" class="btn" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
                                 <i class="fas fa-ellipsis-h"></i>
                             </button>
                             <ul class="dropdown-menu">
@@ -87,7 +114,7 @@
                 @endforeach
             @endif
         </tbody>
-    </table>
+    </table></div>
 </div>
 
 @push('scripts')

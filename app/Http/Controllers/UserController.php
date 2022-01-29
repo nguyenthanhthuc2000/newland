@@ -45,15 +45,19 @@ class UserController extends Controller
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function personalArticle() {
+    public function personalArticle(Request $request) {
         $personalArticle = $this->artRepo->getByAttributes(['user_id' => Auth::id()]);
-        $articlesUnverified = $personalArticle->where('status', 0);
-        $articlesCanled = $personalArticle->where('status', 2);
         $articlesDeposited = $personalArticle->where('state', 1);
+        if($request){
+            if(isset($request->all()['trang-thai'])){
+                $personalArticle = $personalArticle->where('status', $request->all()['trang-thai']);
+            }
+            if(isset($request->all()['tinh-trang'])){
+                $personalArticle = $personalArticle->where('state', $request->all()['tinh-trang']);
+            }
+        }
         $data = [
             'personalArticle' => $personalArticle,
-            'articlesUnverified' => $articlesUnverified,
-            'articlesCanled' => $articlesCanled,
             'articlesDeposited' => $articlesDeposited,
         ];
         return view('pages.post.personal_article', $data);
