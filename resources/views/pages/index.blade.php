@@ -128,7 +128,7 @@
                         </div>
                         <div class="card__footer d-flex p-3 pt-0 justify-content-between align-items-center">
                             <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> {{ $article->created_at->format('d/m/Y') }}</p>
-                            <p class="mb-0"><i class="fas fa-heart card__heart active"></i></p>
+                            <p class="mb-0 card__heart"><i class="fal fa-heart"></i></p>
                         </div>
                     </div>
                 </div>
@@ -158,7 +158,7 @@
                     </a>
                     <div class="card__footer d-flex p-3 pt-0" style="justify-content: space-between; align-items: center">
                         <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
-                        <p class="mb-0"><i class="fas fa-heart card__heart active"></i></p>
+                        <p class="mb-0 card__heart"><i class="fal fa-heart"></i></p>
                     </div>
                 </div>
             </div>
@@ -174,7 +174,7 @@
                     </a>
                     <div class="card__footer d-flex p-3 pt-0" style="justify-content: space-between; align-items: center">
                         <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
-                        <p class="mb-0"><i class="fas fa-heart card__heart active"></i></p>
+                        <p class="mb-0 card__heart"><i class="fal fa-heart"></i></p>
                     </div>
                 </div>
             </div>
@@ -190,7 +190,7 @@
                     </a>
                     <div class="card__footer d-flex p-3 pt-0" style="justify-content: space-between; align-items: center">
                         <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
-                        <p class="mb-0"><i class="fas fa-heart card__heart active"></i></p>
+                        <p class="mb-0 card__heart"><i class="fal fa-heart"></i></p>
                     </div>
                 </div>
             </div>
@@ -206,7 +206,7 @@
                     </a>
                     <div class="card__footer d-flex p-3 pt-0" style="justify-content: space-between; align-items: center">
                         <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
-                        <p class="mb-0"><i class="fas fa-heart card__heart active"></i></p>
+                        <p class="mb-0 card__heart"><i class="fal fa-heart"></i></p>
                     </div>
                 </div>
             </div>
@@ -222,7 +222,7 @@
                     </a>
                     <div class="card__footer d-flex p-3 pt-0" style="justify-content: space-between; align-items: center">
                         <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
-                        <p class="mb-0"><i class="fas fa-heart card__heart active"></i></p>
+                        <p class="mb-0 card__heart"><i class="fal fa-heart"></i></p>
                     </div>
                 </div>
             </div>
@@ -238,7 +238,7 @@
                     </a>
                     <div class="card__footer d-flex p-3 pt-0" style="justify-content: space-between; align-items: center">
                         <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
-                        <p class="mb-0"><i class="fas fa-heart card__heart active"></i></p>
+                        <p class="mb-0 card__heart"><i class="fal fa-heart"></i></p>
                     </div>
                 </div>
             </div>
