@@ -1,18 +1,29 @@
-import swal from 'sweetalert2';
-
-window.ClassicEditor = require('@ckeditor/ckeditor5-build-classic');
 
 window._ = require('lodash');
-window.$ = require('jquery');
-window.slick = require('slick-carousel');
+import swal from 'sweetalert2';
+window.ClassicEditor = require('@ckeditor/ckeditor5-build-classic');
 window.Swal = swal;
-
+////window.$ = require('jquery');
+window.slick = require('slick-carousel');
+//
 import "bootstrap";
 try {
-    require('bootstrap');
+    window.$ = window.jQuery = require('jquery');
+    window.Popper = require('@popperjs/core');
+    window.bootstrap = require('bootstrap');
 } catch (e) {
     console.error(e);
 }
+
+//window._ = require('lodash');
+//import Popper from 'popper.js/dist/umd/popper.js'; ///<------ add this line
+//
+//try {
+//    window.Popper = Popper; //<------ add this line
+//    window.$ = window.jQuery = require('jquery');
+//
+//    require('bootstrap');
+//} catch (e) {}
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
