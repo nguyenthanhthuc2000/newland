@@ -100,7 +100,7 @@
     <div class="box-product pt-2 pb-2">
         <div class="box-title d-flex pt-2 pb-2 justify-content-between align-items-center">
             <h3 class="text-center text__title">Bất động sản cho bạn</h3>
-            <a href="">Xem thêm <i class="fal fa-arrow-right"></i></a>
+            <a href="{{ route('article.index') }}">Xem thêm <i class="fal fa-arrow-right"></i></a>
         </div>
         <div class="row">
             @foreach ($articles as $article)
@@ -143,105 +143,39 @@
     <div class="box-product pt-2 pb-2">
         <div class="box-title d-flex p-2" style="justify-content: space-between; align-items: center">
             <h3 class="text-center text__title">Tin nổi bật</h3>
-            <a href="">Xem thêm <i class="fal fa-arrow-right"></i></a>
+            <a href="{{ route('article.featured') }}">Xem thêm <i class="fal fa-arrow-right"></i></a>
         </div>
         <div class="slick-nb">
-            <div class="padding-article box__article mb-4">
-                <div class="card" >
-                    <a href="" class="card-image card-highlight">
-                        <img src="{{asset('/uploads/article/123.jpg')}}" class="card-img-top" alt="...">
-                    </a>
-                    <a class="card-body card__article__body" href="">
-                        <h5 class="text-split-2 card__title"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h5>
-                        <p class="card-text mb-0 text-split-1 card__price"><strong>12 triệu/m² - 100 m²</strong></p>
-                        <p class="mb-0 text-split-1 card__address">Quận 3, Tp.Hồ Chí Minh</p>
-                    </a>
-                    <div class="card__footer d-flex p-3 pt-0" style="justify-content: space-between; align-items: center">
-                        <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
-                        <p class="mb-0 card__heart"><i class="fal fa-heart"></i></p>
+            @foreach ($featureArticled as $article)
+                <div class="padding-article box__article mb-4">
+                    @php
+                        $img_article = [];
+                        $img = '';
+                        $img_article = $article->imagesArticle->toArray();
+                        $img = ( $img_article && $img_article[0]) ? $img_article[0]['image'] : null;
+                    @endphp
+                    <div class="card">
+                        <a href="{{ route('post.detail',$article->slug) }}" class="card-image card-highlight card-featured">
+                            <img src="{{asset('/uploads/article/123.jpg')}}" class="card-img-top" alt="...">
+                        </a>
+                        <a class="card-body card__article__body" href="{{ route('post.detail',$article->slug) }}">
+                            <h5 class="text-split-2 card__title"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>{{ $article->title }}</h5>
+                            <p class="card-text mb-0 text-split-1 card__price">
+                                <strong>
+                                    {{
+                                        price_project($article->price, $article->acreage, $article->unit)['total_price'].' - '.$article->acreage .' m²'
+                                    }}
+                                </strong>
+                            </p>
+                            <p class="mb-0 text-split-1 card__address">{{ $article->address_on_post }}</p>
+                        </a>
+                        <div class="card__footer d-flex p-3 pt-0" style="justify-content: space-between; align-items: center">
+                            <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> {{ $article->created_at->format('d/m/Y') }}</p>
+                            <p class="mb-0 card__heart"><i class="fal fa-heart"></i></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="padding-article box__article mb-4">
-                <div class="card" >
-                    <a href="" class="card-image card-highlight">
-                        <img src="{{asset('/uploads/article/123.jpg')}}" class="card-img-top" alt="...">
-                    </a>
-                    <a class="card-body card__article__body" href="">
-                        <h5 class="text-split-2 card__title"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h5>
-                        <p class="card-text mb-0 text-split-1 card__price"><strong>12 triệu/m² - 100 m²</strong></p>
-                        <p class="mb-0 text-split-1 card__address">Quận 3, Tp.Hồ Chí Minh</p>
-                    </a>
-                    <div class="card__footer d-flex p-3 pt-0" style="justify-content: space-between; align-items: center">
-                        <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
-                        <p class="mb-0 card__heart"><i class="fal fa-heart"></i></p>
-                    </div>
-                </div>
-            </div>
-            <div class="padding-article box__article mb-4">
-                <div class="card" >
-                    <a href="" class="card-image card-highlight">
-                        <img src="{{asset('/uploads/article/123.jpg')}}" class="card-img-top" alt="...">
-                    </a>
-                    <a class="card-body card__article__body" href="">
-                        <h5 class="text-split-2 card__title"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h5>
-                        <p class="card-text mb-0 text-split-1 card__price"><strong>12 triệu/m² - 100 m²</strong></p>
-                        <p class="mb-0 text-split-1 card__address">Quận 3, Tp.Hồ Chí Minh</p>
-                    </a>
-                    <div class="card__footer d-flex p-3 pt-0" style="justify-content: space-between; align-items: center">
-                        <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
-                        <p class="mb-0 card__heart"><i class="fal fa-heart"></i></p>
-                    </div>
-                </div>
-            </div>
-            <div class="padding-article box__article mb-4">
-                <div class="card" >
-                    <a href="" class="card-image card-highlight">
-                        <img src="{{asset('/uploads/article/123.jpg')}}" class="card-img-top" alt="...">
-                    </a>
-                    <a class="card-body card__article__body" href="">
-                        <h5 class="text-split-2 card__title"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h5>
-                        <p class="card-text mb-0 text-split-1 card__price"><strong>12 triệu/m² - 100 m²</strong></p>
-                        <p class="mb-0 text-split-1 card__address">Quận 3, Tp.Hồ Chí Minh</p>
-                    </a>
-                    <div class="card__footer d-flex p-3 pt-0" style="justify-content: space-between; align-items: center">
-                        <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
-                        <p class="mb-0 card__heart"><i class="fal fa-heart"></i></p>
-                    </div>
-                </div>
-            </div>
-            <div class="padding-article box__article mb-4">
-                <div class="card" >
-                    <a href="" class="card-image card-highlight">
-                        <img src="{{asset('/uploads/article/123.jpg')}}" class="card-img-top" alt="...">
-                    </a>
-                    <a class="card-body card__article__body" href="">
-                        <h5 class="text-split-2 card__title"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h5>
-                        <p class="card-text mb-0 text-split-1 card__price"><strong>12 triệu/m² - 100 m²</strong></p>
-                        <p class="mb-0 text-split-1 card__address">Quận 3, Tp.Hồ Chí Minh</p>
-                    </a>
-                    <div class="card__footer d-flex p-3 pt-0" style="justify-content: space-between; align-items: center">
-                        <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
-                        <p class="mb-0 card__heart"><i class="fal fa-heart"></i></p>
-                    </div>
-                </div>
-            </div>
-            <div class="padding-article box__article mb-4">
-                <div class="card" >
-                    <a href="" class="card-image card-highlight">
-                        <img src="{{asset('/uploads/article/123.jpg')}}" class="card-img-top" alt="...">
-                    </a>
-                    <a class="card-body card__article__body" href="">
-                        <h5 class="text-split-2 card__title"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h5>
-                        <p class="card-text mb-0 text-split-1 card__price"><strong>12 triệu/m² - 100 m²</strong></p>
-                        <p class="mb-0 text-split-1 card__address">Quận 3, Tp.Hồ Chí Minh</p>
-                    </a>
-                    <div class="card__footer d-flex p-3 pt-0" style="justify-content: space-between; align-items: center">
-                        <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
-                        <p class="mb-0 card__heart"><i class="fal fa-heart"></i></p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 @endsection

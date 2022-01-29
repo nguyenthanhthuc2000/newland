@@ -60,6 +60,7 @@ Route::post('request-contact', [RequestContactController::class, 'store'])->name
 //LIST ARTICLE
 Route::get('danh-muc/{slugs}', [CategoryController::class, 'viewCategory'])->name('category.index');
 Route::get('danh-sach-bat-dong-san-tren-toan-quoc', [ArticleController::class, 'allArticle'])->name('article.index');
+Route::get('tin-tuc-noi-bat', [ArticleController::class, 'featureArticle'])->name('article.featured');
 
 Route::prefix('tim-kiem')->group(function () {
     Route::get('', [ArticleController::class, 'filter'])->name('article.filter');

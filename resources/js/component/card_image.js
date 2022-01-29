@@ -42,15 +42,15 @@ var uploadImages = function() {
         });
     });
 
-    // boxReview.on('click', '.destroy', function(e) {
-    // $(this).closest('.col').remove();
-    //     var index = $(this).data('index');
-    //     var files = $('.input-gallery')[0].files;
+    boxReview.on('click', '.destroy', function(e) {
+        $(this).closest('.col').remove();
+        var index = $(this).data('index');
+        var files = $('.input-gallery')[0].files;
 
-    //     console.log(Array.from(files))
-    //     var newList = Array.from(files);
-    //     newList.splice(index);
-    // })
+        console.log(Array.from(files))
+        var newList = Array.from(files);
+        newList.splice(index);
+    })
 
     boxReview.on('click', '.rotate', function() {
         var _this = $(this).parent().prev();

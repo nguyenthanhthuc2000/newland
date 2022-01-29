@@ -18,6 +18,16 @@ class ArticleController extends Controller
         return view('pages.post.article_list', $data);
     }
 
+    public function featureArticle(){
+        $articles = $this->artRepo->getByAttributes(['status' => 1, 'featured' => 1]);
+        $title = 'Tin tức nổi bật';
+        $data = [
+            'title' => $title,
+            'lstArticle' => $articles,
+        ];
+        return view('pages.post.article_list', $data);
+    }
+
     public function searchByPrice(Request $request)
     {
         $negotiable = $request->gia;

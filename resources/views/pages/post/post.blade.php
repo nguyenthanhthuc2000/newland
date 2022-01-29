@@ -1,4 +1,7 @@
 @extends('layouts.master_layout')
+@section('title')
+{{ isset($article) ? 'Chỉnh sửa bài viêt "'.$article->title.'"' : 'Đăng tin mới' }}
+@endsection
 @section('main')
 
 <div class="post-form-action col-xl-8 mx-auto pt-3">
@@ -313,7 +316,7 @@
                 <p>Hãy dùng ảnh thật, không trùng, không chèn số điện thoại. Mỗi ảnh kích thước tối thiểu 400x400, tối đa 15 MB. Số lượng ảnh tối đa tuỳ theo loại tin</p>
                 <div class="container-upload">
                     <label for="input-gallery" class="form-label">Hình ảnh</label>
-                    <input type="file" multiple accept="image/*" class="input-gallery" name="image[]" step="any" >
+                    <input type="file" multiple accept="image/*" class="input-gallery" name="image[]" step="any" hidden>
                     <div class="box-upload">
                         <i class="fas fa-upload"></i>
                         <p>Bấm để chọn ảnh cần tải lên</p>
