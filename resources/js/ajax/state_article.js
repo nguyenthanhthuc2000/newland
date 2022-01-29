@@ -12,7 +12,7 @@ $('select#state').change(function() {
         }
     }).done(function(data) {
         Swal.fire({
-            position: 'top-end',
+            position: 'center-center',
             icon: data.status,
             title: data.msg,
             showConfirmButton: false,
