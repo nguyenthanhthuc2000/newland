@@ -18,7 +18,7 @@
                         <h5 class="text-split-2 card__title fw-bold">Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h5>
                         <div class="card__footer d-flex mt-3" style="justify-content: space-between; align-items: center">
                             <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
-                            <p class="mb-0 card-view">Xem chi tiết <i class="fal fa-arrow-right"></i></p>
+                            <p class="mb-0 card-view"><i class="fal fa-book-reader"></i></p>
                         </div>
                     </a>
                 </div>
@@ -32,7 +32,7 @@
                         <h5 class="text-split-2 card__title fw-bold">Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h5>
                         <div class="card__footer d-flex mt-3" style="justify-content: space-between; align-items: center">
                             <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
-                            <p class="mb-0 card-view">Xem chi tiết <i class="fal fa-arrow-right"></i></p>
+                            <p class="mb-0 card-view"><i class="fal fa-book-reader"></i></p>
                         </div>
                     </a>
                 </div>
@@ -46,7 +46,7 @@
                         <h5 class="text-split-2 card__title fw-bold">Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h5>
                         <div class="card__footer d-flex mt-3" style="justify-content: space-between; align-items: center">
                             <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
-                            <p class="mb-0 card-view">Xem chi tiết <i class="fal fa-arrow-right"></i></p>
+                            <p class="mb-0 card-view"><i class="fal fa-book-reader"></i></p>
                         </div>
                     </a>
                 </div>
@@ -60,7 +60,7 @@
                         <h5 class="text-split-2 card__title fw-bold">Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h5>
                         <div class="card__footer d-flex mt-3" style="justify-content: space-between; align-items: center">
                             <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
-                            <p class="mb-0 card-view">Xem chi tiết <i class="fal fa-arrow-right"></i></p>
+                            <p class="mb-0 card-view"><i class="fal fa-book-reader"></i></p>
                         </div>
                     </a>
                 </div>
@@ -74,7 +74,7 @@
                         <h5 class="text-split-2 card__title fw-bold">Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h5>
                         <div class="card__footer d-flex mt-3" style="justify-content: space-between; align-items: center">
                             <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
-                            <p class="mb-0 card-view">Xem chi tiết <i class="fal fa-arrow-right"></i></p>
+                            <p class="mb-0 card-view"><i class="fal fa-book-reader"></i></p>
                         </div>
                     </a>
                 </div>
@@ -88,7 +88,7 @@
                         <h5 class="text-split-2 card__title fw-bold">Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h5>
                         <div class="card__footer d-flex mt-3" style="justify-content: space-between; align-items: center">
                             <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
-                            <p class="mb-0 card-view">Xem chi tiết <i class="fal fa-arrow-right"></i></p>
+                            <p class="mb-0 card-view"><i class="fal fa-book-reader"></i></p>
                         </div>
                     </a>
                 </div>
@@ -135,10 +135,12 @@
             @endforeach
         </div>
     </div>
-    <div class="banner pt-4 pb-4">
-        <a href="">
-            <img class="w-100" src="{{asset('uploads/slider/bn1.jpg')}}" alt="">
+    <div class="banner pt-4 pb-4 slick-banner">
+        @foreach($getBanners as $getBanner)
+        <a href="{{$getBanner->link}}">
+            <img class="w-100" src="{{asset('uploads/slider/'.$getBanner->image)}}" alt="">
         </a>
+        @endforeach
     </div>
     <div class="box-product pt-2 pb-2">
         <div class="box-title d-flex p-2" style="justify-content: space-between; align-items: center">

@@ -46,7 +46,7 @@
                 <div class='col-md-3 col-6 mb-2'>
                     <div class="layers bd bgc-white p-20">
                         <div class="layer w-100 mB-10">
-                            <h6 class="lh-1">Số lượng khách hàng</h6>
+                            <h6 class="lh-1">Người dùng</h6>
                         </div>
                         <div class="layer w-100">
                             <div class="peers ai-sb fxw-nw">
@@ -65,7 +65,7 @@
                 <div class='col-md-3 col-6 mb-2'>
                     <div class="layers bd bgc-white p-20">
                         <div class="layer w-100 mB-10">
-                            <h6 class="lh-1">Số bài viết</h6>
+                            <h6 class="lh-1">Bài viết</h6>
                         </div>
                         <div class="layer w-100">
                             <div class="peers ai-sb fxw-nw">
