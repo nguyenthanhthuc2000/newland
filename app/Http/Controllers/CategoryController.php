@@ -11,10 +11,9 @@ class CategoryController extends Controller
         if(!$category){
             return abort('404');
         }
-        $getCategory = $category->first();
-        $articles = $this->artRepo->getByAttributes(['category_id' => $getCategory->id]);
+        $articles = $this->artRepo->getByAttributes(['category_id' => $category->id]);
         $data = [
-            'title' => $getCategory->name,
+            'title' => $category->name,
             'lstArticle' => $articles
         ];
         return view('pages.post.article_list', $data);
