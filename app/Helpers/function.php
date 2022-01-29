@@ -262,3 +262,13 @@ function price_project($price, $acreage, $type_unit){
             break;
     }
 }
+
+function hidden_field($category){
+    $idHome = [1, 2, 3, 7, 8, 9, 10, 11, 12, 13, 17, 18, 19, 20];
+    $idPlatform = [4, 5, 6, 14, 15, 16];
+
+    if(in_array($category, $idPlatform) && !in_array($category, $idHome)){
+        return 'd-none';
+    }
+    return '';
+}

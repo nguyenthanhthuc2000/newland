@@ -65,7 +65,7 @@
                         <td>Mức giá</td>
                         <td>Đường đi</td>
                         <td>Diện tích</td>
-                        <td class="text-end">Phòng</td>
+                        <td class="text-end {{ hidden_field($detailArticle->category->id) }}">Phòng</td>
                     </tr>
                     <tr>
                         <td>
@@ -77,7 +77,7 @@
                         </td>
                         <td><strong>{{ $detailArticle->facade ? 'Mặt tiền: '.$detailArticle->facade.' m' : '' }}</strong></td>
                         <td><strong>{{ $detailArticle->acreage }} m²</strong></td>
-                        <td class="text-end">{{ $detailArticle->bedroom ? $detailArticle->bedroom : '0' }} phòng ngủ</td>
+                        <td class="text-end {{ hidden_field($detailArticle->category->id) }}">{{ $detailArticle->bedroom ? $detailArticle->bedroom : '0' }} phòng ngủ</td>
                     </tr>
                     <tr>
                         <td>
@@ -89,7 +89,7 @@
                         </td>
                         <td><span>{{ $detailArticle->way ? 'Hẻm: '.$detailArticle->way.' m' : '' }}</span></td>
                         <td></td>
-                        <td class="text-end">{{ $detailArticle->toilet ? $detailArticle->toilet : '0' }} toilet</td>
+                        <td class="text-end {{ hidden_field($detailArticle->category->id) }}">{{ $detailArticle->toilet ? $detailArticle->toilet : '0' }} toilet</td>
                     </tr>
                     </tbody>
                 </table>
@@ -113,15 +113,15 @@
                         <span class="title">Mặt tiền:</span>
                         <span class="value">{{ $detailArticle->facade ? 'Mặt tiền: '.$detailArticle->facade.' m' : '' }}</span>
                     </div>
-                    <div class="b__dt-ct-section-body-list">
+                    <div class="b__dt-ct-section-body-list {{ hidden_field($detailArticle->category->id) }}">
                         <span class="title">Số tầng:</span>
                         <span class="value">{{ $detailArticle->floor ? $detailArticle->floor.' tầng' : '0' }}</span>
                     </div>
-                    <div class="b__dt-ct-section-body-list">
+                    <div class="b__dt-ct-section-body-list {{ hidden_field($detailArticle->category->id) }}">
                         <span class="title">Số phòng ngủ:</span>
                         <span class="value">{{ $detailArticle->bedroom ? $detailArticle->bedroom.' phòng ngủ' : '0' }}</span>
                     </div>
-                    <div class="b__dt-ct-section-body-list">
+                    <div class="b__dt-ct-section-body-list {{ hidden_field($detailArticle->category->id) }}">
                         <span class="title">Nội thất:</span>
                         <span class="value">{{ $detailArticle->furniture }}</span>
                     </div>
