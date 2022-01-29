@@ -1,4 +1,7 @@
 @extends('layouts.master_layout')
+@section('title')
+{{ isset($article) ? 'Chỉnh sửa bài viêt "'.$article->title.'"' : 'Đăng tin mới' }}
+@endsection
 @section('main')
 
 <div class="post-form-action col-xl-8 mx-auto pt-3">

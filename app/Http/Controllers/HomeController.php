@@ -24,8 +24,10 @@ class HomeController extends Controller
     public function index()
     {
         $articles = $this->artRepo->getByStatus([1]);
+        $featureArticled = $articles->where('featured', 1);
         $data = [
             'articles' => $articles,
+            'featureArticled' => $featureArticled
         ];
         return view('pages.index', $data);
     }
