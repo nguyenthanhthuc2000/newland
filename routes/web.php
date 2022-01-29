@@ -12,6 +12,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Customer\RequestContactController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminArticleController;
+use App\Http\Controllers\Followers;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,7 @@ use App\Http\Controllers\Admin\AdminArticleController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('404', [HomeController::class, 'page404'])->name('home.page404');
+Route::post('follow', [Followers::class, 'follow'])->name('home.follow');
 
 // AUTH CONTROLLER
 //LOGIN GOOGLE
@@ -87,6 +89,7 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['checkLevel'])->group(function () {
         Route::prefix("admin")->group(function(){
             Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
+            Route::get('/nguoi-dang-ki-nhan-tin', [Followers::class, 'index'])->name('admin.list.followers');
             Route::get('thong-tin-website', [DashboardController::class, 'setting'])->name('admin.setting');
             Route::post('update-setting', [DashboardController::class, 'updateSetting'])->name('setting.update');
 

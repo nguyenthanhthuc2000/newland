@@ -65,3 +65,39 @@ $('.btn__send__contact').click(function(){
         }
     });
 })
+$.ajaxSetup({
+   headers: {
+       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+   }
+});
+
+$('.btn_follow_website').click(function(){
+    let email = $('.input_follow_website').val();
+    let emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    if(email === ''){
+        Swal.fire('Vui lòng nhập địa chỉ email')
+    }
+    else if(!emailReg.test(email)) {
+         Swal.fire('Không đúng định dạng email')
+    }
+    else{
+        $.ajax({
+            url: window.route('home.follow'),
+            method: 'POST',
+            data:{email:email},
+            success:function(data){
+                if(data.status === 500){
+                    alert('Lỗi, thử lại sau!')
+                }
+                else{
+                    Swal.fire(
+                      'Cảm ơn bạn đã đăng kí nhận tin từ chúng tôi',
+                      'Chúng tôi sẽ gửi những tin tức nổi bật đến bạn sớm nhất!',
+                      'success'
+                    )
+                    $('.input_follow_website').val('');
+                }
+            }
+        })
+    }
+})

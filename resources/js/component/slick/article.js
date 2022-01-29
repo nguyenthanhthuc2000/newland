@@ -4,7 +4,6 @@ $('.slick-nb').slick({
   slidesToShow: 4,
   autoplay: true,
   autoplaySpeed: 2000,
-  fade: true,
   responsive: [
     {
       breakpoint: 768,

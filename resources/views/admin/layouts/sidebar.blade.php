@@ -63,7 +63,10 @@
               </a>
               <ul class="dropdown-menu">
                   <li>
-                      <a class='sidebar-link' href="{{ route('admin.list.customer') }}">Tất cả</a>
+                      <a class='sidebar-link' href="{{ route('admin.list.customer') }}">Khách hàng</a>
+                  </li>
+                  <li>
+                      <a class='sidebar-link' href="{{ route('admin.list.followers') }}">Người đăng kí nhận tin</a>
                   </li>
               </ul>
           </li>

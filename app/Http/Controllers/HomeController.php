@@ -31,8 +31,13 @@ class HomeController extends Controller
         ];
         return view('pages.index', $data);
     }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function page404(){
         return view('errors.404');
     }
+
 
 }

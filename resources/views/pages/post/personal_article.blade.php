@@ -34,7 +34,7 @@
                     <td>
                         <div class="card card-article">
                             <div class="row g-0">
-                                <div class="col-md-4 card-img">
+                                <div class="col-md-4 card-img " >
                                     <img src="{{ getUrlImageUpload($img) }}" class="img-fluid rounded-start" alt="{{ $art->title }}">
                                 </div>
                                 <div class="col-md-8">

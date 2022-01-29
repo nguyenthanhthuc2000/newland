@@ -43,7 +43,7 @@
             </div>
             <div class="b__dt-ct pt-2">
                 <h1 class="b__dt-ct-title">
-                    <span>{{ $detailArticle->title.' - '.$detailArticle->phone_contact }}</span>
+                    {!! checkVip($detailArticle->vip) !!}<span>{{ $detailArticle->title.' - '.$detailArticle->phone_contact }}</span>
                 </h1>
                 <div class="card__footer d-flex " style="justify-content: space-between; align-items: center">
                     <p class="mb-0 "><i class="fal fa-calendar-alt"></i> {{ $detailArticle->created_at->format('d/m/Y') }}</p>
@@ -145,7 +145,7 @@
         <div class="col-md-2 col-12 pt-3">
             <div class="b__ct">
                 <div class="b__ct-info">
-                    <img class="b__ct-info-avt img-fluid" src="{{asset('/images/non_avatar.jpg')}}" alt="">
+                    <img class="b__ct-info-avt img-fluid" style="width: 100px; height: 100px" src="{{asset(getUrlImageUpload($detailArticle->user->avatar, 'avatar'))}}" alt="">
 
                         <p class="b__ct-info-name pt-3 mb-1"><strong>{{ ($detailArticle->user->name) }}</strong></p>
                         <a href="{{ route('article.SameEntrant', $detailArticle->user->id) }}" class="b__ct-info-article ">Xem thêm {{ $countArticleOfUser }} tin khác</a>

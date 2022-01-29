@@ -2,6 +2,24 @@
 use App\Models\Setting;
 use App\Models\ImagesArticle;
 
+function checkVip($vip){
+    $output = '';
+    switch ($vip){
+        case 1:
+            $output = '<i class="fas fa-star"></i>&nbsp; ';
+            break;
+        case 2:
+            $output = '<i class="fas fa-star"></i><i class="fas fa-star"></i>&nbsp; ';
+            break;
+        case 3:
+            $output = '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>&nbsp; ';
+            break;
+        default:
+            $output = '';
+    }
+    return $output;
+}
+
 function getSetting(){
     return Setting::find(1);
 }

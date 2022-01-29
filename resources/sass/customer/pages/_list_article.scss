@@ -6,6 +6,18 @@
         border: 1px solid #ecf0f1;
         border-radius: 10px;
         margin-left: 0;
+        position: relative;
+        .card-featured {
+            &:before{
+                content: url(/icons/noi-bat.svg);
+                position: absolute;
+                height: 25px;
+                left: -4px;
+                top: 10px;
+                width: 65px;
+                z-index: 1;
+            }
+        }
         &:hover {
             box-shadow: 3px 3px 13px 3px #95a5a617;
         }
@@ -18,7 +30,7 @@
                 background: rgb(221, 221, 221);
                 transition: 0.4s;
                 height: 100%;
-                object-fit: contain;
+                object-fit: cover;
                 display: block;
                 border-radius: 10px;
             }
@@ -35,7 +47,8 @@
                     font-size: 0.9rem;
                     text-transform: uppercase;
                     font-weight: bold;
-                    color: #2980b9;
+                }
+                .content-title.featured{
                 }
                 .content-price {}
                 .content-desc {
