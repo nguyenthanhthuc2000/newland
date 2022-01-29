@@ -16,7 +16,7 @@
                                     <span id="sparklinedash"></span>
                                 </div>
                                 <div class="peer">
-                                    <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">Chưa cập nhật</span>
+                                    <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">...</span>
                                 </div>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                                     <span id="sparklinedash2"></span>
                                 </div>
                                 <div class="peer">
-                                    <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500">Chưa cập nhật</span>
+                                    <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500">...</span>
                                 </div>
                             </div>
                         </div>
@@ -99,7 +99,7 @@
                                 <thead>
                                 <tr>
                                     <th class=" bdwT-0">Mã</th>
-                                    <th class=" bdwT-0">Tiêu đề</th>
+                                    <th class=" bdwT-0" style="min-width: 300px">Tiêu đề</th>
                                     <th class=" bdwT-0 text-center">Loại</th>
                                     <th class=" bdwT-0 text-center" style="min-width: 70px">Nổi bật</th>
                                     <th class=" bdwT-0 " style="min-width: 150px">Người đăng</th>
@@ -112,7 +112,7 @@
                                     @foreach($articles as $article)
                                         <tr>
                                             <td class="fw-600">{{ $article->private_code }}</td>
-                                            <td class="fw-600"><a href="{{ route('post.detail',$article->slug) }}">{{ $article->title }}</a></td>
+                                            <td class="fw-600"><a href="{{ route('post.detail',$article->slug) }}" class="text-split-2">{{ $article->title }}</a></td>
                                             <td class=" text-center" style="min-width: 120px">
                                                 <select class="form-select update-vip-article" id="select-{{$article->id}}" aria-label="Default select example" data-id="{{ $article->id }}">
                                                     <option value="0" {{ $article->vip == 0 ? 'selected' : '' }}>Thường</option>
@@ -130,9 +130,15 @@
                                             <td><a href="" class="">{{ $article->user->name }}</a>
                                             <td>{{ formatTime($article->created_at)}}</td>
                                             <td><span class=" badge bgc-yellow-50 c-yellow-700 p-10 lh-0 tt-c rounded-pill">Chờ xử lí</span></td>
-                                            <td class="text-end d-flex" style="justify-content: end">
-                                                <span class="badge bgc-red-50 c-red-700 p-15 lh-0 tt-c rounded-pill btn__confirm btn__unconfirm__article" data-id="{{ $article->id }}">Từ chối</span> &nbsp;
-                                                <span class="badge bgc-green-50 c-green-700 p-15 lh-0 tt-c rounded-pill btn__confirm btn__confirm__article" data-id="{{ $article->id }}">Duyệt</span>
+                                            <td class="text-end " style="">
+                                                <div class="d-flex">
+                                                    <span
+                                                        class="badge bgc-red-50 c-red-700 p-15 lh-0 tt-c rounded-pill btn__confirm btn__unconfirm__article m-1"
+                                                        data-id="{{ $article->id }}">Từ chối</span>
+                                                    <span
+                                                        class="badge bgc-green-50 c-green-700 p-15 lh-0 tt-c rounded-pill btn__confirm btn__confirm__article m-1"
+                                                        data-id="{{ $article->id }}">Duyệt</span>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach

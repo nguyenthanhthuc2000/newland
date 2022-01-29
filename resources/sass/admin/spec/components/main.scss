@@ -19,3 +19,12 @@
 .max-w-100 {
     max-width: 100px!important;
 }
+
+.text-split-2{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+}

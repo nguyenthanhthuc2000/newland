@@ -1,6 +1,6 @@
 window._ = require('lodash');
 import swal from 'sweetalert2';
-window.Popper = require('@popperjs/core/dist/umd/popper').default;
+//window.Popper = require('@popperjs/core/dist/umd/popper').default;
 import "bootstrap";
 try {
     window.$ = window.jQuery = require('jquery');

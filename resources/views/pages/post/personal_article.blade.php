@@ -24,7 +24,6 @@
             <option value="3" {{ request()->get('tinh-trang') == '3' ? 'selected' : ''}}>Đã được thuê</option>
           </select>
     </div>
-
     <div class="col-md-3">
         <button type="reset" class="btn btn-mute reload"><i class="fal fa-sync btn__filter"></i></button>
        <button class="btn btn-primary">Tìm kiếm</button>
