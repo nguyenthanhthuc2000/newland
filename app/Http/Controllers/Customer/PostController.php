@@ -126,9 +126,9 @@ class PostController extends Controller
             $dateStr = $date->format('Y_m_d_H_i_s');
 
             for($i = 0; $i < count($imgArr); $i++){
-
+                $extensionImage = $imgArr[$i]->clientExtension();
                 $fileName = Str::random(35);
-                $newFileName = $dateStr.'_'.$fileName;
+                $newFileName = $dateStr.'_'.$fileName.'.'.$extensionImage;
 
                 $this->imgArtRepo->create([
                     'article_id'=> $idCreated,
@@ -213,10 +213,10 @@ class PostController extends Controller
         $this->validate($request,
             [
                 "form" => "required", //bán/thuê
-                "category_id" => "required", //Loại bất động sản
-                "province_id" => "required",// tỉnh Thành phố
-                "district_id" => "required",// qquận huyện
-                "ward_id" => "required",//Phường / Xã
+                "category_id" => "required|numeric", //Loại bất động sản
+                "province_id" => "required|numeric",// tỉnh Thành phố
+                "district_id" => "required|numeric",// qquận huyện
+                "ward_id" => "required|numeric",//Phường / Xã
                 "street_id" => "required",//đường
                 "address_on_post" => "required",//địa chủ trên bài đăng
                 "title" => "required",// tiêu đề trên bài viết
@@ -237,6 +237,7 @@ class PostController extends Controller
                 "province_id.required" => "Vui lòng chọn Tỉnh / Thành phố",
                 "unit.required" => "Vui lòng chọn Đơn vị",
                 "category_id.required" => "Vui lòng chọn Loại bất động sản",
+                "*.numeric" => "Vui lòng chọn Loại bất động sản",
             ]
         );
         $private_code = $this->artRepo->find($id)->private_code;
@@ -275,21 +276,32 @@ class PostController extends Controller
         $updated = $this->artRepo->update($id, $attributes);
         if($updated){
             $old_images = $request->old_images;
-
-            $get_old_images = $this->artRepo->find($id)->imagesArticle;
-            if($get_old_images){
-                foreach($get_old_images as $img){
-                    if(!in_array($img->id, $old_images)){
-                        $img_name = $get_old_images->find($img->id)->image;
-                        $img_path = public_path() .'uploads/article/' . $img_name;
-                        if(File::exists($img_path)){
-                            File::delete($img_path);
+            if($old_images){
+                $get_old_images = $this->artRepo->find($id)->imagesArticle;
+                if($get_old_images){
+                    foreach($get_old_images as $img){
+                        if(!in_array($img->id, $old_images)){
+                            $img_name = $get_old_images->find($img->id)->image;
+                            $img_path = public_path() .'uploads/article/' . $img_name;
+                            if(File::exists($img_path)){
+                                File::delete($img_path);
+                            }
+                            $img->delete($img->id);
                         }
-                        $get_old_images->delete($img->id);
                     }
                 }
             }
-
+            else if(!$old_images){
+                $get_images = $this->artRepo->find($id)->imagesArticle;
+                if($get_images->count() > 0){
+                    $img_name = $get_images->find($id)->image;
+                    $img_path = public_path() .'uploads/article/' . $img_name;
+                    if(File::exists($img_path)){
+                        File::delete($img_path);
+                    }
+                    $article->imagesArticle->where('article_id', $id)->each->delete();
+                }
+            }
             if($request->file('image')){
                 $imgArr = $request->file('image');
                 $description_img = $request->description_img;
@@ -298,8 +310,9 @@ class PostController extends Controller
 
                 for($i = 0; $i < count($imgArr); $i++){
 
+                    $extensionImage = $imgArr[$i]->clientExtension();
                     $fileName = Str::random(35);
-                    $newFileName = $dateStr.'_'.$fileName;
+                    $newFileName = $dateStr.'_'.$fileName.'.'.$extensionImage;
 
                     $this->imgArtRepo->create([
                         'article_id'=> $id,
