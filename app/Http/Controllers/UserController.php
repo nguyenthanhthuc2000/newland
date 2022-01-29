@@ -50,10 +50,10 @@ class UserController extends Controller
         $articlesDeposited = $personalArticle->where('state', 1);
         if($request){
             if(isset($request->all()['trang-thai'])){
-                $personalArticle = $personalArticle->where('status', $request->all()['trang-thai']);
+                $personalArticle = $this->artRepo->getByAttributes(['user_id' => Auth::id(),'status'=> $request->all()['trang-thai']]);
             }
             if(isset($request->all()['tinh-trang'])){
-                $personalArticle = $personalArticle->where('state', $request->all()['tinh-trang']);
+                $personalArticle = $this->artRepo->getByAttributes(['user_id' => Auth::id(), 'state'=> $request->all()['tinh-trang']]);
             }
         }
         $data = [

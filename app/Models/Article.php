@@ -70,6 +70,13 @@ class Article extends Model
         if(isset($request['dien-tich'])){
             $query->where('acreage', $request['dien-tich']);
         }
+        if(isset($request['trang-thai'])){
+            $query->where('status', $request['trang-thai'])->paginate();
+        }
+
+        if(isset($request['tinh-trang'])){
+            $query->where('state', $request['tinh-trang'])->paginate();
+        }
         return $query;
     }
 }
