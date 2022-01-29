@@ -26,7 +26,7 @@
     </div>
 
     <div class="col-md-3">
-        <button type="reset" class="btn btn-mute"><i class="fal fa-sync btn__filter"></i></button>
+        <button type="reset" class="btn btn-mute reload"><i class="fal fa-sync btn__filter"></i></button>
        <button class="btn btn-primary">Tìm kiếm</button>
     </div>
 </form>
@@ -66,7 +66,7 @@
                                     </div>
                                     <div class="col-8">
                                         <div class="card-body">
-                                            <a class="card-title stretched-link" href="{{ route('post.detail',$art->slug) }}">{{ $art->title }}</a>
+                                            <a class="card-title stretched-link text-truncate" href="{{ route('post.detail',$art->slug) }}">{{ $art->title }}</a>
                                             <p class="card-text">{{ $art->sub_title }}</p>
                                             {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
                                         </div>
@@ -76,22 +76,32 @@
                         </td>
                         {{-- <td>{{ $art->end_day }}</td> --}}
                         <td>
-                            {{
-                                ($art->status == 0) ?
-                                    'Chưa được duyệt' :
-                                    ($art->status == 1 ?
-                                        'Đã được duyệt' :
-                                        'Đã hủy')
-                            }}
+                            <span class="{{ ($art->status == 0) ?
+                                                'status-unverified' :
+                                                ($art->status == 1 ?
+                                                    'status-verified' :
+                                                    'status-cancel')}}">
+                                {{
+                                    ($art->status == 0) ?
+                                        'Chưa được duyệt' :
+                                        ($art->status == 1 ?
+                                            'Đã được duyệt' :
+                                            'Đã hủy')
+                                }}
+                            </span>
                         </td>
                         {{-- <td>{{ $art->end_day }}</td> --}}
                         <td>
-                            <select class="form-select p-1" aria-label="state" name="state" id="state" data-id="{{ $art->id }}">
-                                <option value="0" {{ $art->state == '0' ? 'selected' : ''}}>Tin mới</option>
-                                <option value="1" {{ $art->state == '1' ? 'selected' : ''}}>Đã đặt cọc</option>
-                                <option value="2" {{ $art->state == '2' ? 'selected' : ''}}>Đã được bán</option>
-                                <option value="3" {{ $art->state == '3' ? 'selected' : ''}}>Đã được thuê</option>
-                            </select>
+                            @if ($art->status == 2)
+                                {{ $art->feedback }}
+                            @else
+                                <select class="form-select p-1" aria-label="state" name="state" id="state" data-id="{{ $art->id }}">
+                                    <option value="0" {{ $art->state == '0' ? 'selected' : ''}}>Tin mới</option>
+                                    <option value="1" {{ $art->state == '1' ? 'selected' : ''}}>Đã đặt cọc</option>
+                                    <option value="2" {{ $art->state == '2' ? 'selected' : ''}}>Đã được bán</option>
+                                    <option value="3" {{ $art->state == '3' ? 'selected' : ''}}>Đã được thuê</option>
+                                </select>
+                            @endif
                         </td>
                         <td class="actions">
                             <div class="btn-group">
