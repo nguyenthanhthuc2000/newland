@@ -153,7 +153,6 @@
                 <div class="b__ct-contact">
                     <button class="b__ct-contact-btn b__ct-contact-phone" title="Sao chép" id="phone_contact" value="0389946423">
                         {{ $detailArticle->phone_contact }}
-                        <p class="mb-0 text-center">Sao chép</p>
                     </button>
                     <br>
                     <a href="mailto:nguyenthanhthuc@gmail.com" class="b__ct-contact-btn b__ct-contact-mail">Gửi mail</a>
