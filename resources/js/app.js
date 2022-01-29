@@ -17,6 +17,7 @@ require('./component/card_image');
 require('./component/input');
 require('./component/map');
 require('./component/filter');
+require('./component/button');
 require('./component/hidden_field');
 require('./component/slick/article');
 require('./component/slick/detail_article');

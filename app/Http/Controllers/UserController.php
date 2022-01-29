@@ -47,8 +47,12 @@ class UserController extends Controller
      */
     public function personalArticle() {
         $personalArticle = $this->artRepo->getByAttributes(['user_id' => Auth::id()]);
+        $articlesUnverified = $personalArticle->where('status', 0);
+        $articlesCanled = $personalArticle->where('status', 2);
         $data = [
-            'personalArticle' => $personalArticle
+            'personalArticle' => $personalArticle,
+            'articlesUnverified' => $articlesUnverified,
+            'articlesCanled' => $articlesCanled
         ];
         return view('auth.personal_article', $data);
     }
@@ -59,6 +63,9 @@ class UserController extends Controller
      */
     public function articlesSameEntrant($id) {
         $user = $this->userRepo->find($id);
+        if(!$user){
+            return abort('404');
+        }
         $lstArticle = $this->userRepo->find($id)->articles;
         $data = [
             'title' => 'Các tin đăng bởi "'.$user->name.'"',

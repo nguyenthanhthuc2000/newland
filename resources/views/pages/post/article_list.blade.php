@@ -1,4 +1,7 @@
 @extends('layouts.master_layout')
+@section('title')
+    {{ $title }}
+@endsection
 @section('main')
     <div class="row">
         <div class="post-form-action col-sm-8 pt-3">

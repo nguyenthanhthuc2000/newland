@@ -1,4 +1,7 @@
 @extends('layouts.master_layout')
+@section('title')
+    Trang chủ
+@endsection
 @section('main')
     <div class="box-post  pt-3 pb-2"  >
         <div class="box-title d-flex p-2  " style="justify-content: space-between; align-items: center">
