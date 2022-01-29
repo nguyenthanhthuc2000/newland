@@ -52,7 +52,7 @@ $('.slick-b').slick({
 $('.slick-bv').slick({
   centerPadding: '20px',
   slidesToShow: 4,
-//  autoplay: true,
+  autoplay: true,
   autoplaySpeed: 2000,
   responsive: [
     {
@@ -74,5 +74,15 @@ $('.slick-bv').slick({
   ]
 });
 
-
+$('.slick-banner').slick({
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    fade: true,
+    adaptiveHeight: true,
+    autoplay: true,
+    prevArrow: false,
+    nextArrow: false
+});
 

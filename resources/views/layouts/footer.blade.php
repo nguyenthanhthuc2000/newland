@@ -81,8 +81,13 @@
                     Đăng kí nhận tin
                 </h5>
                 <div class="box-input-group">
-                    <input type="text" class="form-control input__border" placeholder="Nhập email của bạn" >
-                    <span class="input-group-icon" style="display: block;margin-right: -6px;"><i class="fal fa-paper-plane"></i></span>
+                    <form >
+                        <input type="email" class="form-control input__border input_follow_website" placeholder="Nhập email của bạn"
+                               title="Contact's email (format: xxx@xxx.xxx)"
+                               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                        >
+                        <span class="input-group-icon btn_follow_website" style="display: block;margin-right: -6px;"><i class="fal fa-paper-plane"></i></span>
+                    </form>
                 </div>
                 <ul class="social__network box__ul">
                     <li>

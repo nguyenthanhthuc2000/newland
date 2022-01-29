@@ -10,7 +10,7 @@
                 $i++;
             @endphp
             <div class="carousel-item {{$i == 1 ? 'active' : ''}}">
-                <a href="{{ $slider->link }}">
+                <a href="{{ $slider->link }}" target="_blank">
                     <img src="{{asset('uploads/slider/'.$slider->image)}}"style="" class="d-block w-100 img-slider" alt="{{ $slider->description_img }}">
                 </a>
             </div>

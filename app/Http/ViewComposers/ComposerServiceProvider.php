@@ -21,7 +21,8 @@ class ComposerServiceProvider extends ServiceProvider
                 'lease' => DB::table('category')->where('type', 1)->get(),
                 'province' => DB::table('province')->get(),
                 'settings' => getSetting(),
-                'getSliders' => getSlider()
+                'getSliders' => getSlider(),
+                'getBanners' => getBanner()
             ];
             $view->with($data);
         });

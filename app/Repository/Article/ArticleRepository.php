@@ -14,6 +14,6 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
     }
 
     public function getByStatus($status){
-        return $this->model->whereIn('status', $status)->paginate();
+        return $this->model->whereIn('status', $status)->orderBy('id', 'DESC')->paginate();
     }
 }

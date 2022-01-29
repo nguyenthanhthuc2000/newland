@@ -12,7 +12,7 @@
                         <div class="bgc-light-blue-500 c-white p-10">
                             <div class="peers ai-c jc-sb gap-40">
                                 <div class="peer peer-greed">
-                                    <h5>Có tổng {{$customers->count()}} người dùng trên hệ thống</h5>
+                                    <h5>Có tổng {{$customers->count()}} khách <hàng></hàng> trên hệ thống</h5>
                                 </div>
                             </div>
                         </div>

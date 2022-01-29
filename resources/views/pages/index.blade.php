@@ -15,10 +15,10 @@
                         <img src="{{asset('/uploads/article/123.jpg')}}" class="card-img-post" alt="...">
                     </a>
                     <a class="card-body card__article__body" href="">
-                        <h5 class="text-split-2 card__title fw-bold">Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h5>
+                        <h6 class="text-split-2 card__title fw-bold">Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h6>
                         <div class="card__footer d-flex mt-3" style="justify-content: space-between; align-items: center">
                             <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
-                            <p class="mb-0 card-view">Xem chi tiết <i class="fal fa-arrow-right"></i></p>
+                            <p class="mb-0 card-view"><i class="fal fa-book-reader"></i></p>
                         </div>
                     </a>
                 </div>
@@ -29,10 +29,10 @@
                         <img src="{{asset('/uploads/article/123.jpg')}}" class="card-img-post" alt="...">
                     </a>
                     <a class="card-body card__article__body" href="">
-                        <h5 class="text-split-2 card__title fw-bold">Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h5>
+                        <h6 class="text-split-2 card__title fw-bold">Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h6>
                         <div class="card__footer d-flex mt-3" style="justify-content: space-between; align-items: center">
                             <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
-                            <p class="mb-0 card-view">Xem chi tiết <i class="fal fa-arrow-right"></i></p>
+                            <p class="mb-0 card-view"><i class="fal fa-book-reader"></i></p>
                         </div>
                     </a>
                 </div>
@@ -43,10 +43,10 @@
                         <img src="{{asset('/uploads/article/123.jpg')}}" class="card-img-post" alt="...">
                     </a>
                     <a class="card-body card__article__body" href="">
-                        <h5 class="text-split-2 card__title fw-bold">Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h5>
+                        <h6 class="text-split-2 card__title fw-bold">Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h6>
                         <div class="card__footer d-flex mt-3" style="justify-content: space-between; align-items: center">
                             <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
-                            <p class="mb-0 card-view">Xem chi tiết <i class="fal fa-arrow-right"></i></p>
+                            <p class="mb-0 card-view"><i class="fal fa-book-reader"></i></p>
                         </div>
                     </a>
                 </div>
@@ -57,10 +57,10 @@
                         <img src="{{asset('/uploads/article/123.jpg')}}" class="card-img-post" alt="...">
                     </a>
                     <a class="card-body card__article__body" href="">
-                        <h5 class="text-split-2 card__title fw-bold">Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h5>
+                        <h6 class="text-split-2 card__title fw-bold">Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h6>
                         <div class="card__footer d-flex mt-3" style="justify-content: space-between; align-items: center">
                             <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
-                            <p class="mb-0 card-view">Xem chi tiết <i class="fal fa-arrow-right"></i></p>
+                            <p class="mb-0 card-view"><i class="fal fa-book-reader"></i></p>
                         </div>
                     </a>
                 </div>
@@ -71,24 +71,10 @@
                         <img src="{{asset('/uploads/article/123.jpg')}}" class="card-img-post" alt="...">
                     </a>
                     <a class="card-body card__article__body" href="">
-                        <h5 class="text-split-2 card__title fw-bold">Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h5>
+                        <h6 class="text-split-2 card__title fw-bold">Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h6>
                         <div class="card__footer d-flex mt-3" style="justify-content: space-between; align-items: center">
                             <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
-                            <p class="mb-0 card-view">Xem chi tiết <i class="fal fa-arrow-right"></i></p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="padding-article box__article mb-4">
-                <div class="card card-post" >
-                    <a href=""  class="card-image">
-                        <img src="{{asset('/uploads/article/123.jpg')}}" class="card-img-post" alt="...">
-                    </a>
-                    <a class="card-body card__article__body" href="">
-                        <h5 class="text-split-2 card__title fw-bold">Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h5>
-                        <div class="card__footer d-flex mt-3" style="justify-content: space-between; align-items: center">
-                            <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
-                            <p class="mb-0 card-view">Xem chi tiết <i class="fal fa-arrow-right"></i></p>
+                            <p class="mb-0 card-view"><i class="fal fa-book-reader"></i></p>
                         </div>
                     </a>
                 </div>
@@ -116,7 +102,8 @@
                             <img src="{{ getUrlImageUpload($img) }}" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body card__article__body position-relative">
-                            <h5 class="text-split-2"><a href="{{ route('post.detail',$article->slug) }}" class="stretched-link card-title">{{ $article->title }}</a></h5>
+                            <h5 class="text-split-2"><a href="{{ route('post.detail',$article->slug) }}" class="stretched-link card-title {{ $article->featured == 1 ? 'color-red' : 'color-blue' }}">{!! checkVip($article->vip) !!}  {{ $article->title }}</i>
+                                </a></h5>
                             <p class="card-text mb-0 text-split-1 card__price">
                                 <strong>
                                     {{
@@ -135,10 +122,12 @@
             @endforeach
         </div>
     </div>
-    <div class="banner pt-4 pb-4">
-        <a href="">
-            <img class="w-100" src="{{asset('uploads/slider/bn1.jpg')}}" alt="">
+    <div class="banner pt-4 pb-4 slick-banner">
+        @foreach($getBanners as $getBanner)
+        <a href="{{$getBanner->link}}">
+            <img class="w-100" src="{{asset('uploads/slider/'.$getBanner->image)}}" alt="{{$getBanner->description_img}}" target="_blank">
         </a>
+        @endforeach
     </div>
     <div class="box-product pt-2 pb-2">
         <div class="box-title d-flex p-2" style="justify-content: space-between; align-items: center">
@@ -156,10 +145,10 @@
                     @endphp
                     <div class="card">
                         <a href="{{ route('post.detail',$article->slug) }}" class="card-image card-highlight card-featured">
-                            <img src="{{asset('/uploads/article/123.jpg')}}" class="card-img-top" alt="...">
+                            <img src="{{asset(getUrlImageUpload($img))}}" class="card-img-top" alt="...">
                         </a>
                         <a class="card-body card__article__body" href="{{ route('post.detail',$article->slug) }}">
-                            <h5 class="text-split-2 card__title"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>{{ $article->title }}</h5>
+                            <h5 class="text-split-2 card-title {{ $article->featured == 1 ? 'color-red' : 'color-blue' }}" >{!! checkVip($article->vip) !!} {{ $article->title }}</h5>
                             <p class="card-text mb-0 text-split-1 card__price">
                                 <strong>
                                     {{

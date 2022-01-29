@@ -5,6 +5,16 @@ namespace App\Repository;
 interface RepositoryInterFace
 {
     /**
+     * @return mixed
+     */
+    public function getAll();
+
+    /**
+     * @return mixed
+     */
+    public function getAllItem();
+
+    /**
      * Get all with order by default column id, desc
      * @param string $orderBy
      * @param string $column

@@ -26,6 +26,18 @@ abstract class BaseRepository implements RepositoryInterface
         $this->model = $this->getModel();
     }
 
+    public function getAll()
+    {
+        return $this->model->orderBy('id', 'DESC')->paginate();
+    }
+
+
+    public function getAllItem()
+    {
+        return $this->model->orderBy('id', 'DESC')->get();
+    }
+
+
     public function getOrderBy($orderBy = 'DESC', $column = 'id')
     {
         return $this->model->orderBy($column, $orderBy)->get();

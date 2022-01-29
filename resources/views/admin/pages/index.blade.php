@@ -46,7 +46,7 @@
                 <div class='col-md-3 col-6 mb-2'>
                     <div class="layers bd bgc-white p-20">
                         <div class="layer w-100 mB-10">
-                            <h6 class="lh-1">Số lượng khách hàng</h6>
+                            <h6 class="lh-1">Người dùng</h6>
                         </div>
                         <div class="layer w-100">
                             <div class="peers ai-sb fxw-nw">
@@ -54,7 +54,7 @@
                                     <span id="sparklinedash3"></span>
                                 </div>
                                 <div class="peer">
-                                    <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-purple-50 c-purple-500">Chưa cập nhật</span>
+                                    <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-purple-50 c-purple-500">{{ count($allCustomer) }}</span>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                 <div class='col-md-3 col-6 mb-2'>
                     <div class="layers bd bgc-white p-20">
                         <div class="layer w-100 mB-10">
-                            <h6 class="lh-1">Số bài viết</h6>
+                            <h6 class="lh-1">Bài viết</h6>
                         </div>
                         <div class="layer w-100">
                             <div class="peers ai-sb fxw-nw">
@@ -73,7 +73,7 @@
                                     <span id="sparklinedash4"></span>
                                 </div>
                                 <div class="peer">
-                                    <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-blue-50 c-blue-500">Chưa cập nhật</span>
+                                    <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-blue-50 c-blue-500">{{ count($allArticle) }}</span>
                                 </div>
                             </div>
                         </div>
@@ -101,10 +101,10 @@
                                     <th class=" bdwT-0">Mã</th>
                                     <th class=" bdwT-0">Tiêu đề</th>
                                     <th class=" bdwT-0 text-center">Loại</th>
-                                    <th class=" bdwT-0 text-center">Nổi bật</th>
-                                    <th class=" bdwT-0">Người đăng</th>
-                                    <th class=" bdwT-0">Ngày tạo</th>
-                                    <th class=" bdwT-0">Trạng thái</th>
+                                    <th class=" bdwT-0 text-center" style="min-width: 70px">Nổi bật</th>
+                                    <th class=" bdwT-0 " style="min-width: 150px">Người đăng</th>
+                                    <th class=" bdwT-0" style="min-width: 100px">Thời gian</th>
+                                    <th class=" bdwT-0" style="min-width: 100px">Trạng thái</th>
                                     <th class=" bdwT-0 text-end">Thao tác</th>
                                 </tr>
                                 </thead>

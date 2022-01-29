@@ -205,9 +205,13 @@ class DashboardController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index(){
-        $articles = $this->artRepo->getByStatus([0]);
+        $attributes = [
+            'level' => 0
+        ];
         $data = [
-            'articles' => $articles,
+            'articles' => $this->artRepo->getByStatus([0]),
+            'allArticle' =>  $this->artRepo->getAllItem(),
+            'allCustomer' =>  $this->userRepo->getByAttributesAll($attributes)
         ];
         return view('admin.pages.index', $data);
     }

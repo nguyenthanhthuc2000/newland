@@ -57,6 +57,10 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repository\Setting\SettingRepositoryInterface::class,
             \App\Repository\Setting\SettingRepository::class
         );
+        $this->app->singleton(
+            \App\Repository\Followers\FollowersRepositoryInterface::class,
+            \App\Repository\Followers\FollowersRepository::class
+        );
 
 
     }

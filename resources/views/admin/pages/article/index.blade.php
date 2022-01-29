@@ -24,10 +24,10 @@
                                     <th class=" bdwT-0">Mã</th>
                                     <th class=" bdwT-0">Tiêu đề</th>
                                     <th class=" bdwT-0 text-center">Loại</th>
-                                    <th class=" bdwT-0 text-center">Nổi bật</th>
-                                    <th class=" bdwT-0">Người đăng</th>
-                                    <th class=" bdwT-0">Thời gian</th>
-                                    <th class=" bdwT-0">Trạng thái</th>
+                                    <th class=" bdwT-0 text-center" style="min-width: 70px">Nổi bật</th>
+                                    <th class=" bdwT-0" style="min-width: 150px">Người đăng</th>
+                                    <th class=" bdwT-0" style="min-width: 100px">Thời gian</th>
+                                    <th class=" bdwT-0" style="min-width: 100px">Trạng thái</th>
                                     <th class=" bdwT-0 text-end">Thao tác</th>
                                 </tr>
                                 </thead>
