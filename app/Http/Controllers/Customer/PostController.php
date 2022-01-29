@@ -271,6 +271,7 @@ class PostController extends Controller
             "address_contact" => $request->address_contact,
             "email_contact" => $request->email_contact,
             "user_id" => Auth::id(),
+            "status" => 0
         ];
 
         $updated = $this->artRepo->update($id, $attributes);
