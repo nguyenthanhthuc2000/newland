@@ -24,6 +24,7 @@
     },
     "dependencies": {
         "@ckeditor/ckeditor5-build-classic": "^31.1.0",
+        "@fortawesome/fontawesome-free": "^5.15.4",
         "@fullcalendar/core": "^5.10.1",
         "@fullcalendar/daygrid": "^5.10.1",
         "@fullcalendar/interaction": "^5.10.1",
@@ -35,6 +36,7 @@
         "ckeditor4": "^4.17.1",
         "datatables": "^1.10.18",
         "easy-pie-chart": "^2.1.7",
+        "font-awesome": "^4.7.0",
         "fullcalendar": "^5.10.1",
         "jquery": "^3.6.0",
         "jquery-sparkline": "^2.4.0",

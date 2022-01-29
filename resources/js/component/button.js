@@ -12,6 +12,9 @@ $('button[type="reset"]').on('click', function() {
     // mark the first option as selected
     if (form.find('select').children("option[disabled]")) {
         form.find('select').children("option[disabled]").attr('selected', 'selected');
+        if (form.find('select').children("option[disabled].reload")) {
+            window.location.href = window.route('auth.article');
+        }
     } else {
         form.find('select').children("option:first").attr('selected', 'selected');
     }

@@ -3,6 +3,7 @@
         th,
         td {
             white-space: nowrap;
+            vertical-align: middle;
         }
         #state {
             min-width: 100px;
@@ -23,7 +24,14 @@
             .card-body {
                 padding-top: 0;
                 padding-bottom: 0;
-                .card-title {
+                max-width: 400px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                -webkit-line-clamp: 2;
+                /* number of lines to show */
+                line-clamp: 2;
+                -webkit-box-orient: vertical;
+                clamp .card-title {
                     font-size: 1.25rem;
                     color: $black;
                 }
