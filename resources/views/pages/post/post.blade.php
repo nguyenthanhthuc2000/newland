@@ -189,7 +189,7 @@
                 <div class="mb-3">
                     <label for="legal_documents" class="form-label">Giấy tờ pháp lý <span class="text-required">*</span></label>
                     <input type="text" class="form-control legal_documents" placeholder="Giấy tờ pháp lý" name="legal_documents"
-                            value="{{ isset($article) && $article->legal_documents ? $article->legal_documents : '' }}" aria-describedby="legalDocumentsHelp">
+                            value="{{ isset($article) && $article->legal_documents ? $article->legal_documents : 'Chính chủ ' }}" aria-describedby="legalDocumentsHelp">
                     @error('legal_documents')
                         <div id="legalDocumentsHelp" class="form-text text-danger">{{ $message }}</div>
                     @enderror

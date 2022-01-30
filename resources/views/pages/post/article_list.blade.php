@@ -17,10 +17,10 @@
                         </h5>
                     </a>
                         <div class="l__a-article row mb-4">
-                            <a class="l__a-article-img col-sm-4 col-6 card-image{{ ($l->featured == 1) ? ' card-featured' : '' }}">
+                            <a class="l__a-article-img col-sm-4 col-5 card-image{{ ($l->featured == 1) ? ' card-featured' : '' }}">
                                 <img class="w-100 img-fluid img" src="{{ getUrlImageUpload(($l->imagesArticle->first() ? $l->imagesArticle->first()->image : null)) }}" alt="">
                             </a>
-                            <div class="l__a-article-content col-sm-8 col-6 p-3">
+                            <div class="l__a-article-content col-sm-8 col-7 p-3">
                                 <a href="{{ route('post.detail', $l->slug) }}" >
                                     <h5 class="content-title text-split-2 {{ $l->featured == 1 ? 'color-red' : 'color-blue' }}">
                                         {!! checkVip($l->vip) !!}{{ $l->title }}
