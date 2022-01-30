@@ -1,9 +1,9 @@
 <?php
 namespace App\Repository\Street;
 
-use App\Repository\RepositoryInterFace;
+use App\Repository\RepositoryInterface;
 
-interface StreetRepositoryInterface extends RepositoryInterFace
+interface StreetRepositoryInterface extends RepositoryInterface
 {
 
 

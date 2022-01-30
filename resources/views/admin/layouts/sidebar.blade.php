@@ -42,7 +42,7 @@
             <span class="icon-holder">
                 <i class="c-red-500 ti-files"></i>
               </span>
-                  <span class="title">Bài viết</span>
+                  <span class="title">Bất động sản</span>
                   <span class="arrow">
                 <i class="ti-angle-right"></i>
               </span>

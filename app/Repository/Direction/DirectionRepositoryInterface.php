@@ -1,9 +1,9 @@
 <?php
 namespace App\Repository\Direction;
 
-use App\Repository\RepositoryInterFace;
+use App\Repository\RepositoryInterface;
 
-interface DirectionRepositoryInterface extends RepositoryInterFace
+interface DirectionRepositoryInterface extends RepositoryInterface
 {
 
 

@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-interface RepositoryInterFace
+interface RepositoryInterface
 {
     /**
      * @return mixed
@@ -96,4 +96,6 @@ interface RepositoryInterFace
      * @return mixed
      */
     public function findByAttributes($attributes);
+
+    public function get($type);
 }

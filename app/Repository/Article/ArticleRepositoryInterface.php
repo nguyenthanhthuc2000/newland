@@ -1,8 +1,8 @@
 <?php
 namespace App\Repository\Article;
-use App\Repository\RepositoryInterFace;
+use App\Repository\RepositoryInterface;
 
-interface ArticleRepositoryInterface extends RepositoryInterFace
+interface ArticleRepositoryInterface extends RepositoryInterface
 {
      public function getByStatus($status);
 

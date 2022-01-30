@@ -2,7 +2,8 @@
 
 namespace App\Repository;
 
-use App\Repository\RepositoryInterFace;
+use App\Repository\RepositoryInterface;
+use App\Models\Filter;
 
 abstract class BaseRepository implements RepositoryInterface
 {
@@ -128,5 +129,12 @@ abstract class BaseRepository implements RepositoryInterface
         $result = $this->model->where($attributes)->first();
 
         return $result;
+    }
+
+    public function get($type) {
+        return $this->model;
+        if($type == Filter::$FILTER_PRICE){
+
+        }
     }
 }

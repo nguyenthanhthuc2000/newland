@@ -7,15 +7,15 @@
 {{ Breadcrumbs::render('personal-article') }}
 
 <form class="filter-bar row" action="{{ route('auth.article') }}" method="get">
-    <div class="col-md-3">
+    <div class="col-md-3 m-1">
         <select class="form-select py-2" aria-label="Status" name="trang-thai">
             <option {{ request()->get('trang-thai') == null ? 'selected' : '' }} disabled hidden>-- Trạng thái --</option>
             <option value="0" {{ request()->get('trang-thai') == '0' ? 'selected' : ''}}>Chờ duyệt</option>
             <option value="1" {{ request()->get('trang-thai') == '1' ? 'selected' : ''}}>Đã duyệt</option>
-            <option value="2" {{ request()->get('trang-thai') == '2' ? 'selected' : ''}}>Đã hủy</option>
+            <option value="2" {{ request()->get('trang-thai') == '2' ? 'selected' : ''}}>Đã từ chối</option>
           </select>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 m-1">
         <select class="form-select py-2" aria-label="Status" name="tinh-trang">
             <option {{ request()->get('tinh-trang') == null ? 'selected' : '' }} disabled hidden>-- Tình trạng --</option>
             <option value="0" {{ request()->get('tinh-trang') == '0' ? 'selected' : ''}}>Tin mới</option>
@@ -24,7 +24,7 @@
             <option value="3" {{ request()->get('tinh-trang') == '3' ? 'selected' : ''}}>Đã được thuê</option>
           </select>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 m-1">
         <button type="reset" class="btn btn-mute reload"><i class="fal fa-sync btn__filter"></i></button>
        <button class="btn btn-primary">Tìm kiếm</button>
     </div>
@@ -61,7 +61,7 @@
                             <div class="card card-article">
                                 <div class="row g-0 flex-nowrap">
                                     <div class="col-4 card-img">
-                                        <img src="{{ getUrlImageUpload($img) }}" class="img-fluid rounded-start" alt="{{ $art->title }}">
+                                        <img src="{{ getUrlImageUpload($img) }}" class="img-fluid rounded-start" alt="">
                                     </div>
                                     <div class="col-8">
                                         <div class="card-body">

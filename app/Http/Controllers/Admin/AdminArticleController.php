@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Filter;
 
 class AdminArticleController extends Controller
 {
+
     public function updateVipArticle(Request $request){
         $attributes = [
             'vip' => $request->status
@@ -36,6 +38,7 @@ class AdminArticleController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function listArticle(){
+//        dd(Filter::$FILTER_PRICE);
         $articles = $this->artRepo->getByStatus([0, 1, 2]);
         $data = [
             'articles' => $articles,

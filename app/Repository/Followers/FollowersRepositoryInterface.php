@@ -1,9 +1,9 @@
 <?php
 namespace App\Repository\Followers;
 
-use App\Repository\RepositoryInterFace;
+use App\Repository\RepositoryInterface;
 
-interface FollowersRepositoryInterface extends RepositoryInterFace
+interface FollowersRepositoryInterface extends RepositoryInterface
 {
 
 

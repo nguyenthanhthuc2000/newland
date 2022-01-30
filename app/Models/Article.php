@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Filters\ArticleFilter;
+use Str;
 class Article extends Model
 {
     use HasFactory;
@@ -12,6 +13,31 @@ class Article extends Model
     protected $guarded = [];
     public $timestamps = true;
     protected $perPage = 8;
+
+    public function scopeFilters($query, $request)
+    {
+        $param = $request->all();
+        foreach ($param as $field => $value) {
+            $method = 'filter' . Str::studly($field);
+
+            if ($value != '') {
+                if (method_exists($this, $method)) {
+                    $this->{$method}($query, $value);
+                } else {
+                    if (!empty($this->filterable) && is_array($this->filterable)) {
+                        if (in_array($field, $this->filterable)) {
+                            $query->where($this->table . '.' . $field, $value);
+                        } elseif (key_exists($field, $this->filterable)) {
+                            $query->where($this->table . '.'
+                                . $this->filterable[$field], $value);
+                        }
+                    }
+                }
+            }
+        }
+
+        return $query;
+    }
 
     public function imagesArticle(){
         return $this->hasMany(ImagesArticle::class);
@@ -79,4 +105,12 @@ class Article extends Model
         }
         return $query;
     }
+
+    protected $filterable = [
+        'status',
+        'vip',
+        'featured',
+        'state',
+        'created_at',
+    ];
 }

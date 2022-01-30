@@ -1,9 +1,9 @@
 <?php
 namespace App\Repository\Category;
 
-use App\Repository\RepositoryInterFace;
+use App\Repository\RepositoryInterface;
 
-interface CategoryRepositoryInterface extends RepositoryInterFace
+interface CategoryRepositoryInterface extends RepositoryInterface
 {
 
 

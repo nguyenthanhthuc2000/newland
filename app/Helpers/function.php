@@ -2,6 +2,11 @@
 use App\Models\Setting;
 use App\Models\ImagesArticle;
 
+function getCurrentDay(){
+    $time = date("Y-m-d");
+    return $time;
+}
+
 function checkVip($vip){
     $output = '';
     switch ($vip){
