@@ -252,7 +252,7 @@
             /* Add a transparency effect for thumnbail images */
             .demo {
                 opacity: 0.6;
-                max-height: 100px;
+                max-height: 50px;
                 object-fit: cover;
                 display: block;
                 transition: all 0.2s ease;
@@ -276,7 +276,7 @@
         border-radius: 20px;
     }
     .b__dt-ct-title {
-        font-size: 23px;
+        font-size: 1rem;
         font-weight: bold;
         td {
             padding: 0 !important;

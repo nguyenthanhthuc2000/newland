@@ -1,9 +1,9 @@
 <?php
 namespace App\Repository\User;
 
-use App\Repository\RepositoryInterFace;
+use App\Repository\RepositoryInterface;
 
-interface UserRepositoryInterface extends RepositoryInterFace
+interface UserRepositoryInterface extends RepositoryInterface
 {
     public function getUserByGoogleId($id);
 

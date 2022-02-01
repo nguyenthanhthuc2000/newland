@@ -1,8 +1,8 @@
 <?php
 namespace App\Repository\ImagesArticle;
-use App\Repository\RepositoryInterFace;
+use App\Repository\RepositoryInterface;
 
-interface ImagesArticleRepositoryInterface extends RepositoryInterFace
+interface ImagesArticleRepositoryInterface extends RepositoryInterface
 {
 
 }

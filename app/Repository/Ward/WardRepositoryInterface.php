@@ -1,9 +1,9 @@
 <?php
 namespace App\Repository\Ward;
 
-use App\Repository\RepositoryInterFace;
+use App\Repository\RepositoryInterface;
 
-interface WardRepositoryInterface extends RepositoryInterFace
+interface WardRepositoryInterface extends RepositoryInterface
 {
 
 

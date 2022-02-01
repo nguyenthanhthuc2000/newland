@@ -1,9 +1,9 @@
 <?php
 namespace App\Repository\District;
 
-use App\Repository\RepositoryInterFace;
+use App\Repository\RepositoryInterface;
 
-interface DistrictRepositoryInterface extends RepositoryInterFace
+interface DistrictRepositoryInterface extends RepositoryInterface
 {
 
 

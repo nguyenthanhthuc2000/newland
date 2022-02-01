@@ -1,87 +1,87 @@
 @extends('layouts.master_layout')
 @section('title', 'Trang chủ')
 @section('main')
-    <div class="box-post  pt-3 pb-2"  >
-        <div class="box-title d-flex p-2  " style="justify-content: space-between; align-items: center">
-            <h3 class="text-center text__title">Tin tức mới nhất</h3>
-            <a href="" class="view-more">Xem tất cả<i class="fal fa-arrow-right"></i></a>
-        </div>
-        <div class="slick-bv">
-            <div class="padding-article box__article mb-4">
-                <div class="card card-post" >
-                    <a href=""  class="card-image">
-                        <img src="{{asset('/uploads/article/123.jpg')}}" class="card-img-post" alt="...">
-                    </a>
-                    <a class="card-body card__article__body" href="">
-                        <h6 class="text-split-2 card__title fw-bold">Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h6>
-                        <div class="card__footer d-flex mt-3" style="justify-content: space-between; align-items: center">
-                            <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
-                            <p class="mb-0 card-view"><i class="fal fa-book-reader"></i></p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="padding-article box__article mb-4">
-                <div class="card card-post" >
-                    <a href=""  class="card-image">
-                        <img src="{{asset('/uploads/article/123.jpg')}}" class="card-img-post" alt="...">
-                    </a>
-                    <a class="card-body card__article__body" href="">
-                        <h6 class="text-split-2 card__title fw-bold">Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h6>
-                        <div class="card__footer d-flex mt-3" style="justify-content: space-between; align-items: center">
-                            <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
-                            <p class="mb-0 card-view"><i class="fal fa-book-reader"></i></p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="padding-article box__article mb-4">
-                <div class="card card-post" >
-                    <a href=""  class="card-image">
-                        <img src="{{asset('/uploads/article/123.jpg')}}" class="card-img-post" alt="...">
-                    </a>
-                    <a class="card-body card__article__body" href="">
-                        <h6 class="text-split-2 card__title fw-bold">Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h6>
-                        <div class="card__footer d-flex mt-3" style="justify-content: space-between; align-items: center">
-                            <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
-                            <p class="mb-0 card-view"><i class="fal fa-book-reader"></i></p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="padding-article box__article mb-4">
-                <div class="card card-post" >
-                    <a href=""  class="card-image">
-                        <img src="{{asset('/uploads/article/123.jpg')}}" class="card-img-post" alt="...">
-                    </a>
-                    <a class="card-body card__article__body" href="">
-                        <h6 class="text-split-2 card__title fw-bold">Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h6>
-                        <div class="card__footer d-flex mt-3" style="justify-content: space-between; align-items: center">
-                            <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
-                            <p class="mb-0 card-view"><i class="fal fa-book-reader"></i></p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="padding-article box__article mb-4">
-                <div class="card card-post" >
-                    <a href=""  class="card-image">
-                        <img src="{{asset('/uploads/article/123.jpg')}}" class="card-img-post" alt="...">
-                    </a>
-                    <a class="card-body card__article__body" href="">
-                        <h6 class="text-split-2 card__title fw-bold">Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h6>
-                        <div class="card__footer d-flex mt-3" style="justify-content: space-between; align-items: center">
-                            <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
-                            <p class="mb-0 card-view"><i class="fal fa-book-reader"></i></p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+{{--    <div class="box-post  pt-3 pb-2"  >--}}
+{{--        <div class="box-title d-flex p-2  " style="justify-content: space-between; align-items: center">--}}
+{{--            <h3 class="text-center text__title">Tin tức mới nhất</h3>--}}
+{{--            <a href="" class="view-more">Xem tất cả<i class="fal fa-arrow-right"></i></a>--}}
+{{--        </div>--}}
+{{--        <div class="slick-bv">--}}
+{{--            <div class="padding-article box__article mb-4">--}}
+{{--                <div class="card card-post" >--}}
+{{--                    <a href=""  class="card-image">--}}
+{{--                        <img src="{{asset('/uploads/article/123.jpg')}}" class="card-img-post" alt="...">--}}
+{{--                    </a>--}}
+{{--                    <a class="card-body card__article__body" href="">--}}
+{{--                        <h6 class="text-split-2 card__title fw-bold">Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h6>--}}
+{{--                        <div class="card__footer d-flex mt-3" style="justify-content: space-between; align-items: center">--}}
+{{--                            <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>--}}
+{{--                            <p class="mb-0 card-view"><i class="fal fa-book-reader"></i></p>--}}
+{{--                        </div>--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="padding-article box__article mb-4">--}}
+{{--                <div class="card card-post" >--}}
+{{--                    <a href=""  class="card-image">--}}
+{{--                        <img src="{{asset('/uploads/article/123.jpg')}}" class="card-img-post" alt="...">--}}
+{{--                    </a>--}}
+{{--                    <a class="card-body card__article__body" href="">--}}
+{{--                        <h6 class="text-split-2 card__title fw-bold">Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h6>--}}
+{{--                        <div class="card__footer d-flex mt-3" style="justify-content: space-between; align-items: center">--}}
+{{--                            <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>--}}
+{{--                            <p class="mb-0 card-view"><i class="fal fa-book-reader"></i></p>--}}
+{{--                        </div>--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="padding-article box__article mb-4">--}}
+{{--                <div class="card card-post" >--}}
+{{--                    <a href=""  class="card-image">--}}
+{{--                        <img src="{{asset('/uploads/article/123.jpg')}}" class="card-img-post" alt="...">--}}
+{{--                    </a>--}}
+{{--                    <a class="card-body card__article__body" href="">--}}
+{{--                        <h6 class="text-split-2 card__title fw-bold">Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h6>--}}
+{{--                        <div class="card__footer d-flex mt-3" style="justify-content: space-between; align-items: center">--}}
+{{--                            <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>--}}
+{{--                            <p class="mb-0 card-view"><i class="fal fa-book-reader"></i></p>--}}
+{{--                        </div>--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="padding-article box__article mb-4">--}}
+{{--                <div class="card card-post" >--}}
+{{--                    <a href=""  class="card-image">--}}
+{{--                        <img src="{{asset('/uploads/article/123.jpg')}}" class="card-img-post" alt="...">--}}
+{{--                    </a>--}}
+{{--                    <a class="card-body card__article__body" href="">--}}
+{{--                        <h6 class="text-split-2 card__title fw-bold">Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h6>--}}
+{{--                        <div class="card__footer d-flex mt-3" style="justify-content: space-between; align-items: center">--}}
+{{--                            <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>--}}
+{{--                            <p class="mb-0 card-view"><i class="fal fa-book-reader"></i></p>--}}
+{{--                        </div>--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="padding-article box__article mb-4">--}}
+{{--                <div class="card card-post" >--}}
+{{--                    <a href=""  class="card-image">--}}
+{{--                        <img src="{{asset('/uploads/article/123.jpg')}}" class="card-img-post" alt="...">--}}
+{{--                    </a>--}}
+{{--                    <a class="card-body card__article__body" href="">--}}
+{{--                        <h6 class="text-split-2 card__title fw-bold">Bán đất KDC Lộc Phát 2 - Ngay Trục (D30) kết nối 23/10 Với đại lộ Võ Nguyên Giáp - Sổ đỏ thổ cư.</h6>--}}
+{{--                        <div class="card__footer d-flex mt-3" style="justify-content: space-between; align-items: center">--}}
+{{--                            <p class="mb-0 card__time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>--}}
+{{--                            <p class="mb-0 card-view"><i class="fal fa-book-reader"></i></p>--}}
+{{--                        </div>--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
     {{-- BẤT ĐỘNG SẢN CHO BẠN --}}
-    <div class="box-product pt-2 pb-2">
+    <div class="box-product pt-5 pb-2">
         <div class="box-title d-flex pt-2 pb-2 justify-content-between align-items-center">
             <h3 class="text-center text__title">Bất động sản cho bạn</h3>
             <a href="{{ route('article.index') }}">Xem thêm <i class="fal fa-arrow-right"></i></a>

@@ -16,7 +16,7 @@
                     @endphp
                     <!-- Full-width images with number text -->
                     @foreach ($detailArticle->imagesArticle as $i => $img)
-                        <div class="mySlides">
+                        <div class="mySlides card-image ">
                             @php  $i+=1; @endphp
                             <div class="numbertext">{{ $i.'/'.$qtyImg}}</div>
                             <img src="{{ getUrlImageUpload($img->image) }}"  style="width:100%">
@@ -42,10 +42,12 @@
                 </div>
             </div>
             <div class="b__dt-ct pt-2">
-                <h1 class="b__dt-ct-title">
+                <h1 class="b__dt-ct-title {{ $detailArticle->featured == 1 ? 'color-red' : '' }}">
                     {!! checkVip($detailArticle->vip) !!}<span>{{ $detailArticle->title.' - '.$detailArticle->phone_contact }}</span>
                 </h1>
-                <div class="card__footer d-flex " style="justify-content: space-between; align-items: center">
+                <a class="mb-3" style="font-size: 0.9rem;"><i class="fal fa-map-marker-alt"></i>&nbsp; {{ $detailArticle->address_on_post }}</a>
+
+                <div class="card__footer d-flex mb-3 " style="justify-content: space-between; align-items: center">
                     <p class="mb-0 "><i class="fal fa-calendar-alt"></i> {{ $detailArticle->created_at->format('d/m/Y') }}</p>
                     <p class="mb-0" style="cursor: pointer; font-size: 20px">
                         <i class="fal fa-share-alt"></i> &nbsp;
@@ -57,9 +59,7 @@
                         <p class="alert-warning alert-status">Bài viết đang chờ xử lí</p>
                     @endif
                 </div>
-                <p class="mb-2 "><i class="fal fa-map-marker-alt"></i>&nbsp; {{ $detailArticle->address_on_post }}</p>
-
-                <table class="b__dt-ct-short table" style="border: none">
+                <table class="b__dt-ct-short table" style="border: none;font-size: 0.72rem;">
                     <tbody>
                     <tr>
                         <td>Mức giá</td>
@@ -130,16 +130,16 @@
                         <span class="value">{{ $detailArticle->legal_documents }}</span>
                     </div>
                 </div>
-                <div class="b__dt-ct-desc mt-3">
-                    <h5 style="font-weight: bold">Bản đồ</h5>
-                    <div class="box__dt-ct-desc-text">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.51782664175!2d106.69916291462252!3d10.771594992324795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f40a3b49e59%3A0xa1bd14e483a602db!2zVHLGsOG7nW5nIENhbyDEkeG6s25nIEvhu7kgdGh14bqtdCBDYW8gVGjhuq9uZw!5e0!3m2!1svi!2s!4v1642146351254!5m2!1svi!2s"
-                            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+{{--                <div class="b__dt-ct-desc mt-3">--}}
+{{--                    <h5 style="font-weight: bold">Bản đồ</h5>--}}
+{{--                    <div class="box__dt-ct-desc-text">--}}
+{{--                        <iframe--}}
+{{--                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.51782664175!2d106.69916291462252!3d10.771594992324795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f40a3b49e59%3A0xa1bd14e483a602db!2zVHLGsOG7nW5nIENhbyDEkeG6s25nIEvhu7kgdGh14bqtdCBDYW8gVGjhuq9uZw!5e0!3m2!1svi!2s!4v1642146351254!5m2!1svi!2s"--}}
+{{--                            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">--}}
 
-                        </iframe>
-                    </div>
-                </div>
+{{--                        </iframe>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
         </div>
         <div class="col-md-2 col-12 pt-3">
@@ -164,7 +164,7 @@
         </div>
         <div class="col-md-1"></div>
         <!-- Modal -->
-        <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index: 19990;">
             <div class="modal-dialog" style="min-width: 35%">
                 <div class="modal-content">
                     <div class="modal-header">

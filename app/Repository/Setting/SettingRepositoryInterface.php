@@ -1,8 +1,8 @@
 <?php
 namespace App\Repository\Setting;
 
-use App\Repository\RepositoryInterFace;
+use App\Repository\RepositoryInterface;
 
-interface SettingRepositoryInterface extends RepositoryInterFace
+interface SettingRepositoryInterface extends RepositoryInterface
 {
 }

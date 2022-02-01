@@ -34,3 +34,8 @@ $(document).ready(function(){
         $('#input_file_img_footer').click();
     })
 })
+
+//document.getElementsByClassName('filter-date').valueAsDate = new Date();
+//$(document).ready( function() {
+//    $('.filter-date').val(new Date().toDateInputValue());
+//});
