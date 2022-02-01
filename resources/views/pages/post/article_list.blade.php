@@ -44,6 +44,9 @@
                     @endforeach
                 @endif
             </div>
+            <div class="pagination">
+                {{ $lstArticle->appends(request()->only(['hinh-thuc', 'danh-muc', 'khu-vuc', 'muc-gia', 'dien-tich', 'tu', 'den']))->links() }}
+            </div>
         </div>
         <div class="col-sm-4 pt-3 filter-container">
             @include('pages.post.component._filter')

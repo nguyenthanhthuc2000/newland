@@ -361,8 +361,13 @@
                         </div>
                         <div class="col-sm-6">
                             <label for="phone_contact" class="form-label">Số điện thoại <span class="text-required">*</span></label>
-                            <input type="number" class="form-control" name="phone_contact" aria-describedby="phoneContactHelp"
-                                    value="{{ (isset($article) && $article->phone_contact) ? $article->phone_contact : '' }}">
+                            <select multiple class="form-control" name="phone_contact[]" aria-describedby="phoneContactHelp" data-role="tagsinput">
+                                @if (isset($article) && $article->phone_contact)
+                                    @foreach (explode(',', $article->phone_contact) as $phone)
+                                        <option value="{{ $phone }}">{{ $phone }}</option>
+                                    @endforeach
+                                @endif
+                            </select>
                             @error('phone_contact')
                                 <div id="phoneContactHelp" class="form-text text-danger">{{ $message }}</div>
                             @enderror
@@ -376,7 +381,7 @@
                             @enderror
                         </div>
                         <div class="col-sm-6">
-                            <label for="email_contact" class="form-label">Email <span class="text-required">*</span></label>
+                            <label for="email_contact" class="form-label">Email</label>
                             <input type="email" class="form-control" name="email_contact" aria-describedby="emailContactHelp"
                             value="{{ (isset($article) && $article->email_contact) ? $article->email_contact : '' }}">
                             @error('email_contact')
@@ -398,7 +403,7 @@
     @if (session('msg'))
         <script>
                 Swal.fire({
-                    position: 'top-end',
+                    position: 'center-center',
                     icon: '{!! session('status') !!}',
                     title: '{!! session('msg') !!}',
                     showConfirmButton: false,

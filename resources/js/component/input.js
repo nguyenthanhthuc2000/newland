@@ -123,13 +123,34 @@ appendAddressOnPost()
 $('#input_file_img').change(function() {
     var img = document.getElementById('review-img');
     img.src = URL.createObjectURL(event.target.files[0]);
-    img.onload = function(){
+    img.onload = function() {
         URL.revokeObjectURL(img.src);
     }
 })
 
-$(document).ready(function(){
-    $('#review-img').click(function(){
+
+// tagsinput
+$('[data-role="tagsinput"]').tagsinput({
+    trimValue: true,
+    maxChars: 10,
+    maxTags: 5,
+    onTagExists: function(item, $tag) {
+        $tag.hide().fadeIn();
+    }
+})
+
+$('[data-role="tagsinput"]').on('beforeItemAdd', function(event) {
+    var tag = event.item;
+    if (isNaN(tag)) {
+        event.cancel = true;
+    }
+});
+
+$(document).ready(function() {
+
+    $('#review-img').click(function() {
         $('#input_file_img').click();
     })
+
+    $('.bootstrap-tagsinput').addClass('form-control');
 })

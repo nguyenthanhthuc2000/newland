@@ -22,3 +22,4 @@ require('./component/button');
 require('./component/hidden_field');
 require('./component/slick/article');
 require('./component/slick/detail_article');
+require('./component/crud');

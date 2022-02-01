@@ -180,6 +180,7 @@ return [
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 
         Laravel\Socialite\SocialiteServiceProvider::class,
+        \Conner\Tagging\Providers\TaggingServiceProvider::class,
 
     ],
 

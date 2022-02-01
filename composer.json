@@ -7,6 +7,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "davejamesmiller/laravel-breadcrumbs": "^5.3",
+        "doctrine/dbal": "^3.3",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "ingenious/jquery-validator": "dev-master",
@@ -16,6 +17,7 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
         "realrashid/sweet-alert": "^4.1",
+        "rtconner/laravel-tagging": "^4.1",
         "tightenco/ziggy": "^1.4"
     },
     "require-dev": {

@@ -88,19 +88,22 @@
                                             'Đã hủy')
                                 }}
                             </span>
+                            @if ($art->status == 2)
+                                <span class="text-danger btn-attention attention" data-msg="{{ $art->feedback }}"
+                                        data-id="{{ $art->id }}" title="Nhấn để xem lí do"><i class="fas fa-info"></i></span>
+                            @endif
                         </td>
                         {{-- <td>{{ $art->end_day }}</td> --}}
                         <td>
-                            @if ($art->status == 2)
-                                {{ $art->feedback }}
-                            @else
-                                <select class="form-select p-1" aria-label="state" name="state" id="state" data-id="{{ $art->id }}">
-                                    <option value="0" {{ $art->state == '0' ? 'selected' : ''}}>Tin mới</option>
-                                    <option value="1" {{ $art->state == '1' ? 'selected' : ''}}>Đã đặt cọc</option>
-                                    <option value="2" {{ $art->state == '2' ? 'selected' : ''}}>Đã được bán</option>
-                                    <option value="3" {{ $art->state == '3' ? 'selected' : ''}}>Đã được thuê</option>
-                                </select>
-                            @endif
+                            <select class="form-select p-1" aria-label="state" name="state" id="state" data-id="{{ $art->id }}" {{ $art->status == 2 ? 'disabled' : '' }}>
+                                <option value="0" {{ $art->state == '0' ? 'selected' : ''}}>Tin mới</option>
+                                <option value="1" {{ $art->state == '1' ? 'selected' : ''}}>Đã đặt cọc</option>
+                                <option value="2" {{ $art->state == '2' ? 'selected' : ''}}>Đã được bán</option>
+                                <option value="3" {{ $art->state == '3' ? 'selected' : ''}}>Đã được thuê</option>
+                                @if ( $art->status == 2 )
+                                    <option selected>Đã bị hủy</option>
+                                @endif
+                            </select>
                         </td>
                         <td class="actions">
                             <div class="btn-group">
@@ -115,7 +118,7 @@
                                     {{-- <li class="dropdown-item"><i class="fas fa-id-card-alt"></i> Thống kê tương tác</li> --}}
                                     {{-- <li class="dropdown-item"><i class="far fa-sticky-note"></i> Ghi chú</li> --}}
                                     {{-- <li class="dropdown-item"><i class="fas fa-expand-alt"></i> Xem tin đăng trên website</li> --}}
-                                    <li class="dropdown-item"><a href="{{ route('post.destroy', $art->id) }}" class="dropdown-link text-danger"><i class="fas fa-trash-alt"></i> Xóa tin</a></li>
+                                    <li class="dropdown-item"><a data-href="{{ route('post.destroy', $art->id) }}" role="button" class="dropdown-link text-danger btn-destroy"><i class="fas fa-trash-alt"></i> Xóa tin</a></li>
                                 </ul>
                                 </div>
                         </td>

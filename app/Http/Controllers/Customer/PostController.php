@@ -111,7 +111,7 @@ class PostController extends Controller
             "facade" => $request->facade,
             "furniture" => $request->furniture,
             "name_contact" => $request->name_contact,
-            "phone_contact" => $request->phone_contact,
+            "phone_contact" => implode(',',$request->all()['phone_contact']),
             "address_contact" => $request->address_contact,
             "email_contact" => $request->email_contact,
             "user_id" => Auth::id(),
@@ -209,7 +209,6 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $this->validate($request,
             [
                 "form" => "required", //bán/thuê
@@ -227,7 +226,7 @@ class PostController extends Controller
                 "unit" => "required",//dơn vị giá
                 "legal_documents" => "required",//giấy tờ pháp lí
                 "name_contact" => "required",
-                "phone_contact" => "required",
+                // "phone_contact" => "required",
                 "address_contact" => "required",
                 "email_contact" => "required",
             ],
@@ -267,7 +266,7 @@ class PostController extends Controller
             "facade" => $request->facade,
             "furniture" => $request->furniture,
             "name_contact" => $request->name_contact,
-            "phone_contact" => $request->phone_contact,
+            "phone_contact" => implode(',',$request->all()['phone_contact']),
             "address_contact" => $request->address_contact,
             "email_contact" => $request->email_contact,
             "user_id" => Auth::id(),
@@ -343,10 +342,12 @@ class PostController extends Controller
         if($article){
             $get_images = $article->imagesArticle;
             if($get_images->count() > 0){
-                $img_name = $get_images->find($id)->image;
-                $img_path = public_path() .'uploads/article/' . $img_name;
-                if(File::exists($img_path)){
-                    File::delete($img_path);
+                foreach($get_images as $image){
+                    $img_name = $image->image;
+                    $img_path = public_path() .'uploads/article/' . $img_name;
+                    if(File::exists($img_path)){
+                        File::delete($img_path);
+                    }
                 }
                 $article->imagesArticle->where('article_id', $id)->each->delete();
             }

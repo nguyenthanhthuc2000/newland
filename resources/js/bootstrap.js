@@ -2,6 +2,7 @@ window._ = require('lodash');
 import swal from 'sweetalert2';
 //window.Popper = require('@popperjs/core/dist/umd/popper').default;
 import "bootstrap";
+require('bootstrap-tagsinput')
 try {
     window.$ = window.jQuery = require('jquery');
     window.slick = require('slick-carousel');

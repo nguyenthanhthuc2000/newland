@@ -21,23 +21,33 @@
     color: #3498db !important;
 }
 
-.input-group-step{
-    .input-group-btn{
-        button{
+.input-group-step {
+    .input-group-btn {
+        button {
             background: $primary;
             color: $white;
             padding: 3px 6px;
             border-radius: 3px;
             border: none;
-            &:disabled{
+            &:disabled {
                 background: #3498db99;
             }
         }
     }
-    .input-step{
+    .input-step {
         border-radius: 5px;
         padding: 0 8px !important;
         margin: 0 10px !important;
-        text-align:center;
+        text-align: center;
     }
+}
+
+.btn-attention {
+    float: right;
+    line-height: 1;
+    border-radius: 50%;
+    border: 1px solid $danger;
+    padding: 3px 7px;
+    font-size: 0.8rem;
+    cursor: pointer;
 }
