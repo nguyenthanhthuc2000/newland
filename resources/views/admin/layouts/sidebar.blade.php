@@ -12,7 +12,7 @@
                   </div>
                 </div>
                 <div class="peer peer-greed">
-                  <h5 class="lh-1 mB-0 logo-text" style="text-transform: capitalize">{{$settings->domain}}</h5>
+                  <h5 class="lh-1 mB-0 logo-text" style="text-transform: uppercase; color: #2980b9;">{{$settings->domain}}</h5>
                 </div>
               </div>
             </a>

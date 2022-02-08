@@ -105,10 +105,8 @@
                             <img src="{{asset('/zalo.svg')}}" alt="">
                         </a>
                     </li>
-
                 </ul>
             </div>
-
         </div>
     </div>
     <div class="footer__bottom container">
