@@ -1,10 +1,7 @@
 @extends('admin.layouts.master_layout')
 @section('content')
-    <div class="row gap-20 masonry pos-r">
-        <div class="masonry-sizer col-md-6">
-
-        </div>
-        <div class="masonry-item col-md-12 pt-3">
+    <div class="row gap-20 pos-r">
+        <div class="col-md-12 pt-3">
             <form action="{{ route($route, $id) }}" method="post" enctype="multipart/form-data">
                 @csrf
             <div class="d-flex mb-2" style="justify-content: space-between;    align-items: center;">
@@ -12,8 +9,8 @@
                 <button type="submit" class="btn btn-primary btn-color btn__border">Lưu</button>
             </div>
             <!-- #Sales Report ==================== -->
-            <div class="row gap-20 masonry">
-                <div class="masonry-item col-md-6 col-12 pt-3">
+            <div class="row gap-20">
+                <div class="col-md-8 col-12 pt-3">
                     <div class="bgc-white p-20 bd">
                         <input type="hidden" name="type" value="{{ $type }}">
                         <div class="">
@@ -34,7 +31,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="masonry-item col-md-5 col-12 pt-3 mb-3">
+                <div class="col-md-4 col-12 pt-3 mb-3">
                     <div class="bgc-white p-20 bd">
                         <div class="">
                             <div class="mb-3">

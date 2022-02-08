@@ -46,7 +46,7 @@
                                                 </div>
                                             </td>
                                             <td class="text-end ">
-                                                <a href="{{ route('admin.edit.slider',  $image->id) }}"
+                                                <a href="{{ route('admin.edit.slider',  encrypt_decrypt($image->id)) }}"
                                                    class="td-n c-deep-purple-500 cH-blue-500 fsz-md p-5"><i class="ti-pencil"></i>
                                                 </a>
                                                 <a href="#" class="td-n c-red-500 cH-blue-500 fsz-md p-5 btn__delete__slider" data-id="{{ $image->id }}"><i class="ti-trash"></i>

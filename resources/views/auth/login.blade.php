@@ -52,6 +52,7 @@
                     </div>
                     <a href="" class="text-danger">Quên mật khẩu?</a>
                 </div>
+                    <br>
 {{--                <p class="text-center">Hoặc</p>--}}
 {{--                <div class="row mb-3">--}}
 {{--                    <div class="col-6">--}}
@@ -75,4 +76,5 @@
             </div>
         </form>
     </div>
+    <br>
 @endsection

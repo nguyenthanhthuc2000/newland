@@ -12,6 +12,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Customer\RequestContactController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminArticleController;
+use App\Http\Controllers\Admin\UploadController;
+use App\Http\Controllers\PostsController;
 use App\Http\Controllers\Followers;
 
 /*
@@ -88,6 +90,11 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['checkLevel'])->group(function () {
         Route::prefix("admin")->group(function(){
+            Route::prefix('upload-manager')->group(function () {
+                Route::post('uploads-ckeditor',[UploadController::class, 'uploads_ckeditor']);
+                Route::get('file/file-browser',[UploadController::class, 'file_browser']);
+            });
+
             Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
             Route::get('/nguoi-dang-ki-nhan-tin', [Followers::class, 'index'])->name('admin.list.followers');
             Route::get('thong-tin-website', [DashboardController::class, 'setting'])->name('admin.setting');
@@ -99,8 +106,8 @@ Route::middleware(['auth'])->group(function () {
             Route::get('them-moi-banner', [DashboardController::class, 'createBanner'])->name('admin.create.banner');
 
             Route::get('slider', [DashboardController::class, 'listSlider'])->name('admin.sliders');
-            Route::get('chinh-sua-slider/{id}', [DashboardController::class, 'editSlider'])->name('admin.edit.slider');
-            Route::get('them-moi-slider', [DashboardController::class, 'createSlider'])->name('admin.create.slider');
+            Route::get('chinh-sua-hinh-anh/{id}', [DashboardController::class, 'editSlider'])->name('admin.edit.slider');
+            Route::get('them-moi-hinh-anh', [DashboardController::class, 'createSlider'])->name('admin.create.slider');
             Route::post('store-slider', [DashboardController::class, 'storeSlider'])->name('admin.store.slider');
             Route::post('update-slider/{id}', [DashboardController::class, 'updateSlider'])->name('admin.update.slider');
             Route::post('destroy-slider', [DashboardController::class, 'destroySlider'])->name('admin.destroy.slider');
@@ -108,14 +115,27 @@ Route::middleware(['auth'])->group(function () {
 
             //KHACH HANG
             Route::get('nguoi-dung', [UserController::class, 'listCustomer'])->name('admin.list.customer');
+            Route::get('profile/{id}', [UserController::class, 'profile'])->name('admin.profile.customer');
             Route::post('update-status', [UserController::class, 'updateStatus'])->name('admin.update.status.user');
         });
-        Route::prefix("bai-viet")->group(function(){
+
+        Route::prefix("tin-bat-dong-san")->group(function(){
             Route::post('unconfirm-article', [AdminArticleController::class, 'unconfirmArticle'])->name('article.unconfirm');
             Route::post('confirm-article', [AdminArticleController::class, 'confirmArticle'])->name('article.confirm');
             Route::post('update-featured-article', [AdminArticleController::class, 'updateFeaturedArticle'])->name('update-featured-article');
             Route::post('update-vip-article', [AdminArticleController::class, 'updateVipArticle'])->name('update-vip-article');
             Route::get('', [AdminArticleController::class, 'listArticle'])->name('article.list');
+        });
+
+        Route::prefix("quan-li-tin-tuc")->group(function(){
+            Route::get('danh-sach-tin-tuc', [PostsController::class, 'index'])->name('news.index');
+            Route::get('them-moi-tin-tuc', [PostsController::class, 'create'])->name('news.add');
+            Route::post('store', [PostsController::class, 'store'])->name('news.store');
+            Route::post('update/{id}', [PostsController::class, 'update'])->name('news.update');
+            Route::get('chinh-sua/{id}', [PostsController::class, 'edit'])->name('news.edit');
+            Route::post('update-status-news', [PostsController::class, 'updateStatusNews'])->name('update-status-news');
+            Route::get('destroy-news/{id}', [PostsController::class, 'destroy'])->name('news.destroy');
+            Route::get('/{type}', [PostsController::class, 'editByType'])->name('news.edit.type');
         });
     });
 });

@@ -8,6 +8,24 @@ use Auth;
 class UserController extends Controller
 {
 
+
+    public function profile($id){
+        $id = encrypt_decrypt($id, 'decrypt');
+        $info = $this->userRepo->find($id);
+        $attributes = [
+            'user_id' => $id
+        ];
+        $articles = $this->artRepo->getByAttributes($attributes);
+        if($info){
+            return view('admin.pages.customer.profile', compact('info', 'articles'));
+        }
+        return redirect()->route('home.page404');
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function updateStatus(Request $request){
         $attributes = [
             'status' => $request->status

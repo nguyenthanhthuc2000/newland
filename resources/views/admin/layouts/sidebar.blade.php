@@ -68,9 +68,56 @@
                   <li>
                       <a class='sidebar-link' href="{{ route('admin.list.followers') }}">Người đăng kí nhận tin</a>
                   </li>
+                  <li>
+                      <a class='sidebar-link' href="#">Nhân viên hệ thống</a>
+                  </li>
+                  <li>
+                      <a class='sidebar-link' href="#">Lịch sử giao dịch</a>
+                  </li>
               </ul>
           </li>
-
+          <li class="nav-item dropdown">
+              <a class="dropdown-toggle" href="javascript:void(0);">
+                  <span class="icon-holder"><i class="c-light-blue-500 ti-pencil"></i> </span>
+                  <span class="title">Tin tức</span>
+                  <span class="arrow">
+                <i class="ti-angle-right"></i>
+              </span>
+              </a>
+              <ul class="dropdown-menu">
+                  <li>
+                      <a class='sidebar-link' href="{{ route('news.index') }}">Danh sách</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                      <a href="javascript:void(0);">
+                          <span>Quy định, hướng dẩn</span>
+                          <span class="arrow">
+                      <i class="ti-angle-right"></i>
+                    </span>
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li>
+                              <a href="{{ route('news.edit.type', 'nap-tien') }}">Nạp tiền</a>
+                          </li>
+                          <li>
+                              <a href="{{ route('news.edit.type', 'noi-quy-dang-bai') }}">Nội quy đăng bài</a>
+                          </li>
+                          <li>
+                              <a href="{{ route('news.edit.type', 'chinh-sach') }}">Chính sách</a>
+                          </li>
+                          <li>
+                              <a href="{{ route('news.edit.type', 'quy-dinh') }}">Quy định</a>
+                          </li>
+                          <li>
+                              <a href="{{ route('news.edit.type', 'tai-khoan-ca-nhan') }}">Tài khoản cá nhân</a>
+                          </li>
+                          <li>
+                              <a href="{{ route('news.edit.type', 'tai-khoan-cong-ty') }}">Tài khoản công ty</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
           <li class="nav-item dropdown">
               <a class="dropdown-toggle" href="javascript:void(0);">
                   <span class="icon-holder"><i class="c-teal-500 ti-view-list-alt"></i> </span>
@@ -101,22 +148,6 @@
                   </li>
               </ul>
           </li>
-{{--        <li class="nav-item">--}}
-{{--          <a class='sidebar-link' href="compose.html">--}}
-{{--            <span class="icon-holder">--}}
-{{--              <i class="c-blue-500 ti-share"></i>--}}
-{{--            </span>--}}
-{{--            <span class="title">Compose</span>--}}
-{{--          </a>--}}
-{{--        </li>--}}
-{{--        <li class="nav-item">--}}
-{{--          <a class='sidebar-link' href="calendar.html">--}}
-{{--            <span class="icon-holder">--}}
-{{--              <i class="c-deep-orange-500 ti-calendar"></i>--}}
-{{--            </span>--}}
-{{--            <span class="title">Calendar</span>--}}
-{{--          </a>--}}
-{{--        </li>--}}
 {{--        <li class="nav-item">--}}
 {{--          <a class='sidebar-link' href="chat.html">--}}
 {{--            <span class="icon-holder">--}}

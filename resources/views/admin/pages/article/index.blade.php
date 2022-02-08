@@ -1,10 +1,7 @@
 @extends('admin.layouts.master_layout')
 @section('content')
-    <div class="row gap-20 masonry pos-r">
-        <div class="masonry-sizer col-md-6">
-
-        </div>
-        <div class="masonry-item col-md-12">
+    <div class="row gap-20  pos-r">
+        <div class="col-md-12">
             <!-- #Sales Report ==================== -->
             <div class="bd bgc-white">
                 <div class="layers">
@@ -181,7 +178,7 @@
                     </div>
                 </div>
                 <div class="ta-c bdT w-100 p-20 d-flex" style="justify-content: end">
-{{--                    {{ $articles->links() }}--}}
+                    {{ $articles->links() }}
                 </div>
             </div>
         </div>

@@ -114,6 +114,8 @@ class DashboardController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|void
      */
     public function editSlider($id){
+
+        $id = encrypt_decrypt($id, 'decrypt');
         $attributes = [
             'id' => $id
         ];

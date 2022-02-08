@@ -37,14 +37,6 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link line__hover dropdown-toggle" href="#" id="noi-ngoai-that" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Nội - Ngoại thất
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="noi-ngoai-that">
-                                <li><a class="dropdown-item" href="#">Chưa cập nhật</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
                             <a class="nav-link line__hover dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Tin tức
                             </a>

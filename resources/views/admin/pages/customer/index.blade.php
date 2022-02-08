@@ -36,7 +36,7 @@
                                     @foreach($customers as $customer)
                                         <tr>
                                             <td class="fw-600">{{ $customer->id }}</td>
-                                            <td class="fw-600"><a href="#">{{ $customer->name }}</a></td>
+                                            <td class="fw-600"><a href="{{ route('admin.profile.customer', encrypt_decrypt($customer->id)) }}">{{ $customer->name }}</a></td>
                                             <td class="fw-600 text-center">{{ $customer->account_type == 0 ? 'Cá nhân' : 'Công ty'}}</td>
                                             <td class="fw-600 text-center">
                                                 @if($customer->phone != null)

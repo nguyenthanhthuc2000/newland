@@ -71,11 +71,17 @@
 {{--                  </li>--}}
 {{--                  <li role="separator" class="divider"></li>--}}
                   <li>
-                    <a href="{{ route('auth.get.logout') }}" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
-                      <i class="ti-power-off mR-10"></i>
-                      <span>Đăng xuất</span>
+                    <a href="{{ route('admin.profile.customer', encrypt_decrypt(Auth::id())) }}" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+                        <i class="ti-user mR-10"></i>
+                      <span>Thông tin</span>
                     </a>
                   </li>
+                <li>
+                    <a href="{{ route('auth.get.logout') }}" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+                        <i class="ti-power-off mR-10"></i>
+                        <span>Đăng xuất</span>
+                    </a>
+                </li>
                 </ul>
               </li>
             </ul>
