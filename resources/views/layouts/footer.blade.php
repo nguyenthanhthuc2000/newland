@@ -3,7 +3,7 @@
         <div class="row" style="align-items: center;">
             <div class="col-md-4 logo__foter p-2 d-flex" style="align-items: center">
                 <a href="{{ route('home.index') }}" class="logo">
-                    <img id="logo-footer" src="{{ getUrlImageUpload($settings ? $settings->logo_footer : '', 'setting', 'nologo.jpg') }}" alt="">
+                    <img id="logo-footer" src="{{ getUrlImageUpload($settings ? $settings->logo_footer : '', 'setting') }}" alt="">
                 </a>
                 <h5 class="p-3 logan">
                     <p class="m-0">{{ $settings ? $settings->logan : '' }}</p>
@@ -92,17 +92,17 @@
                 <ul class="social__network box__ul">
                     <li>
                         <a href="{{$settings->youtube}}">
-                            <img src="{{asset('/icons/youtube.svg')}}" alt="">
+                            <img src="{{asset('/youtube.svg')}}" alt="">
                         </a>
                     </li>
                     <li>
                         <a href="{{$settings->facebook}}">
-                            <img src="{{asset('/icons/facebook.svg')}}" alt="">
+                            <img src="{{asset('/facebook.svg')}}" alt="">
                         </a>
                     </li>
                     <li>
                         <a href="{{$settings->zalo}}">
-                            <img src="{{asset('/icons/zalo.svg')}}" alt="">
+                            <img src="{{asset('/zalo.svg')}}" alt="">
                         </a>
                     </li>
 

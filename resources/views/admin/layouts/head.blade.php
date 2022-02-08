@@ -6,7 +6,7 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="{{ asset('administrator/css/style.css') }}">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
-
+    <link rel="icon" href="{{ getUrlImageUpload($settings ? $settings->logo : '', 'setting') }}" type="image/gif" sizes="16x16">
     <style>
       #loader {
         transition: all 0.3s ease-in-out;
