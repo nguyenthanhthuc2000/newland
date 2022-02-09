@@ -23,3 +23,9 @@ require('./component/hidden_field');
 require('./component/slick/article');
 require('./component/slick/detail_article');
 require('./component/crud');
+
+/** =================
+    Require validation
+    ===================*/
+
+require('./validate/form-post');

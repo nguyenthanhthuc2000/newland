@@ -70,7 +70,6 @@ class PostController extends Controller
                 "name_contact" => "required",
                 "phone_contact" => "required",
                 "address_contact" => "required",
-                "email_contact" => "required",
             ],
             [
                 "district_id.required" => "Vui lòng chọn Quận / Huyện",

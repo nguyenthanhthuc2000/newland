@@ -155,6 +155,13 @@ class CategorySeeder extends Seeder
                 'type' => '1',
                 'status' => '1',
             ],
+            [
+                'id' => '21',
+                'name' => 'Cho thuê phòng trọ',
+                'slug' => 'cho-thue-phong-tro',
+                'type' => '1',
+                'status' => '1',
+            ],
         ];
 
         foreach ($data as $v) {
