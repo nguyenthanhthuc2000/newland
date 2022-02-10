@@ -3,9 +3,10 @@ function hidden_field() {
     var idPlatform = [4, 5, 6, 14, 15, 16]
     var selected = $('select[name="category_id"]');
     var field = $('.hidden_field');
-    var idSelect = parseInt(selected.val());
+    var idSelect = null;
 
     selected.change(function() {
+        idSelect = parseInt($(this).val());
         if (idPlatform.includes(idSelect) && !idHome.includes(idSelect)) {
             field.find('input').attr('disabled', true)
             field.find('select').attr('disabled', true)

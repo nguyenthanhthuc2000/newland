@@ -38,7 +38,7 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link line__hover dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Hổ trợ
+                                Hỗ trợ
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">Tư vấn phong thủy</a></li>

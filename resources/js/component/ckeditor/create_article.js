@@ -1,3 +1,4 @@
+window.ClassicEditor = require('@ckeditor/ckeditor5-build-classic');
 if ($(".ck-editor").length > 0) {
     ClassicEditor
         .create(document.querySelector('.ck-editor'), {
@@ -10,7 +11,7 @@ if ($(".ck-editor").length > 0) {
                 writer.setStyle('min-height', '150px', editor.editing.view.document.getRoot());
             })
 
-            editor.model.document.on('change', (a, b, c) => {
+            editor.model.document.on('change', () => {
                 var contentBoxCK = $('#formPost .ck-editor');
                 var data = editor.getData();
 

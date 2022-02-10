@@ -6,11 +6,11 @@ var category = function(type) {
             'type': type
         }
     }).done(function(data) {
-        var output = '<option selected disable>Loại bất động sản</option>';
-        if(data){
+        var output = '<option selected disable hidden>Loại bất động sản</option>';
+        if (data) {
             output += data;
             $('#typeOfRealEstate').html(output);
-        }    
+        }
     });
 }
 

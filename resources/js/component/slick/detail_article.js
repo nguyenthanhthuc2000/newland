@@ -1,3 +1,4 @@
+import 'slick-carousel';
 $('.slider-for').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -14,5 +15,3 @@ $('.slider-nav').slick({
     focusOnSelect: true,
     arrows: false,
 });
-
-
