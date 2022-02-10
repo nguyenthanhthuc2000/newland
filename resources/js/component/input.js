@@ -2,7 +2,8 @@
 $('input').attr('unit', function() {
     if ($(this).attr('unit')) {
         var unit = $(this).attr('unit');
-        var unitContainer = `<span style="position:absolute;top:50%;transform:translateY(-50%);right: 10px;">` + unit + `</span>`;
+        var height = parseInt($(this).height()) / 2;
+        var unitContainer = `<span style="position:absolute;top:${height}px;right: 10px;">${unit}</span>`;
         $(this).parent().css('position', 'relative');
         $(this).attr('style', 'padding-right: 40px !important');
         $(this).after(unitContainer);
@@ -141,8 +142,16 @@ $('[data-role="tagsinput"]').tagsinput({
 
 $('[data-role="tagsinput"]').on('beforeItemAdd', function(event) {
     var tag = event.item;
-    if (isNaN(tag)) {
+    if (isNaN(tag) || tag.length < 10) {
         event.cancel = true;
+    }
+});
+
+$('[data-role="tagsinput"]').on('beforeItemRemove', function(event) {
+    const tag = $('.bootstrap-tagsinput').find('.tag');
+    if (tag.length == 0) {
+        console.log(123);
+        tag.parent().addClass('is-invalid')
     }
 });
 

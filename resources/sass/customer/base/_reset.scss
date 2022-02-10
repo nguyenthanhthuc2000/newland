@@ -40,3 +40,11 @@ li:not(.ck-content li) {
 .table-responsive {
     min-height: 200px;
 }
+
+input {
+    &[unit][type=number]::-webkit-inner-spin-button,
+    &[unit][type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
