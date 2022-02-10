@@ -10,7 +10,7 @@
                         <div class="bgc-light-blue-500 c-white p-10">
                             <div class="peers ai-c jc-sb gap-40">
                                 <div class="peer peer-greed">
-                                    <h5>Có tổng {{$news->count()}} bài viết</h5>
+                                    <h5>Danh sách bài viết</h5>
                                 </div>
                                 <a href="{{ route('news.add') }}" class="btn"><i class="fal fa-plus"></i> Thêm mới</a>
                             </div>
@@ -124,7 +124,8 @@
                                         <tr>
                                             <td class="fw-600">{{ strtoupper($n->code) }}</td>
                                             <td class="max-w-100">
-                                                <img class="img__table" target="_blank" src="{{ getUrlImageUpload($n->photo, 'news') }}">
+                                                <img class="img__table" target="_blank" src="{{ $n->photo }}">
+{{--                                                <img class="img__table" target="_blank" src="{{ $n->photo }}">--}}
                                             </td>
                                             <td class="fw-600"><a href="" class="text-split-2">{{ $n->title }}</a></td>
                                             <td>
@@ -153,8 +154,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="ta-c bdT w-100 p-20 d-flex" style="justify-content: end">
-                                        {{ $news->links() }}
+{{--                <div class="ta-c bdT w-100 p-20 d-flex" style="justify-content: end">--}}
+{{--                                        {{ $news->links() }}--}}
+{{--                </div>--}}
+
+                <div class="paginate-styling">
+                    {{ $news->links() }}
                 </div>
             </div>
         </div>

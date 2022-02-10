@@ -31,3 +31,15 @@
 .p-input {
     padding: 0.5rem 0.75rem !important;
 }
+/*===========PHAN TRANG*/
+.paginate-styling{
+    padding: 20px 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+.paginate-styling nav .flex{
+    display: none!important;
+}
+.paginate-styling svg{
+    width: 20px !important;
+}

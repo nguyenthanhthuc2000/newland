@@ -182,6 +182,8 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         \Conner\Tagging\Providers\TaggingServiceProvider::class,
 
+        Weidner\Goutte\GoutteServiceProvider::class,
+
     ],
 
     /*
@@ -239,6 +241,7 @@ return [
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
 
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Goutte' => Weidner\Goutte\GoutteFacade::class,
 
     ],
 

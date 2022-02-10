@@ -38,18 +38,27 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link line__hover dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Tin tức
+                                Hổ trợ
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Chưa cập nhật</a></li>
+                                <li><a class="dropdown-item" href="#">Tư vấn phong thủy</a></li>
+                                <li><a class="dropdown-item" href="#">Dự tính chi phí làm nhà</a></li>
+                                <li><a class="dropdown-item" href="#">Tính lãi suất</a></li>
+                                <li><a class="dropdown-item" href="#">Xem tuổi làm nhà</a></li>
                             </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link line__hover " href="#" id="" >
+                                Tin tức
+                            </a>
                         </li>
                     </ul>
                     <div class="box__auth">
+                        <li>
+                            <a href="#" class="favorite-produc-menu"><i class="fal fa-heart" style="font-size: 1.5rem; color: #7f8c8d;"></i></a>
+                        </li>
+                        &nbsp;
                         @if(Auth::check())
-                            <li>
-                                <a href="#" class="favorite-produc-menu"><i class="fal fa-heart" style="font-size: 1.5rem; color: #7f8c8d;"></i></a>
-                            </li>
                             <li class="dropdown">
                                 <a class="nav-link line__hover dropdown-toggle account__manage" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <strong>{{Auth::user()->name}}</strong>

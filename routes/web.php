@@ -27,6 +27,10 @@ use App\Http\Controllers\Followers;
 |
 */
 
+Route::prefix("crawl")->group(function(){
+    Route::get('/posts', [PostsController::class, 'crawlPosts'])->name('posts.crawl');
+});
+
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('404', [HomeController::class, 'page404'])->name('home.page404');
 Route::post('follow', [Followers::class, 'follow'])->name('home.follow');

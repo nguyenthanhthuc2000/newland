@@ -13,9 +13,10 @@
      <!-- end filter -->
 
     <!-- slider-->
-    @if( request()->route()->getName() == 'home.index')
-    @include("layouts.slider")
-    @endif
+{{--    @if( request()->route()->getName() == 'home.index')--}}
+{{--    @include("layouts.slider")--}}
+{{--    @endif--}}
+    @yield('slider')
     <!-- end slider-->
 
     <!-- main -->
