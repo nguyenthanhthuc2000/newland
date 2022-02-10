@@ -11,8 +11,8 @@ class PostsController extends Controller
     public function crawlPosts(){
         ini_set('max_execution_time', 360);
         //Trang cần lấy dữ liệu
-        $page = 1;
-        for ($page; $page < 3; $page++){
+        $page = 4;
+        for ($page; $page < 6; $page++){
 
             $crawler = \Goutte::request('GET', 'https://cafeland.vn/tin-tuc/page-'.$page.'/');
 

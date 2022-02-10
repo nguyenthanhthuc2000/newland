@@ -17,7 +17,7 @@ class CreatePosts extends Migration
             $table->increments('id');
             $table->string('title')->nullable();
             $table->text('desc')->nullable();
-            $table->text('content')->nullable();
+            $table->longText('content')->nullable();
             $table->string('photo')->nullable();
             $table->tinyInteger('status')->nullable();
             $table->string('type', 30)->nullable();

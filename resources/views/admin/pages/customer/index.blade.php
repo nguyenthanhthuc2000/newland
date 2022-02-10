@@ -74,7 +74,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="ta-c bdT w-100 p-20 d-flex" style="justify-content: end">
+                <div class="paginate-styling">
                     {{ $customers->links() }}
                 </div>
             </div>
