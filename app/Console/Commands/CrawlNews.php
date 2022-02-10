@@ -45,8 +45,8 @@ class CrawlNews extends Command
     {
         ini_set('max_execution_time', 360);
         //Trang cần lấy dữ liệu
-        $page = 7;
-        for ($page; $page < 8; $page++){
+        $page = 1;
+        for ($page; $page < 3; $page++){
 
             $crawler = \Goutte::request('GET', 'https://cafeland.vn/tin-tuc/page-'.$page.'/');
 
