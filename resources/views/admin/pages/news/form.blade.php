@@ -14,21 +14,21 @@
                         <div class="bgc-white p-20 bd">
                             <div class="">
                                 <div class="mb-3">
-                                    <label class="form-label" for="title">Tiêu đề <span style="color:red;">*</span></label>
+                                    <label class="form-label" for="title">Tiêu đề <span class="text-required">*</span></label>
                                     <input type="text" class="form-control" value="{{ isset($news) ? $news->title : '' }}" name="title" id="title" placeholder="Tiêu đề tin tức">
                                     @error('title')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label" for="ck_news">Nội dung <span style="color:red;">*</span></label>
+                                    <label class="form-label" for="ck_news">Nội dung <span class="text-required">*</span></label>
                                     <textarea class="form-control" id="ck_news" name="contents">{{ isset($news) ? $news->content : '' }}</textarea>
                                     @error('contents')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label" for="author">Tác giả <span style="color:red;">*</span></label>
+                                    <label class="form-label" for="author">Tác giả <span class="text-required">*</span></label>
                                     <input type="text" class="form-control" value="{{ isset($news) ? $news->author : '' }}" name="author" id="author" placeholder="Tác giả">
                                     @error('author')
                                     <small class="text-danger">{{ $message }}</small>
