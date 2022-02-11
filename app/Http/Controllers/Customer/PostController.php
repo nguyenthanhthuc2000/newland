@@ -185,8 +185,10 @@ class PostController extends Controller
      */
     public function edit($id)
     {
+        // kiểm tra cho thuê
         $category_lease = config('categories.category_lease');
         $lease = ['is_lease' => true];
+
         $article = $this->artRepo->find($id);
         $direction = $this->dirRepo->getOrDerBy()->reverse();
         $cat = $this->catRepo->getByAttributesAll(['type' => 0])->reverse();
