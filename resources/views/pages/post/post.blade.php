@@ -29,9 +29,14 @@
                 </div>
                 <div class="mb-3">
                     <label for="typeOfRealEstate" class="form-label">Loại bất động sản <span class="text-required">*</span></label>
+
                     <select class="form-select" aria-label="Default select example" id="typeOfRealEstate"
                             aria-describedby="typeOfRealEstateHelp" name="category_id" required>
                         <option selected disabled hidden value>Loại bất động sản</option>
+                        @php
+                            if(isset($lease))
+                                $sell = $lease;
+                        @endphp
                         @foreach($sell as $c)
                             <option value="{{ $c->id }}" {{ (isset($article) && $article->category_id == $c->id) ? 'selected' : '' }}>{{ $c->name }}</option>
                         @endforeach

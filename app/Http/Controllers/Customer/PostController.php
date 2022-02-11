@@ -185,6 +185,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
+        $category_lease = config('categories.category_lease');
+        $lease = ['lease' => $this->catRepo->getByAttributesAll(['type'=> 1])];
         $article = $this->artRepo->find($id);
         $direction = $this->dirRepo->getOrDerBy()->reverse();
         $cat = $this->catRepo->getByAttributesAll(['type' => 0])->reverse();
@@ -196,6 +198,9 @@ class PostController extends Controller
             'direction' => $direction,
             'article' => $article
         ];
+        if(in_array($article->category_id, $category_lease)){
+            $data = array_merge($data, $lease);
+        }
         return view('pages.post.post', $data);
     }
 

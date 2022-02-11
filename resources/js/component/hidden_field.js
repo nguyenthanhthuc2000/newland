@@ -1,9 +1,9 @@
 function hidden_field() {
-    var idHome = [1, 2, 3, 7, 8, 9, 10, 11, 12, 13, 17, 18, 19, 20]
+    var idHome = [1, 2, 3, 7, 8, 9, 10, 11, 12, 13, 17, 18, 19, 20, 21]
     var idPlatform = [4, 5, 6, 14, 15, 16]
     var selected = $('select[name="category_id"]');
     var field = $('.hidden_field');
-    var idSelect = null;
+    var idSelect = parseInt(selected.val());
 
     selected.change(function() {
         idSelect = parseInt($(this).val());

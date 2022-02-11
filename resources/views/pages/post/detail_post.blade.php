@@ -59,7 +59,7 @@
                         <p class="alert-warning alert-status">Bài viết đang chờ xử lí</p>
                     @endif
                 </div>
-                <table class="b__dt-ct-short table" style="border: none;font-size: 0.72rem;">
+                <table class="b__dt-ct-short table" style="border: none;font-size: 0.8rem;">
                     <tbody>
                     <tr>
                         <td>Mức giá</td>
