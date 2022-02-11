@@ -112,7 +112,7 @@
                                 </button>
                                 <ul class="dropdown-menu">
                                     {{-- <li class="dropdown-item"><i class="fas fa-sync-alt"></i> Bật tự động đăng lại</li> --}}
-                                    <li class="dropdown-item"><a href="{{ route('post.edit', $art->id) }}" class="dropdown-link text-secondary"><i class="far fa-edit"></i> Sửa tin</a></li>
+                                    <li class="dropdown-item"><a href="{{ route('post.edit', encrypt_decrypt($art->id)) }}" class="dropdown-link text-secondary"><i class="far fa-edit"></i> Sửa tin</a></li>
                                     {{-- <li class="dropdown-item"><i class="far fa-copy"></i> Sao chép tin đăng</li> --}}
                                     {{-- <li class="dropdown-item"><i class="fas fa-phone-alt"></i> Yêu cầu liên hệ</li> --}}
                                     {{-- <li class="dropdown-item"><i class="fas fa-id-card-alt"></i> Thống kê tương tác</li> --}}

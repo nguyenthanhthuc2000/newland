@@ -189,7 +189,7 @@ class PostController extends Controller
         $category_lease = config('categories.category_lease');
         $lease = ['is_lease' => true];
 
-        $article = $this->artRepo->find($id);
+        $article = $this->artRepo->find(encrypt_decrypt($id, 'decrypt'));
         $direction = $this->dirRepo->getOrDerBy()->reverse();
         $cat = $this->catRepo->getByAttributesAll(['type' => 0])->reverse();
         $data = [
