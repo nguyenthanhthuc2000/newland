@@ -34,8 +34,9 @@
                             aria-describedby="typeOfRealEstateHelp" name="category_id" required>
                         <option selected disabled hidden value>Loại bất động sản</option>
                         @php
-                            if(isset($lease))
+                            if(isset($is_lease) && $is_lease === true){
                                 $sell = $lease;
+                            }
                         @endphp
                         @foreach($sell as $c)
                             <option value="{{ $c->id }}" {{ (isset($article) && $article->category_id == $c->id) ? 'selected' : '' }}>{{ $c->name }}</option>
