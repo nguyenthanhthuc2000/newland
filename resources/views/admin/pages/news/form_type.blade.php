@@ -3,7 +3,7 @@
     <div class="row gap-20 pos-r" xmlns="http://www.w3.org/1999/html">
         @include('admin.layouts.alert')
         <div class="col-md-12 pt-3">
-            <form action="{{ route('news.update', $news->code) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('news.update', encrypt_decrypt($news->id) ) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="d-flex mb-2" style="justify-content: space-between;    align-items: center;">
                     <h4 class="c-grey-900 m-0">{{$news->title}} </h4>
