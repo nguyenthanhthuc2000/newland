@@ -136,7 +136,7 @@ Route::middleware(['auth'])->group(function () {
         });
 
         Route::prefix("quan-li-tin-tuc")->group(function(){
-            Route::get('danh-sach-tin-tuc', [PostsController::class, 'index'])->name('news.index');
+            Route::get('danh-sach-tin-tuc', [PostsController::class, 'index'])->name('news.manage');
             Route::get('them-moi-tin-tuc', [PostsController::class, 'create'])->name('news.add');
             Route::post('store', [PostsController::class, 'store'])->name('news.store');
             Route::post('update/{id}', [PostsController::class, 'update'])->name('news.update');

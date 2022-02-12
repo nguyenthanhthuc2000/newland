@@ -86,7 +86,7 @@
               </a>
               <ul class="dropdown-menu">
                   <li>
-                      <a class='sidebar-link' href="{{ route('news.index') }}">Danh sách</a>
+                      <a class='sidebar-link' href="{{ route('news.manage') }}">Danh sách</a>
                   </li>
                   <li class="nav-item dropdown">
                       <a href="javascript:void(0);">
