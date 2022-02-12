@@ -49,6 +49,11 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link line__hover " href="#" id="" >
+                                Dự án
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link line__hover " href="#" id="" >
                                 Tin tức
                             </a>
                         </li>

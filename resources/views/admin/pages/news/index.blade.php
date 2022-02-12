@@ -138,12 +138,15 @@
                                                 </div>
                                             </td>
                                             <td class="text-end " style="">
-                                                <a href="{{ route('news.edit', encrypt_decrypt($n->id)) }}" class="badge bgc-green-50 c-green-700 p-15 lh-0 tt-c rounded-pill btn__confirm m-1"
-                                                      data-id="{{ $n->id }}">Sửa
-                                                </a>
+                                                <div style="display: flex;">
+                                                    <a href="{{ route('news.edit', encrypt_decrypt($n->id)) }}" class="badge bgc-green-50 c-green-700 p-15 lh-0 tt-c rounded-pill btn__confirm m-1"
+                                                       data-id="{{ $n->id }}">Sửa
+                                                    </a>
                                                     <a  href="{{ route('news.destroy', $n->id) }}" class="badge bgc-red-50 c-red-700 p-15 lh-0 tt-c rounded-pill btn__confirm btn_destroy_news m-1"
-                                                          data-id="{{ $n->id }}">Xóa
-                                                </a>
+                                                        data-id="{{ $n->id }}">Xóa
+                                                    </a>
+
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
