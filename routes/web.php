@@ -140,6 +140,7 @@ Route::middleware(['auth'])->group(function () {
             Route::post('update-status-news', [PostsController::class, 'updateStatusNews'])->name('update-status-news');
             Route::get('destroy-news/{id}', [PostsController::class, 'destroy'])->name('news.destroy');
             Route::get('/{type}', [PostsController::class, 'editByType'])->name('news.edit.type');
+            Route::get('crawl/news-cafe-f', [PostsController::class, 'crawlNewsCafeF'])->name('news.crawl.news.cafe.f');
         });
     });
 });

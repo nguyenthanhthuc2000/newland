@@ -8,63 +8,132 @@ use DOMDocument;
 
 class PostsController extends Controller
 {
-    public function crawlPosts(){
+
+    public function crawlNewsCafeF(){
+
         ini_set('max_execution_time', 360);
-        //Trang cần lấy dữ liệu
-        $page = 4;
-        for ($page; $page < 6; $page++){
+        $crawler = \Goutte::request('GET', 'https://cafef.vn/bat-dong-san.chn');
+        $crawler->filter('#LoadListNewsCat .tlitem')->each(function ($node) {
+            $title = $node->filter('h3')->text();
+            $url = 'https://cafef.vn'.$node->filter('h3 > a', 0)->attr('href');
+            $img = $node->filter('img')->attr('src');
 
-            $crawler = \Goutte::request('GET', 'https://cafeland.vn/tin-tuc/page-'.$page.'/');
+            $content1 = \Goutte::request('GET', $url);
+            $content = '';
 
-            //Lấy danh sách bài viết
-            $crawler->filter('.left-col .box-content .list-type-14 li')->each(function ($node) {
-                //Lấy url, img, title bài viết
-                $title = $node->filter('h3')->text();
-                $url = $node->filter('h3 > a', 0)->attr('href');
-                $img = $node->filter('img')->attr('data-src');
+            $contents = $content1->filter('#form1 #mainContent')->each(function ($n1) {
 
-                if(strpos( $url, 'https://cafeland.vn/tin-tuc') !== false){
-                    //Lưu thông tin bài viết
-                    $content1 = \Goutte::request('GET', $url);
-                    $content2 = \Goutte::request('GET', $url);
-                    //Thấy có 2 box chứa nội dung
-                    $content = '';
-                    $contents = $content1->filter('#sevenBoxNewContentInfo')->each(function ($n1) {
-                        return $n1->html();
-                    });
-                    if(isset($contents[0])){
-                        $content = $contents[0];
-                    }
-                    else{
-                        $valContent2 = $content2->filter('#sevenBoxNewContentInfoNo')->each(function ($n2) {
-                            return $n2->html();
-                        });
-                        $content = $valContent2[0];
-                    }
+                $str = '';
+                try {
+                    $str = $n1->filter('.link-content-footer')->html();
+                } catch (\Exception $e){
 
-                    $code = substr(md5(microtime()),rand(0,5), 7);
-                    $slug = slug($title).'-'.$code;
-
-                    $data = [
-                        'title' => $title,
-                        'slug' => $slug,
-                        'code' => $code,
-                        'photo' => $img,
-                        'author' => $url,
-                        'content' => $content,
-                        'status' => 1
-                    ];
-
-                    $check = $this->postRepo->findByAttributes(['title' => $title]);
-                    if(!$check){
-                        if(!$this->postRepo->create($data)){
-                            dd($data);
-                        }
-                    }
                 }
 
+                return [$str, $n1->html()];
             });
-        }
+
+
+            if(isset($contents)){
+                if($contents[0][0] != ''){
+                    $content = str_replace($contents[0][0], '', $contents[0][1]);
+                }
+                else{
+                    $content = $contents[0][1];
+                }
+
+                $code = substr(md5(microtime()),rand(0,5), 7);
+                $slug = slug($title).'-'.$code;
+
+                $data = [
+                    'title' => $title,
+                    'slug' => $slug,
+                    'code' => $code,
+                    'photo' => $img,
+                    'author' => $url,
+                    'content' => $content,
+                    'status' => 1
+                ];
+
+                $check = $this->postRepo->findByAttributes(['title' => $title]);
+                if(!$check){
+                    if(!$this->postRepo->create($data)){
+
+                    }
+                }
+            }
+        });
+        return back();
+    }
+    public function crawlPosts(){
+
+
+//        detail_avatar
+//        detail_content
+//        VCSortableInPreviewMode
+//         detail_author
+//         lstTags
+//         news_source
+//         clearfix adv-box adv-top
+
+
+
+//        ini_set('max_execution_time', 360);
+//        //Trang cần lấy dữ liệu
+//        $page = 4;
+//        for ($page; $page < 6; $page++){
+//
+//            $crawler = \Goutte::request('GET', 'https://cafeland.vn/tin-tuc/page-'.$page.'/');
+//
+//            //Lấy danh sách bài viết
+//            $crawler->filter('.left-col .box-content .list-type-14 li')->each(function ($node) {
+//                //Lấy url, img, title bài viết
+//                $title = $node->filter('h3')->text();
+//                $url = $node->filter('h3 > a', 0)->attr('href');
+//                $img = $node->filter('img')->attr('data-src');
+//
+//                if(strpos( $url, 'https://cafeland.vn/tin-tuc') !== false){
+//                    //Lưu thông tin bài viết
+//                    $content1 = \Goutte::request('GET', $url);
+//                    $content2 = \Goutte::request('GET', $url);
+//                    //Thấy có 2 box chứa nội dung
+//                    $content = '';
+//                    $contents = $content1->filter('#sevenBoxNewContentInfo')->each(function ($n1) {
+//                        return $n1->html();
+//                    });
+//                    if(isset($contents[0])){
+//                        $content = $contents[0];
+//                    }
+//                    else{
+//                        $valContent2 = $content2->filter('#sevenBoxNewContentInfoNo')->each(function ($n2) {
+//                            return $n2->html();
+//                        });
+//                        $content = $valContent2[0];
+//                    }
+//
+//                    $code = substr(md5(microtime()),rand(0,5), 7);
+//                    $slug = slug($title).'-'.$code;
+//
+//                    $data = [
+//                        'title' => $title,
+//                        'slug' => $slug,
+//                        'code' => $code,
+//                        'photo' => $img,
+//                        'author' => $url,
+//                        'content' => $content,
+//                        'status' => 1
+//                    ];
+//
+//                    $check = $this->postRepo->findByAttributes(['title' => $title]);
+//                    if(!$check){
+//                        if(!$this->postRepo->create($data)){
+//                            dd($data);
+//                        }
+//                    }
+//                }
+//
+//            });
+//        }
 
 
 //        ini_set('user_agent','Mozilla/4.0 (compatible; MSIE 6.0)');
