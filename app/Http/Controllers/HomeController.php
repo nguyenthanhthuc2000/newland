@@ -25,9 +25,11 @@ class HomeController extends Controller
     {
         $articles = $this->artRepo->getByStatus([1])->where('state', 0);
         $featureArticled = $articles->where('featured', 1);
+        $news = $this->postRepo->getByAttributes(['status' => 1]);
         $data = [
             'articles' => $articles,
-            'featuredArticled' => $featureArticled
+            'featuredArticled' => $featureArticled,
+            'news' => $news
         ];
         return view('pages.index', $data);
     }
