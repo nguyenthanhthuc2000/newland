@@ -25,26 +25,29 @@
 $('#formPost').on('submit', function(event) {
     // FOR TAGS INPUT
     var tagInput = $(this).find('.bootstrap-tagsinput');
-    var tag = tagInput.find('.bootstrap-tagsinput .tag');
+    var tag = tagInput.find('.tag');
+
     if (tag.length == 0) {
         event.preventDefault()
         event.stopPropagation()
-        tagInput.addClass('is-invalid');
+        tagInput.removeClass('is-valid').addClass('is-invalid');
+    } else {
+        tagInput.removeClass('is-invalid').addClass('is-valid');
     }
 
     $('.bootstrap-tagsinput input').on('input', function(event) {
         if ($(this).parent().find('.tag').length == 0) {
-            $(this).parent().addClass('is-invalid')
+            $(this).parent().addClass('is-invalid');
         }
         if ($(this).parent().hasClass('is-invalid') === true) {
             $(this).parent().removeClass('is-invalid').addClass('is-valid');
         }
-    })
+    });
 
     // FOR CKEditor
     var contentBoxCK = $('.ck-editor');
     var textareaCK = contentBoxCK.prev('textarea').val().trim();
-    console.log(textareaCK);
+
     if (textareaCK == '') {
         contentBoxCK.removeClass('is-valid').addClass('is-invalid');
     } else {
