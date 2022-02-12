@@ -65,3 +65,15 @@ textarea {
     background-color: #3498db;
     box-shadow: 0 5px 10px 2px #3498db40 !important;
 }
+/*===========PHAN TRANG*/
+.paginate-styling{
+    padding: 20px 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+.paginate-styling nav .flex{
+    display: none!important;
+}
+.paginate-styling svg{
+    width: 20px !important;
+}
