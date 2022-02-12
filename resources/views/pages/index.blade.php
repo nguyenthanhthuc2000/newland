@@ -15,10 +15,10 @@
                 <div class="row">
                     <div class="col">
                 <div class="card card-post h-100" style="min-height: 340px">
-                    <a href="{{ 'slug' }}"  class="card-image">
-                        <img src="{{ getUrlImageUpload($n->photo, 'news') }}" class="card-img-post" alt="...">
+                    <a href="{{ route('news.detail', $n->slug) }}"  class="card-image">
+                        <img src="{{ $n->photo }}" class="card-img-post" alt="...">
                     </a>
-                    <a class="card-body card__article__body" href="">
+                    <a class="card-body card__article__body" href="{{ route('news.detail', $n->slug) }}">
                         <h6 class="text-split-2 card__title fw-bold">{{ $n->title }}</h6>
 
                     </a>

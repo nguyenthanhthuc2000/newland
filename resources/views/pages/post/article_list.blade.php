@@ -1,7 +1,5 @@
 @extends('layouts.master_layout')
-@section('title')
-    {{ $title }}
-@endsection
+@section('title' , $title)
 @section('main')
     <div class="row">
         <div class="post-form-action col-sm-8 pt-3">
@@ -36,7 +34,7 @@
                                     <p class="content-desc text-split-2 mb-0"> {{ $l->sub_title }}</p>
                                 </a>
                                 <div class="content-footer d-flex justify-content-between align-items-center">
-                                    <p class="mb-0 card-time"><i class="fal fa-calendar-alt"></i> 20/2/2022</p>
+                                    <p class="mb-0 card-time"><i class="fal fa-calendar-alt"></i> {{ $l->created_at }}</p>
                                     <p class="mb-0 card-heart"><i class="fal fa-heart"></i></p>
                                 </div>
                             </div>

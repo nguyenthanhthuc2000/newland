@@ -5,14 +5,18 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\Customer\PostController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
+
+use App\Http\Controllers\Customer\PostController;
 use App\Http\Controllers\Customer\RequestContactController;
+use App\Http\Controllers\Customer\NewsController;
+
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminArticleController;
 use App\Http\Controllers\Admin\UploadController;
+
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\Followers;
 
@@ -142,4 +146,11 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/{type}', [PostsController::class, 'editByType'])->name('news.edit.type');
         });
     });
+});
+
+// NEWS
+Route::prefix('tin-tuc')->group(function () {
+    Route::get('', [NewsController::class, 'index'])->name('news.index');
+    Route::get('/{slug}', [NewsController::class, 'detail'])->name('news.detail');
+
 });
