@@ -26,13 +26,13 @@ $('#formPost').on('submit', function(event) {
     // FOR TAGS INPUT
     var tagInput = $(this).find('.bootstrap-tagsinput');
     var tag = tagInput.find('.tag');
-    console.log(tag.length);
+
     if (tag.length == 0) {
         event.preventDefault()
         event.stopPropagation()
-        tagInput.addClass('is-invalid');
+        tagInput.removeClass('is-valid').addClass('is-invalid');
     } else {
-        tagInput.addClass('is-valid');
+        tagInput.removeClass('is-invalid').addClass('is-valid');
     }
 
     $('.bootstrap-tagsinput input').on('input', function(event) {
