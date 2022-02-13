@@ -65,16 +65,66 @@ class PostsController extends Controller
         });
         return back();
     }
+
     public function crawlPosts(){
+       ini_set('max_execution_time', 360);
+        $page = 1;
+        for ($page ; $page < 6; $page++) {
+            $crawler = \Goutte::request('GET', 'https://duan.batdongsan.com.vn/khu-do-thi-moi-song-cong-tn/khu-do-thi-cau-truc-song-cong-pj5521');
+            $output = $crawler->filter('body')->each(function ($node) {
+//                    $html = $node->filter('a')->attr('href');
+//                $url = $node->filter('.re__project-list')->html();
+//                return $html;
+                dd($node->html());
+            });
+        }
+
+//                $img = $node->filter('img')->attr('src');
+
+//                $content1 = \Goutte::request('GET', $url);
+//                $content = '';
+//
+//                $contents = $content1->filter('#form1 #mainContent')->each(function ($n1) {
+//
+//                    $str = '';
+//                    try {
+//                        $str = $n1->filter('.link-content-footer')->html();
+//                    } catch (\Exception $e){
+//
+//                    }
+//
+//                    return [$str, $n1->html()];
+//                });
 
 
-//        detail_avatar
-//        detail_content
-//        VCSortableInPreviewMode
-//         detail_author
-//         lstTags
-//         news_source
-//         clearfix adv-box adv-top
+//                if(isset($contents)){
+//                    if($contents[0][0] != ''){
+//                        $content = str_replace($contents[0][0], '', $contents[0][1]);
+//                    }
+//                    else{
+//                        $content = $contents[0][1];
+//                    }
+//
+//                    $code = substr(md5(microtime()),rand(0,5), 7);
+//                    $slug = slug($title).'-'.$code;
+//
+//                    $data = [
+//                        'title' => $title,
+//                        'slug' => $slug,
+//                        'code' => $code,
+//                        'photo' => $img,
+//                        'author' => $url,
+//                        'content' => $content,
+//                        'status' => 1
+//                    ];
+//
+//                    $check = $this->postRepo->findByAttributes(['title' => $title]);
+//                    if(!$check){
+//                        if(!$this->postRepo->create($data)){
+//
+//                        }
+//                    }
+//                }
 
 
 
@@ -137,16 +187,17 @@ class PostsController extends Controller
 
 
 //        ini_set('user_agent','Mozilla/4.0 (compatible; MSIE 6.0)');
-//        $doc = new DOMDocument('1.0', 'UTF-8');
+//        $doc = new \DOMDocument('1.0', 'UTF-8');
 //
 //        // set error level
 //        $internalErrors = libxml_use_internal_errors(true);
 //
-//        $url = "https://cafeland.vn/tin-tuc";
+//        $url = "https://batdongsan.com.vn";
 //        $html = file_get_contents($url);
 //        $doc->loadHTML($html);
-//        $links = $doc->getElementsByTagName('a');
-//
+//        $links = $doc->getElementsByClassName('js__project-card');
+//        dd($links);
+
 //        //link cần lấy nội dung
 //        $arrLinks = [];
 //        foreach($links as $link){
@@ -169,9 +220,6 @@ class PostsController extends Controller
 //            }
 ////            dd($title->nodeValue, $content);
 //        }
-//
-//        // Restore error level
-//        libxml_use_internal_errors($internalErrors);
     }
 
     /**
@@ -194,11 +242,11 @@ class PostsController extends Controller
         $post = $this->postRepo->find($id);
         if($post){
             if($this->postRepo->delete($id)){
-                return redirect()->route('news.index')->with('success', 'Xóa thành công!');
+                return redirect()->route('news.manage')->with('success', 'Xóa thành công!');
             }
-            return redirect()->route('news.index')->with('error', 'Xóa thất bại, thử lại sau!');
+            return redirect()->route('news.manage')->with('error', 'Xóa thất bại, thử lại sau!');
         }
-        return redirect()->route('news.index')->with('error', 'Xóa thất bại, thử lại sau!');
+        return redirect()->route('news.manage')->with('error', 'Xóa thất bại, thử lại sau!');
     }
 
     /**
@@ -269,9 +317,9 @@ class PostsController extends Controller
 
                 $query = $this->postRepo->update($news->id, $arrayData);
                 if($query){
-                    return redirect()->route('news.index')->with('success', 'Cập nhật tin tức thành công');
+                    return redirect()->route('news.manage')->with('success', 'Cập nhật tin tức thành công');
                 }
-                return redirect()->route('news.index')->with('error', 'Cập nhật thất bại, thử lại sau!');
+                return redirect()->route('news.manage')->with('error', 'Cập nhật thất bại, thử lại sau!');
             }
             else{
                 $this->validate($request,
@@ -294,7 +342,7 @@ class PostsController extends Controller
             }
         }
 
-        return redirect()->route('news.index')->with('error', 'Không tìm thấy tin tức!');
+        return redirect()->route('news.manage')->with('error', 'Không tìm thấy tin tức!');
     }
 
     /**
@@ -347,8 +395,8 @@ class PostsController extends Controller
 
         $query = $this->postRepo->create($arrayData);
         if($query){
-            return redirect()->route('news.index')->with('success', 'Thêm mới tin tức thành công');
+            return redirect()->route('news.manage')->with('success', 'Thêm mới tin tức thành công');
         }
-        return redirect()->route('news.index')->with('error', 'Thêm mới tin tức thất bại, thử lại sau');
+        return redirect()->route('news.manage')->with('error', 'Thêm mới tin tức thất bại, thử lại sau');
     }
 }

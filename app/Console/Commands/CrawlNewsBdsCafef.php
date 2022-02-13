@@ -12,7 +12,7 @@ class CrawlNewsBdsCafef extends Command
      *
      * @var string
      */
-    protected $signature = 'sync:newsCafef';
+    protected $signature = 'sync:newsCafeF';
 
     /**
      * The console command description.

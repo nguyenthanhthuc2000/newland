@@ -16,7 +16,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
 //        $schedule->command('touch:crawlNews')->dailyAt('00:01');
-        $schedule->command('touch:CrawlNewsBdsCafef')->everyFourHours();
+        $schedule->command('touch:newsCafeF')->everyFourHours();
     }
 
     /**

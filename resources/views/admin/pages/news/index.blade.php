@@ -158,10 +158,6 @@
                         </div>
                     </div>
                 </div>
-{{--                <div class="ta-c bdT w-100 p-20 d-flex" style="justify-content: end">--}}
-{{--                                        {{ $news->links() }}--}}
-{{--                </div>--}}
-
                 <div class="paginate-styling">
                     {{ $news->links() }}
                 </div>
