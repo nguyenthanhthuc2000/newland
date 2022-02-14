@@ -9,7 +9,7 @@ class Kernel extends ConsoleKernel
 {
     protected $commands = [
         //
-        Commands\CrawlNews::class,
+        Commands\CrawlNewsBdsCafef::class,
     ];
     /**
      * Define the application's command schedule.
