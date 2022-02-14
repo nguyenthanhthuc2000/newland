@@ -20,8 +20,7 @@
         "realrashid/sweet-alert": "^4.1",
         "rtconner/laravel-tagging": "^4.1",
         "tightenco/ziggy": "^1.4",
-        "weidner/goutte": "^2.1",
-        "alexpechkarev / google-maps": "^ 8.0"
+        "weidner/goutte": "^2.1"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
