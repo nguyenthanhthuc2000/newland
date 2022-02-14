@@ -51,11 +51,33 @@ class CrawlNewsBdsCafef extends Command
 
             $content1 = \Goutte::request('GET', $url);
             $content = '';
+            $author = '';
+            $source = '';
 
+            //Lấy link gốc của bài viết
+            $source = $content1->filter('#form1')->each(function ($s) {
+                $str = '';
+                try {
+                    $str = $s->filter('.link-source-full')->html();
+                } catch (\Exception $e){
+
+                }
+                return $str;
+            });
+
+
+
+            //Lấy tên tác giả
+            $author = $content1->filter('#form1 .author')->each(function ($a) {
+                return $a->html();
+            });
+
+            //Lấy nội dung bài viết
             $contents = $content1->filter('#form1 #mainContent')->each(function ($n1) {
 
                 $str = '';
                 try {
+                    //Lấy nội dung thừa
                     $str = $n1->filter('.link-content-footer')->html();
                 } catch (\Exception $e){
 
@@ -66,6 +88,7 @@ class CrawlNewsBdsCafef extends Command
 
 
             if(isset($contents)){
+                //Loại bõ nội dung thừa
                 if($contents[0][0] != ''){
                     $content = str_replace($contents[0][0], '', $contents[0][1]);
                 }
@@ -73,6 +96,16 @@ class CrawlNewsBdsCafef extends Command
                     $content = $contents[0][1];
                 }
 
+                //Lấy nguồn gốc cần lưu
+                $outputSource = '';
+                if(isset($source[0])){
+                    $outputSource = $source[0];
+                }
+                else{
+                    $outputSource = $url;
+                }
+
+                //Tạo mã code cho từng bài viết
                 $code = substr(md5(microtime()),rand(0,5), 7);
                 $slug = slug($title).'-'.$code;
 
@@ -81,11 +114,14 @@ class CrawlNewsBdsCafef extends Command
                     'slug' => $slug,
                     'code' => $code,
                     'photo' => $img,
-                    'author' => $url,
+                    'author' => str_replace('  ', '', $author[0]) ,
+                    'source' => str_replace(' ', '', $outputSource),
                     'content' => $content,
-                    'status' => 1
+                    'status' => 1,
+                    'crawl' => 1,
                 ];
 
+                //KIểm tra có tồn tại bài viết chưa
                 $check = $this->postRepo->findByAttributes(['title' => $title]);
                 if(!$check){
                     if(!$this->postRepo->create($data)){

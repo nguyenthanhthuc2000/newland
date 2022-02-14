@@ -8,6 +8,19 @@ function slug($title) {
     return $slug;
 }
 
+function getImageCrawl($image, $crawl , $direction = 'news'){
+
+    if($crawl == 0){
+        $urlImage = 'uploads/'.$direction.'/'.$image;
+        if (file_exists(public_path($urlImage))) {
+
+            return asset($urlImage);
+        }
+        return 'images/img/no_photo.jpg';
+    }
+    return $image;
+}
+
 function encrypt_decrypt($string, $action = 'encrypt')
 {
 //    $encrypt_method = env("CODE_HASH");

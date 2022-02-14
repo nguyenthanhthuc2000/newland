@@ -10,7 +10,6 @@ class PostsController extends Controller
 {
 
     public function crawlNewsCafeF(){
-
         ini_set('max_execution_time', 360);
         $crawler = \Goutte::request('GET', 'https://cafef.vn/bat-dong-san.chn');
         $crawler->filter('#LoadListNewsCat .tlitem')->each(function ($node) {
@@ -20,11 +19,31 @@ class PostsController extends Controller
 
             $content1 = \Goutte::request('GET', $url);
             $content = '';
+            $author = '';
+            $source = '';
 
+            //Lấy link gốc của bài viết
+            $source = $content1->filter('#form1')->each(function ($s) {
+                $str = '';
+                try {
+                    $str = $s->filter('.link-source-full')->html();
+                } catch (\Exception $e){
+
+                }
+                return $str;
+            });
+
+            //Lấy tên tác giả
+            $author = $content1->filter('#form1 .author')->each(function ($a) {
+                return $a->html();
+            });
+
+            //Lấy nội dung bài viết
             $contents = $content1->filter('#form1 #mainContent')->each(function ($n1) {
 
                 $str = '';
                 try {
+                    //Lấy nội dung thừa
                     $str = $n1->filter('.link-content-footer')->html();
                 } catch (\Exception $e){
 
@@ -35,6 +54,7 @@ class PostsController extends Controller
 
 
             if(isset($contents)){
+                //Loại bõ nội dung thừa
                 if($contents[0][0] != ''){
                     $content = str_replace($contents[0][0], '', $contents[0][1]);
                 }
@@ -42,6 +62,16 @@ class PostsController extends Controller
                     $content = $contents[0][1];
                 }
 
+                //Lấy nguồn gốc cần lưu
+                $outputSource = '';
+                if(isset($source[0])){
+                    $outputSource = $source[0];
+                }
+                else{
+                    $outputSource = $url;
+                }
+
+                //Tạo mã code cho từng bài viết
                 $code = substr(md5(microtime()),rand(0,5), 7);
                 $slug = slug($title).'-'.$code;
 
@@ -50,11 +80,14 @@ class PostsController extends Controller
                     'slug' => $slug,
                     'code' => $code,
                     'photo' => $img,
-                    'author' => $url,
+                    'author' => str_replace('  ', '', $author[0]) ,
+                    'source' => str_replace(' ', '', $outputSource),
                     'content' => $content,
-                    'status' => 1
+                    'status' => 1,
+                    'crawl' => 1,
                 ];
 
+                //KIểm tra có tồn tại bài viết chưa
                 $check = $this->postRepo->findByAttributes(['title' => $title]);
                 if(!$check){
                     if(!$this->postRepo->create($data)){
@@ -63,6 +96,7 @@ class PostsController extends Controller
                 }
             }
         });
+
         return back();
     }
 
@@ -308,6 +342,7 @@ class PostsController extends Controller
                     $photo = substr(md5(microtime()), rand(0, 5), 10) . '.' . $request->file('photo')->getClientOriginalExtension();
                     $request->file('photo')->move('uploads/news/', $photo);
                     $arrayData = $arrayData + array('photo' => $photo);
+                    $arrayData = $arrayData + array('crawl' => 0);
 
                     //xóa hình cũ
                     if (File::exists(public_path() . "/upload/news/" . $news->photo)) {

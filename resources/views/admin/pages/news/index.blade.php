@@ -125,7 +125,7 @@
                                         <tr>
                                             <td class="fw-600">{{ strtoupper($n->code) }}</td>
                                             <td class="max-w-100">
-                                                <img class="img__table" target="_blank" src="{{ $n->photo }}">
+                                                <img class="img__table" target="_blank" src="{{ getImageCrawl($n->photo, $n->crawl) }}">
 {{--                                                <img class="img__table" target="_blank" src="{{ $n->photo }}">--}}
                                             </td>
                                             <td class="fw-600"><a href="" class="text-split-2">{{ $n->title }}</a></td>

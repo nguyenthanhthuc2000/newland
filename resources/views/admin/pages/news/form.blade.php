@@ -48,7 +48,7 @@
                                     @enderror
                                     <div class="review-img">
 {{--                                        <img id="review-img" class="img-fluid" src="{{ getUrlImageUpload(isset($news) ? $news->photo : '' , 'news') }}">--}}
-                                        <img id="review-img" class="img-fluid" src="{{isset($news) ? $news->photo : ''}}">
+                                        <img id="review-img" class="img-fluid" src="{{ isset($news) ?  getImageCrawl($news->photo, $news->crawl) : getUrlImageUpload(null) }}">
                                     </div>
                                 </div>
                             </div>
