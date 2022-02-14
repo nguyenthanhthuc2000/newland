@@ -42,7 +42,7 @@
                     @endforeach
                 @endif
             </div>
-            <div class="pagination">
+            <div class="paginate-styling">
                 {{ $lstArticle->appends(request()->only(['hinh-thuc', 'danh-muc', 'khu-vuc', 'muc-gia', 'dien-tich', 'tu', 'den']))->links() }}
             </div>
         </div>

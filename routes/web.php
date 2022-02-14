@@ -108,6 +108,10 @@ Route::middleware(['auth'])->group(function () {
             Route::get('thong-tin-website', [DashboardController::class, 'setting'])->name('admin.setting');
             Route::post('update-setting', [DashboardController::class, 'updateSetting'])->name('setting.update');
 
+            //DANH MUC
+            Route::get('quan-li-danh-muc', [CategoryController::class, 'manage'])->name('category.manage');
+            Route::post('update-status-category', [CategoryController::class, 'updateStatus'])->name('category.update.status');
+
             //HINH ANH
             //BANNER
             Route::get('banner', [DashboardController::class, 'listBanner'])->name('admin.banners');

@@ -129,7 +129,7 @@
         </table>
     </div>
     @if ($personalArticle->count() > 0)
-        <div class="pagination justify-content-end">
+        <div class="paginate-styling">
             {{ $personalArticle->links() }}
         </div>
     @endif

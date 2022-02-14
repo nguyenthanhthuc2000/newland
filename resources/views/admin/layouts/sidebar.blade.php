@@ -49,7 +49,10 @@
               </a>
               <ul class="dropdown-menu">
                   <li>
-                      <a class='sidebar-link' href="{{ route('article.list') }}">Tất cả</a>
+                      <a class='sidebar-link' href="{{ route('category.manage') }}">Danh mục</a>
+                  </li>
+                  <li>
+                      <a class='sidebar-link' href="{{ route('article.list') }}">Bài viết</a>
                   </li>
               </ul>
           </li>

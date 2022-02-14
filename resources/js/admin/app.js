@@ -21,6 +21,7 @@ import './googleMaps';
 import './utils';
 import './pages/article/'
 import './pages/news/'
+import './pages/category/'
 import './pages/slider/'
 import './pages/user/'
 import './pages/main.js'

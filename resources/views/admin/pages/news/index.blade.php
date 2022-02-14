@@ -13,7 +13,7 @@
                                     <h5>Danh sách bài viết</h5>
                                 </div>
                                 <a href="{{ route('news.crawl.news.cafe.f') }} " class="btn__header__page btn"><i class="fal fa-plus"></i> Cập nhật</a>
-                                <a href="{{ route('news.add') }} " class="btn__header__page btn"><i class="fal fa-plus"></i> Thêm mới</a>
+                                <a href="{{ route('news.add') }} " class="btn__header__page btn"><i class="fal fa-plus"></i> Thêm</a>
                             </div>
                         </div>
                         {{--                        <div class="">--}}
