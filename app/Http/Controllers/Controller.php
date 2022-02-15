@@ -18,6 +18,7 @@ use App\Repository\Article\ArticleRepositoryInterface;
 use App\Repository\ImagesArticle\ImagesArticleRepositoryInterface;
 use App\Repository\Setting\SettingRepositoryInterface;
 use App\Repository\Posts\PostRepositoryInterface;
+use App\Repository\Project\ProjectRepositoryInterface;
 
 class Controller extends BaseController
 {
@@ -33,6 +34,7 @@ class Controller extends BaseController
     protected $imgArtRepo;
     protected $settingRepo;
     protected $postRepo;
+    protected $projectRepo;
 
     public function __construct(
         ProvinceRepositoryInterface $provinceRepo,
@@ -44,7 +46,8 @@ class Controller extends BaseController
         ArticleRepositoryInterface $artRepo,
         ImagesArticleRepositoryInterface $imgArtRepo,
         SettingRepositoryInterface $settingRepo,
-        PostRepositoryInterface $postRepo
+        PostRepositoryInterface $postRepo,
+        ProjectRepositoryInterface $projectRepo
 
     )
     {
@@ -58,6 +61,7 @@ class Controller extends BaseController
         $this->imgArtRepo = $imgArtRepo;
         $this->settingRepo = $settingRepo;
         $this->postRepo = $postRepo;
+        $this->projectRepo = $projectRepo;
     }
 
      /**

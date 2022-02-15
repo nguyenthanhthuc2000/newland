@@ -58,6 +58,25 @@
           </li>
           <li class="nav-item dropdown">
               <a class="dropdown-toggle" href="javascript:void(0);">
+            <span class="icon-holder">
+                <i class="c-red-500 ti-files"></i>
+              </span>
+                  <span class="title">Dự án</span>
+                  <span class="arrow">
+                <i class="ti-angle-right"></i>
+              </span>
+              </a>
+              <ul class="dropdown-menu">
+                  <li>
+                      <a class='sidebar-link' href="{{ route('project.manage', 'da-dang') }}">Dự án đã đăng</a>
+                  </li>
+                  <li>
+                      <a class='sidebar-link' href="{{ route('project.manage', 'tu-dong') }}">Dự án lấy tự động</a>
+                  </li>
+              </ul>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="dropdown-toggle" href="javascript:void(0);">
                   <span class="icon-holder"><i class="c-indigo-500 ti-bar-chart"></i> </span>
                   <span class="title">Người dùng</span>
                   <span class="arrow">
@@ -89,7 +108,10 @@
               </a>
               <ul class="dropdown-menu">
                   <li>
-                      <a class='sidebar-link' href="{{ route('news.manage') }}">Danh sách</a>
+                      <a class='sidebar-link' href="{{ route('news.manage', 'da-dang') }}">Bài viết đã đăng</a>
+                  </li>
+                  <li>
+                      <a class='sidebar-link' href="{{ route('news.manage', 'tu-dong') }}">Bài viết tự động</a>
                   </li>
                   <li class="nav-item dropdown">
                       <a href="javascript:void(0);">

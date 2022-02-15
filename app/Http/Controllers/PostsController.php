@@ -383,8 +383,31 @@ class PostsController extends Controller
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index(){
-        $news = $this->postRepo->getAllNews();
+    public function index($auto){
+        if($auto == 'tu-dong'){
+            $attributes = [
+                'type' => null,
+                'auto' => 1
+            ];
+        }
+        else {
+            $attributes = [
+                'type' => null,
+                'auto' => 0
+            ];
+        }
+        $news = $this->postRepo->getByAttributes($attributes);
+
+        return view('admin.pages.news.index', compact('news'));
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function autoIndex(){
+
+        $news = $this->postRepo->getNewsByCrawl();
+
         return view('admin.pages.news.index', compact('news'));
     }
 

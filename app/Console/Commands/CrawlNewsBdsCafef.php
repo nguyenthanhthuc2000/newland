@@ -119,6 +119,7 @@ class CrawlNewsBdsCafef extends Command
                     'content' => $content,
                     'status' => 1,
                     'crawl' => 1,
+                    'auto' => 1
                 ];
 
                 //KIểm tra có tồn tại bài viết chưa

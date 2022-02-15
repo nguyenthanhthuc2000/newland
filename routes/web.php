@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\AdminArticleController;
 use App\Http\Controllers\Admin\UploadController;
 
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\Followers;
 
 /*
@@ -117,6 +118,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('banner', [DashboardController::class, 'listBanner'])->name('admin.banners');
             Route::get('them-moi-banner', [DashboardController::class, 'createBanner'])->name('admin.create.banner');
 
+            //SLIDER
             Route::get('slider', [DashboardController::class, 'listSlider'])->name('admin.sliders');
             Route::get('chinh-sua-hinh-anh/{id}', [DashboardController::class, 'editSlider'])->name('admin.edit.slider');
             Route::get('them-moi-hinh-anh', [DashboardController::class, 'createSlider'])->name('admin.create.slider');
@@ -131,6 +133,7 @@ Route::middleware(['auth'])->group(function () {
             Route::post('update-status', [UserController::class, 'updateStatus'])->name('admin.update.status.user');
         });
 
+        //BAT DONG SAN
         Route::prefix("tin-bat-dong-san")->group(function(){
             Route::post('unconfirm-article', [AdminArticleController::class, 'unconfirmArticle'])->name('article.unconfirm');
             Route::post('confirm-article', [AdminArticleController::class, 'confirmArticle'])->name('article.confirm');
@@ -139,8 +142,15 @@ Route::middleware(['auth'])->group(function () {
             Route::get('', [AdminArticleController::class, 'listArticle'])->name('article.list');
         });
 
+        //DU AN
+        Route::prefix("quan-li-du-an")->group(function(){
+            Route::get('/crawl-project', [ProjectController::class, 'crawlProject'])->name('project.crawl');
+            Route::get('/{auto}', [ProjectController::class, 'index'])->name('project.manage');
+        });
+
+        //TIN TUC
         Route::prefix("quan-li-tin-tuc")->group(function(){
-            Route::get('danh-sach-tin-tuc', [PostsController::class, 'index'])->name('news.manage');
+            Route::get('/{auto}', [PostsController::class, 'index'])->name('news.manage');
             Route::get('them-moi-tin-tuc', [PostsController::class, 'create'])->name('news.add');
             Route::post('store', [PostsController::class, 'store'])->name('news.store');
             Route::post('update/{id}', [PostsController::class, 'update'])->name('news.update');
@@ -150,6 +160,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/{type}', [PostsController::class, 'editByType'])->name('news.edit.type');
             Route::get('crawl/news-cafe-f', [PostsController::class, 'crawlNewsCafeF'])->name('news.crawl.news.cafe.f');
         });
+
     });
 });
 
