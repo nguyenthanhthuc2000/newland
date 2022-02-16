@@ -10,7 +10,7 @@
                         <div class="bgc-light-blue-500 c-white p-10">
                             <div class="peers ai-c jc-sb gap-40">
                                 <div class="peer peer-greed">
-                                    <h5>Danh sách dự án</h5>
+                                    <h5>Dự án tự động</h5>
                                 </div>
                                     <a href="{{ route('project.crawl') }} " class="btn__header__page btn"><i class="fal fa-plus"></i> Cập nhật</a>
                                 <a href="" class="btn__header__page btn"><i class="fal fa-plus"></i> Thêm</a>
@@ -133,17 +133,17 @@
                                             {{ formatTime($project->created_at) }}
                                             <td class="text-center">
                                                 <div class="form-check form-switch text-center">
-                                                    <input class="form-check-input update-status-news" type="checkbox" data-id="{{$project->id}}"
+                                                    <input class="form-check-input update-status-project" type="checkbox" data-id="{{$project->id}}"
                                                            id="flexSwitchCheckDefault" {{ $project->status == 1 ? 'checked' : '' }}>
                                                 </div>
                                             </td>
                                             <td class="text-end " style="">
                                                 <div style="display: flex;    justify-content: end;">
-                                                    <a href="{{ route('news.edit', encrypt_decrypt($project->id)) }}" class="badge bgc-green-50 c-green-700 p-15 lh-0 tt-c rounded-pill btn__confirm m-1"
-                                                       data-id="{{ $n->id }}">Sửa
+                                                    <a href="{{ route('project.edit', encrypt_decrypt($project->id)) }}" class="badge bgc-green-50 c-green-700 p-15 lh-0 tt-c rounded-pill btn__confirm m-1"
+                                                       data-id="{{ $project->id }}">Sửa
                                                     </a>
-                                                    <a  href="{{ route('news.destroy', $project->id) }}" class="badge bgc-red-50 c-red-700 p-15 lh-0 tt-c rounded-pill btn__confirm btn_destroy_news m-1"
-                                                        data-id="{{ $n->id }}">Xóa
+                                                    <a  href="{{ route('project.destroy', $project->id) }}" class="badge bgc-red-50 c-red-700 p-15 lh-0 tt-c rounded-pill btn__confirm btn_destroy_project m-1"
+                                                        data-id="{{ $project->id }}">Xóa
                                                     </a>
                                                 </div>
                                             </td>

@@ -69,8 +69,22 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repository\Project\ProjectRepositoryInterface::class,
             \App\Repository\Project\ProjectRepository::class
         );
-
-
+        $this->app->singleton(
+            \App\Repository\ProjectType\ProjectTypeRepositoryInterface::class,
+            \App\Repository\ProjectType\ProjectTypeRepository::class
+        );
+        $this->app->singleton(
+            \App\Repository\ProjectWard\ProjectWardRepositoryInterface::class,
+            \App\Repository\ProjectWard\ProjectWardRepository::class
+        );
+        $this->app->singleton(
+            \App\Repository\ProjectDistrict\ProjectDistrictRepositoryInterface::class,
+            \App\Repository\ProjectDistrict\ProjectDistrictRepository::class
+        );
+        $this->app->singleton(
+            \App\Repository\ProjectProvince\ProjectProvinceRepositoryInterface::class,
+            \App\Repository\ProjectProvince\ProjectProvinceRepository::class
+        );
     }
 
     /**

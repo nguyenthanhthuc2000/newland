@@ -20,6 +20,7 @@ import './email';
 import './googleMaps';
 import './utils';
 import './pages/article/'
+import './pages/project/'
 import './pages/news/'
 import './pages/category/'
 import './pages/slider/'

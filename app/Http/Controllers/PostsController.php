@@ -276,11 +276,11 @@ class PostsController extends Controller
         $post = $this->postRepo->find($id);
         if($post){
             if($this->postRepo->delete($id)){
-                return redirect()->route('news.manage')->with('success', 'Xóa thành công!');
+                return redirect()->back()->with('success', 'Xóa thành công!');
             }
-            return redirect()->route('news.manage')->with('error', 'Xóa thất bại, thử lại sau!');
+            return redirect()->back()->with('error', 'Xóa thất bại, thử lại sau!');
         }
-        return redirect()->route('news.manage')->with('error', 'Xóa thất bại, thử lại sau!');
+        return redirect()->back()->with('error', 'Xóa thất bại, thử lại sau!');
     }
 
     /**

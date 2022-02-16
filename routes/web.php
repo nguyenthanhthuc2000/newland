@@ -146,6 +146,11 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix("quan-li-du-an")->group(function(){
             Route::get('/crawl-project', [ProjectController::class, 'crawlProject'])->name('project.crawl');
             Route::get('/{auto}', [ProjectController::class, 'index'])->name('project.manage');
+            Route::get('destroy/{id}', [ProjectController::class, 'destroy'])->name('project.destroy');
+            Route::post('update/{id}', [ProjectController::class, 'update'])->name('project.update');
+            Route::get('chinh-sua/{id}', [ProjectController::class, 'edit'])->name('project.edit');
+            Route::post('update-status', [ProjectController::class, 'updateStatus'])->name('update-status-project');
+
         });
 
         //TIN TUC
@@ -156,7 +161,7 @@ Route::middleware(['auth'])->group(function () {
             Route::post('update/{id}', [PostsController::class, 'update'])->name('news.update');
             Route::get('chinh-sua/{id}', [PostsController::class, 'edit'])->name('news.edit');
             Route::post('update-status-news', [PostsController::class, 'updateStatusNews'])->name('update-status-news');
-            Route::get('destroy-news/{id}', [PostsController::class, 'destroy'])->name('news.destroy');
+            Route::get('destroy/{id}', [PostsController::class, 'destroy'])->name('news.destroy');
             Route::get('/{type}', [PostsController::class, 'editByType'])->name('news.edit.type');
             Route::get('crawl/news-cafe-f', [PostsController::class, 'crawlNewsCafeF'])->name('news.crawl.news.cafe.f');
         });

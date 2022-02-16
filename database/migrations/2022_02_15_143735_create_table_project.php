@@ -26,10 +26,7 @@ class CreateTableProject extends Migration
             $table->text('album')->nullable();
             $table->text('extension')->nullable();
             $table->text('design_project')->nullable();
-            $table->text('album')->nullable();
             $table->longText('content')->nullable();
-            $table->string('province_id')->nullable()->comment('Tỉnh/TP');
-            $table->string('district_id')->nullable()->comment('Quận huyện');
             $table->string('investor')->nullable()->comment('Chủ đầu tư');
             $table->string('project_status')->nullable()->comment('Trạng thái dự án');
             $table->string('address')->nullable();

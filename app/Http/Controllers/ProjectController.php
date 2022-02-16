@@ -6,6 +6,36 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy($id){
+        $project = $this->projectRepo->find($id);
+        if($project){
+            if($this->projectRepo->delete($id)){
+                return redirect()->back()->with('success', 'Xóa thành công!');
+            }
+            return redirect()->back()->with('error', 'Xóa thất bại, thử lại sau!');
+        }
+        return redirect()->back()->with('error', 'Xóa thất bại, thử lại sau!');
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updateStatus(Request $request){
+        $attributes = [
+            'status' => $request->status
+        ];
+        if($this->projectRepo->update($request->id, $attributes)){
+            return response()->json(['status' => 200]);
+        }
+        return response()->json(['status' => 500]);
+    }
+
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
@@ -21,15 +51,14 @@ class ProjectController extends Controller
             ];
         }
         $projects = $this->projectRepo->getByAttributes($attributes);
-
         return view('admin.pages.project.index', compact('projects'));
     }
 
     public function crawlProject(){
         ini_set('max_execution_time', 360);
         $page = 1;
-        for ($page; $page < 2; $page++){
-            $crawler = \Goutte::request('GET', 'https://cenhomes.vn/du-an');
+        for ($page; $page < 5; $page++){
+            $crawler = \Goutte::request('GET', 'https://cenhomes.vn/du-an/page-'.$page);
             $crawler->filter('.b__mainProduct .cen-col')->each(function ($node) {
 
                 $url = $node->filter('.project-item .b_main-image-head a', 0)->attr('href');
@@ -79,14 +108,10 @@ class ProjectController extends Controller
                     return $info->attr('data-src');
                 });
 
-
+                $jsonProjectDesign = json_encode($arrayDesignProject);
+                $jsonExtension = json_encode($arrayExtension);
                 $jsonInfo = json_encode(array_filter($arrayInfo));
                 $jsonAlbum = json_encode($arrayAlbum);
-                $jsonInfo = json_encode($arrayInfo);
-                $type = $arrayAddress[2];
-                $province = $arrayAddress[3];
-                $ward = $arrayAddress[4];
-                $district = $arrayAddress[5];
 
                 //Lấy nội dung bài viết
                 $contents = $content1->filter('#wrap_description')->each(function ($n1) {
@@ -100,8 +125,6 @@ class ProjectController extends Controller
                     return [$str, $n1->html()];
                 });
 
-
-
                 if(isset($contents[0])){
                     //Loại bõ nội dung thừa
                     if($contents[0][0] != ''){
@@ -111,43 +134,88 @@ class ProjectController extends Controller
                         $content = $contents[0][1];
                     }
 
-                    dd(array_filter($arrayInfo), $arrayExtension, $arrayDesignProject, $arrayAlbum, $url, $photo, $name, $type, $province, $ward, $district, $content);
-//
-//                    //Lấy nguồn gốc cần lưu
-//                    $outputSource = '';
-//                    if(isset($source[0])){
-//                        $outputSource = $source[0];
-//                    }
-//                    else{
-//                        $outputSource = $url;
-//                    }
+                    $type = $arrayAddress[2];
+                    $province = $arrayAddress[3];
+                    $ward = $arrayAddress[5];
+                    $district = $arrayAddress[4];
 
-//                    //Tạo mã code cho từng bài viết
-//                    $code = substr(md5(microtime()),rand(0,5), 7);
-//                    $slug = slug($title).'-'.$code;
-//
-//                    $data = [
-//                        'title' => $title,
-//                        'slug' => $slug,
-//                        'code' => $code,
-//                        'photo' => $img,
-//                        'author' => str_replace('  ', '', $author[0]) ,
-//                        'source' => str_replace(' ', '', $outputSource),
-//                        'content' => $content,
-//                        'status' => 1,
-//                        'crawl' => 1,
-//                    ];
-//
-//                    //KIểm tra có tồn tại bài viết chưa
-//                    $check = $this->postRepo->findByAttributes(['title' => $title]);
-//                    if(!$check){
-//                        if(!$this->postRepo->create($data)){
-//
-//                        }
-//                    }
+
+                    $type_id = null;
+                    $project_ward_id = null;
+                    $project_province_id = null;
+                    $project_district_id = null;
+                    $getType = $this->proTypeRepo->findByAttributes(['name' => $type]);
+                    if($getType == null){
+                        $query = $this->proTypeRepo->create(['name' => $type, 'slug' => slug($type), 'status' => 1]);
+                        $type_id = $query->id;
+                    }
+                    else{
+                        $type_id = $getType->id;
+                    }
+
+                    $getProvince = $this->proProvinceRepo->findByAttributes(['name' => $province]);
+                    if($getProvince == null){
+                        $query = $this->proProvinceRepo->create(['name' => $province]);
+                        $project_province_id = $query->id;
+                    }
+                    else{
+                        $project_province_id = $getProvince->id;
+                    }
+
+                    $getDistrict = $this->proDistrictRepo->findByAttributes(['name' => $district]);
+                    if($getDistrict == null){
+                        $query = $this->proDistrictRepo->create(['name' => $district, 'project_province_id' => $project_ward_id]);
+                        $project_district_id = $query->id;
+                    }
+                    else{
+                        $project_district_id = $getDistrict->id;
+                    }
+
+                    $getWard = $this->proWardRepo->findByAttributes(['name' => $ward]);
+                    if($getWard == null){
+                        $query = $this->proWardRepo->create(['name' => $ward, 'project_province_id' => $project_province_id, 'project_district_id' => $project_district_id]);
+                        $project_ward_id = $query->id;
+                    }
+                    else{
+                        $project_ward_id = $getWard->id;
+                    }
+
+                    //Tạo mã code cho từng bài viết
+                    $code = substr(md5(microtime()),rand(0,5), 7);
+                    $slug = slug($name).'-'.$code;
+
+                    $data = [
+                        'name' => $name,
+                        'slug' => $slug,
+                        'code' => $code,
+                        'photo' => $photo,
+                        'source' => $url,
+                        'content' => $content,
+                        'design_project' => $jsonProjectDesign,
+                        'extension' => $jsonExtension,
+                        'album' => $jsonAlbum,
+                        'options' => $jsonInfo,
+                        'status' => 1,
+                        'crawl' => 1,
+                        'auto' => 1,
+                        'type' => 1,
+                        'project_ward_id' => $project_ward_id,
+                        'project_province_id' => $project_province_id,
+                        'project_district_id' => $project_district_id
+                    ];
+
+
+                    //KIểm tra có tồn tại bài viết chưa
+                    $check = $this->projectRepo->findByAttributes(['name' => $name]);
+                    if(!$check){
+                        if(!$this->projectRepo->create($data)){
+
+                        }
+                    }
                 }
             });
         }
 
+        return redirect()->back()->with('success', 'Cập nhật thành công!');
     }
 }
