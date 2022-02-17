@@ -51,7 +51,7 @@ class ProjectController extends Controller
             ];
         }
         $projects = $this->projectRepo->getByAttributes($attributes);
-        return view('admin.pages.project.index', compact('projects'));
+        return view('admin.pages.project.index', compact('projects', 'auto'));
     }
 
     public function crawlProject(){
