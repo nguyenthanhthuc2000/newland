@@ -12,8 +12,11 @@
                                 <div class="peer peer-greed">
                                     <h5>Dự án tự động</h5>
                                 </div>
-                                    <a href="{{ route('project.crawl') }} " class="btn__header__page btn"><i class="fal fa-plus"></i> Cập nhật</a>
+                                @if($auto == 'tu-dong')
+                                <a href="{{ route('project.crawl') }} " class="btn__header__page btn"><i class="fal fa-plus"></i> Cập nhật</a>
+                                @else
                                 <a href="" class="btn__header__page btn"><i class="fal fa-plus"></i> Thêm</a>
+                                @endif
                             </div>
                         </div>
                         {{--                        <div class="">--}}
