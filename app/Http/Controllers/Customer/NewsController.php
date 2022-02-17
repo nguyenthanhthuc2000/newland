@@ -11,7 +11,7 @@ class NewsController extends Controller
         $lstNews = $this->postRepo->getByAttributes(['status' => 1]);
         $data = [
             'title' => 'Danh sách tin tức',
-            'lstNews' => $lstNews
+            'list' => $lstNews
         ];
         return view('pages.news.news_list', $data);
     }

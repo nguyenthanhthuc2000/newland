@@ -48,12 +48,12 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link line__hover " href="#" id="" >
+                            <a class="nav-link line__hover " href="{{ route('project.index') }}" id="" >
                                 Dự án
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link line__hover " href="#" id="" >
+                            <a class="nav-link line__hover " href="{{ route('news.index') }}" id="" >
                                 Tin tức
                             </a>
                         </li>

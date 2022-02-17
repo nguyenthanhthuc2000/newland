@@ -12,5 +12,5 @@ class Posts extends Model
     protected $table = 'posts';
     protected $guarded = [];
     public $timestamps = true;
-    protected $perPage = 15;
+    protected $perPage = 10;
 }

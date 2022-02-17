@@ -12,13 +12,14 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Customer\PostController;
 use App\Http\Controllers\Customer\RequestContactController;
 use App\Http\Controllers\Customer\NewsController;
+use App\Http\Controllers\Customer\ProjectCustomerControler;
 
+use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminArticleController;
 use App\Http\Controllers\Admin\UploadController;
 
 use App\Http\Controllers\PostsController;
-use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\Followers;
 
 /*
@@ -173,5 +174,11 @@ Route::middleware(['auth'])->group(function () {
 Route::prefix('tin-tuc')->group(function () {
     Route::get('', [NewsController::class, 'index'])->name('news.index');
     Route::get('/{slug}', [NewsController::class, 'detail'])->name('news.detail');
+
+});
+// PROJECT
+Route::prefix('du-an')->group(function () {
+    Route::get('', [ProjectCustomerControler::class, 'index'])->name('project.index');
+    Route::get('/{slug}', [ProjectCustomerControler::class, 'detail'])->name('project.detail');
 
 });
