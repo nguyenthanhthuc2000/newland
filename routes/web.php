@@ -14,7 +14,7 @@ use App\Http\Controllers\Customer\RequestContactController;
 use App\Http\Controllers\Customer\NewsController;
 use App\Http\Controllers\Customer\ProjectCustomerControler;
 
-use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminArticleController;
 use App\Http\Controllers\Admin\UploadController;
