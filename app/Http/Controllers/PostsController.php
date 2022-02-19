@@ -14,6 +14,7 @@ class PostsController extends Controller
         $crawler = \Goutte::request('GET', 'https://cafef.vn/bat-dong-san.chn');
         $crawler->filter('#LoadListNewsCat .tlitem')->each(function ($node) {
             $title = $node->filter('h3')->text();
+
             $url = 'https://cafef.vn'.$node->filter('h3 > a', 0)->attr('href');
             $img = $node->filter('img')->attr('src');
 
@@ -26,12 +27,16 @@ class PostsController extends Controller
             $source = $content1->filter('#form1')->each(function ($s) {
                 $str = '';
                 try {
-                    $str = $s->filter('.link-source-full')->html();
+                    $str = $s->filter('.link-source-full')->attr('data-link');
                 } catch (\Exception $e){
 
                 }
                 return $str;
             });
+//
+//            if($title == 'Đầu năm 2022, giá căn hộ chung cư tại Hà Nội tăng vọt'){
+//                dd($source);
+//            }
 
             //Lấy tên tác giả
             $author = $content1->filter('#form1 .author')->each(function ($a) {
@@ -85,6 +90,7 @@ class PostsController extends Controller
                     'content' => $content,
                     'status' => 1,
                     'crawl' => 1,
+                    'auto' => 1,
                 ];
 
                 //KIểm tra có tồn tại bài viết chưa
@@ -276,11 +282,11 @@ class PostsController extends Controller
         $post = $this->postRepo->find($id);
         if($post){
             if($this->postRepo->delete($id)){
-                return redirect()->route('news.manage')->with('success', 'Xóa thành công!');
+                return redirect()->back()->with('success', 'Xóa thành công!');
             }
-            return redirect()->route('news.manage')->with('error', 'Xóa thất bại, thử lại sau!');
+            return redirect()->back()->with('error', 'Xóa thất bại, thử lại sau!');
         }
-        return redirect()->route('news.manage')->with('error', 'Xóa thất bại, thử lại sau!');
+        return redirect()->back()->with('error', 'Xóa thất bại, thử lại sau!');
     }
 
     /**
@@ -383,8 +389,31 @@ class PostsController extends Controller
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index(){
-        $news = $this->postRepo->getAllNews();
+    public function index($auto){
+        if($auto == 'tu-dong'){
+            $attributes = [
+                'type' => null,
+                'auto' => 1
+            ];
+        }
+        else {
+            $attributes = [
+                'type' => null,
+                'auto' => 0
+            ];
+        }
+        $news = $this->postRepo->getByAttributes($attributes);
+
+        return view('admin.pages.news.index', compact('news'));
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function autoIndex(){
+
+        $news = $this->postRepo->getNewsByCrawl();
+
         return view('admin.pages.news.index', compact('news'));
     }
 

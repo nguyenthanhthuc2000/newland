@@ -12,18 +12,18 @@
                     <strong>Không có bài viết.</strong>
                 @else
                     @foreach ($list as $l)
-                    <a href="{{ route('news.detail', $l->slug) }}" class="content-title-moblie mb-2">
-                        <h5 class="text-split-2 mb-2 {{ $l->featured == 1 ? 'color-red' : 'color-blue' }}">{{ $l->title }}
+                    <a href="{{ route('project.detail', $l->slug) }}" class="content-title-moblie mb-2">
+                        <h5 class="text-split-2 mb-2">{{ $l->name }}
                         </h5>
                     </a>
                         <div class="l__a-article row mb-4">
-                            <a class="l__a-article-img col-sm-4 col-5 card-image{{ ($l->featured == 1) ? ' card-featured' : '' }}">
+                            <a class="l__a-article-img col-sm-4 col-5 card-image">
                                 <img class="w-100 img-fluid img" src="{{ $l->photo }}" alt="">
                             </a>
                             <div class="l__a-article-content col-sm-8 col-7 p-3">
-                                <a href="{{ route('news.detail', $l->slug) }}" class="card-body">
-                                    <h5 class="content-title text-split-2 {{ $l->featured == 1 ? 'color-red' : 'color-blue' }}">
-                                       {{ $l->title }}
+                                <a href="{{ route('project.detail', $l->slug) }}" class="card-body">
+                                    <h5 class="content-title text-split-2">
+                                       {{ $l->name }}
                                     </h5>
                                     <p class="content-price mb-0 text-split-2"><strong>
                                         {{ $l->desc }}

@@ -8,6 +8,20 @@ function slug($title) {
     return $slug;
 }
 
+/**
+ * @param string $image
+ * @param string $direction
+ * @return string
+ */
+function getUrlImageUpload($image, $direction = 'article', $no_img = 'no_photo.jpg'){
+    $no_photo = 'images/img/'.$no_img;
+    $urlImage = 'uploads/'.$direction.'/'.$image;
+    if($image){
+        return asset($urlImage);
+    }
+    return asset($no_photo);
+}
+
 function getImageCrawl($image, $crawl , $direction = 'news'){
 
     if($crawl == 0){
@@ -134,19 +148,6 @@ if (!function_exists('createSlug')) {
         $string = strtolower($string);
         return $string;
     }
-}
-/**
- * @param string $image
- * @param string $direction
- * @return string
- */
-function getUrlImageUpload($image, $direction = 'article', $no_img = 'no_photo.jpg'){
-    $no_photo = 'images/img/'.$no_img;
-    $urlImage = 'uploads/'.$direction.'/'.$image;
-    if($image){
-        return asset($urlImage);
-    }
-    return asset($no_photo);
 }
 
 function convert_number_to_words($number) {

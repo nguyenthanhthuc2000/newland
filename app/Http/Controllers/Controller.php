@@ -18,6 +18,11 @@ use App\Repository\Article\ArticleRepositoryInterface;
 use App\Repository\ImagesArticle\ImagesArticleRepositoryInterface;
 use App\Repository\Setting\SettingRepositoryInterface;
 use App\Repository\Posts\PostRepositoryInterface;
+use App\Repository\Project\ProjectRepositoryInterface;
+use App\Repository\ProjectDistrict\ProjectDistrictRepositoryInterface;
+use App\Repository\ProjectProvince\ProjectProvinceRepositoryInterface;
+use App\Repository\ProjectType\ProjectTypeRepositoryInterface;
+use App\Repository\ProjectWard\ProjectWardRepositoryInterface;
 
 class Controller extends BaseController
 {
@@ -33,6 +38,11 @@ class Controller extends BaseController
     protected $imgArtRepo;
     protected $settingRepo;
     protected $postRepo;
+    protected $projectRepo;
+    protected $proTypeRepo;
+    protected $proWardRepo;
+    protected $proProvinceRepo;
+    protected $proDistrictRepo;
 
     public function __construct(
         ProvinceRepositoryInterface $provinceRepo,
@@ -44,7 +54,12 @@ class Controller extends BaseController
         ArticleRepositoryInterface $artRepo,
         ImagesArticleRepositoryInterface $imgArtRepo,
         SettingRepositoryInterface $settingRepo,
-        PostRepositoryInterface $postRepo
+        PostRepositoryInterface $postRepo,
+        ProjectRepositoryInterface $projectRepo,
+        ProjectTypeRepositoryInterface $proTypeRepo,
+        ProjectWardRepositoryInterface $proWardRepo,
+        ProjectProvinceRepositoryInterface $proProvinceRepo,
+        ProjectDistrictRepositoryInterface $proDistrictRepo
 
     )
     {
@@ -58,6 +73,11 @@ class Controller extends BaseController
         $this->imgArtRepo = $imgArtRepo;
         $this->settingRepo = $settingRepo;
         $this->postRepo = $postRepo;
+        $this->projectRepo = $projectRepo;
+        $this->proTypeRepo = $proTypeRepo;
+        $this->proWardRepo = $proWardRepo;
+        $this->proProvinceRepo = $proProvinceRepo;
+        $this->proDistrictRepo = $proDistrictRepo;
     }
 
      /**

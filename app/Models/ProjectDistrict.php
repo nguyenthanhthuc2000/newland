@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Posts extends Model
+class ProjectDistrict extends Model
 {
     use HasFactory;
 
-    protected $table = 'posts';
+    protected $table = 'project_district';
     protected $guarded = [];
     public $timestamps = true;
-    protected $perPage = 10;
+    protected $perPage = 15;
 }

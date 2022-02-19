@@ -1,0 +1,30 @@
+.detail-news {
+    padding-top: 15px;
+    margin-top: 15px;
+    .title {
+        font-family: Helvetica;
+    }
+    .dateandcat {
+        font-family: Helvetica;
+        font-size: 0.825rem;
+        color: $grey;
+    }
+    .content {
+        font-family: 'Times New Roman', Times, serif;
+        .main-content {
+            font-size: 1.125rem;
+            line-height: 1.4;
+            color: $black;
+            margin-top: 10px;
+        }
+        .sourceandauthor {
+            .source {
+                font-weight: bold;
+                font-size: 1.25rem;
+            }
+            .author {
+                font-style: italic;
+            }
+        }
+    }
+}

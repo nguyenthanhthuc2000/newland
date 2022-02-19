@@ -5,7 +5,7 @@
         <div class="row content">
             <div class="col-8">
                 <h1 class="title">
-                    {{ $detail->title }}
+                    {{ $detail->name }}
                 </h1>
                 <div class="dateandcat">
                     {{ date_format($detail->created_at, 'd/m/Y - H:i') }}
