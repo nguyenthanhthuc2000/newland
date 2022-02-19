@@ -94,7 +94,10 @@ Route::middleware(['auth'])->group(function () {
     // USER
     Route::get('thong-tin-ca-nhan',  [UserController::class, 'info'])->name('auth.info');
     Route::get('bai-viet-ca-nhan',  [UserController::class, 'personalArticle'])->name('auth.article');
-    Route::get('du-an-ca-nhan',  [UserController::class, 'personalProject'])->name('auth.project');
+
+    //PROJECT
+    Route::get('du-an-ca-nhan',  [ProjectController::class, 'personalProject'])->name('auth.project');
+    Route::get('them-moi-du-an',  [ProjectController::class, 'createProject'])->name('project.create');
 });
 
 ///ADMIN

@@ -8,12 +8,6 @@ use Auth;
 class UserController extends Controller
 {
 
-    public function personalProject(){
-
-        $personalProject = $this->projectRepo->getByAttributes(['user_id' => Auth::id()]);
-
-        return view('pages.post.personal_project', compact('personalProject'));
-    }
 
     /**
      * @param $id

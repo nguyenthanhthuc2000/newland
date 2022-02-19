@@ -3,9 +3,29 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class ProjectController extends Controller
 {
+
+    public function createProject(){
+        $direction = $this->dirRepo->getOrDerBy()->reverse();
+
+        $province = Controller::getProvince();
+        $typeProject = $this->proTypeRepo->getByAttributesAll(['status' => 1]);
+
+        return view('pages.project.form_project', compact('direction', 'province', 'typeProject'));
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function personalProject(){
+
+        $personalProject = $this->projectRepo->getByAttributes(['user_id' => Auth::id()]);
+
+        return view('pages.project.personal_project', compact('personalProject'));
+    }
 
     /**
      * @param $id

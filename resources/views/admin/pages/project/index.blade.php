@@ -10,12 +10,10 @@
                         <div class="bgc-light-blue-500 c-white p-10">
                             <div class="peers ai-c jc-sb gap-40">
                                 <div class="peer peer-greed">
-                                    <h5>Dự án tự động</h5>
+                                    <h5>Dự án</h5>
                                 </div>
                                 @if($auto == 'tu-dong')
                                 <a href="{{ route('project.crawl') }} " class="btn__header__page btn"><i class="fal fa-plus"></i> Cập nhật</a>
-                                @else
-                                <a href="" class="btn__header__page btn"><i class="fal fa-plus"></i> Thêm</a>
                                 @endif
                             </div>
                         </div>
