@@ -258,9 +258,9 @@ function convert_words_to_numbers($words){
 
 /**
  *
- * @access    public
- * @param    string
- * @return    string
+ * @access public
+ * @param string
+ * @return string
  */
 if (!function_exists('currency_format')) {
     function currency_format($number, $suffix = 'đ') {
@@ -328,6 +328,9 @@ function hidden_field($category){
     $idPlatform = [4, 5, 6, 14, 15, 16];
 
     if(in_array($category, $idPlatform) && !in_array($category, $idHome)){
+        return 'd-none';
+    }
+    if($category == 21){
         return 'd-none';
     }
     return '';

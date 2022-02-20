@@ -221,6 +221,7 @@
                                 <option selected disabled hidden value>Đơn vị</option>
                                 <option value="VNĐ" {{ isset($article) ? (($article->unit == 'VNĐ') ? 'selected' : '') : '' }}>VNĐ</option>
                                 <option value="/ m²" {{ isset($article) ? (($article->unit == '/ m²') ? 'selected' : '') : '' }}>Giá / m²</option>
+                                <option value="Giá / Tháng" {{ isset($article) ? (($article->unit == 'Giá / Tháng') ? 'selected' : '') : '' }}>Giá / Tháng</option>
                                 <option value="Thỏa thuận" {{ isset($article) ? (($article->unit == 'Thỏa thuận') ? 'selected' : '') : '' }}>Thỏa thuận</option>
                             </select>
                             <div class="invalid-feedback">
@@ -232,7 +233,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 hidden_field">
                     <label for="legal_documents" class="form-label">Giấy tờ pháp lý <span class="text-required">*</span></label>
                     <input type="text" class="form-control legal_documents" placeholder="Giấy tờ pháp lý" name="legal_documents"
                             value="{{ isset($article) && $article->legal_documents ? $article->legal_documents : 'Chính chủ ' }}"
