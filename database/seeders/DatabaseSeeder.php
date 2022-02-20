@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
 //             DirectionSeeder::class,
 //            CategorySeeder::class,
 //            Setting::class,
-            TypePostSeeder::class,
+//            TypePostSeeder::class,
         ]);
     }
 }

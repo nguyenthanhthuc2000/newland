@@ -10,3 +10,9 @@ Breadcrumbs::for('personal-article', function ($trail) {
     $trail->parent('home');
     $trail->push('Bài viết cá nhân', route('auth.article'));
 });
+
+// Home > personal-project
+Breadcrumbs::for('personal-project', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Dự án cá nhân', route('auth.project'));
+});

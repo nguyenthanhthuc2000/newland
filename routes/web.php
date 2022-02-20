@@ -14,7 +14,7 @@ use App\Http\Controllers\Customer\RequestContactController;
 use App\Http\Controllers\Customer\NewsController;
 use App\Http\Controllers\Customer\ProjectCustomerControler;
 
-use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminArticleController;
 use App\Http\Controllers\Admin\UploadController;
@@ -94,6 +94,10 @@ Route::middleware(['auth'])->group(function () {
     // USER
     Route::get('thong-tin-ca-nhan',  [UserController::class, 'info'])->name('auth.info');
     Route::get('bai-viet-ca-nhan',  [UserController::class, 'personalArticle'])->name('auth.article');
+
+    //PROJECT
+    Route::get('du-an-ca-nhan',  [ProjectController::class, 'personalProject'])->name('auth.project');
+    Route::get('them-moi-du-an',  [ProjectController::class, 'createProject'])->name('project.create');
 });
 
 ///ADMIN

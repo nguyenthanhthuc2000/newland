@@ -14,6 +14,7 @@ class PostsController extends Controller
         $crawler = \Goutte::request('GET', 'https://cafef.vn/bat-dong-san.chn');
         $crawler->filter('#LoadListNewsCat .tlitem')->each(function ($node) {
             $title = $node->filter('h3')->text();
+
             $url = 'https://cafef.vn'.$node->filter('h3 > a', 0)->attr('href');
             $img = $node->filter('img')->attr('src');
 
@@ -26,12 +27,16 @@ class PostsController extends Controller
             $source = $content1->filter('#form1')->each(function ($s) {
                 $str = '';
                 try {
-                    $str = $s->filter('.link-source-full')->html();
+                    $str = $s->filter('.link-source-full')->attr('data-link');
                 } catch (\Exception $e){
 
                 }
                 return $str;
             });
+//
+//            if($title == 'Đầu năm 2022, giá căn hộ chung cư tại Hà Nội tăng vọt'){
+//                dd($source);
+//            }
 
             //Lấy tên tác giả
             $author = $content1->filter('#form1 .author')->each(function ($a) {
@@ -85,6 +90,7 @@ class PostsController extends Controller
                     'content' => $content,
                     'status' => 1,
                     'crawl' => 1,
+                    'auto' => 1,
                 ];
 
                 //KIểm tra có tồn tại bài viết chưa

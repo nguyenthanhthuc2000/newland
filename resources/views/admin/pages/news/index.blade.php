@@ -128,7 +128,7 @@
                                                 <img class="img__table" target="_blank" src="{{ getImageCrawl($n->photo, $n->crawl) }}">
 {{--                                                <img class="img__table" target="_blank" src="{{ $n->photo }}">--}}
                                             </td>
-                                            <td class="fw-600"><a href="" class="text-split-2">{{ $n->title }}</a></td>
+                                            <td class="fw-600"><a href="{{ route('news.detail', $n->slug) }}" class="text-split-2">{{ $n->title }}</a></td>
                                             <td>
                                             {{ formatTime($n->created_at) }}
                                             <td class="text-center">

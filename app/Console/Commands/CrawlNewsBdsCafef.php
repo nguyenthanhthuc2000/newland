@@ -66,7 +66,6 @@ class CrawlNewsBdsCafef extends Command
             });
 
 
-
             //Lấy tên tác giả
             $author = $content1->filter('#form1 .author')->each(function ($a) {
                 return $a->html();

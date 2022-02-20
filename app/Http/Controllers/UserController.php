@@ -9,6 +9,10 @@ class UserController extends Controller
 {
 
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
+     */
     public function profile($id){
         $id = encrypt_decrypt($id, 'decrypt');
         $info = $this->userRepo->find($id);
