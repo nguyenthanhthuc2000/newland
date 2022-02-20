@@ -71,12 +71,10 @@
                         <td>
                             <strong>
                                 {{
-                                    if($detailArticle->unit == 'Giá / Tháng'){
-                                        $detailArticle->price.' / Tháng';
-                                    }
-                                    else{
+                                    ($detailArticle->unit == 'Giá / Tháng') ?
+                                        $detailArticle->price.' / Tháng' :
                                         price_project($detailArticle->price, $detailArticle->acreage, $detailArticle->unit)['total_price']
-                                    }
+
                                 }}
                             </strong>
                         </td>
