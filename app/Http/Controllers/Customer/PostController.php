@@ -11,8 +11,6 @@ use Str;
 use File;
 class PostController extends Controller
 {
-
-
     /**
      * Display a listing.
      *
