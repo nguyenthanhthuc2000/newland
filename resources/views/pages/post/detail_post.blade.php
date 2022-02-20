@@ -72,7 +72,7 @@
                             <strong>
                                 {{
                                     ($detailArticle->unit == 'Giá / Tháng') ?
-                                        $detailArticle->price.' / Tháng' :
+                                        convert_number_to_words($detailArticle->price).' / Tháng' :
                                         price_project($detailArticle->price, $detailArticle->acreage, $detailArticle->unit)['total_price']
 
                                 }}

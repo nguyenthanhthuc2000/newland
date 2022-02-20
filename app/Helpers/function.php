@@ -313,6 +313,12 @@ function price_project($price, $acreage, $type_unit){
             ];
             return $price_result;
             break;
+        case 'Giá / Tháng':
+            $price_result = [
+                'total_price' =>  convert_number_to_words($price).' / Tháng'
+            ];
+            return $price_result;
+            break;
         default:
             $price_result = [
                 'total_price' => 'Giá thỏa thuận',
