@@ -6,7 +6,7 @@
 
 {{ Breadcrumbs::render('personal-article') }}
 
-<form class="filter-bar row" action="{{ route('auth.article') }}" method="get">
+<form class="filter-bar row" action="{{ route('post.article') }}" method="get">
     <div class="col-md-3 m-1">
         <select class="form-select py-2" aria-label="Status" name="trang-thai">
             <option {{ request()->get('trang-thai') == null ? 'selected' : '' }} disabled hidden>-- Trạng thái --</option>

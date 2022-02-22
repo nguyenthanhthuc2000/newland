@@ -8,7 +8,7 @@ Breadcrumbs::for('home', function ($trail) {
 // Home > personal-article
 Breadcrumbs::for('personal-article', function ($trail) {
     $trail->parent('home');
-    $trail->push('Bài viết cá nhân', route('auth.article'));
+    $trail->push('Bài viết cá nhân', route('post.article'));
 });
 
 // Home > personal-project

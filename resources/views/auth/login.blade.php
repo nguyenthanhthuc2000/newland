@@ -45,7 +45,7 @@
                 </div>
                 <div class="box__login__helper d-flex">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                        <input class="form-check-input" type="checkbox" name="remember" id="flexCheckChecked" checked>
                         <label class="form-check-label" for="flexCheckChecked">
                             Lưu đăng nhập
                         </label>

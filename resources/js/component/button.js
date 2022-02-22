@@ -9,7 +9,7 @@ $('button[type="reset"]').on('click', function() {
         }
     );
     if ($(this).hasClass("reload")) {
-        window.location.href = window.route('auth.article');
+        window.location.href = window.route('post.article');
     } else {
         window.location.href = window.route('article.index');
     }

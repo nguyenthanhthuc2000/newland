@@ -91,9 +91,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('destroy/{id}',  [PostController::class, 'destroy'])->name('post.destroy');
     Route::get('chinh-sua-bai-viet/{id}',  [PostController::class, 'edit'])->name('post.edit');
     Route::post('update/{id}',  [PostController::class, 'update'])->name('post.update');
+    Route::get('bai-viet-ca-nhan',  [PostController::class, 'personalArticle'])->name('post.article');
     // USER
     Route::get('thong-tin-ca-nhan',  [UserController::class, 'info'])->name('auth.info');
-    Route::get('bai-viet-ca-nhan',  [UserController::class, 'personalArticle'])->name('auth.article');
 
     //PROJECT
     Route::get('du-an-ca-nhan',  [ProjectController::class, 'personalProject'])->name('auth.project');

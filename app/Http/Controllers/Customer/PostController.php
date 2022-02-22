@@ -375,4 +375,26 @@ class PostController extends Controller
         }
         return response()->json(['status'=>'error', 'msg' => 'Cập nhật thất bại']);
     }
+
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function personalArticle(Request $request) {
+        $personalArticle = $this->artRepo->getByAttributes(['user_id' => Auth::id()]);
+        $articlesDeposited = $personalArticle->where('state', 1);
+        if($request){
+            if(isset($request->all()['trang-thai'])){
+                $personalArticle = $this->artRepo->getByAttributes(['user_id' => Auth::id(),'status'=> $request->all()['trang-thai']]);
+            }
+            if(isset($request->all()['tinh-trang'])){
+                $personalArticle = $this->artRepo->getByAttributes(['user_id' => Auth::id(), 'state'=> $request->all()['tinh-trang']]);
+            }
+        }
+        $data = [
+            'personalArticle' => $personalArticle,
+            'articlesDeposited' => $articlesDeposited,
+        ];
+        return view('pages.post.personal_article', $data);
+    }
 }

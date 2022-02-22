@@ -291,7 +291,8 @@ class AuthController extends Controller
             ]
         );
 
-        if (Auth::attempt(['phone' => $request->phone, 'password' => $request->password])) {
+        $remember = $request->has('remember') ? true : false;
+        if (Auth::attempt(['phone' => $request->phone, 'password' => $request->password], $remember)) {
             $ip = $this->getIp();
             if($ip){
                 $array = ['last_ip_login' => $ip];
