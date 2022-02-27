@@ -160,15 +160,15 @@ Route::middleware(['auth'])->group(function () {
 
         //TIN TUC
         Route::prefix("quan-li-tin-tuc")->group(function(){
+            Route::get('/them-moi/tin-tuc', [PostsController::class, 'create'])->name('news.add');
             Route::get('/{auto}', [PostsController::class, 'index'])->name('news.manage');
-            Route::get('them-moi-tin-tuc', [PostsController::class, 'create'])->name('news.add');
             Route::post('store', [PostsController::class, 'store'])->name('news.store');
             Route::post('update/{id}', [PostsController::class, 'update'])->name('news.update');
-            Route::get('chinh-sua/{id}', [PostsController::class, 'edit'])->name('news.edit');
+            Route::get('/chinh-sua-tin-tuc/{id}', [PostsController::class, 'edit'])->name('news.edit');
             Route::post('update-status-news', [PostsController::class, 'updateStatusNews'])->name('update-status-news');
-            Route::get('destroy/{id}', [PostsController::class, 'destroy'])->name('news.destroy');
-            Route::get('/{type}', [PostsController::class, 'editByType'])->name('news.edit.type');
-            Route::get('crawl/news-cafe-f', [PostsController::class, 'crawlNewsCafeF'])->name('news.crawl.news.cafe.f');
+            Route::get('/destroy/{id}', [PostsController::class, 'destroy'])->name('news.destroy');
+            Route::get('/chinh-sua-loai-tin/{type}', [PostsController::class, 'editByType'])->name('news.edit.type');
+            Route::get('/crawl/news-cafe-f', [PostsController::class, 'crawlNewsCafeF'])->name('news.crawl.news.cafe.f');
         });
 
     });

@@ -404,7 +404,7 @@ class PostsController extends Controller
         }
         $news = $this->postRepo->getByAttributes($attributes);
 
-        return view('admin.pages.news.index', compact('news'));
+        return view('admin.pages.news.index', compact('news', 'auto'));
     }
 
     /**
