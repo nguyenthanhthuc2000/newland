@@ -13,7 +13,7 @@
                             <div class="peers ai-c jc-sb gap-40">
                                 <div class="peer peer-greed d-flex" style="justify-content: space-between">
                                     <h5>Danh mục</h5>
-                                    <a href="#" class="btn__header__page btn"><i class="fal fa-plus"></i> Thêm</a>
+{{--                                    <a href="#" class="btn__header__page btn"><i class="fal fa-plus"></i> Thêm</a>--}}
                                 </div>
                             </div>
                         </div>
@@ -24,8 +24,8 @@
                                     <tr>
                                         <th class=" bdwT-0">Tên danh mục</th>
                                         <th class=" bdwT-0">Loại</th>
-                                        <th class=" bdwT-0 text-center">Trạng thái</th>
-                                        <th class=" bdwT-0 text-end">Thao tác</th>
+                                        <th class=" bdwT-0 text-end">Trạng thái</th>
+{{--                                        <th class=" bdwT-0 text-end">Thao tác</th>--}}
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -34,16 +34,16 @@
                                             <td class="fw-600"><a href="{{ route('admin.profile.customer', encrypt_decrypt($category->id)) }}">
                                                     {{ $category->name }}</a></td>
                                             <td class="fw-600">{{ $category->type == 1 ? 'Mua bán' : 'Cho thuê' }}</td>
-                                            <td class="fw-600 text-center">
-                                                <div class="form-check form-switch text-center">
+                                            <td class="fw-600 text-end">
+                                                <div class="form-check form-switch text-end">
                                                     <input class="form-check-input btn-status-category" type="checkbox"
                                                            data-id="{{ encrypt_decrypt($category->id) }}"
                                                            id="flexSwitchCheckDefault" {{ $category->status == 1 ? 'checked' : '' }}>
                                                 </div>
                                             </td>
-                                            <td class="text-end d-flex" style="justify-content: end">
-                                                <a href="#" class="td-n c-red-500 cH-blue-500 fsz-md p-5"><i class="ti-trash"></i></a>
-                                            </td>
+{{--                                            <td class="text-end d-flex" style="justify-content: end">--}}
+{{--                                                <a href="#" class="td-n c-red-500 cH-blue-500 fsz-md p-5"><i class="ti-trash"></i></a>--}}
+{{--                                            </td>--}}
                                         </tr>
                                     @endforeach
                                     </tbody>

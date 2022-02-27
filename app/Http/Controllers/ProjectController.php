@@ -142,6 +142,8 @@ class ProjectController extends Controller
                 $jsonInfo = json_encode(array_filter($arrayInfo));
                 $jsonAlbum = json_encode($arrayAlbum);
 
+//                dd($arrayDesignProject, $arrayExtension, array_filter($arrayInfo), $arrayAlbum);
+
                 //Lấy nội dung bài viết
                 $contents = $content1->filter('#wrap_description')->each(function ($n1) {
                     $str = '';

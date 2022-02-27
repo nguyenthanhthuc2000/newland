@@ -49,9 +49,9 @@
                                             </td>
                                             <td class="text-end " style="">
                                                 <div style="display: flex;    justify-content: end;">
-                                                    <a href="{{ route('project.edit', encrypt_decrypt($project->id)) }}" class="badge bgc-green-50 c-green-700 p-15 lh-0 tt-c rounded-pill btn__confirm m-1"
-                                                       data-id="{{ $project->id }}">Sửa
-                                                    </a>
+{{--                                                    <a href="{{ route('project.edit', encrypt_decrypt($project->id)) }}" class="badge bgc-green-50 c-green-700 p-15 lh-0 tt-c rounded-pill btn__confirm m-1"--}}
+{{--                                                       data-id="{{ $project->id }}">Sửa--}}
+{{--                                                    </a>--}}
                                                     <a  href="{{ route('project.destroy', $project->id) }}" class="badge bgc-red-50 c-red-700 p-15 lh-0 tt-c rounded-pill btn__confirm btn_destroy_project m-1"
                                                         data-id="{{ $project->id }}">Xóa
                                                     </a>
