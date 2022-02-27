@@ -17,97 +17,6 @@
                                 @endif
                             </div>
                         </div>
-                        {{--                        <div class="">--}}
-                        {{--                            <form action="" method="get">--}}
-                        {{--                                <div class="row" style=" padding: 0 20px;">--}}
-                        {{--                                    <div class="col-md-3 p-5">--}}
-                        {{--                                        <div class="row" style="align-items: center">--}}
-                        {{--                                            <div class="col-3">--}}
-                        {{--                                                <span>TrạngThái</span>--}}
-                        {{--                                            </div>--}}
-                        {{--                                            <div class="col-9">--}}
-                        {{--                                                <select class="form-select py-2" aria-label="Status" name="status">--}}
-                        {{--                                                    <option value="0" {{ request()->get('status') == '' ? 'selected' : ''}}>-- Tất cả --</option>--}}
-                        {{--                                                    <option value="0" {{ request()->get('status') == '0' ? 'selected' : ''}}>Chờ duyệt</option>--}}
-                        {{--                                                    <option value="1" {{ request()->get('status') == '1' ? 'selected' : ''}}>Đã duyệt</option>--}}
-                        {{--                                                    <option value="2" {{ request()->get('status') == '2' ? 'selected' : ''}}>Đã từ chối</option>--}}
-                        {{--                                                </select>--}}
-                        {{--                                            </div>--}}
-                        {{--                                        </div>--}}
-                        {{--                                    </div>--}}
-                        {{--                                    <div class="col-md-3 p-5">--}}
-                        {{--                                        <div class="row" style="align-items: center">--}}
-                        {{--                                            <div class="col-3">--}}
-                        {{--                                                <span>Loại tin</span>--}}
-                        {{--                                            </div>--}}
-                        {{--                                            <div class="col-9">--}}
-                        {{--                                                <select class="form-select py-2" aria-label="Status" name="vip">--}}
-                        {{--                                                    <option value="0" {{ request()->get('loai') == '4' ? 'selected' : ''}}>-- Tất cả --</option>--}}
-                        {{--                                                    <option value="0" {{ request()->get('loai') == '0' ? 'selected' : ''}}>Thường</option>--}}
-                        {{--                                                    <option value="1" {{ request()->get('loai') == '1' ? 'selected' : ''}}>Vip 1</option>--}}
-                        {{--                                                    <option value="2" {{ request()->get('loai') == '2' ? 'selected' : ''}}>Vip 2</option>--}}
-                        {{--                                                    <option value="3" {{ request()->get('loai') == '3' ? 'selected' : ''}}>Vip 3</option>--}}
-                        {{--                                                </select>--}}
-                        {{--                                            </div>--}}
-                        {{--                                        </div>--}}
-                        {{--                                    </div>--}}
-                        {{--                                    <div class="col-md-3 p-5">--}}
-                        {{--                                        <div class="row" style="align-items: center">--}}
-                        {{--                                            <div class="col-3">--}}
-                        {{--                                                <span>Nổi bật</span>--}}
-                        {{--                                            </div>--}}
-                        {{--                                            <div class="col-9">--}}
-                        {{--                                                <select class="form-select py-2" aria-label="Status" name="featured">--}}
-                        {{--                                                    <option value="0" {{ request()->get('noi_bat') == '2' ? 'selected' : ''}}>-- Tất cả --</option>--}}
-                        {{--                                                    <option value="0" {{ request()->get('noi_bat') == '0' ? 'selected' : ''}}>Có</option>--}}
-                        {{--                                                    <option value="1" {{ request()->get('noi_bat') == '1' ? 'selected' : ''}}>Không</option>--}}
-                        {{--                                                </select>--}}
-                        {{--                                            </div>--}}
-                        {{--                                        </div>--}}
-                        {{--                                    </div>--}}
-                        {{--                                    <div class="col-md-3 p-5">--}}
-                        {{--                                        <div class="row" style="align-items: center">--}}
-                        {{--                                            <div class="col-3">--}}
-                        {{--                                                <span>TìnhTrạng</span>--}}
-                        {{--                                            </div>--}}
-                        {{--                                            <div class="col-9">--}}
-                        {{--                                                <select class="form-select py-2" aria-label="Status" name="state">--}}
-                        {{--                                                    <option value="0" {{ request()->get('tinh_trang') == '4' ? 'selected' : ''}}>-- Tất cả --</option>--}}
-                        {{--                                                    <option value="0" {{ request()->get('tinh-trang') == '0' ? 'selected' : ''}}>Tin mới</option>--}}
-                        {{--                                                    <option value="1" {{ request()->get('tinh-trang') == '1' ? 'selected' : ''}}>Đã đặt cọc</option>--}}
-                        {{--                                                    <option value="2" {{ request()->get('tinh-trang') == '2' ? 'selected' : ''}}>Đã được bán</option>--}}
-                        {{--                                                    <option value="3" {{ request()->get('tinh-trang') == '3' ? 'selected' : ''}}>Đã được thuê</option>--}}
-                        {{--                                                </select>--}}
-                        {{--                                            </div>--}}
-                        {{--                                        </div>--}}
-                        {{--                                    </div>--}}
-                        {{--                                    <div class="col-md-3  p-5">--}}
-                        {{--                                        <div class="row" style="align-items: center">--}}
-                        {{--                                            <div class="col-3">--}}
-                        {{--                                                <span>Từ</span>--}}
-                        {{--                                            </div>--}}
-                        {{--                                            <div class="col-9">--}}
-                        {{--                                                <input type="date" name="created_at" value="{{ request()->get('from_day')  ? request()->get('to_day') : getCurrentDay()}}" class="form-control p-input filter-date" >--}}
-                        {{--                                            </div>--}}
-                        {{--                                        </div>--}}
-                        {{--                                    </div>--}}
-                        {{--                                    <div class="col-md-3  p-5">--}}
-                        {{--                                        <div class="row" style="align-items: center">--}}
-                        {{--                                            <div class="col-3">--}}
-                        {{--                                                <span>Đến</span>--}}
-                        {{--                                            </div>--}}
-                        {{--                                            <div class="col-9">--}}
-                        {{--                                                <input type="date" name="to_day" value="{{ request()->get('to_day')  ? request()->get('to_day') : getCurrentDay()}}" class="form-control p-input filter-date" >--}}
-                        {{--                                            </div>--}}
-                        {{--                                        </div>--}}
-                        {{--                                    </div>--}}
-                        {{--                                    <div class="col-md-6 p-5 d-flex" style="justify-content: end">--}}
-                        {{--                                        <button type="reset" class="btn btn-mute"><i class="fal fa-sync btn__filter"></i></button>--}}
-                        {{--                                        <button class="btn btn-primary btn__border" style="color:#fff;">Tìm kiếm</button>--}}
-                        {{--                                    </div>--}}
-                        {{--                                </div>--}}
-                        {{--                            </form>--}}
-                        {{--                        </div>--}}
                         <div class="table-responsive p-20">
                             @if($projects->count() > 0)
                                 <table class="table">
@@ -129,7 +38,7 @@
                                                 <img class="img__table" target="_blank" src="{{ getImageCrawl($project->photo, $project->crawl, 'project') }}">
                                                 {{--                                                <img class="img__table" target="_blank" src="{{ $n->photo }}">--}}
                                             </td>
-                                            <td class="fw-600"><a href="" class="text-split-2">{{ $project->name }}</a></td>
+                                            <td class="fw-600"><a href="{{ route('project.detail', $project->slug) }}" class="text-split-2">{{ $project->name }}</a></td>
                                             <td>
                                             {{ formatTime($project->created_at) }}
                                             <td class="text-center">

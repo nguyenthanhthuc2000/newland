@@ -7,10 +7,6 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
-    protected $commands = [
-        //
-        Commands\CrawlNewsBdsCafef::class,
-    ];
     /**
      * Define the application's command schedule.
      *
@@ -19,8 +15,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-//        $schedule->command('touch:crawlNews')->dailyAt('00:01');
         $schedule->command('sync:newsCafeF')->everyFourHours();
+        $schedule->command('sync:projectCenhomes')->everyFourHours();
     }
 
     /**

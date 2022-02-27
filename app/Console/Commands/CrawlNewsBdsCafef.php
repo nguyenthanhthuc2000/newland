@@ -130,5 +130,6 @@ class CrawlNewsBdsCafef extends Command
                 }
             }
         });
+        $this->info('Crawl news successfully');
     }
 }

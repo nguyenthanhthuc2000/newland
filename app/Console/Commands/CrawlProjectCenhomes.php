@@ -1,83 +1,45 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Console\Commands;
 
-use Illuminate\Http\Request;
-use Auth;
-use App\Models\Province;
 use App\Models\District;
+use App\Models\Province;
 use App\Models\Ward;
+use Illuminate\Console\Command;
 
-class ProjectController extends Controller
+class CrawlProjectCenhomes extends Command
 {
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'sync:projectCenhomes';
 
-    public function createProject(){
-        $direction = $this->dirRepo->getOrDerBy()->reverse();
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Command description';
 
-        $province = Controller::getProvince();
-        $typeProject = $this->proTypeRepo->getByAttributesAll(['status' => 1]);
-
-        return view('pages.project.form_project', compact('direction', 'province', 'typeProject'));
+    /**
+     * Create a new command instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * Execute the console command.
+     *
+     * @return int
      */
-    public function personalProject(){
-
-        $personalProject = $this->projectRepo->getByAttributes(['user_id' => Auth::id()]);
-
-        return view('pages.project.personal_project', compact('personalProject'));
-    }
-
-    /**
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function destroy($id){
-        $project = $this->projectRepo->find($id);
-        if($project){
-            if($this->projectRepo->delete($id)){
-                return redirect()->back()->with('success', 'Xóa thành công!');
-            }
-            return redirect()->back()->with('error', 'Xóa thất bại, thử lại sau!');
-        }
-        return redirect()->back()->with('error', 'Xóa thất bại, thử lại sau!');
-    }
-
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function updateStatus(Request $request){
-        $attributes = [
-            'status' => $request->status
-        ];
-        if($this->projectRepo->update($request->id, $attributes)){
-            return response()->json(['status' => 200]);
-        }
-        return response()->json(['status' => 500]);
-    }
-
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function index($auto){
-        if($auto == 'tu-dong'){
-            $attributes = [
-                'auto' => 1
-            ];
-        }
-        else {
-            $attributes = [
-                'auto' => 0
-            ];
-        }
-        $projects = $this->projectRepo->getByAttributes($attributes);
-        return view('admin.pages.project.index', compact('projects', 'auto'));
-    }
-
-    public function crawlProject(){
+    public function handle()
+    {
         ini_set('max_execution_time', 360);
         $page = 1;
         for ($page; $page < 5; $page++){
@@ -188,14 +150,14 @@ class ProjectController extends Controller
                     $getProvince = Province::where('_name', 'LIKE', $proName)->first();
                     if($getProvince){
 
-    //                    if($getProvince == null){
-    //                        $query = $this->proProvinceRepo->create(['name' => $pro]);
-    //
-    //                        $project_province_id = $query->id;
-    //                    }
-    //                    else{
-                            $project_province_id = $getProvince->id;
-    //                    }
+                        //                    if($getProvince == null){
+                        //                        $query = $this->proProvinceRepo->create(['name' => $pro]);
+                        //
+                        //                        $project_province_id = $query->id;
+                        //                    }
+                        //                    else{
+                        $project_province_id = $getProvince->id;
+                        //                    }
 
                         $district = str_replace('Thành phố', '', $district);
                         $district = str_replace('Quận', '', $district);
@@ -209,7 +171,7 @@ class ProjectController extends Controller
 //                        $project_district_id = $query->id;
 //                    }
 //                    else{
-                        $project_district_id = $getDistrict->id;
+                            $project_district_id = $getDistrict->id;
 //                    }
                             $ward = str_replace('Phường', '', $ward);
                             $ward = str_replace('Xã', '', $ward);
@@ -265,7 +227,6 @@ class ProjectController extends Controller
                 }
             });
         }
-
-        return redirect()->back()->with('success', 'Cập nhật thành công!');
+        $this->info('Crawl project successfully');
     }
 }
