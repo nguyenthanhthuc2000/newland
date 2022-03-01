@@ -238,7 +238,7 @@ class ProjectController extends Controller
                                     'source' => $url,
                                     'content' => $content,
                                     'design_project' => $jsonProjectDesign,
-                                    'extension' => $jsonExtension,
+                                    'utilities' => $jsonExtension,
                                     'album' => $jsonAlbum,
                                     'options' => $jsonInfo,
                                     'status' => 1,

@@ -1,0 +1,23 @@
+.utilitie-project {
+    position: relative;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    span {
+        margin-left: 25px;
+    }
+    &::after {
+        content: url(/icon-checkbox-checked.svg);
+        position: absolute;
+        width: 30px;
+        height: 18px;
+        margin-right: 5px;
+        left: 0;
+    }
+}
+
+.main-content {
+    img {
+        width: 100%;
+    }
+}

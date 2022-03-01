@@ -4,9 +4,9 @@
 @endsection
 @section('main')
     <div class="row">
-        <div class="post-form-action col-8 pt-3">
+        <div class="post-form-action col-md-8 pt-3">
             <h3>{{ $title }}</h3>
-            <p>Hiện có {{ $list->count() }} tin tức.</p>
+{{--            <p>Hiện có {{ $list->count() }} tin tức.</p>--}}
             <div class="l__a">
                 @if ($list->count() == 0)
                     <strong>Không có bài viết.</strong>

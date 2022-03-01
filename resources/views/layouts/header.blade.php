@@ -21,6 +21,7 @@
                             Nhà đất bán
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="nha-dat-ban">
+                                <li><a class="dropdown-item" href="#">Tất cả</a></li>
                                 @foreach ($sell as $item)
                                     <li><a class="dropdown-item" href="{{route('category.index', $item->slug) }}">{{ $item->name }}</a></li>
                                 @endforeach
@@ -31,6 +32,7 @@
                             Nhà đất cho thuê
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="nha-dat-cho-thue">
+                                <li><a class="dropdown-item" href="#">Tất cả</a></li>
                                 @foreach ($lease as $item)
                                     <li><a class="dropdown-item" href="{{route('category.index', $item->slug) }}">{{ $item->name }}</a></li>
                                 @endforeach
@@ -48,9 +50,15 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link line__hover " href="{{ route('project.index') }}" id="" >
+                            <a class="nav-link line__hover dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Dự án
                             </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{{ route('project.index') }}">Tất cả</a></li>
+                                @foreach ($projectTypes as $projectType)
+                                <li><a class="dropdown-item" href="#">{{ $projectType->name }}</a></li>
+                                @endforeach
+                            </ul>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link line__hover " href="{{ route('news.index') }}" id="" >

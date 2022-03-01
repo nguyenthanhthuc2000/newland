@@ -19,6 +19,7 @@ class ComposerServiceProvider extends ServiceProvider
             $data = [
                 'sell' => DB::table('category')->where('type', 0)->get(),
                 'lease' => DB::table('category')->where('type', 1)->get(),
+                'projectTypes' => DB::table('project_type')->where('status', 1)->get(),
                 'province' => DB::table('province')->get(),
                 'settings' => getSetting(),
                 'getSliders' => getSlider(),

@@ -24,7 +24,7 @@ class CreateTableProject extends Migration
             $table->integer('project_province_id')->nullable();
             $table->integer('project_district_id')->nullable();
             $table->text('album')->nullable();
-            $table->text('extension')->nullable();
+            $table->text('utilities')->nullable();
             $table->text('design_project')->nullable();
             $table->longText('content')->nullable();
             $table->string('investor')->nullable()->comment('Chủ đầu tư');
