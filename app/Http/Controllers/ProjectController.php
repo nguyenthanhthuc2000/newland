@@ -130,7 +130,7 @@ class ProjectController extends Controller
                 //Lấy tiện ích
                 $arrayExtension = $content1->filter('.block-extension p')->each(function ($info) {
 
-                    $type = str_replace('&amp;', ' & ', $info->html());
+                    return str_replace('&amp;', ' & ', $info->html());
                 });
 
                 //Lấy Sơ đồ mặt bằng
