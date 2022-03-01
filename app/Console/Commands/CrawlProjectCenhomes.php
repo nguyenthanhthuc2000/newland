@@ -69,12 +69,12 @@ class CrawlProjectCenhomes extends Command
 
                 //Lấy thông tin chi tiết
                 $arrayInfo = $content1->filter('#information-tab .mb-16')->each(function ($info) {
-                    $key = $info->filter('label')->html();
+                    $key = str_replace('&amp;', ' & ', $info->filter('label')->html());
 
                     $value = '';
                     try {
                         //Lấy nội dung thừa
-                        $value = $info->filter('span')->html();
+                        $value = str_replace('&amp;', ' & ', $info->filter('span')->html());
                         $arr = [
                             $key => $value
                         ];
@@ -91,7 +91,8 @@ class CrawlProjectCenhomes extends Command
 
                 //Lấy tiện ích
                 $arrayExtension = $content1->filter('.block-extension p')->each(function ($info) {
-                    return $info->html();
+
+                    $type = str_replace('&amp;', ' & ', $info->html());
                 });
 
                 //Lấy Sơ đồ mặt bằng
