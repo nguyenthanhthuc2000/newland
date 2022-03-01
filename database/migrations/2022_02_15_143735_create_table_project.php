@@ -20,9 +20,9 @@ class CreateTableProject extends Migration
             $table->string('code')->nullable();
             $table->string('photo')->nullable();
             $table->integer('type')->nullable();
-            $table->integer('project_ward_id')->nullable();
-            $table->integer('project_province_id')->nullable();
-            $table->integer('project_district_id')->nullable();
+            $table->integer('ward_id')->nullable();
+            $table->integer('province_id')->nullable();
+            $table->integer('district_id')->nullable();
             $table->text('album')->nullable();
             $table->text('utilities')->nullable();
             $table->text('design_project')->nullable();

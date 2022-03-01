@@ -3,7 +3,7 @@
 @section('main')
     <div class="detail-news">
         <div class="row content">
-            <div class="col-8">
+            <div class="col-md-9">
                 <h1 class="title">
                     {{ $detail->title }}
                 </h1>
@@ -16,6 +16,7 @@
                     <p class="author">Nguồn: <a href="{{ $detail->source }}">{{ $detail->source }}</a></p>
                 </div>
             </div>
+            <div class="col-md-3"></div>
         </div>
     </div>
 @endsection

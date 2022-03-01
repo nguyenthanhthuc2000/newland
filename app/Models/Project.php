@@ -13,4 +13,19 @@ class Project extends Model
     protected $guarded = [];
     public $timestamps = true;
     protected $perPage = 15;
+
+    public function ward()
+    {
+        return $this->hasOne(Ward::class, 'id', 'ward_id');
+    }
+
+    public function province()
+    {
+        return $this->hasOne(Province::class, 'id', 'province_id');
+    }
+
+    public function district()
+    {
+        return $this->hasOne(District::class, 'id', 'district_id');
+    }
 }
