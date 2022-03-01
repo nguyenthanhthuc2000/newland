@@ -358,9 +358,9 @@ class PostsController extends Controller
 
                 $query = $this->postRepo->update($news->id, $arrayData);
                 if($query){
-                    return redirect()->route('news.manage', $news->type)->with('success', 'Cập nhật tin tức thành công');
+                    return redirect()->route('news.manage', $news->auto == 1 ? 'tu-dong' : 'da-dang' )->with('success', 'Cập nhật tin tức thành công');
                 }
-                return redirect()->route('news.manage',  $news->type)->with('error', 'Cập nhật thất bại, thử lại sau!');
+                return redirect()->route('news.manage',  $news->auto == 1 ? 'tu-dong' : 'da-dang' )->with('error', 'Cập nhật thất bại, thử lại sau!');
             }
             else{
                 $this->validate($request,
