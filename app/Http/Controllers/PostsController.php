@@ -358,9 +358,9 @@ class PostsController extends Controller
 
                 $query = $this->postRepo->update($news->id, $arrayData);
                 if($query){
-                    return redirect()->route('news.manage')->with('success', 'Cập nhật tin tức thành công');
+                    return redirect()->route('news.manage', $news->type)->with('success', 'Cập nhật tin tức thành công');
                 }
-                return redirect()->route('news.manage')->with('error', 'Cập nhật thất bại, thử lại sau!');
+                return redirect()->route('news.manage',  $news->type)->with('error', 'Cập nhật thất bại, thử lại sau!');
             }
             else{
                 $this->validate($request,
@@ -383,7 +383,7 @@ class PostsController extends Controller
             }
         }
 
-        return redirect()->route('news.manage')->with('error', 'Không tìm thấy tin tức!');
+        return redirect()->route('news.manage', 'da-dang')->with('error', 'Không tìm thấy tin tức!');
     }
 
     /**
@@ -459,8 +459,8 @@ class PostsController extends Controller
 
         $query = $this->postRepo->create($arrayData);
         if($query){
-            return redirect()->route('news.manage')->with('success', 'Thêm mới tin tức thành công');
+            return redirect()->route('news.manage', 'da-dang')->with('success', 'Thêm mới tin tức thành công');
         }
-        return redirect()->route('news.manage')->with('error', 'Thêm mới tin tức thất bại, thử lại sau');
+        return redirect()->route('news.manage', 'da-dang')->with('error', 'Thêm mới tin tức thất bại, thử lại sau');
     }
 }
