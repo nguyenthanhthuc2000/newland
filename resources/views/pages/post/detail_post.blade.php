@@ -156,9 +156,17 @@
                         <a href="{{ route('article.SameEntrant', $detailArticle->user->id) }}" class="b__ct-info-article ">Xem thêm {{ $countArticleOfUser }} tin khác</a>
                 </div>
                 <div class="b__ct-contact">
-                    <button class="b__ct-contact-btn b__ct-contact-phone" title="Sao chép" id="phone_contact" value="0389946423">
+                    {{-- <button class="b__ct-contact-btn b__ct-contact-phone" title="Sao chép" id="phone_contact" value="0389946423">
                         {{ $detailArticle->phone_contact }}
-                    </button>
+                    </button> --}}
+                    @php
+                        $phone = explode(',', $detailArticle->phone_contact);
+                    @endphp
+                    @for ($i = 0; $i <= 1; $i++)
+                        <a class="b__ct-contact-btn b__ct-contact-phone" title="Sao chép" id="phone_contact" href="{{ $phone[$i] }}">
+                            {{ $phone[$i] }}
+                        </a>
+                    @endfor
                     <br>
                     <a href="mailto:nguyenthanhthuc@gmail.com" class="b__ct-contact-btn b__ct-contact-mail">Gửi mail</a>
                     <br>

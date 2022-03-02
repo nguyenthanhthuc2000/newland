@@ -121,7 +121,9 @@ abstract class BaseRepository implements RepositoryInterface
 
     public function getItemsBySlug($slug){
         $result = $this->model->where('slug', $slug)->first();
-
+        if(!$result){
+            return abort(404);
+        }
         return $result;
     }
 
