@@ -3,10 +3,10 @@
     {{ $title }}
 @endsection
 @section('main')
-    <div class="row">
+    <div class="row news-list">
         <div class="post-form-action col-md-8 pt-3">
             <h3>{{ $title }}</h3>
-{{--            <p>Hiện có {{ $list->count() }} tin tức.</p>--}}
+            <p>Hiện có {{ $list->count() }} tin tức.</p>
             <div class="l__a">
                 @if ($list->count() == 0)
                     <strong>Không có bài viết.</strong>
@@ -20,7 +20,7 @@
                             <a class="l__a-article-img col-sm-4 col-5 card-image{{ ($l->featured == 1) ? ' card-featured' : '' }}">
                                 <img class="w-100 img-fluid img" src="{{ $l->photo }}" alt="">
                             </a>
-                            <div class="l__a-article-content col-sm-8 col-7 p-3">
+                            <div class="l__a-article-content col-sm-8 col-7 p-3 position-relative">
                                 <a href="{{ route('news.detail', $l->slug) }}" class="card-body">
                                     <h5 class="content-title text-split-2 {{ $l->featured == 1 ? 'color-red' : 'color-blue' }}">
                                        {{ $l->title }}
