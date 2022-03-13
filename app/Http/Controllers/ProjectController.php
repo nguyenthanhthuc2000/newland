@@ -246,9 +246,9 @@ class ProjectController extends Controller
                                     'crawl' => 1,
                                     'auto' => 1,
                                     'type' => 1,
-                                    'project_ward_id' => $project_ward_id,
-                                    'project_province_id' => $project_province_id,
-                                    'project_district_id' => $project_district_id
+                                    'ward_id' => $project_ward_id,
+                                    'province_id' => $project_province_id,
+                                    'district_id' => $project_district_id
                                 ];
 
 //                                dd($data);
