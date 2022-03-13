@@ -92,7 +92,7 @@ class AuthController extends Controller
             [
                 'password_old' => 'required',
                 'password_new' => 'required',
-                'password_confirm' => 'required|same:password_new',
+                    'password_confirm' => 'required|same:password_new',
             ],
             [
                 'password_old.required' => 'Mật khẩu cũ không được để trống',
