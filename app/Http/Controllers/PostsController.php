@@ -13,6 +13,64 @@ class PostsController extends Controller
     public $num = 0;
     public $listID = [];
 
+
+    public function getNewsDetail($id) {
+
+        try {
+            $news = DB::table('posts')->where('id', $id)->first();
+            if($news != null) {
+                return response()->json(
+                    [
+                        'status' => 200,
+                        'news'  => $news,
+                        'message' => 'Lấy chi tiết bài viết thành công!'
+                    ]
+                );
+            }
+            return response()->json(
+                [
+                    'status' => 404,
+                    'message' => 'Không tìm thấy bài viết'
+                ]
+            );
+        }
+        catch (\Exception $exception) {
+
+            return response()->json(
+                [
+                    'status' => 500,
+                    'message' => 'Lỗi hệ thống vui lòng thử lại sau!'
+                ]
+            );
+        }
+    }
+    public function getNews() {
+        try {
+            $news = DB::table('posts')->orderBy('id', 'DESC');
+            $paginate = $news->paginate(10);
+            return response()->json(
+                [
+                    'status' => 200,
+                    'total'     => $paginate->total(),
+                    'from'      => $paginate->firstItem(),
+                    'to'        => $paginate->lastItem(),
+                    'last_page' => $paginate->lastPage(),
+                    'news'  => $news->get(),
+                    'message' => 'Lấy bài viết thành công!'
+                ]
+            );
+        }
+        catch (\Exception $exception) {
+
+            return response()->json(
+                [
+                    'status' => 500,
+                    'message' => 'Lỗi hệ thống vui lòng thử lại sau!'
+                ]
+            );
+        }
+    }
+
     public function crawlNewsCafeF(){
         try {
             ini_set('max_execution_time', 360);

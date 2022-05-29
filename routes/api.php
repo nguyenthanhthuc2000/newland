@@ -19,4 +19,6 @@ use App\Http\Controllers\PostsController;
 //    return $request->user();
 //});
 
-Route::get('/crawl-news', [PostsController::class, 'crawlNewsCafeF'])->name('news.crawl.news.cafe.f');
+Route::get('/crawl-news', [PostsController::class, 'crawlNewsCafeF']);
+Route::get('news', [PostsController::class, 'getNews']);
+Route::get('news/{id}', [PostsController::class, 'getNewsDetail']);
