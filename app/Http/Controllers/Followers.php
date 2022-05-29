@@ -31,11 +31,13 @@ class Followers extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function follow(Request $request){
+
         $data = [
             'email' => $request->email
         ];
+
         if($this->followerRepo->create($data)){
-            return response()->json([ 'status'=> 200]);
+            return response()->json([ 'status'=> 200, 'message' => 'Đăng kí thành công!']);
         }
         return response()->json([ 'status'=> 500]);
     }
