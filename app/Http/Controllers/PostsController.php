@@ -6,18 +6,76 @@ use Illuminate\Http\Request;
 use File;
 use DOMDocument;
 use DB;
+use Laravel\Ui\Presets\React;
 
 class PostsController extends Controller
 {
 
+    public function deleteCenHome ($id) {
+        try {
+            $query = DB::table('project')->where('id', $id)->delete();
+            if($query) {
+                return response()->json(
+                    [
+                        'status' => 200,
+                        'message' => 'Xóa dự án thành công!'
+                    ]
+                );
+            }
+            return response()->json(
+                [
+                    'status' => 404,
+                    'message' => 'Không tìm thấy dự án'
+                ]
+            );
+        }
+        catch (\Exception $exception) {
+
+            return response()->json(
+                [
+                    'status' => 500,
+                    'message' => 'Lỗi hệ thống vui lòng thử lại sau!'
+                ]
+            );
+        }
+    }
+
+    public function deleteCafeF ($id) {
+        try {
+            $query = DB::table('article')->where('id', $id)->delete();
+            if($query) {
+                return response()->json(
+                    [
+                        'status' => 200,
+                        'message' => 'Xóa bài viết thành công!'
+                    ]
+                );
+            }
+            return response()->json(
+                [
+                    'status' => 404,
+                    'message' => 'Không tìm thấy bài viết'
+                ]
+            );
+        }
+        catch (\Exception $exception) {
+
+            return response()->json(
+                [
+                    'status' => 500,
+                    'message' => 'Lỗi hệ thống vui lòng thử lại sau!'
+                ]
+            );
+        }
+    }
+
+
     public $num = 0;
     public $listID = [];
-
-
     public function getNewsDetail($id) {
 
         try {
-            $news = DB::table('posts')->where('id', $id)->first();
+            $news = DB::table('article')->where('type', 0)->where('id', $id)->first();
             if($news != null) {
                 return response()->json(
                     [
@@ -46,7 +104,7 @@ class PostsController extends Controller
     }
     public function getNews() {
         try {
-            $news = DB::table('posts')->orderBy('id', 'DESC');
+            $news = DB::table('article')->where('type', 0)->orderBy('id', 'DESC');
             $paginate = $news->paginate(10);
             return response()->json(
                 [
