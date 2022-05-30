@@ -27,13 +27,8 @@ class RequestContactController extends Controller
             "phone" => "required|max:12",
             "content" => "required",
             "article_id" => "required",
+            "email" => "required|email:rfc,dns|max:65",
         ]);
-
-        if($request->email){
-            $validator = Validator::make($request->all(), [
-                "email" => "required|email:rfc,dns|max:65",
-            ]);
-        }
         
         if($validator->fails()){
             return response()->json([
