@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        dd(Hash::make('12345678'));
         $articles = $this->artRepo->getByStatus([1])->where('state', 0);
         $featureArticled = $articles->where('featured', 1);
         $news = $this->postRepo->getByAttributes(['status' => 1]);

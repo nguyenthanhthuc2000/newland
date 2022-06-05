@@ -3,67 +3,205 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use File;
 use DOMDocument;
 use DB;
-use Laravel\Ui\Presets\React;
+use App\Models\User;
+use Auth;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class PostsController extends Controller
 {
 
-    public function deleteCenHome ($id) {
-        try {
-            $query = DB::table('project')->where('id', $id)->delete();
-            if($query) {
+    public function updateStatusCafeF(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required',
+            'status' => 'required',
+        ]);
+        if($validator->fails()){
+            return response()->json([
+                'validation_errors' => $validator->messages()
+            ]);
+        }
+        $level = auth()->user()->level;
+        if($level == 2) {
+            try {
+                $query = DB::table('article')->find($request->id);
+                if($query != null) {
+                    DB::table('article')->where('id', $request->id)->update(['status' => $request->status]);
+                    return response()->json(
+                        [
+                            'status' => 200,
+                            'message' => 'Cập nhật trạng thái bài viết thành công!'
+                        ]
+                    );
+                }
                 return response()->json(
                     [
-                        'status' => 200,
-                        'message' => 'Xóa dự án thành công!'
+                        'status' => 404,
+                        'message' => 'Không tìm thấy bài viết'
                     ]
                 );
             }
-            return response()->json(
-                [
-                    'status' => 404,
-                    'message' => 'Không tìm thấy dự án'
-                ]
-            );
-        }
-        catch (\Exception $exception) {
+            catch (\Exception $exception) {
 
+                return response()->json(
+                    [
+                        'status' => 500,
+                        'message' => 'Lỗi hệ thống vui lòng thử lại sau!'
+                    ]
+                );
+            }
+        }
+        else {
             return response()->json(
                 [
-                    'status' => 500,
-                    'message' => 'Lỗi hệ thống vui lòng thử lại sau!'
+                    'status' => 403,
+                    'message' => 'Không có quyền truy cập!'
                 ]
             );
         }
     }
 
-    public function deleteCafeF ($id) {
-        try {
-            $query = DB::table('article')->where('id', $id)->delete();
-            if($query) {
+    public function follow(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|max:65|email',
+        ]);
+        if($validator->fails()){
+            return response()->json([
+                'validation_errors' => $validator->messages()
+            ]);
+        }
+        if(DB::table('followers')->insert(['email' => $request->email])){
+            return response()->json([ 'status'=> 200, 'message' => 'Đăng kí thành công!']);
+        }
+        return response()->json([
+            'status' => 500,
+            'message' => 'Lỗi hệ thống vui lòng thử lại sau!'
+        ]);
+    }
+
+    public function logout(){
+        auth()->user()->tokens()->delete();
+        return response()->json([
+            'status' => 200,
+            'message' => 'Đăng xuất thành công'
+        ]);
+    }
+
+    public function login(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|max:65|email',
+            'password' => 'required|min:8',
+        ]);
+        if($validator->fails()){
+            return response()->json([
+                'validation_errors' => $validator->messages()
+            ]);
+        }
+        else{
+            $remember = $request->has('remember') ? true : false;
+            if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember )) {
+
+                $user = User::where('email', $request->email)->first();
+                $createToken = $user->createToken($user->email.'_Token');
+                $token = $createToken->plainTextToken;
+                $user->token = $token;
+                $user->expired_at = Carbon::now()->addDay(1)->toDateTimeString();
+                return response()->json([
+                    'status' => 200,
+                    'user' => $user,
+                    'message' => 'Đăng nhập thành công',
+                ]);
+
+            }
+            else{
+                return response()->json([
+                    'status' => 401,
+                    'message' => 'Sai tài khoản hoặc mật khẩu'
+                ]);
+            }
+        }
+    }
+
+    public function deleteCenHome ($id) {
+        $level = auth()->user()->level;
+        if($level == 2) {
+            try {
+                $query = DB::table('project')->where('id', $id)->delete();
+                if($query) {
+                    return response()->json(
+                        [
+                            'status' => 200,
+                            'message' => 'Xóa dự án thành công!'
+                        ]
+                    );
+                }
                 return response()->json(
                     [
-                        'status' => 200,
-                        'message' => 'Xóa bài viết thành công!'
+                        'status' => 404,
+                        'message' => 'Không tìm thấy dự án'
                     ]
                 );
             }
+            catch (\Exception $exception) {
+    
+                return response()->json(
+                    [
+                        'status' => 500,
+                        'message' => 'Lỗi hệ thống vui lòng thử lại sau!'
+                    ]
+                );
+            }
+        }
+        else {
             return response()->json(
                 [
-                    'status' => 404,
-                    'message' => 'Không tìm thấy bài viết'
+                    'status' => 403,
+                    'message' => 'Không có quyền truy cập!'
                 ]
             );
         }
-        catch (\Exception $exception) {
 
+    }
+
+    public function deleteCafeF ($id) {
+        $level = auth()->user()->level;
+        if($level == 2) {
+            try {
+                $query = DB::table('article')->where('id', $id)->delete();
+                if($query) {
+                    return response()->json(
+                        [
+                            'status' => 200,
+                            'message' => 'Xóa bài viết thành công!'
+                        ]
+                    );
+                }
+                return response()->json(
+                    [
+                        'status' => 404,
+                        'message' => 'Không tìm thấy bài viết'
+                    ]
+                );
+            }
+            catch (\Exception $exception) {
+
+                return response()->json(
+                    [
+                        'status' => 500,
+                        'message' => 'Lỗi hệ thống vui lòng thử lại sau!'
+                    ]
+                );
+            }
+        }
+        else {
             return response()->json(
                 [
-                    'status' => 500,
-                    'message' => 'Lỗi hệ thống vui lòng thử lại sau!'
+                    'status' => 403,
+                    'message' => 'Không có quyền truy cập!'
                 ]
             );
         }
@@ -103,6 +241,7 @@ class PostsController extends Controller
         }
     }
     public function getNews() {
+
         try {
             $news = DB::table('article')->where('type', 0)->orderBy('id', 'DESC');
             $paginate = $news->paginate(10);
@@ -130,114 +269,125 @@ class PostsController extends Controller
     }
 
     public function crawlNewsCafeF(){
-        try {
-            ini_set('max_execution_time', 360);
-            $crawler = \Goutte::request('GET', 'https://cafef.vn/bat-dong-san.chn');
-            $crawler->filter('#LoadListNewsCat .tlitem')->each(function ($node) {
-                $title = $node->filter('h3')->text();
-                $url = 'https://cafef.vn'.$node->filter('h3 > a', 0)->attr('href');
-                $img = $node->filter('img')->attr('src');
+        $level = auth()->user()->level;
+        if($level == 2) {
+            try {
+                ini_set('max_execution_time', 360);
+                $crawler = \Goutte::request('GET', 'https://cafef.vn/bat-dong-san.chn');
+                $crawler->filter('#LoadListNewsCat .tlitem')->each(function ($node) {
+                    $title = $node->filter('h3')->text();
+                    $url = 'https://cafef.vn'.$node->filter('h3 > a', 0)->attr('href');
+                    $img = $node->filter('img')->attr('src');
 
-                $content1 = \Goutte::request('GET', $url);
-                $content = '';
-                $author = '';
-                $source = '';
+                    $content1 = \Goutte::request('GET', $url);
+                    $content = '';
+                    $author = '';
+                    $source = '';
 
-                //Lấy link gốc của bài viết
-                $source = $content1->filter('#form1')->each(function ($s) {
-                    $str = '';
-                    try {
-                        $str = $s->filter('.link-source-full')->attr('data-link');
-                    } catch (\Exception $e){
+                    //Lấy link gốc của bài viết
+                    $source = $content1->filter('#form1')->each(function ($s) {
+                        $str = '';
+                        try {
+                            $str = $s->filter('.link-source-full')->attr('data-link');
+                        } catch (\Exception $e){
 
-                    }
-                    return $str;
-                });
+                        }
+                        return $str;
+                    });
 
-                //Lấy tên tác giả
-                $author = $content1->filter('#form1 .author')->each(function ($a) {
-                    return $a->html();
-                });
+                    //Lấy tên tác giả
+                    $author = $content1->filter('#form1 .author')->each(function ($a) {
+                        return $a->html();
+                    });
 
-                //Lấy nội dung bài viết
-                $contents = $content1->filter('#form1 #mainContent')->each(function ($n1) {
+                    //Lấy nội dung bài viết
+                    $contents = $content1->filter('#form1 #mainContent')->each(function ($n1) {
 
-                    $str = '';
-                    try {
-                        //Lấy nội dung thừa
-                        $str = $n1->filter('.link-content-footer')->html();
-                    } catch (\Exception $e){
+                        $str = '';
+                        try {
+                            //Lấy nội dung thừa
+                            $str = $n1->filter('.link-content-footer')->html();
+                        } catch (\Exception $e){
 
-                    }
+                        }
 
-                    return [$str, $n1->html()];
-                });
+                        return [$str, $n1->html()];
+                    });
 
 
-                if(isset($contents)){
-                    //Loại bõ nội dung thừa
-                    if($contents[0][0] != ''){
-                        $content = str_replace($contents[0][0], '', $contents[0][1]);
-                    }
-                    else{
-                        $content = $contents[0][1];
-                    }
+                    if(isset($contents)){
+                        //Loại bõ nội dung thừa
+                        if($contents[0][0] != ''){
+                            $content = str_replace($contents[0][0], '', $contents[0][1]);
+                        }
+                        else{
+                            $content = $contents[0][1];
+                        }
 
-                    //Lấy nguồn gốc cần lưu
-                    $outputSource = '';
-                    if(isset($source[0])){
-                        $outputSource = $source[0];
-                    }
-                    else{
-                        $outputSource = $url;
-                    }
+                        //Lấy nguồn gốc cần lưu
+                        $outputSource = '';
+                        if(isset($source[0])){
+                            $outputSource = $source[0];
+                        }
+                        else{
+                            $outputSource = $url;
+                        }
 
-                    //Tạo mã code cho từng bài viết
-                    $code = substr(md5(microtime()),rand(0,5), 7);
-                    $slug = slug($title).'-'.$code;
+                        //Tạo mã code cho từng bài viết
+                        $code = substr(md5(microtime()),rand(0,5), 7);
+                        $slug = slug($title).'-'.$code;
 
-                    $data = [
-                        'title' => $title,
-                        'slug' => $slug,
-                        'code' => $code,
-                        'photo' => $img,
-                        'author' => str_replace('  ', '', $author[0]) ,
-                        'source' => str_replace(' ', '', $outputSource),
-                        'content' => $content,
-                        'status' => 1,
-                        'crawl' => 1,
-                        'auto' => 1,
-                    ];
+                        $data = [
+                            'title' => $title,
+                            'slug' => $slug,
+                            'code' => $code,
+                            'photo' => $img,
+                            'author' => str_replace('  ', '', $author[0]) ,
+                            'source' => str_replace(' ', '', $outputSource),
+                            'content' => $content,
+                            'status' => 1,
+                            'crawl' => 1,
+                            'auto' => 1,
+                        ];
 
-                    //KIểm tra có tồn tại bài viết chưa
-                    $check = $this->postRepo->findByAttributes(['title' => $title]);
-                    if(!$check){
-                        $query = $this->postRepo->create($data);
-                        if($query){
-                            $this->num++;
-                            array_push($this->listID, env('APP_URL_').'/tin-tuc/'.$slug);
+                        //KIểm tra có tồn tại bài viết chưa
+                        $check = $this->postRepo->findByAttributes(['title' => $title]);
+                        if(!$check){
+                            $query = $this->postRepo->create($data);
+                            if($query){
+                                $this->num++;
+                                array_push($this->listID, env('APP_URL_').'/tin-tuc/'.$slug);
+                            }
                         }
                     }
-                }
-            });
+                });
 
-            return response()->json(
+                return response()->json(
+                    [
+                        'status' => 200,
+                        'data' => $this->listID,
+                        'total' => $this->num,
+                        'message' => 'Cập nhật bài viết từ cafef.vn thành công!'
+                    ]
+                );
+
+            } catch (\Exception $exception) {
+
+                return response()->json(
+                    [
+                        'status' => 500,
+                        'data' => [],
+                        'total' => 0,
+                        'message' => 'Lỗi hệ thống vui lòng thử lại sau!'
+                    ]
+                );
+            }
+        }
+        else {
+              return response()->json(
                 [
-                    'status' => 200,
-                    'data' => $this->listID,
-                    'total' => $this->num,
-                    'message' => 'Cập nhật bài viết từ cafef.vn thành công!'
-                ]
-            );
-
-        } catch (\Exception $exception) {
-
-            return response()->json(
-                [
-                    'status' => 500,
-                    'data' => [],
-                    'total' => 0,
-                    'message' => 'Lỗi hệ thống vui lòng thử lại sau!'
+                    'status' => 403,
+                    'message' => 'Không có quyền truy cập!'
                 ]
             );
         }
