@@ -67,7 +67,13 @@ class PostsController extends Controller
 
     public function follow(Request $request) {
         $validator = Validator::make($request->all(), [
-            'email' => 'required|max:65|email',
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:65',
+                'regex:/^\w+[-\.\w]*@(?!(?:outlook|myemail|yahoo)\.com$)\w+[-\.\w]*?\.\w{2,4}$/'
+            ],
         ]);
         if($validator->fails()){
             return response()->json([
@@ -93,7 +99,13 @@ class PostsController extends Controller
 
     public function login(Request $request) {
         $validator = Validator::make($request->all(), [
-            'email' => 'required|max:65|email',
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:65',
+                'regex:/^\w+[-\.\w]*@(?!(?:outlook|myemail|yahoo)\.com$)\w+[-\.\w]*?\.\w{2,4}$/'
+            ],
             'password' => 'required|min:8',
         ]);
         if($validator->fails()){
@@ -171,7 +183,7 @@ class PostsController extends Controller
         $level = auth()->user()->level;
         if($level == 2) {
             try {
-                $query = DB::table('article')->where('id', $id)->delete();
+                $query = DB::table('posts')->where('id', $id)->delete();
                 if($query) {
                     return response()->json(
                         [
@@ -213,7 +225,7 @@ class PostsController extends Controller
     public function getNewsDetail($id) {
 
         try {
-            $news = DB::table('article')->where('type', 0)->where('id', $id)->first();
+            $news = DB::table('posts')->where('type', 0)->where('id', $id)->first();
             if($news != null) {
                 return response()->json(
                     [
