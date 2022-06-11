@@ -23,11 +23,18 @@ class RequestContactController extends Controller
     public function store(Request $request){
         
         $validator = Validator::make($request->all(), [
-            "name" => "required|max:32",
-            "phone" => "required|max:12",
+            "name" => "required|max:35",
+            "phone" => [
+                'required',
+                'regex:/^((\+)33|0)[1-9](\d{2}){4}$/'
+            ],
             "content" => "required",
-            "article_id" => "required",
-            "email" => "required|email:rfc,dns|max:65",
+            "article_id" => 'required|exists:App\Models\Article,id',
+            'email' => [
+                'required',
+                'max:65',
+                'regex:/^\w+[-\.\w]*@(?!(?:outlook|myemail|yahoo)\.com$)\w+[-\.\w]*?\.\w{2,4}$/'
+            ],
         ]);
         
         if($validator->fails()){

@@ -18,7 +18,7 @@ class PostsController extends Controller
     public function updateStatusCafeF(Request $request) {
         $validator = Validator::make($request->all(), [
             'id' => 'required',
-            'status' => 'required',
+            'status' => 'required|numeric|max:1|min:0',
         ]);
         if($validator->fails()){
             return response()->json([
@@ -69,7 +69,6 @@ class PostsController extends Controller
         $validator = Validator::make($request->all(), [
             'email' => [
                 'required',
-                'string',
                 'email',
                 'max:65',
                 'regex:/^\w+[-\.\w]*@(?!(?:outlook|myemail|yahoo)\.com$)\w+[-\.\w]*?\.\w{2,4}$/'
@@ -101,7 +100,6 @@ class PostsController extends Controller
         $validator = Validator::make($request->all(), [
             'email' => [
                 'required',
-                'string',
                 'email',
                 'max:65',
                 'regex:/^\w+[-\.\w]*@(?!(?:outlook|myemail|yahoo)\.com$)\w+[-\.\w]*?\.\w{2,4}$/'
@@ -225,7 +223,7 @@ class PostsController extends Controller
     public function getNewsDetail($id) {
 
         try {
-            $news = DB::table('posts')->where('type', 0)->where('id', $id)->first();
+            $news = DB::table('article')->where('type', 0)->where('id', $id)->first();
             if($news != null) {
                 return response()->json(
                     [

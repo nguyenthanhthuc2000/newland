@@ -140,15 +140,15 @@ return [
     |
     */
 
-    'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
-        ],
-        '*' => [
-            'required' => 'Trường không được bỏ trống',
-        ],
+    // 'custom' => [
+    //     'attribute-name' => [
+    //         'rule-name' => 'custom-message',
+    //     ],
+    //     '*' => [
+    //         'required' => 'Trường không được bỏ trống',
+    //     ],
 
-    ],
+    // ],
 
     /*
     |--------------------------------------------------------------------------

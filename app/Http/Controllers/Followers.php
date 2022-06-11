@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Repository\Followers\FollowersRepositoryInterface;
 use http\Client\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class Followers extends Controller
 {
@@ -32,14 +33,31 @@ class Followers extends Controller
      */
     public function follow(Request $request){
 
-        $data = [
-            'email' => $request->email
-        ];
-
-        if($this->followerRepo->create($data)){
-            return response()->json([ 'status'=> 200, 'message' => 'Đăng kí thành công!']);
+        $validator = Validator::make($request->all(), [
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:65',
+                'regex:/^\w+[-\.\w]*@(?!(?:outlook|myemail|yahoo)\.com$)\w+[-\.\w]*?\.\w{2,4}$/'
+            ]
+        ]);
+        if($validator->fails()){
+            return response()->json([
+                'validation_errors' => $validator->messages()
+            ]);
         }
-        return response()->json([ 'status'=> 500]);
+        else {
+            $data = [
+                'email' => $request->email
+            ];
+    
+            if($this->followerRepo->create($data)){
+                return response()->json([ 'status'=> 200, 'message' => 'Đăng kí thành công!']);
+            }
+            return response()->json([ 'status'=> 500, 'message' => 'Lỗi, vui lòng thử lại!']);
+        }
+       
     }
 
 }
