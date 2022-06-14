@@ -86,17 +86,18 @@ class Controller extends BaseController
      * @return \Illuminate\Http\Response
      */
     public function getProvince(){
-        return $province = $this->provinceRepo->getOrderBy('ASC');
+        $data = $this->provinceRepo->getOrderBy('ASC');
+        return response()->json(['provinces' => $data]);
     }
 
-    protected function getDistrict(Request $request){
-        $province_id = $request->_province_id;
-        return $this->provinceRepo->find($province_id)->districts()->get();
+    protected function getDistrict($province_id){
+        $data =  $this->provinceRepo->find($province_id)->districts()->get();
+        return response()->json(['districts' => $data]);
     }
 
-    protected function getWards(Request $request){
-        $district_id = $request->_district_id;
-        return $this->districtRepo->find($district_id)->wards()->get();
+    protected function getWards($district_id){
+        $data = $this->districtRepo->find($district_id)->wards()->get();
+        return response()->json(['wards' => $data]);
     }
 
     // protected function getStreet(Request $request){

@@ -157,7 +157,7 @@ class PostsController extends Controller
                 );
             }
             catch (\Exception $exception) {
-    
+
                 return response()->json(
                     [
                         'status' => 500,
