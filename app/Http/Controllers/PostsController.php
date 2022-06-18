@@ -17,73 +17,87 @@ class PostsController extends Controller
 
     public function updateStatusCafeF(Request $request) {
         $validator = Validator::make($request->all(), [
-            'id' => 'required',
+            'id' => 'required|numeric',
             'status' => 'required|numeric|max:1|min:0',
-        ]);
+            ],
+            [
+                '*.numeric' => 'Không đúng',
+                'status.min' => 'Không đúng',
+                'status.max' => 'Không đúng',
+                '*.required' => 'Không bỏ trống',
+            ]
+        );
         if($validator->fails()){
-            return response()->json([
-                'validation_errors' => $validator->messages()
-            ]);
+            return response()->json(
+                $validator->messages()
+            , 422
+        );
         }
         $level = auth()->user()->level;
         if($level == 2) {
             try {
-                $query = DB::table('article')->find($request->id);
+            $query = DB::table('project')->find($request->id);
                 if($query != null) {
-                    DB::table('article')->where('id', $request->id)->update(['status' => $request->status]);
+                    DB::table('project')->where('id', $request->id)->update(['status' => $request->status]);
                     return response()->json(
                         [
-                            'status' => 200,
-                            'message' => 'Cập nhật trạng thái bài viết thành công!'
+                            'message' => 'Cập nhật trạng thái dự án thành công!'
                         ]
                     );
                 }
                 return response()->json(
                     [
-                        'status' => 404,
-                        'message' => 'Không tìm thấy bài viết'
-                    ]
+                        'message' => 'Không tìm thấy dự án'
+                    ], 404
                 );
             }
             catch (\Exception $exception) {
 
                 return response()->json(
                     [
-                        'status' => 500,
                         'message' => 'Lỗi hệ thống vui lòng thử lại sau!'
-                    ]
+                    ], 500
                 );
             }
         }
         else {
             return response()->json(
                 [
-                    'status' => 403,
                     'message' => 'Không có quyền truy cập!'
-                ]
+                ], 401
             );
         }
     }
 
     public function follow(Request $request) {
-        $validator = Validator::make($request->all(), [
+       
+        $validator = Validator::make($request->all(), 
+        [
             'email' => [
                 'required',
-                'email',
                 'max:65',
                 'regex:/^\w+[-\.\w]*@(?!(?:outlook|myemail|yahoo)\.com$)\w+[-\.\w]*?\.\w{2,4}$/'
             ],
-        ]);
+        ],
+        [
+            '*.required' => 'Không được bỏ trống',
+            '*.regex' => 'Không đúng định dạng',
+            'name.max' => 'Không nhập quá 65 kí tự',
+        ]
+        );
         if($validator->fails()){
-            return response()->json([
-                'validation_errors' => $validator->messages()
-            ]);
+            return response()->json(
+                $validator->messages()
+            , 422
+        );
         }
+
+
+
         if(DB::table('followers')->insert(['email' => $request->email])){
             return response()->json([ 'status'=> 200, 'message' => 'Đăng kí thành công!']);
         }
         return response()->json([
-            'status' => 500,
             'message' => 'Lỗi hệ thống vui lòng thử lại sau!'
         ]);
     }
@@ -91,52 +105,58 @@ class PostsController extends Controller
     public function logout(){
         auth()->user()->tokens()->delete();
         return response()->json([
-            'status' => 200,
             'message' => 'Đăng xuất thành công'
         ]);
     }
 
     public function login(Request $request) {
+
         $validator = Validator::make($request->all(), [
             'email' => [
                 'required',
-                'email',
                 'max:65',
                 'regex:/^\w+[-\.\w]*@(?!(?:outlook|myemail|yahoo)\.com$)\w+[-\.\w]*?\.\w{2,4}$/'
-            ],
+                ],
             'password' => 'required|min:8',
-        ]);
+            ],
+            [
+                'email.regex' => 'Không đúng định dạng',
+                'email.max' => 'Không nhập quá 65 kí tự',
+                'password.min' => 'Mật khẩu phải có ít nhất 8 ký tự',
+                '*.required' => 'Không được bỏ trống'
+            ]
+        );
+
         if($validator->fails()){
+            return response()->json($validator->messages(), 422);
+        }
+
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password] )) {
+
+            $user = User::where('email', $request->email)->first();
+            $createToken = $user->createToken($user->email.'_Token');
+            $token = $createToken->plainTextToken;
+            $user->token = $token;
+            $user->expired_at = Carbon::now()->addDay(1)->toDateTimeString();
             return response()->json([
-                'validation_errors' => $validator->messages()
+                'status' => 200,
+                'user' => $user,
+                'message' => 'Đăng nhập thành công',
             ]);
+
         }
         else{
-            $remember = $request->has('remember') ? true : false;
-            if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember )) {
-
-                $user = User::where('email', $request->email)->first();
-                $createToken = $user->createToken($user->email.'_Token');
-                $token = $createToken->plainTextToken;
-                $user->token = $token;
-                $user->expired_at = Carbon::now()->addDay(1)->toDateTimeString();
-                return response()->json([
-                    'status' => 200,
-                    'user' => $user,
-                    'message' => 'Đăng nhập thành công',
-                ]);
-
-            }
-            else{
-                return response()->json([
-                    'status' => 401,
+            return response()->json(
+                [
                     'message' => 'Sai tài khoản hoặc mật khẩu'
-                ]);
-            }
+                ], 
+                422
+            );
         }
     }
 
     public function deleteCenHome ($id) {
+       
         $level = auth()->user()->level;
         if($level == 2) {
             try {
@@ -144,34 +164,30 @@ class PostsController extends Controller
                 if($query) {
                     return response()->json(
                         [
-                            'status' => 200,
                             'message' => 'Xóa dự án thành công!'
                         ]
                     );
                 }
                 return response()->json(
                     [
-                        'status' => 404,
                         'message' => 'Không tìm thấy dự án'
-                    ]
+                    ], 404
                 );
             }
             catch (\Exception $exception) {
 
                 return response()->json(
                     [
-                        'status' => 500,
                         'message' => 'Lỗi hệ thống vui lòng thử lại sau!'
-                    ]
+                    ], 500
                 );
             }
         }
         else {
             return response()->json(
                 [
-                    'status' => 403,
                     'message' => 'Không có quyền truy cập!'
-                ]
+                ], 401
             );
         }
 
@@ -185,34 +201,30 @@ class PostsController extends Controller
                 if($query) {
                     return response()->json(
                         [
-                            'status' => 200,
                             'message' => 'Xóa bài viết thành công!'
                         ]
                     );
                 }
                 return response()->json(
                     [
-                        'status' => 404,
                         'message' => 'Không tìm thấy bài viết'
-                    ]
+                    ], 404
                 );
             }
             catch (\Exception $exception) {
 
                 return response()->json(
                     [
-                        'status' => 500,
                         'message' => 'Lỗi hệ thống vui lòng thử lại sau!'
-                    ]
+                    ], 500
                 );
             }
         }
         else {
             return response()->json(
                 [
-                    'status' => 403,
                     'message' => 'Không có quyền truy cập!'
-                ]
+                ], 401
             );
         }
     }
@@ -227,7 +239,6 @@ class PostsController extends Controller
             if($news != null) {
                 return response()->json(
                     [
-                        'status' => 200,
                         'news'  => $news,
                         'message' => 'Lấy chi tiết bài viết thành công!'
                     ]
@@ -235,9 +246,8 @@ class PostsController extends Controller
             }
             return response()->json(
                 [
-                    'status' => 404,
                     'message' => 'Không tìm thấy bài viết'
-                ]
+                ], 404
             );
         }
         catch (\Exception $exception) {
@@ -271,7 +281,6 @@ class PostsController extends Controller
 
             return response()->json(
                 [
-                    'status' => 500,
                     'message' => 'Lỗi hệ thống vui lòng thử lại sau!'
                 ]
             );
